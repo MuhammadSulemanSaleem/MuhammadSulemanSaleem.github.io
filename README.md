@@ -9,7 +9,7 @@
 
 - 🔭 I’m currently working on [Houzi - Real estate app for Houzez](https://codecanyon.net/item/houzi-real-estate-app/39753350)
 
-- 🌱 I’m currently learning **Flutter**
+- 🌱 I’m currently learning [Flutter](https://flutter.dev)
 
 - 👨‍💻 All of my projects are available at [https://github.com/MuhammadSulemanSaleem](https://github.com/MuhammadSulemanSaleem)
 
