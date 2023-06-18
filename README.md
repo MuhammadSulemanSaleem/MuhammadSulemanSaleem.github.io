@@ -11,7 +11,7 @@
 
 - 🌱 I’m currently learning **Flutter**
 
-- 👨‍💻 All of my projects are available at [https://muhammadsulemansaleem.github.io](https://muhammadsulemansaleem.github.io)
+- 👨‍💻 All of my projects are available at [https://github.com/MuhammadSulemanSaleem](https://github.com/MuhammadSulemanSaleem)
 
 - 💬 Ask me about **Flutter**
 
