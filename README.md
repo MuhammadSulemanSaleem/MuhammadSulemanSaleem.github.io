@@ -1,4 +1,5 @@
 
+<img alt="Header" src="images/animated-header.gif">
 
 <h1 align="center">Hi 👋, I'm Muhammad Suleman Saleem</h1>
 <h3 align="center">A passionate Flutter developer</h3>
