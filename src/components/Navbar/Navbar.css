@@ -5,26 +5,27 @@ nav {
   left: 0;
   background-color: #ffffff;
   z-index: 99;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 .nav__content {
   max-width: var(--max-width);
   margin: auto;
-  padding: 1.5rem 1rem;
+  padding: 1.1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 nav .logo a {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--primary-color);
-  transition: 0.3s;
+  transition: color 0.2s;
 }
 
 nav .logo a:hover {
-  color: var(--primary-color-dark);
+  color: var(--accent-dark);
 }
 
 nav .checkbox {
@@ -36,7 +37,7 @@ nav input {
 }
 
 nav .checkbox i {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--primary-color);
   cursor: pointer;
 }
@@ -44,24 +45,24 @@ nav .checkbox i {
 ul {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.25rem;
   list-style: none;
-  transition: left 0.3s;
 }
 
 ul li a {
-  padding: 0.5rem 1rem;
-  border: 2px solid transparent;
-  text-decoration: none;
+  display: block;
+  padding: 0.45rem 0.9rem;
+  border-bottom: 2px solid transparent;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-dark);
-  transition: 0.3s;
+  transition: color 0.2s, border-color 0.2s;
 }
 
-ul li a:hover {
-  border-top-color: var(--secondary-color);
-  border-bottom-color: var(--secondary-color);
-  color: var(--secondary-color);
+ul li a:hover,
+ul li a.active {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent-color);
 }
 
 @media (width < 750px) {
@@ -72,13 +73,15 @@ ul li a:hover {
   ul {
     position: absolute;
     width: 100%;
-    height: calc(100vh - 85px);
+    height: calc(100vh - 65px);
     left: -100%;
-    top: 85px;
-    background-color: var(--extra-light);
+    top: 65px;
+    background-color: #ffffff;
     flex-direction: column;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
+    transition: left 0.3s;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
   }
 
   nav #check:checked ~ ul {
@@ -86,6 +89,8 @@ ul li a:hover {
   }
 
   ul li a {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+    border: none;
+    padding: 0.75rem 2rem;
   }
 }

@@ -1,0 +1,70 @@
+---
+import './Skills.css';
+
+const categories = [
+  {
+    icon: 'ri-smartphone-line',
+    label: 'Mobile & Frontend',
+    skills: ['Flutter', 'Dart', 'React Native', 'Expo', 'FlutterFlow', 'TypeScript', 'JavaScript'],
+  },
+  {
+    icon: 'ri-server-line',
+    label: 'Backend & APIs',
+    skills: ['Node.js', 'Nest.js', 'Next.js', 'Express', 'REST APIs', 'JWT', 'WebSockets'],
+  },
+  {
+    icon: 'ri-robot-line',
+    label: 'AI & LLM',
+    skills: ['Claude API', 'OpenAI GPT-4o', 'ElevenLabs', 'RAG', 'MCP', 'ChromaDB', 'LLM Orchestration'],
+  },
+  {
+    icon: 'ri-flow-chart',
+    label: 'Automation',
+    skills: ['n8n', 'Zapier', 'Google Apps Script', 'Go High Level', 'Retell AI', 'Apify', 'AppSheet'],
+  },
+  {
+    icon: 'ri-database-2-line',
+    label: 'Databases & Cloud',
+    skills: ['PostgreSQL', 'MongoDB', 'Firebase', 'Supabase', 'Redis', 'SQLite', 'AWS S3'],
+  },
+  {
+    icon: 'ri-macbook-line',
+    label: 'Desktop & Web',
+    skills: ['Electron', 'Astro', 'Next.js', 'WordPress', 'Go High Level'],
+  },
+  {
+    icon: 'ri-bank-card-line',
+    label: 'Payments & Integrations',
+    skills: ['Stripe', 'SAP ERP / RFC', 'PubNub', 'Twilio', 'OneSignal', 'Hunter.io', 'ZeroBounce'],
+  },
+  {
+    icon: 'ri-layout-grid-line',
+    label: 'Architecture & Patterns',
+    skills: ['Clean Architecture', 'MVC', 'Bloc', 'Singleton', 'Observer', 'Agile / Scrum'],
+  },
+];
+---
+
+<section class="skills" id="skills">
+  <div class="skills__container">
+    <div class="skills__header">
+      <p class="section__label">Technical Skills</p>
+      <h2 class="section__heading">Full-Stack Across the Modern Stack</h2>
+    </div>
+    <div class="skills__grid">
+      {categories.map((cat) => (
+        <div class="skill-card">
+          <div class="skill-card__header">
+            <i class={cat.icon} aria-hidden="true"></i>
+            <h3>{cat.label}</h3>
+          </div>
+          <div class="skill-card__tags">
+            {cat.skills.map((s) => (
+              <span class="tag">{s}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,383 @@
+.resume-page {
+  padding-top: 65px;
+}
+
+/* ── Page hero ───────────────────────────────────── */
+.page-hero {
+  background-color: var(--primary-color);
+  padding: 4rem 1.5rem 3.5rem;
+}
+
+.page-hero__inner {
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.page-hero__title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.page-hero__contact {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.75rem;
+  line-height: 1.8;
+}
+
+.page-hero__contact a {
+  color: var(--accent-color);
+  transition: opacity 0.2s;
+}
+
+.page-hero__contact a:hover {
+  opacity: 0.8;
+}
+
+.page-hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.page-hero__actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Resume body ─────────────────────────────────── */
+.resume-wrap {
+  padding: 3rem 1.5rem 5rem;
+  background: var(--extra-light);
+}
+
+.resume {
+  max-width: 860px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  padding: 3rem;
+}
+
+/* ── Section ─────────────────────────────────────── */
+.resume-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.resume-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.resume-section__title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Summary ─────────────────────────────────────── */
+.resume-summary {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--text-dark);
+}
+
+/* ── Expertise grid ──────────────────────────────── */
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.5rem 2rem;
+  list-style: none;
+}
+
+.expertise-grid li {
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.expertise-grid li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+/* ── Lists ───────────────────────────────────────── */
+.resume-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resume-list li {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-dark);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.resume-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.resume-list li strong {
+  color: var(--primary-color);
+}
+
+/* ── Education ───────────────────────────────────── */
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.edu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.edu-item__degree {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.15rem;
+}
+
+.edu-item__institution {
+  font-size: 0.875rem;
+  color: var(--text-dark);
+}
+
+.edu-item__note {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 0.15rem;
+}
+
+.edu-item__dates {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Jobs ────────────────────────────────────────── */
+.job {
+  margin-bottom: 2rem;
+}
+
+.job:last-child {
+  margin-bottom: 0;
+}
+
+.job__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.job__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.2rem;
+}
+
+.job__company {
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.job__dates {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Certifications ──────────────────────────────── */
+.cert-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.cert-list li {
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.cert-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.cert-issuer {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* ── Skills table ────────────────────────────────── */
+.skills-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.skills-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+  font-size: 0.875rem;
+  align-items: baseline;
+}
+
+.skills-row dt {
+  font-weight: 700;
+  color: var(--primary-color);
+  white-space: nowrap;
+}
+
+.skills-row dd {
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ── Print header (hidden on screen, shown in print) */
+.print-header {
+  display: none;
+}
+
+/* ── Print styles ────────────────────────────────── */
+@page {
+  size: letter;
+  margin: 0.65in 0.8in;
+}
+
+@media print {
+  nav,
+  .footer {
+    display: none !important;
+  }
+
+  .resume-page {
+    padding-top: 0;
+  }
+
+  .page-hero {
+    display: none;
+  }
+
+  .resume-wrap {
+    padding: 0;
+    background: transparent;
+  }
+
+  .resume {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .print-header {
+    display: block;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #0d1520;
+  }
+
+  .print-header__name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0d1520;
+    margin-bottom: 0.3rem;
+  }
+
+  .print-header__contact {
+    font-size: 0.78rem;
+    color: #444;
+  }
+
+  .resume-section__title,
+  .job__company {
+    color: #0ea5a0 !important;
+  }
+
+  .job {
+    break-inside: avoid;
+  }
+
+  .resume-section {
+    break-inside: avoid;
+  }
+}
+
+/* ── Responsive ─────────────────────────────────── */
+@media (width < 750px) {
+  .page-hero__title {
+    font-size: 1.75rem;
+  }
+
+  .resume {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .skills-row dt {
+    white-space: normal;
+  }
+
+  .job__header,
+  .edu-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .job__dates,
+  .edu-item__dates {
+    font-size: 0.78rem;
+  }
+}

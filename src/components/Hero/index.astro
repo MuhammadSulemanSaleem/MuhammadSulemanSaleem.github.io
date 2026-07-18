@@ -2,26 +2,42 @@
 import './Hero.css';
 ---
 
-<section class="section">
-  <div class="section__container">
-    <div class="content">
-      <p class="subtitle">HELLO</p>
-      <h1 class="title">
-        I'm <span>Suleman<br />a</span> Software Developer
-      </h1>
-      <p class="description">
-        Welcome to my developer portfolio! I'm Suleman, a skilled and creative
-        software developer with a passion for creating beautiful, responsive,
-        and user-friendly applications. I've worked on a variety of projects,
-        ranging from mobile applications to desktop applications.
+<section class="hero">
+  <div class="hero__container">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Hello, I'm</p>
+      <h1 class="hero__name">Muhammad<br />Suleman Saleem</h1>
+      <p class="hero__title">Full-Stack Software Engineer &amp; AI Product Engineer</p>
+      <p class="hero__subtitle">LLM Systems &amp; Automation &nbsp;·&nbsp; Production-Ready AI Solutions</p>
+      <p class="hero__description">
+        5+ years building cross-platform mobile, web, and desktop apps — now shipping
+        production AI systems: RAG pipelines, multi-provider LLM orchestration, and
+        intelligent workflow automation that replace hours of manual work with reliable,
+        always-on processes.
       </p>
-      <div class="action__btns">
-        <button class="hire__me">Hire Me</button>
-        <button class="portfolio__btn">Portfolio</button>
+      <div class="hero__tech" aria-label="Core technologies">
+        <span>Flutter</span>
+        <span>Node.js</span>
+        <span>Next.js</span>
+        <span>Claude API</span>
+        <span>RAG</span>
+        <span>n8n</span>
+      </div>
+      <div class="hero__actions">
+        <a href="/portfolio" class="btn btn--primary">View Projects</a>
+        <a href="/contact" class="btn btn--outline">Get in Touch</a>
       </div>
     </div>
-    <div class="dev-gif">
-      <img src="/assets/gifs/animated-code.gif" alt="Developer coding animation" />
+
+    <div class="hero__image" aria-hidden="true">
+      <div class="hero__image-wrap">
+        <img
+          src="/assets/images/profile.png"
+          alt="Muhammad Suleman Saleem"
+          width="400"
+          height="400"
+        />
+      </div>
     </div>
   </div>
 </section>

@@ -1,37 +1,401 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout/index.astro';
 import Navbar from '../../components/Navbar/index.astro';
+import Footer from '../../components/Footer/index.astro';
+import './resume.css';
 ---
 
-<BaseLayout title="Resume — Suleman" description="Muhammad Suleman Saleem's resume">
+<BaseLayout
+  title="Resume — Muhammad Suleman Saleem"
+  description="Resume of Muhammad Suleman Saleem, Full-Stack Software Engineer and AI Product Engineer."
+>
   <Navbar />
-  <section class="coming-soon">
-    <h1>Resume</h1>
-    <p>Resume coming soon.</p>
-  </section>
+  <main class="resume-page">
+
+    <!-- Page hero -->
+    <header class="page-hero">
+      <div class="page-hero__inner">
+        <p class="section__label">Resume</p>
+        <h1 class="page-hero__title">Muhammad Suleman Saleem</h1>
+        <p class="page-hero__contact">
+          Shahdara Town, Lahore, Pakistan &nbsp;·&nbsp;
+          <a href="tel:+923071123666">+92 307 1123666</a> &nbsp;·&nbsp;
+          <a href="mailto:rana.suleman2297@gmail.com">rana.suleman2297@gmail.com</a> &nbsp;·&nbsp;
+          <a href="https://linkedin.com/in/muhammad-suleman-saleem" target="_blank" rel="noopener noreferrer">linkedin.com/in/muhammad-suleman-saleem</a>
+        </p>
+        <div class="page-hero__actions">
+          <a
+            href="/Muhammad_Suleman_Saleem_Resume.pdf"
+            download="Muhammad_Suleman_Saleem_Resume.pdf"
+            class="btn btn--primary"
+          >
+            <i class="ri-download-2-line" aria-hidden="true"></i>
+            Download Resume
+          </a>
+          <a
+            href="https://linkedin.com/in/muhammad-suleman-saleem"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--outline"
+          >
+            <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
+            LinkedIn Profile
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Resume content -->
+    <div class="resume-wrap">
+      <div class="resume">
+
+        <!-- Shown only when printing (replaces the dark page-hero) -->
+        <div class="print-header">
+          <h1 class="print-header__name">Muhammad Suleman Saleem</h1>
+          <p class="print-header__contact">
+            Shahdara Town, Lahore, Pakistan &nbsp;·&nbsp; +92 307 1123666 &nbsp;·&nbsp;
+            rana.suleman2297@gmail.com &nbsp;·&nbsp; linkedin.com/in/muhammad-suleman-saleem
+          </p>
+        </div>
+
+        <!-- Summary -->
+        <section class="resume-section">
+          <h2 class="resume-section__title">Summary</h2>
+          <p class="resume-summary">
+            Full-stack Software Engineer with 5+ years of experience building cross-platform
+            mobile, web, and desktop applications and, more recently, production AI/LLM-powered
+            systems. Deep expertise in Flutter and Dart, with additional cross-platform mobile
+            experience in Expo and React Native, desktop development with Electron, and hands-on
+            backend experience in Node.js, Nest.js, Express, and Next.js. Over the past two years
+            I have shifted into building AI-integrated products — RAG pipelines, multi-provider
+            LLM orchestration (Claude, OpenAI, ElevenLabs), and workflow automation platforms
+            using n8n — alongside continued Flutter/mobile delivery. I focus on scalable
+            architecture, clean code, and shipping features end-to-end, from UI to database to
+            third-party integrations. Known for mentoring developers, automating repetitive
+            business workflows, and translating ambiguous requirements into working production systems.
+          </p>
+        </section>
+
+        <!-- Areas of Expertise -->
+        <section class="resume-section">
+          <h2 class="resume-section__title">Areas of Expertise</h2>
+          <ul class="expertise-grid">
+            <li>Flutter &amp; Dart Development</li>
+            <li>Full-Stack Development (Node.js, Nest.js, Express, Next.js)</li>
+            <li>AI/LLM Integration &amp; RAG Pipelines</li>
+            <li>Scalable App &amp; Backend Architecture</li>
+            <li>Workflow Automation (n8n, App Script, Zapier, Go High Level)</li>
+            <li>UI/UX Implementation &amp; Responsive Design</li>
+            <li>API Integration &amp; Third-Party Services</li>
+            <li>Cloud &amp; Serverless (Firebase, Supabase, AWS)</li>
+            <li>Database Management</li>
+            <li>Payment &amp; Subscription Systems (Stripe)</li>
+            <li>Native iOS &amp; Android Integrations</li>
+            <li>Technical Leadership &amp; Mentorship</li>
+            <li>Agile &amp; Scrum Methodologies</li>
+          </ul>
+        </section>
+
+        <!-- Key Achievements -->
+        <section class="resume-section">
+          <h2 class="resume-section__title">Key Achievements</h2>
+          <ul class="resume-list">
+            <li>
+              <strong>Led Feature Development:</strong> Spearheaded end-to-end delivery of complex
+              mobile, web, and AI-powered features across multiple production applications.
+            </li>
+            <li>
+              <strong>Architected Scalable Solutions:</strong> Designed modular Flutter, Nest.js,
+              and Express architectures that improved code efficiency and reduced technical debt.
+            </li>
+            <li>
+              <strong>Built Production AI Systems:</strong> Designed and shipped a
+              Retrieval-Augmented Generation (RAG) pipeline and multi-provider AI orchestration
+              layer (Claude, GPT-4o, ElevenLabs) with streaming responses and automatic provider
+              failover.
+            </li>
+            <li>
+              <strong>Enterprise System Integration:</strong> Integrated a React Native application
+              with SAP ERP, supporting thousands of daily batch scans nationwide across a
+              four-level org hierarchy.
+            </li>
+            <li>
+              <strong>Automation at Scale:</strong> Designed and deployed 10+ business-process
+              automations (n8n, App Script, Zapier, Go High Level), including a 1-minute lead
+              response system and a daily lead-discovery pipeline delivering verified contacts
+              before business hours.
+            </li>
+            <li>
+              <strong>Cross-Functional Collaboration:</strong> Partnered with designers, QA
+              engineers, and product managers to translate business objectives into
+              production-quality applications.
+            </li>
+            <li>
+              <strong>Technical Mentorship:</strong> Guided junior developers in Flutter
+              architecture, backend patterns, and debugging techniques, while conducting peer
+              code reviews.
+            </li>
+            <li>
+              <strong>Product Deployment &amp; Maintenance:</strong> Successfully published and
+              maintained multiple production-grade applications on Google Play and the App Store
+              with consistently positive user feedback.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Education -->
+        <section class="resume-section">
+          <h2 class="resume-section__title">Education</h2>
+          <div class="edu-list">
+            <div class="edu-item">
+              <div class="edu-item__left">
+                <p class="edu-item__degree">Bachelor of Computer Science</p>
+                <p class="edu-item__institution">Information Technology University (ITU), Lahore</p>
+                <p class="edu-item__note">FYP: Intelligent Home Automation System with Dr. Suleman Mazhar</p>
+              </div>
+              <span class="edu-item__dates">2015 – 2019</span>
+            </div>
+            <div class="edu-item">
+              <div class="edu-item__left">
+                <p class="edu-item__degree">F.Sc Pre-Engineering</p>
+                <p class="edu-item__institution">Government College University (GCU), Lahore</p>
+              </div>
+              <span class="edu-item__dates">2013 – 2015</span>
+            </div>
+            <div class="edu-item">
+              <div class="edu-item__left">
+                <p class="edu-item__degree">Matriculation</p>
+                <p class="edu-item__institution">Hashmat Memorial High School (HMS)</p>
+              </div>
+              <span class="edu-item__dates">2011 – 2013</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section class="resume-section">
+          <h2 class="resume-section__title">Professional Experience</h2>
+
+          <div class="job">
+            <div class="job__header">
+              <div>
+                <p class="job__title">Full-Stack Software Engineer &amp; AI Product Engineer / Team Lead</p>
+                <p class="job__company">Techtiz &nbsp;|&nbsp; Township, Lahore</p>
+              </div>
+              <span class="job__dates">2024 – Present</span>
+            </div>
+            <ul class="resume-list">
+              <li>
+                <strong>Team Leadership:</strong> Led a development team, managed sprints via
+                Jira, and tracked productivity through Worktivity.
+              </li>
+              <li>
+                <strong>AI Product — NebuFit</strong> (Flutter, PostgreSQL/Supabase, Redis): Built
+                a cross-platform AI fitness/health app covering computer-vision body analysis,
+                AI-generated workout and nutrition plans, bloodwork report processing, and
+                voice-based coaching. Designed a RAG system for contextual fitness/nutrition
+                guidance, multi-provider AI orchestration (Claude, GPT-4o, ElevenLabs) with SSE
+                streaming and failover, and full Stripe subscription/entitlement management.
+              </li>
+              <li>
+                <strong>Enterprise Platform — Orient Champions</strong> (Nest.js, React Native, Expo,
+                MongoDB, SAP RFC, AWS S3): Built a field-sales incentive platform used
+                <em>nationwide by field agents across Pakistan</em>, architecting a Nest.js backend
+                supporting <em>thousands of daily batch scans</em> with real-time SAP ERP sync via
+                custom BAPIs across a <em>four-level organisational hierarchy</em> (National → Zone
+                → Branch → FSM), with resilient offline queuing/reconciliation, JWT + Twilio OTP
+                auth, and bulk Excel/CSV processing.
+              </li>
+              <li>
+                <strong>Creative OS</strong> (Electron, React, Claude API, RAG, ChromaDB): Built a
+                local-first AI desktop app for writers/filmmakers indexing Final Draft scripts,
+                PDFs, and notes via RAG, with Claude-powered rewriting, semantic search, and an
+                extensible MCP server architecture.
+              </li>
+              <li>
+                <strong>Mobile App Development:</strong> Built Aniflex (Flutter fitness/gamification
+                app), fully rebranded 'Exodus App' (formerly Blue Sky), and developed 'Linked Golf'
+                (Flutter + Express + PubNub chat + Stripe + FCM), deployed to both stores.
+              </li>
+              <li>
+                <strong>Desktop &amp; Web Platforms:</strong> Fully built the 'UNITY' Electron
+                desktop app and its Next.js/Nest.js admin web portal — role-based access, dynamic
+                server-driven layouts, credential manager, script-injected auto-fill, and real-time
+                notifications via sockets.
+              </li>
+              <li>
+                <strong>FlutterFlow Templates:</strong> Built two FlutterFlow templates —
+                'Kumquat – Talent Match' and 'Foodii – Recipe Book'.
+              </li>
+              <li>
+                <strong>Lead Response Automation</strong> (n8n, Go High Level, Retell AI, Aloware,
+                CloseBot): Built an automated lead response system for United Global Vanline that
+                contacts new leads <em>within 1 minute</em> and places an <em>AI voice call within
+                2 minutes</em> of form submission; OpenAI-based call scoring and fraud detection.
+                Also synced The Ramirez Legal Group's ClickUp case data to a live client dashboard
+                via Zapier and Emergent Labs.
+              </li>
+              <li>
+                <strong>Data &amp; Reporting Automation</strong> (n8n, App Script, Apify, Nocodb,
+                ZeroBounce, Clearout Phone): Built OCR-based document processing for bank statements
+                ('Capital Shack'); a daily decision-maker lead-discovery pipeline ('AGENTC')
+                delivering verified contacts before business hours every day; and a Leads Management
+                System syncing campaign data to Google Data Studio.
+              </li>
+              <li>
+                <strong>Content &amp; Outreach Automation</strong> (n8n, App Script, OpenAI): Built
+                a social-media post scheduling system generating platform-specific captions on a
+                schedule, and an outreach email triage pipeline routing qualified leads to the sales
+                team via Slack.
+              </li>
+              <li>
+                <strong>Web Development:</strong> Rebuilt the Techtiz corporate site in Astro for
+                performance/SEO, and built a native-element homepage in Go High Level for ATTN Agency.
+              </li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job__header">
+              <div>
+                <p class="job__title">Flutter Developer</p>
+                <p class="job__company">BooleanBites Ltd. &nbsp;|&nbsp; Johar Town, Lahore</p>
+              </div>
+              <span class="job__dates">2021 – 2024</span>
+            </div>
+            <ul class="resume-list">
+              <li>
+                <strong>Developed 'Houzi' App:</strong> Created a real estate template app for the
+                popular Houzez WordPress theme, used by over <strong>53,000+</strong> users globally.
+                Achieved <strong>500+ Envato sales</strong>, a <strong>4.84/5</strong> rating, and
+                <strong>5K+ downloads</strong> on Google Play Store.
+              </li>
+              <li>
+                <strong>Architecture &amp; Scalability:</strong> Implemented clean architecture and
+                efficient state management using Bloc, ensuring high maintainability and smooth
+                performance.
+              </li>
+              <li>
+                <strong>Cross-Platform Projects:</strong> Delivered mobile apps (Houzi, IPT Force,
+                Linked Home, FSF-Ticket), a desktop platform (HouziBuilder), and a WordPress plugin
+                (Houzi-REST-API) for custom API extensions, including OneSignal push, chat, and
+                comments integrations.
+              </li>
+              <li>
+                <strong>Performance Optimisation:</strong> Enhanced app load times, reduced API
+                latency, and improved UI responsiveness, resulting in smoother user interaction.
+              </li>
+              <li>
+                <strong>Collaboration:</strong> Worked closely with designers, QA teams, and product
+                owners to align on features and quality benchmarks across releases.
+              </li>
+              <li>
+                <strong>Mentorship &amp; Quality Assurance:</strong> Provided technical mentorship,
+                reviewed pull requests, and upheld clean coding standards across development teams.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Relevant Experience -->
+        <section class="resume-section">
+          <h2 class="resume-section__title">Relevant Experience</h2>
+          <div class="job">
+            <div class="job__header">
+              <div>
+                <p class="job__title">Learning Developer / Research Assistant</p>
+                <p class="job__company">Information Technology University (ITU), Lahore</p>
+              </div>
+              <span class="job__dates">2015 – 2019</span>
+            </div>
+            <ul class="resume-list">
+              <li>
+                <strong>Final Year Project — Intelligent Home Automation System:</strong> Collaborated
+                in a four-member team to build a smart home automation system with a companion
+                Android control app.
+              </li>
+              <li>
+                <strong>Mobile Application Development:</strong> Early Android (Java/Kotlin) and iOS
+                (Swift) projects (Weather App, BMI Calculator, Tic Tac Toe), building a foundation
+                in native app life cycles.
+              </li>
+              <li>
+                <strong>Game Development:</strong> Built 2D desktop/Android games (Road Fury, Space
+                Battle, BattleCopter) in Unity, covering core game physics and interaction concepts.
+              </li>
+              <li>
+                <strong>Software Testing:</strong> Applied black-box/white-box testing on an
+                open-source Java project (TEAMMATES), building debugging and QA skills.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="resume-section">
+          <h2 class="resume-section__title">Certifications</h2>
+          <ul class="cert-list">
+            <li>
+              <span class="cert-issuer">Anthropic:</span>
+              Claude Code in Action, Claude Code 101, Claude 101, Introduction to Agent Skills
+            </li>
+            <li>
+              <span class="cert-issuer">n8n:</span>
+              n8n Level 1
+            </li>
+          </ul>
+        </section>
+
+        <!-- Other Skills & Tools -->
+        <section class="resume-section">
+          <h2 class="resume-section__title">Other Skills &amp; Tools</h2>
+          <dl class="skills-table">
+            <div class="skills-row">
+              <dt>Programming Languages</dt>
+              <dd>Dart, Java, Kotlin, Swift, JavaScript, TypeScript, PHP, Python</dd>
+            </div>
+            <div class="skills-row">
+              <dt>Frameworks &amp; Technologies</dt>
+              <dd>Flutter, Electron, Node.js, Nest.js, Express, Next.js, FlutterFlow, Expo, React Native, Astro</dd>
+            </div>
+            <div class="skills-row">
+              <dt>AI / LLM</dt>
+              <dd>Claude API / Anthropic, OpenAI GPT-4o, ElevenLabs, RAG, MCP (Model Context Protocol), ChromaDB</dd>
+            </div>
+            <div class="skills-row">
+              <dt>Databases</dt>
+              <dd>PostgreSQL, Firebase Firestore, MongoDB, MySQL, Hive, SQLite, Redis</dd>
+            </div>
+            <div class="skills-row">
+              <dt>Cloud &amp; Serverless</dt>
+              <dd>Firebase (Auth, Analytics, Crashlytics), Supabase, Google Cloud Functions, AWS S3</dd>
+            </div>
+            <div class="skills-row">
+              <dt>Automation</dt>
+              <dd>n8n, Zapier, Google Apps Script, AppSheet, Go High Level, Retell AI, Aloware, CloseBot, Apify</dd>
+            </div>
+            <div class="skills-row">
+              <dt>Integrations</dt>
+              <dd>Stripe, Twilio, SAP RFC, PubNub, JWT, Hunter.io, ZeroBounce, Nocodb</dd>
+            </div>
+            <div class="skills-row">
+              <dt>Architecture &amp; Patterns</dt>
+              <dd>Clean Architecture, MVC, Singleton, Observer</dd>
+            </div>
+            <div class="skills-row">
+              <dt>Version Control &amp; PM</dt>
+              <dd>Git, GitHub, SourceTree, Jira, Trello, Slack, Worktivity, ClickUp, Emergent Labs</dd>
+            </div>
+            <div class="skills-row">
+              <dt>IDEs &amp; Dev Tools</dt>
+              <dd>Android Studio, Xcode, Cursor, Visual Studio Code, Postman, Unity 3D</dd>
+            </div>
+          </dl>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+  <Footer />
 </BaseLayout>
-
-<style>
-  .coming-soon {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    background-color: var(--extra-light);
-    color: var(--text-dark);
-    font-family: "Poppins", sans-serif;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-  }
-
-  p {
-    color: var(--text-light);
-    font-size: 1.1rem;
-  }
-</style>

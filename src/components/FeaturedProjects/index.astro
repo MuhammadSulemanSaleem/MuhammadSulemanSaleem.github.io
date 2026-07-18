@@ -1,0 +1,59 @@
+---
+import './FeaturedProjects.css';
+
+const projects = [
+  {
+    badge: 'Flutter · BooleanBites',
+    name: 'Houzi',
+    metric: '53K+ users · 4.84★ · 500+ sales',
+    description:
+      'Real estate template app for the Houzez WordPress theme used by 53,000+ users globally. Built with Bloc state management and clean architecture; shipped a desktop customization platform (HouziBuilder) and a WordPress plugin (Houzi-REST-API) for push notifications, in-app chat, and comments.',
+    tech: ['Flutter', 'Dart', 'Bloc', 'REST APIs', 'OneSignal', 'WordPress Plugin'],
+  },
+  {
+    badge: 'AI Product · Techtiz',
+    name: 'NebuFit',
+    metric: 'RAG · multi-LLM · SSE streaming',
+    description:
+      'AI-powered fitness and health platform with computer-vision body analysis, AI-generated workout and nutrition plans, bloodwork report processing, and voice-based coaching. Multi-provider LLM orchestration (Claude + GPT-4o + ElevenLabs) with SSE streaming, automatic provider failover, and full Stripe subscription management.',
+    tech: ['Flutter', 'PostgreSQL', 'Supabase', 'Redis', 'RAG', 'Claude API', 'GPT-4o', 'ElevenLabs', 'Stripe'],
+  },
+  {
+    badge: 'AI Desktop · Techtiz',
+    name: 'Creative OS',
+    metric: 'Local-first · MCP server architecture',
+    description:
+      'Local-first AI desktop app for writers and filmmakers. Indexes Final Draft screenplays, PDFs, and notes via RAG for semantic search and Claude-powered rewriting and editing. Extensible MCP server architecture allows tool integration without modifying the core app.',
+    tech: ['Electron', 'React', 'TypeScript', 'Claude API', 'RAG', 'ChromaDB', 'MCP', 'SQLite'],
+  },
+];
+---
+
+<section class="featured" id="projects">
+  <div class="featured__container">
+    <div class="featured__header">
+      <p class="section__label">Featured Work</p>
+      <h2 class="section__heading">Selected Projects</h2>
+    </div>
+
+    <div class="featured__grid">
+      {projects.map((p) => (
+        <article class="project-card">
+          <div class="project-card__top">
+            <span class="project-card__badge">{p.badge}</span>
+            <span class="project-card__metric">{p.metric}</span>
+          </div>
+          <h3 class="project-card__name">{p.name}</h3>
+          <p class="project-card__desc">{p.description}</p>
+          <div class="project-card__tech">
+            {p.tech.map((t) => <span class="tag">{t}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="featured__cta">
+      <a href="/portfolio" class="featured__more">See all projects &rarr;</a>
+    </div>
+  </div>
+</section>

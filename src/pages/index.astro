@@ -2,12 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout/index.astro';
 import Navbar from '../components/Navbar/index.astro';
 import Hero from '../components/Hero/index.astro';
+import About from '../components/About/index.astro';
+import Skills from '../components/Skills/index.astro';
+import FeaturedProjects from '../components/FeaturedProjects/index.astro';
+import Footer from '../components/Footer/index.astro';
 ---
 
 <BaseLayout
-  title="Suleman Portfolio"
-  description="Muhammad Suleman Saleem — Software Developer Portfolio"
+  title="Muhammad Suleman Saleem — Full-Stack & AI Product Engineer"
+  description="Portfolio of Muhammad Suleman Saleem, Full-Stack Software Engineer and AI Product Engineer based in Lahore. Flutter, Node.js, Claude API, RAG, n8n."
 >
   <Navbar />
-  <Hero />
+  <main>
+    <Hero />
+    <About />
+    <Skills />
+    <FeaturedProjects />
+  </main>
+  <Footer />
 </BaseLayout>

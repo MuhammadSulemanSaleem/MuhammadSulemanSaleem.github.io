@@ -1,0 +1,72 @@
+.skills {
+  background-color: var(--extra-light);
+  padding: 5rem 1.5rem;
+}
+
+.skills__container {
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.skills__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.skills__header .section__heading {
+  margin-top: 0.25rem;
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 1.25rem;
+}
+
+.skill-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.skill-card:hover {
+  box-shadow: 0 8px 28px rgba(13, 21, 32, 0.08);
+  transform: translateY(-3px);
+}
+
+.skill-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.skill-card__header i {
+  font-size: 1.35rem;
+  color: var(--accent-dark);
+}
+
+.skill-card__header h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.skill-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Override global .tag to use extra-light bg inside cards */
+.skill-card__tags .tag {
+  background: var(--extra-light);
+}
+
+@media (width < 750px) {
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+}

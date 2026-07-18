@@ -1,0 +1,41 @@
+---
+import './Footer.css';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__name">Muhammad Suleman Saleem</p>
+        <p class="footer__tagline">Full-Stack Software Engineer &amp; AI Product Engineer</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="/">Home</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/resume">Resume</a>
+        <a href="/contact">Contact</a>
+      </nav>
+
+      <div class="footer__social">
+        <a
+          href="https://linkedin.com/in/muhammad-suleman-saleem"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn profile"
+        >
+          <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
+        </a>
+        <a href="mailto:rana.suleman2297@gmail.com" aria-label="Send email">
+          <i class="ri-mail-fill" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {year} Muhammad Suleman Saleem. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

@@ -1,37 +1,353 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout/index.astro';
 import Navbar from '../../components/Navbar/index.astro';
+import Footer from '../../components/Footer/index.astro';
+import './portfolio.css';
+
+const aiProducts = [
+  {
+    name: 'NebuFit',
+    badge: 'AI Product · Techtiz',
+    metric: 'RAG · multi-LLM · SSE streaming · Stripe',
+    description:
+      'AI-powered fitness and health platform with computer-vision body analysis, AI-generated workout and nutrition plans, bloodwork report processing, and voice-based coaching. Designed a RAG system for contextual guidance, multi-provider LLM orchestration (Claude, GPT-4o, ElevenLabs) with SSE streaming and automatic provider failover, and full Stripe subscription and entitlement management.',
+    tech: ['Flutter', 'PostgreSQL', 'Supabase', 'Redis', 'RAG', 'Claude API', 'GPT-4o', 'ElevenLabs', 'Stripe'],
+  },
+  {
+    name: 'Creative OS',
+    badge: 'AI Desktop · Techtiz',
+    metric: 'Local-first · MCP server',
+    description:
+      'Local-first AI desktop app for writers and filmmakers. Indexes Final Draft screenplays, PDFs, and notes via a RAG pipeline for semantic search and Claude-powered rewriting and editing. Extensible MCP server architecture enables tool integration without modifying the core app — Claude can interact with indexed content and external tools through a typed protocol.',
+    tech: ['Electron', 'React', 'TypeScript', 'Claude API', 'RAG', 'ChromaDB', 'MCP', 'SQLite'],
+  },
+];
+
+const enterprisePlatforms = [
+  {
+    name: 'Orient Champions',
+    badge: 'Enterprise · Techtiz',
+    metric: 'Thousands of daily batch scans · nationwide · SAP ERP',
+    description:
+      'Field-sales incentive platform used nationwide by field agents across Pakistan for Orient Electronic. Architected a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs/RFC, spanning a four-level organisational hierarchy (National → Zone → Branch → FSM). Resilient offline queuing and reconciliation, JWT + Twilio OTP auth, bulk Excel/CSV processing, and AWS S3 storage. Available on both the App Store and Google Play.',
+    tech: ['Nest.js', 'React Native', 'Expo', 'MongoDB', 'SAP RFC', 'AWS S3', 'Twilio', 'JWT'],
+    note: 'Client-attributed project — architecture and technical patterns discussed at a high level.',
+  },
+  {
+    name: 'UNITY Desktop App & Admin Portal',
+    badge: 'Desktop + Web · Techtiz',
+    metric: 'Medical organisation · confidential client',
+    description:
+      'Built for a medical organisation (name withheld per client confidentiality). Electron + Node.js desktop app with dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill. Paired with a Next.js + Nest.js admin web portal featuring real-time notifications via WebSockets.',
+    tech: ['Electron', 'Node.js', 'Next.js', 'Nest.js', 'WebSockets', 'Role-Based Access'],
+    note: 'Confidential client — no screenshots or client name disclosed.',
+  },
+];
+
+const mobileApps = [
+  {
+    name: 'Houzi',
+    badge: 'Flutter · BooleanBites',
+    metric: '53K+ users · 4.84★ · 500+ Envato sales · 5K+ Play downloads',
+    description:
+      'Real estate template app for the Houzez WordPress theme, used by 53,000+ users globally. Clean Architecture with Bloc state management, one-click theme configuration, REST API integration, push notifications via OneSignal, in-app chat, and comments. Also shipped the Houzi Builder desktop customisation platform and the Houzi-REST-API WordPress plugin.',
+    tech: ['Flutter', 'Dart', 'Bloc', 'Clean Architecture', 'REST APIs', 'OneSignal', 'WordPress'],
+  },
+  {
+    name: 'Linked Golf',
+    badge: 'Flutter · Techtiz',
+    metric: 'Deployed to App Store & Google Play',
+    description:
+      'Golf social and booking app with real-time in-app chat via PubNub, Stripe payment integration, FCM push notifications, and an Express backend. Shipped to both stores.',
+    tech: ['Flutter', 'Express', 'PubNub', 'Stripe', 'FCM', 'Node.js'],
+  },
+  {
+    name: 'Aniflex',
+    badge: 'Flutter · Techtiz',
+    metric: 'Fitness & gamification',
+    description:
+      'Fitness and gamification mobile app built in Flutter. Covers workout tracking, gamified progress milestones, and user achievements to keep users engaged with their fitness routines.',
+    tech: ['Flutter', 'Dart', 'Firebase'],
+  },
+  {
+    name: 'Exodus App',
+    badge: 'Flutter · Techtiz',
+    metric: 'Full rebrand from Blue Sky (EPIC PC)',
+    description:
+      "Full visual and branding rebrand of the 'Blue Sky' app by EPIC PC. Updated theming, assets, navigation, and app-store metadata end-to-end.",
+    tech: ['Flutter', 'Dart'],
+  },
+  {
+    name: 'Linked Home · IPT Force · FSF-Ticket',
+    badge: 'Flutter · BooleanBites',
+    metric: 'Multiple delivered apps',
+    description:
+      'Three separate Flutter mobile apps delivered during the BooleanBites era: Linked Home (property listing and management), IPT Force (field operations), and FSF-Ticket (support ticketing system).',
+    tech: ['Flutter', 'Dart', 'REST APIs', 'Firebase'],
+  },
+];
+
+const webDesktop = [
+  {
+    name: 'HouziBuilder',
+    badge: 'Desktop · BooleanBites',
+    metric: 'Drag-and-drop theme configurator',
+    description:
+      'Desktop platform that lets non-technical users configure and preview the Houzi app theme — typography, colours, layout — before publishing changes. Built as a companion tool to the Houzi ecosystem.',
+    tech: ['Desktop', 'Flutter', 'Dart'],
+  },
+  {
+    name: 'Techtiz Corporate Website',
+    badge: 'Web · Techtiz',
+    metric: 'Astro rebuild · performance & SEO',
+    description:
+      'Full rebuild of the Techtiz corporate site in Astro, improving performance scores and SEO fundamentals — faster first-load, better Core Web Vitals, and structured metadata.',
+    tech: ['Astro', 'HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    name: 'ATTN Agency Homepage',
+    badge: 'Web · Techtiz',
+    metric: 'Go High Level native-element build',
+    description:
+      'Agency homepage built natively inside Go High Level using custom CSS and HTML elements — no external page builder, full control over layout and performance.',
+    tech: ['Go High Level', 'HTML', 'CSS'],
+  },
+];
+
+const automations = [
+  {
+    name: 'Lead Response Automation — United Global Vanline',
+    badge: 'n8n · Go High Level · Retell AI',
+    metric: 'Contacts leads in < 1 min · AI voice call in < 2 min',
+    description:
+      'Automated lead response pipeline for a US-based moving company. A new lead submission triggers contact within 1 minute and an AI voice call within 2 minutes using Retell AI + Aloware. OpenAI-based call scoring and fraud detection routes genuine leads and suppresses junk. Built on n8n, Go High Level (Opportunities, Pipelines, Automations), and CloseBot.',
+    tech: ['n8n', 'Go High Level', 'Retell AI', 'Aloware', 'CloseBot', 'OpenAI'],
+  },
+  {
+    name: 'AGENTC — Agentic Job Discovery Automation',
+    badge: 'n8n · Apify · Nocodb',
+    metric: 'Daily verified leads before business hours',
+    description:
+      'Daily pipeline that discovers decision-maker contacts matching a target profile, validates emails and phone numbers, deduplicates against a Nocodb CRM, and delivers a ready-to-call list before business hours every morning. Uses Apify scrapers, ZeroBounce email validation, and Clearout Phone verification.',
+    tech: ['n8n', 'Apify', 'Nocodb', 'ZeroBounce', 'Clearout Phone', 'OpenAI'],
+  },
+  {
+    name: 'Capital Shack — Document OCR Processing',
+    badge: 'Google Apps Script',
+    metric: 'OCR bank statement extraction',
+    description:
+      'OCR-based document processing pipeline for bank statement analysis. Extracts structured financial data from PDF bank statements using Google Apps Script and routes it for downstream processing.',
+    tech: ['Google Apps Script', 'OCR', 'Google Sheets'],
+  },
+  {
+    name: 'Ramirez Legal Group — ClickUp Dashboard Sync',
+    badge: 'Zapier · Emergent Labs',
+    metric: 'Real-time case data sync',
+    description:
+      'Real-time synchronisation of ClickUp case data to a live client-facing dashboard. Built on Zapier and Emergent Labs, giving the legal team and clients a single live view of case status without manual updates.',
+    tech: ['Zapier', 'Emergent Labs', 'ClickUp'],
+  },
+  {
+    name: 'Social Media & Outreach Automation',
+    badge: 'n8n · Google Apps Script · OpenAI',
+    metric: 'Daily post scheduling · lead routing',
+    description:
+      'Two separate pipelines: (1) a social media post management system that generates platform-specific captions on a schedule and auto-posts across channels; (2) an outreach email triage pipeline that filters and validates inbound leads and routes qualified replies to the sales team via Slack.',
+    tech: ['n8n', 'Google Apps Script', 'OpenAI', 'Slack'],
+  },
+];
+
+const templates = [
+  {
+    name: 'Kumquat — Talent Match',
+    badge: 'FlutterFlow Template',
+    metric: 'Published FlutterFlow Marketplace',
+    description: 'FlutterFlow starter template for talent-matching and recruitment apps. Includes profile listings, filtering, and match request flows.',
+    tech: ['FlutterFlow', 'Dart', 'Firebase'],
+  },
+  {
+    name: 'Foodii — Recipe Book',
+    badge: 'FlutterFlow Template',
+    metric: 'Published FlutterFlow Marketplace',
+    description: 'FlutterFlow starter template for recipe book and meal-planning apps. Covers browsing, saving, and categorising recipes with a clean card-based UI.',
+    tech: ['FlutterFlow', 'Dart', 'Firebase'],
+  },
+];
 ---
 
-<BaseLayout title="Portfolio — Suleman" description="Muhammad Suleman Saleem's project portfolio">
+<BaseLayout
+  title="Portfolio — Muhammad Suleman Saleem"
+  description="Projects by Muhammad Suleman Saleem: AI products, enterprise platforms, mobile apps, automation systems, and web work."
+>
   <Navbar />
-  <section class="coming-soon">
-    <h1>Portfolio</h1>
-    <p>Projects coming soon.</p>
-  </section>
+  <main class="portfolio-page">
+
+    <!-- Page header -->
+    <header class="page-hero">
+      <div class="page-hero__container">
+        <p class="section__label">Work</p>
+        <h1 class="page-hero__title">Projects & Portfolio</h1>
+        <p class="page-hero__sub">
+          Production work spanning AI products, enterprise field-sales platforms, cross-platform
+          mobile apps, desktop tools, and workflow automation systems.
+        </p>
+      </div>
+    </header>
+
+    <div class="portfolio-content">
+
+      <!-- AI Products -->
+      <section class="portfolio-section">
+        <div class="portfolio-section__head">
+          <h2 class="portfolio-section__title">
+            <i class="ri-robot-line" aria-hidden="true"></i>
+            AI &amp; LLM Products
+          </h2>
+        </div>
+        <div class="portfolio-grid">
+          {aiProducts.map((p) => (
+            <article class="pcard">
+              <div class="pcard__top">
+                <span class="pcard__badge">{p.badge}</span>
+                <span class="pcard__metric">{p.metric}</span>
+              </div>
+              <h3 class="pcard__name">{p.name}</h3>
+              <p class="pcard__desc">{p.description}</p>
+              <div class="pcard__tech">
+                {p.tech.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Enterprise -->
+      <section class="portfolio-section portfolio-section--alt">
+        <div class="portfolio-section__head">
+          <h2 class="portfolio-section__title">
+            <i class="ri-building-2-line" aria-hidden="true"></i>
+            Enterprise &amp; Desktop Platforms
+          </h2>
+        </div>
+        <div class="portfolio-grid">
+          {enterprisePlatforms.map((p) => (
+            <article class="pcard">
+              <div class="pcard__top">
+                <span class="pcard__badge">{p.badge}</span>
+                <span class="pcard__metric">{p.metric}</span>
+              </div>
+              <h3 class="pcard__name">{p.name}</h3>
+              <p class="pcard__desc">{p.description}</p>
+              {p.note && <p class="pcard__note"><i class="ri-lock-line" aria-hidden="true"></i> {p.note}</p>}
+              <div class="pcard__tech">
+                {p.tech.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Mobile Apps -->
+      <section class="portfolio-section">
+        <div class="portfolio-section__head">
+          <h2 class="portfolio-section__title">
+            <i class="ri-smartphone-line" aria-hidden="true"></i>
+            Mobile Applications
+          </h2>
+        </div>
+        <div class="portfolio-grid">
+          {mobileApps.map((p) => (
+            <article class="pcard">
+              <div class="pcard__top">
+                <span class="pcard__badge">{p.badge}</span>
+                <span class="pcard__metric">{p.metric}</span>
+              </div>
+              <h3 class="pcard__name">{p.name}</h3>
+              <p class="pcard__desc">{p.description}</p>
+              <div class="pcard__tech">
+                {p.tech.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Web & Desktop -->
+      <section class="portfolio-section portfolio-section--alt">
+        <div class="portfolio-section__head">
+          <h2 class="portfolio-section__title">
+            <i class="ri-global-line" aria-hidden="true"></i>
+            Web &amp; Desktop
+          </h2>
+        </div>
+        <div class="portfolio-grid">
+          {webDesktop.map((p) => (
+            <article class="pcard">
+              <div class="pcard__top">
+                <span class="pcard__badge">{p.badge}</span>
+                <span class="pcard__metric">{p.metric}</span>
+              </div>
+              <h3 class="pcard__name">{p.name}</h3>
+              <p class="pcard__desc">{p.description}</p>
+              <div class="pcard__tech">
+                {p.tech.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Automations -->
+      <section class="portfolio-section">
+        <div class="portfolio-section__head">
+          <h2 class="portfolio-section__title">
+            <i class="ri-flow-chart" aria-hidden="true"></i>
+            Automation Systems
+          </h2>
+        </div>
+        <div class="portfolio-grid portfolio-grid--wide">
+          {automations.map((p) => (
+            <article class="pcard">
+              <div class="pcard__top">
+                <span class="pcard__badge">{p.badge}</span>
+                <span class="pcard__metric">{p.metric}</span>
+              </div>
+              <h3 class="pcard__name">{p.name}</h3>
+              <p class="pcard__desc">{p.description}</p>
+              <div class="pcard__tech">
+                {p.tech.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Templates -->
+      <section class="portfolio-section portfolio-section--alt">
+        <div class="portfolio-section__head">
+          <h2 class="portfolio-section__title">
+            <i class="ri-layout-grid-line" aria-hidden="true"></i>
+            Templates &amp; Tools
+          </h2>
+        </div>
+        <div class="portfolio-grid">
+          {templates.map((p) => (
+            <article class="pcard">
+              <div class="pcard__top">
+                <span class="pcard__badge">{p.badge}</span>
+                <span class="pcard__metric">{p.metric}</span>
+              </div>
+              <h3 class="pcard__name">{p.name}</h3>
+              <p class="pcard__desc">{p.description}</p>
+              <div class="pcard__tech">
+                {p.tech.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <Footer />
 </BaseLayout>
-
-<style>
-  .coming-soon {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    background-color: var(--extra-light);
-    color: var(--text-dark);
-    font-family: "Poppins", sans-serif;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-  }
-
-  p {
-    color: var(--text-light);
-    font-size: 1.1rem;
-  }
-</style>

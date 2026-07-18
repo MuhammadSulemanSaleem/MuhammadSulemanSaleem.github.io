@@ -1,12 +1,19 @@
 ---
 import './Navbar.css';
 
+const currentPath = Astro.url.pathname;
+
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Resume', href: '/resume' },
   { label: 'Contact', href: '/contact' },
 ];
+
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/' || currentPath === '';
+  return currentPath.startsWith(href);
+}
 ---
 
 <nav>
@@ -14,13 +21,17 @@ const navLinks = [
     <div class="logo">
       <a href="/">Muhammad Suleman Saleem</a>
     </div>
-    <label for="check" class="checkbox">
+    <label for="check" class="checkbox" aria-label="Toggle menu">
       <i class="ri-menu-line"></i>
     </label>
     <input type="checkbox" name="check" id="check" />
     <ul>
       {navLinks.map((link) => (
-        <li><a href={link.href}>{link.label}</a></li>
+        <li>
+          <a href={link.href} class={isActive(link.href) ? 'active' : ''}>
+            {link.label}
+          </a>
+        </li>
       ))}
     </ul>
   </div>

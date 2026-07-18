@@ -1,37 +1,107 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout/index.astro';
 import Navbar from '../../components/Navbar/index.astro';
+import Footer from '../../components/Footer/index.astro';
+import './contact.css';
 ---
 
-<BaseLayout title="Contact — Suleman" description="Get in touch with Muhammad Suleman Saleem">
+<BaseLayout
+  title="Contact — Muhammad Suleman Saleem"
+  description="Get in touch with Muhammad Suleman Saleem — Full-Stack Software Engineer and AI Product Engineer based in Lahore, Pakistan."
+>
   <Navbar />
-  <section class="coming-soon">
-    <h1>Contact</h1>
-    <p>Contact form coming soon.</p>
-  </section>
+  <main class="contact-page">
+
+    <!-- Page hero -->
+    <header class="page-hero">
+      <div class="page-hero__inner">
+        <p class="section__label">Contact</p>
+        <h1 class="page-hero__title">Let's Work Together</h1>
+        <p class="page-hero__sub">
+          Open to full-stack and AI engineering opportunities, freelance projects,
+          and interesting conversations. Reach out via email or LinkedIn — I typically
+          respond within a day.
+        </p>
+      </div>
+    </header>
+
+    <!-- Contact cards -->
+    <section class="contact-section">
+      <div class="contact-section__inner">
+
+        <div class="contact-grid">
+
+          <a href="mailto:rana.suleman2297@gmail.com" class="contact-card">
+            <div class="contact-card__icon">
+              <i class="ri-mail-send-line" aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="contact-card__label">Email</p>
+              <p class="contact-card__value">rana.suleman2297@gmail.com</p>
+            </div>
+            <i class="ri-arrow-right-line contact-card__arrow" aria-hidden="true"></i>
+          </a>
+
+          <a
+            href="https://linkedin.com/in/muhammad-suleman-saleem"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-card__icon">
+              <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="contact-card__label">LinkedIn</p>
+              <p class="contact-card__value">muhammad-suleman-saleem</p>
+            </div>
+            <i class="ri-external-link-line contact-card__arrow" aria-hidden="true"></i>
+          </a>
+
+          <a href="tel:+923071123666" class="contact-card">
+            <div class="contact-card__icon">
+              <i class="ri-phone-line" aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="contact-card__label">Phone / WhatsApp</p>
+              <p class="contact-card__value">+92 307 1123666</p>
+            </div>
+            <i class="ri-arrow-right-line contact-card__arrow" aria-hidden="true"></i>
+          </a>
+
+          <div class="contact-card contact-card--static">
+            <div class="contact-card__icon">
+              <i class="ri-map-pin-2-line" aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="contact-card__label">Location</p>
+              <p class="contact-card__value">Lahore, Pakistan</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA block -->
+        <div class="contact-cta">
+          <h2 class="contact-cta__heading">Prefer LinkedIn?</h2>
+          <p class="contact-cta__body">
+            My LinkedIn profile has my full background, certifications, and work history.
+            It's the best single place to get the full picture.
+          </p>
+          <a
+            href="https://linkedin.com/in/muhammad-suleman-saleem"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--primary"
+          >
+            <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
+            View LinkedIn Profile
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  <Footer />
 </BaseLayout>
-
-<style>
-  .coming-soon {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    background-color: var(--extra-light);
-    color: var(--text-dark);
-    font-family: "Poppins", sans-serif;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-  }
-
-  p {
-    color: var(--text-light);
-    font-size: 1.1rem;
-  }
-</style>

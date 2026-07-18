@@ -1,12 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 
 :root {
-  --primary-color: #01313f;
-  --primary-color-dark: #001c26;
-  --secondary-color: #ca8a04;
+  --primary-color: #0d1520;
+  --primary-color-mid: #1a2c3d;
+  --accent-color: #2dd4bf;
+  --accent-dark: #0ea5a0;
   --text-dark: #1f2937;
   --text-light: #6b7280;
-  --extra-light: #eff7f8;
+  --extra-light: #f0f8f9;
   --max-width: 1200px;
 }
 
@@ -16,10 +17,90 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   text-decoration: none;
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  color: var(--text-dark);
+}
+
+/* ── Shared section typography ─────────────────────────── */
+.section__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 0.75rem;
+}
+
+.section__heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1.2;
+}
+
+/* ── Shared tag pills ──────────────────────────────────── */
+.tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-light);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  padding: 0.22rem 0.65rem;
+  border-radius: 100px;
+}
+
+/* ── Shared buttons ────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn--primary {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.btn--primary:hover {
+  background-color: var(--accent-dark);
+}
+
+.btn--outline {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  background: transparent;
+}
+
+.btn--outline:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.btn--outline-dark {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+}
+
+.btn--outline-dark:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
 }
