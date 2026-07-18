@@ -7,31 +7,88 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="footer__container">
     <div class="footer__top">
+
+      <!-- Left: Brand -->
       <div class="footer__brand">
         <p class="footer__name">Muhammad Suleman Saleem</p>
-        <p class="footer__tagline">Full-Stack Software Engineer &amp; AI Product Engineer</p>
+        <p class="footer__tagline">
+          Full-Stack Software Engineer &amp; AI Product Engineer.<br />
+          Flutter · Node.js · Claude API · RAG · n8n
+        </p>
+        <div class="footer__social">
+          <a
+            href="https://linkedin.com/in/muhammad-suleman-saleem"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i class="ri-linkedin-fill" aria-hidden="true"></i>
+          </a>
+          <a href="tel:+923071123666" aria-label="Call">
+            <i class="ri-phone-fill" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:rana.suleman2297@gmail.com" aria-label="Email">
+            <i class="ri-mail-fill" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
 
-      <nav class="footer__nav" aria-label="Footer navigation">
-        <a href="/">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/resume">Resume</a>
-        <a href="/contact">Contact</a>
-      </nav>
-
-      <div class="footer__social">
-        <a
-          href="https://linkedin.com/in/muhammad-suleman-saleem"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn profile"
-        >
-          <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
-        </a>
-        <a href="mailto:rana.suleman2297@gmail.com" aria-label="Send email">
-          <i class="ri-mail-fill" aria-hidden="true"></i>
-        </a>
+      <!-- Middle: 4 page columns -->
+      <div class="footer__col">
+        <p class="footer__col-heading">Home</p>
+        <a href="/">Overview</a>
+        <a href="/#about">About</a>
+        <a href="/#skills">Skills</a>
+        <a href="/#projects">Projects</a>
       </div>
+
+      <div class="footer__col">
+        <p class="footer__col-heading">Portfolio</p>
+        <a href="/portfolio">All Projects</a>
+        <a href="/portfolio#ai">AI Products</a>
+        <a href="/portfolio#enterprise">Enterprise</a>
+        <a href="/portfolio#mobile">Mobile Apps</a>
+        <a href="/portfolio#web">Web &amp; Desktop</a>
+        <a href="/portfolio#automation">Automation</a>
+        <a href="/portfolio#templates">Templates</a>
+      </div>
+
+      <div class="footer__col">
+        <p class="footer__col-heading">Resume</p>
+        <a href="/resume">View Resume</a>
+        <a href="/resume#experience">Experience</a>
+        <a href="/resume#skills">Skills</a>
+        <a href="/resume#achievements">Achievements</a>
+        <a href="/resume#education">Education</a>
+        <a href="/resume#certifications">Certifications</a>
+      </div>
+
+      <div class="footer__col">
+        <p class="footer__col-heading">Contact</p>
+        <a href="/contact">Get in Touch</a>
+        <a href="mailto:rana.suleman2297@gmail.com">Send Email</a>
+        <a href="https://linkedin.com/in/muhammad-suleman-saleem" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+
+      <!-- Right: Location -->
+      <div class="footer__location">
+        <p class="footer__col-heading">Location</p>
+        <div class="footer__location-item">
+          <i class="ri-map-pin-2-fill" aria-hidden="true"></i>
+          <div>
+            <span class="footer__location-label">Based in</span>
+            <span>Lahore, Pakistan</span>
+          </div>
+        </div>
+        <div class="footer__location-item">
+          <i class="ri-global-line" aria-hidden="true"></i>
+          <div>
+            <span class="footer__location-label">Available</span>
+            <span>Remote Worldwide</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="footer__bottom">
