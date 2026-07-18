@@ -24,12 +24,14 @@ npm run preview   # preview dist/ locally
 
 ```
 src/
-  components/     # Reusable components (Navbar, Hero, …)
+  components/     # Navbar, Hero, About, Skills, FeaturedProjects, Footer
   layouts/        # BaseLayout — HTML shell shared by all pages
   pages/          # File-based routing (index, portfolio, resume, contact)
-  styles/         # global.css — CSS variables and reset
+                  #   portfolio/resume/contact each ship a sibling _<page>.css
+  styles/         # global.css — CSS variables, reset, shared utility classes
 public/
   assets/         # Static images and GIFs
+  favicon set, apple/android touch icons, resume PDF, app-ads.txt
 .github/
   workflows/      # GitHub Actions deploy workflow
 ```
