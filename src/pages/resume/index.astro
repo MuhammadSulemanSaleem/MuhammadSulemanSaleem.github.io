@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout/index.astro';
+import Navbar from '../../components/Navbar/index.astro';
+---
+
+<BaseLayout title="Resume — Suleman" description="Muhammad Suleman Saleem's resume">
+  <Navbar />
+  <section class="coming-soon">
+    <h1>Resume</h1>
+    <p>Resume coming soon.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .coming-soon {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--extra-light);
+    color: var(--text-dark);
+    font-family: "Poppins", sans-serif;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+  }
+</style>
