@@ -9,7 +9,7 @@
 }
 
 .page-hero__inner {
-  max-width: 720px;
+  max-width: var(--max-width);
   margin: auto;
 }
 
@@ -34,14 +34,14 @@
 }
 
 .contact-section__inner {
-  max-width: 720px;
+  max-width: 900px;
   margin: auto;
 }
 
 /* ── Cards grid ──────────────────────────────────── */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 3rem;
 }
@@ -145,6 +145,10 @@
 @media (width < 750px) {
   .page-hero__title {
     font-size: 2rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
 
   .contact-cta {

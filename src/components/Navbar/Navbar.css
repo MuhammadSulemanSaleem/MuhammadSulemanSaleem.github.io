@@ -1,4 +1,4 @@
-nav {
+.navbar {
   width: 100%;
   position: fixed;
   top: 0;
@@ -11,13 +11,13 @@ nav {
 .nav__content {
   max-width: var(--max-width);
   margin: auto;
-  padding: 1.1rem 1.5rem;
+  padding: 0.9rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-nav .logo a {
+.navbar .logo a {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -27,37 +27,45 @@ nav .logo a {
   transition: color 0.2s;
 }
 
-nav .logo a img {
-  border-radius: 6px;
+.navbar .logo__icon {
   flex-shrink: 0;
+  width: 36px;
+  height: 36px;
 }
 
-nav .logo a:hover {
+.navbar .logo__icon img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+}
+
+.navbar .logo a:hover {
   color: var(--accent-dark);
 }
 
-nav .checkbox {
+.navbar .checkbox {
   display: none;
 }
 
-nav input {
+.navbar input {
   display: none;
 }
 
-nav .checkbox i {
+.navbar .checkbox i {
   font-size: 1.8rem;
   color: var(--primary-color);
   cursor: pointer;
 }
 
-ul {
+.navbar ul {
   display: flex;
   align-items: center;
   gap: 0.25rem;
   list-style: none;
 }
 
-ul li a {
+.navbar ul li a {
   display: block;
   padding: 0.45rem 0.9rem;
   border-bottom: 2px solid transparent;
@@ -67,18 +75,18 @@ ul li a {
   transition: color 0.2s, border-color 0.2s;
 }
 
-ul li a:hover,
-ul li a.active {
+.navbar ul li a:hover,
+.navbar ul li a.active {
   color: var(--accent-dark);
   border-bottom-color: var(--accent-color);
 }
 
 @media (width < 750px) {
-  nav .checkbox {
+  .navbar .checkbox {
     display: block;
   }
 
-  ul {
+  .navbar ul {
     position: absolute;
     width: 100%;
     height: calc(100vh - 65px);
@@ -92,11 +100,11 @@ ul li a.active {
     border-top: 1px solid rgba(0, 0, 0, 0.07);
   }
 
-  nav #check:checked ~ ul {
+  .navbar #check:checked ~ ul {
     left: 0;
   }
 
-  ul li a {
+  .navbar ul li a {
     font-size: 1.15rem;
     border: none;
     padding: 0.75rem 2rem;
