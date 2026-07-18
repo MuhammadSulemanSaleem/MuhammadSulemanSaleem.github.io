@@ -30,7 +30,7 @@
 /* ── Contact section ─────────────────────────────── */
 .contact-section {
   background-color: var(--extra-light);
-  padding: 4rem 1.5rem 6rem;
+  padding: 4rem 1.5rem 8rem;
 }
 
 .contact-section__inner {

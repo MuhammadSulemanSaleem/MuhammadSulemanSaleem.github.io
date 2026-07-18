@@ -5,12 +5,13 @@
 /* ── Page hero ───────────────────────────────────── */
 .page-hero {
   background-color: var(--primary-color);
-  padding: 4rem 1.5rem 3.5rem;
+  padding: 4rem 1.5rem 4.5rem;
 }
 
 .page-hero__container {
   max-width: var(--max-width);
   margin: auto;
+  padding: 0 0.5rem;
 }
 
 .page-hero__title {
