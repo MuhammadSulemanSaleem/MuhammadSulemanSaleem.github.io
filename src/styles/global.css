@@ -84,14 +84,15 @@ body {
 }
 
 .btn--outline {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
   color: #ffffff;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .btn--outline:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
+  background: rgba(45, 212, 191, 0.08);
 }
 
 .btn--outline-dark {
