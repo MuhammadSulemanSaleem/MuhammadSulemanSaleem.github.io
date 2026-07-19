@@ -47,13 +47,13 @@ const categories = [
 
 <section class="skills" id="skills">
   <div class="skills__container">
-    <div class="skills__header">
+    <div class="skills__header" data-aos="fade-up">
       <p class="section__label">Technical Skills</p>
       <h2 class="section__heading">Full-Stack Across the Modern Stack</h2>
     </div>
     <div class="skills__grid">
-      {categories.map((cat) => (
-        <div class="skill-card">
+      {categories.map((cat, i) => (
+        <div class="skill-card" data-aos="fade-up" data-aos-delay={100 + i * 80}>
           <div class="skill-card__header">
             <i class={cat.icon} aria-hidden="true"></i>
             <h3>{cat.label}</h3>

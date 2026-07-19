@@ -31,5 +31,29 @@ const {
   </head>
   <body>
     <slot />
+    <script>
+      const items = document.querySelectorAll<HTMLElement>('[data-aos]');
+
+      items.forEach((el) => {
+        const delay = el.dataset.aosDelay;
+        const duration = el.dataset.aosDuration;
+        if (delay) el.style.transitionDelay = `${delay}ms`;
+        if (duration) el.style.transitionDuration = `${duration}ms`;
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('aos-animate');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -80px 0px' }
+      );
+
+      items.forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>

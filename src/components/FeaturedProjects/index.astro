@@ -31,14 +31,14 @@ const projects = [
 
 <section class="featured" id="projects">
   <div class="featured__container">
-    <div class="featured__header">
+    <div class="featured__header" data-aos="fade-up">
       <p class="section__label">Featured Work</p>
       <h2 class="section__heading">Selected Projects</h2>
     </div>
 
     <div class="featured__grid">
-      {projects.map((p) => (
-        <article class="project-card">
+      {projects.map((p, i) => (
+        <article class="project-card" data-aos="fade-up" data-aos-delay={150 + i * 80}>
           <div class="project-card__top">
             <span class="project-card__badge">{p.badge}</span>
             <span class="project-card__metric">{p.metric}</span>

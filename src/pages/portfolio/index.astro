@@ -184,7 +184,7 @@ const templates = [
 
     <!-- Page header -->
     <header class="page-hero">
-      <div class="page-hero__container">
+      <div class="page-hero__container" data-aos="fade-up">
         <p class="section__label">Work</p>
         <h1 class="page-hero__title">Projects & Portfolio</h1>
         <p class="page-hero__sub">
@@ -198,15 +198,15 @@ const templates = [
 
       <!-- AI Products -->
       <section id="ai" class="portfolio-section">
-        <div class="portfolio-section__head">
+        <div class="portfolio-section__head" data-aos="fade-up">
           <h2 class="portfolio-section__title">
             <i class="ri-robot-line" aria-hidden="true"></i>
             AI &amp; LLM Products
           </h2>
         </div>
         <div class="portfolio-grid">
-          {aiProducts.map((p) => (
-            <article class="pcard">
+          {aiProducts.map((p, i) => (
+            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
               <div class="pcard__top">
                 <span class="pcard__badge">{p.badge}</span>
                 <span class="pcard__metric">{p.metric}</span>
@@ -223,15 +223,15 @@ const templates = [
 
       <!-- Enterprise -->
       <section id="enterprise" class="portfolio-section portfolio-section--alt">
-        <div class="portfolio-section__head">
+        <div class="portfolio-section__head" data-aos="fade-up">
           <h2 class="portfolio-section__title">
             <i class="ri-building-2-line" aria-hidden="true"></i>
             Enterprise &amp; Desktop Platforms
           </h2>
         </div>
         <div class="portfolio-grid">
-          {enterprisePlatforms.map((p) => (
-            <article class="pcard">
+          {enterprisePlatforms.map((p, i) => (
+            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
               <div class="pcard__top">
                 <span class="pcard__badge">{p.badge}</span>
                 <span class="pcard__metric">{p.metric}</span>
@@ -249,15 +249,15 @@ const templates = [
 
       <!-- Mobile Apps -->
       <section id="mobile" class="portfolio-section">
-        <div class="portfolio-section__head">
+        <div class="portfolio-section__head" data-aos="fade-up">
           <h2 class="portfolio-section__title">
             <i class="ri-smartphone-line" aria-hidden="true"></i>
             Mobile Applications
           </h2>
         </div>
         <div class="portfolio-grid">
-          {mobileApps.map((p) => (
-            <article class="pcard">
+          {mobileApps.map((p, i) => (
+            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
               <div class="pcard__top">
                 <span class="pcard__badge">{p.badge}</span>
                 <span class="pcard__metric">{p.metric}</span>
@@ -274,15 +274,15 @@ const templates = [
 
       <!-- Web & Desktop -->
       <section id="web" class="portfolio-section portfolio-section--alt">
-        <div class="portfolio-section__head">
+        <div class="portfolio-section__head" data-aos="fade-up">
           <h2 class="portfolio-section__title">
             <i class="ri-global-line" aria-hidden="true"></i>
             Web &amp; Desktop
           </h2>
         </div>
         <div class="portfolio-grid">
-          {webDesktop.map((p) => (
-            <article class="pcard">
+          {webDesktop.map((p, i) => (
+            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
               <div class="pcard__top">
                 <span class="pcard__badge">{p.badge}</span>
                 <span class="pcard__metric">{p.metric}</span>
@@ -299,15 +299,15 @@ const templates = [
 
       <!-- Automations -->
       <section id="automation" class="portfolio-section">
-        <div class="portfolio-section__head">
+        <div class="portfolio-section__head" data-aos="fade-up">
           <h2 class="portfolio-section__title">
             <i class="ri-flow-chart" aria-hidden="true"></i>
             Automation Systems
           </h2>
         </div>
         <div class="portfolio-grid portfolio-grid--wide">
-          {automations.map((p) => (
-            <article class="pcard">
+          {automations.map((p, i) => (
+            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
               <div class="pcard__top">
                 <span class="pcard__badge">{p.badge}</span>
                 <span class="pcard__metric">{p.metric}</span>
@@ -324,15 +324,15 @@ const templates = [
 
       <!-- Templates -->
       <section id="templates" class="portfolio-section portfolio-section--alt">
-        <div class="portfolio-section__head">
+        <div class="portfolio-section__head" data-aos="fade-up">
           <h2 class="portfolio-section__title">
             <i class="ri-layout-grid-line" aria-hidden="true"></i>
             Templates &amp; Tools
           </h2>
         </div>
         <div class="portfolio-grid">
-          {templates.map((p) => (
-            <article class="pcard">
+          {templates.map((p, i) => (
+            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
               <div class="pcard__top">
                 <span class="pcard__badge">{p.badge}</span>
                 <span class="pcard__metric">{p.metric}</span>

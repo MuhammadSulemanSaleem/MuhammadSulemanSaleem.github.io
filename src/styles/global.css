@@ -104,3 +104,52 @@ body {
   background-color: var(--primary-color);
   color: #ffffff;
 }
+
+/* ── Scroll-reveal animations ──────────────────────────── */
+[data-aos] {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+/* Bumped specificity (body ancestor) so this always wins over a component's
+   own `transition: box-shadow .2s, transform .2s` hover shorthand — same
+   specificity + later-loaded component CSS was previously stripping the
+   opacity transition and cutting the reveal duration to 0.2s. */
+body [data-aos] {
+  transition-property: opacity, transform;
+  transition-duration: 0.7s;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(32px);
+}
+
+[data-aos="fade-down"] {
+  transform: translateY(-32px);
+}
+
+[data-aos="fade-left"] {
+  transform: translateX(32px);
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-32px);
+}
+
+[data-aos="fade"] {
+  transform: none;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
