@@ -9,6 +9,7 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 - [Astro](https://astro.build) (static output)
 - Plain CSS with custom properties
 - RemixIcon + Poppins (CDN)
+- Dependency-free scroll-reveal animations (`data-aos` attributes + `IntersectionObserver`)
 - GitHub Actions for CI/CD
 
 ## Getting Started
