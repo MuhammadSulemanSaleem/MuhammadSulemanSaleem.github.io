@@ -99,6 +99,8 @@
 .page-hero__inner.aos-animate .page-hero__tech span:nth-child(6) { animation-delay: 0.4s; }
 .page-hero__inner.aos-animate .page-hero__tech span:nth-child(7) { animation-delay: 0.47s; }
 .page-hero__inner.aos-animate .page-hero__tech span:nth-child(8) { animation-delay: 0.54s; }
+.page-hero__inner.aos-animate .page-hero__tech span:nth-child(9) { animation-delay: 0.61s; }
+.page-hero__inner.aos-animate .page-hero__tech span:nth-child(10) { animation-delay: 0.68s; }
 
 @keyframes page-hero-chip-pop {
   from {

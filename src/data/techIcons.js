@@ -55,4 +55,13 @@ export const techIcons = {
   'Retell AI': '/assets/svgs/retell-ai.svg',
   Slack: '/assets/svgs/slack.svg',
   ZeroBounce: '/assets/svgs/zerobounce.svg',
+  'Clean Architecture': '/assets/svgs/clean-architecture.svg',
+  Desktop: '/assets/svgs/desktop.svg',
+  OCR: '/assets/svgs/ocr.svg',
+  'REST APIs': '/assets/svgs/rest-apis.svg',
+  'Role-Based Access': '/assets/svgs/role-based-access.svg',
+  'SAP RFC': '/assets/svgs/sap-rfc.svg',
+  'SAP ERP / RFC': '/assets/svgs/sap-rfc.svg',
+  'WordPress Plugin': '/assets/svgs/wordpress-plugin.svg',
+  'OpenAI GPT-4o': '/assets/svgs/openai.svg',
 };

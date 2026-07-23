@@ -25,6 +25,7 @@
   font-size: 1rem;
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.65);
+  max-width: 620px;
 }
 
 /* ── Contact section ─────────────────────────────── */

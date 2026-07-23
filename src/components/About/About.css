@@ -63,6 +63,10 @@
   margin-bottom: 1.75rem;
 }
 
+.about__bio .section__label {
+  color: var(--accent-dark);
+}
+
 .about__bio p {
   font-size: 1rem;
   line-height: 1.85;

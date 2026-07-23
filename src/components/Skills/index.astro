@@ -1,5 +1,6 @@
 ---
 import './Skills.css';
+import { techIcons } from '../../data/techIcons.js';
 
 const categories = [
   {
@@ -60,7 +61,12 @@ const categories = [
           </div>
           <div class="skill-card__tags">
             {cat.skills.map((s) => (
-              <span class="tag">{s}</span>
+              <span class="tag">
+                {techIcons[s]
+                  ? <img src={techIcons[s]} alt="" width="12" height="12" class="tag__icon" />
+                  : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                {s}
+              </span>
             ))}
           </div>
         </div>
