@@ -94,11 +94,15 @@
   color: var(--text-dark);
 }
 
+.resume-summary strong {
+  color: var(--primary-color);
+}
+
 /* ── Expertise grid ──────────────────────────────── */
 .expertise-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 0.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   list-style: none;
 }
 
@@ -247,9 +251,13 @@
   font-weight: 700;
 }
 
-.cert-issuer {
-  font-weight: 700;
+.cert-list li strong {
   color: var(--primary-color);
+}
+
+.cert-issuer {
+  font-weight: 600;
+  color: var(--text-light);
 }
 
 /* ── Skills table ────────────────────────────────── */
@@ -357,10 +365,6 @@
 
   .resume {
     padding: 1.75rem 1.25rem;
-  }
-
-  .expertise-grid {
-    grid-template-columns: 1fr;
   }
 
   .skills-row {
