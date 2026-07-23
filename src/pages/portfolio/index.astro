@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout/index.astro';
 import Navbar from '../../components/Navbar/index.astro';
 import Footer from '../../components/Footer/index.astro';
 import './_portfolio.css';
+import { techIcons } from '../../data/techIcons.js';
 
 const aiProducts = [
   {
@@ -283,7 +284,14 @@ const templates = [
               <h3 class="pcard__name">{p.name}</h3>
               <p class="pcard__desc">{p.description}</p>
               <div class="pcard__tech">
-                {p.tech.map((t) => <span class="tag">{t}</span>)}
+                {p.tech.map((t) => (
+                  <span class="tag">
+                    {techIcons[t]
+                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                    {t}
+                  </span>
+                ))}
               </div>
             </article>
           ))}
@@ -309,7 +317,14 @@ const templates = [
               <p class="pcard__desc">{p.description}</p>
               {p.note && <p class="pcard__note"><i class="ri-lock-line" aria-hidden="true"></i> {p.note}</p>}
               <div class="pcard__tech">
-                {p.tech.map((t) => <span class="tag">{t}</span>)}
+                {p.tech.map((t) => (
+                  <span class="tag">
+                    {techIcons[t]
+                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                    {t}
+                  </span>
+                ))}
               </div>
             </article>
           ))}
@@ -334,7 +349,14 @@ const templates = [
               <h3 class="pcard__name">{p.name}</h3>
               <p class="pcard__desc">{p.description}</p>
               <div class="pcard__tech">
-                {p.tech.map((t) => <span class="tag">{t}</span>)}
+                {p.tech.map((t) => (
+                  <span class="tag">
+                    {techIcons[t]
+                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                    {t}
+                  </span>
+                ))}
               </div>
             </article>
           ))}
@@ -359,7 +381,14 @@ const templates = [
               <h3 class="pcard__name">{p.name}</h3>
               <p class="pcard__desc">{p.description}</p>
               <div class="pcard__tech">
-                {p.tech.map((t) => <span class="tag">{t}</span>)}
+                {p.tech.map((t) => (
+                  <span class="tag">
+                    {techIcons[t]
+                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                    {t}
+                  </span>
+                ))}
               </div>
             </article>
           ))}
@@ -384,7 +413,14 @@ const templates = [
               <h3 class="pcard__name">{p.name}</h3>
               <p class="pcard__desc">{p.description}</p>
               <div class="pcard__tech">
-                {p.tech.map((t) => <span class="tag">{t}</span>)}
+                {p.tech.map((t) => (
+                  <span class="tag">
+                    {techIcons[t]
+                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                    {t}
+                  </span>
+                ))}
               </div>
             </article>
           ))}
@@ -409,7 +445,14 @@ const templates = [
               <h3 class="pcard__name">{p.name}</h3>
               <p class="pcard__desc">{p.description}</p>
               <div class="pcard__tech">
-                {p.tech.map((t) => <span class="tag">{t}</span>)}
+                {p.tech.map((t) => (
+                  <span class="tag">
+                    {techIcons[t]
+                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                    {t}
+                  </span>
+                ))}
               </div>
             </article>
           ))}

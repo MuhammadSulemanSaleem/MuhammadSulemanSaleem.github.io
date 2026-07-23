@@ -1,5 +1,6 @@
 ---
 import './FeaturedProjects.css';
+import { techIcons } from '../../data/techIcons.js';
 
 const projects = [
   {
@@ -46,7 +47,14 @@ const projects = [
           <h3 class="project-card__name">{p.name}</h3>
           <p class="project-card__desc">{p.description}</p>
           <div class="project-card__tech">
-            {p.tech.map((t) => <span class="tag">{t}</span>)}
+            {p.tech.map((t) => (
+              <span class="tag">
+                {techIcons[t]
+                  ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                  : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                {t}
+              </span>
+            ))}
           </div>
         </article>
       ))}
