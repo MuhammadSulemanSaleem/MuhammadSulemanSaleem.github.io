@@ -15,6 +15,10 @@
 }
 
 /* ── Left: text content ──────────────────────────────── */
+.hero__content {
+  min-width: 0;
+}
+
 .hero__eyebrow {
   font-size: 0.8rem;
   letter-spacing: 3px;
@@ -41,7 +45,7 @@
 
 .hero__subtitle {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 1.75rem;
   letter-spacing: 0.3px;
 }
@@ -49,7 +53,7 @@
 .hero__description {
   font-size: 0.97rem;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 520px;
   margin-bottom: 1.75rem;
 }
@@ -58,19 +62,84 @@
 .hero__tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
   margin-bottom: 2.25rem;
 }
 
 .hero__tech span {
-  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 0.28rem 0.75rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  padding: 0.24rem 0.7rem;
   border-radius: 100px;
   letter-spacing: 0.4px;
+  cursor: default;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.25s ease, border-color 0.25s ease, color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero__tech-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero__tech span img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+
+.hero__tech span:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(45, 212, 191, 0.2);
+}
+
+.hero__tech span:hover .hero__tech-icon {
+  transform: scale(1.15) rotate(-4deg);
+}
+
+.hero__content.aos-animate .hero__tech span {
+  animation: hero-chip-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.hero__content.aos-animate .hero__tech span:nth-child(1) { animation-delay: 0.05s; }
+.hero__content.aos-animate .hero__tech span:nth-child(2) { animation-delay: 0.12s; }
+.hero__content.aos-animate .hero__tech span:nth-child(3) { animation-delay: 0.19s; }
+.hero__content.aos-animate .hero__tech span:nth-child(4) { animation-delay: 0.26s; }
+.hero__content.aos-animate .hero__tech span:nth-child(5) { animation-delay: 0.33s; }
+.hero__content.aos-animate .hero__tech span:nth-child(6) { animation-delay: 0.4s; }
+.hero__content.aos-animate .hero__tech span:nth-child(7) { animation-delay: 0.47s; }
+.hero__content.aos-animate .hero__tech span:nth-child(8) { animation-delay: 0.54s; }
+
+@keyframes hero-chip-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__tech span,
+  .hero__tech span img {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* ── CTA buttons ─────────────────────────────────────── */
