@@ -57,11 +57,12 @@
 .skill-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 /* Override global .tag to use extra-light bg inside cards */
 .skill-card__tags .tag {
+  white-space: nowrap;
   background: var(--extra-light);
 }
 
