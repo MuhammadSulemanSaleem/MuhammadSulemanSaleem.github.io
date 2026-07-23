@@ -157,6 +157,44 @@ const automations = [
   },
 ];
 
+// Curated tech stack for the "Built With" section below.
+const builtWith = [
+  { name: 'Flutter', icon: '/assets/svgs/flutter.svg' },
+  { name: 'Dart', icon: '/assets/svgs/dart.svg' },
+  { name: 'React', icon: '/assets/svgs/react.svg' },
+  { name: 'React Native', icon: '/assets/svgs/react-native.svg' },
+  { name: 'Next.js', icon: '/assets/svgs/nextjs.svg' },
+  { name: 'Astro', icon: '/assets/svgs/astro.svg' },
+  { name: 'TypeScript', icon: '/assets/svgs/typescript.svg' },
+  { name: 'JavaScript', icon: '/assets/svgs/javascript.svg' },
+  { name: 'Node.js', icon: '/assets/svgs/nodejs.svg' },
+  { name: 'Nest.js', icon: '/assets/svgs/nestjs.svg' },
+  { name: 'Express', icon: '/assets/svgs/express.svg' },
+  { name: 'Electron', icon: '/assets/svgs/electron.svg' },
+  { name: 'PostgreSQL', icon: '/assets/svgs/postgresql.svg' },
+  { name: 'MongoDB', icon: '/assets/svgs/mongodb.svg' },
+  { name: 'Redis', icon: '/assets/svgs/redis.svg' },
+  { name: 'Supabase', icon: '/assets/svgs/supabase.svg' },
+  { name: 'SQLite', icon: '/assets/svgs/sqlite.svg' },
+  { name: 'Firebase', icon: '/assets/svgs/firebase.svg' },
+  { name: 'AWS S3', icon: '/assets/svgs/aws-s3.svg' },
+  { name: 'Claude API', icon: '/assets/svgs/claude-api.svg' },
+  { name: 'GPT-4o', icon: '/assets/svgs/gpt-4o.svg' },
+  { name: 'OpenAI', icon: '/assets/svgs/openai.svg' },
+  { name: 'RAG', icon: '/assets/svgs/rag.svg' },
+  { name: 'MCP', icon: '/assets/svgs/mcp.svg' },
+  { name: 'ChromaDB', icon: '/assets/svgs/chromadb.svg' },
+  { name: 'ElevenLabs', icon: '/assets/svgs/elevenlabs.svg' },
+  { name: 'n8n', icon: '/assets/svgs/n8n.svg' },
+  { name: 'Zapier', icon: '/assets/svgs/zapier.svg' },
+  { name: 'Stripe', icon: '/assets/svgs/stripe.svg' },
+  { name: 'Twilio', icon: '/assets/svgs/twilio.svg' },
+  { name: 'WordPress', icon: '/assets/svgs/wordpress.svg' },
+  { name: 'Go High Level', icon: '/assets/svgs/go-high-level.svg' },
+  { name: 'WebSockets', icon: '/assets/svgs/websockets.svg' },
+  { name: 'JWT', icon: '/assets/svgs/jwt.svg' },
+];
+
 const templates = [
   {
     name: 'Kumquat — Talent Match',
@@ -193,6 +231,37 @@ const templates = [
         </p>
       </div>
     </header>
+
+    <!-- Built With -->
+    <section class="built-with" data-aos="fade-up">
+      <p class="built-with__label">
+        <img src="/assets/svgs/built-with.svg" alt="" width="16" height="16" /> Built With
+      </p>
+      <div class="built-with__track">
+        <div class="built-with__marquee">
+          <div class="built-with__row">
+            {builtWith.map((t) => (
+              <span class="bw-chip">
+                {t.icon
+                  ? <img src={t.icon} alt="" width="14" height="14" class="bw-chip__icon" />
+                  : <i class="ri-price-tag-3-line bw-chip__icon" aria-hidden="true"></i>}
+                {t.name}
+              </span>
+            ))}
+          </div>
+          <div class="built-with__row" aria-hidden="true">
+            {builtWith.map((t) => (
+              <span class="bw-chip">
+                {t.icon
+                  ? <img src={t.icon} alt="" width="14" height="14" class="bw-chip__icon" />
+                  : <i class="ri-price-tag-3-line bw-chip__icon" aria-hidden="true"></i>}
+                {t.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="portfolio-content">
 

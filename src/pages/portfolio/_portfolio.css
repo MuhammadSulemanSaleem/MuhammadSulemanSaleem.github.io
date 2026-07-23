@@ -29,6 +29,112 @@
   max-width: 620px;
 }
 
+/* ── Built With ──────────────────────────────────── */
+.built-with {
+  padding: 2.75rem 1.5rem;
+  background-color: var(--extra-light);
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.built-with__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 1.5rem;
+}
+
+.built-with__label img {
+  width: 15px;
+  height: 15px;
+}
+
+.bw-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(13, 21, 32, 0.06);
+  padding: 0.65rem 1.25rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.bw-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 21, 32, 0.1);
+  border-color: rgba(14, 165, 160, 0.35);
+}
+
+.bw-chip__icon {
+  flex-shrink: 0;
+  color: var(--accent-dark);
+  font-size: 1.35rem;
+}
+
+.bw-chip img.bw-chip__icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* Continuous auto-scrolling marquee */
+.built-with__track {
+  max-width: 100vw;
+  margin: auto;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+}
+
+.built-with__marquee {
+  display: flex;
+  width: max-content;
+  animation: bw-marquee 90s linear infinite;
+}
+
+.built-with__track:hover .built-with__marquee {
+  animation-play-state: paused;
+}
+
+.built-with__row {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.7rem;
+  padding: 0.25rem 0.35rem 1rem;
+}
+
+@keyframes bw-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .built-with__marquee {
+    animation: none;
+  }
+}
+
+@media (width < 750px) {
+  .built-with__row {
+    gap: 0.5rem;
+  }
+}
+
 /* ── Sections ────────────────────────────────────── */
 .portfolio-content {
   background-color: #ffffff;
