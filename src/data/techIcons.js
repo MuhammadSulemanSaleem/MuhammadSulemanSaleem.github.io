@@ -64,4 +64,8 @@ export const techIcons = {
   'SAP ERP / RFC': '/assets/svgs/sap-rfc.svg',
   'WordPress Plugin': '/assets/svgs/wordpress-plugin.svg',
   'OpenAI GPT-4o': '/assets/svgs/openai.svg',
+  'Claude API / Anthropic': '/assets/svgs/claude-api.svg',
+  'MCP (Model Context Protocol)': '/assets/svgs/mcp.svg',
+  'Firebase Firestore': '/assets/svgs/firebase.svg',
+  'Firebase (Auth, Analytics, Crashlytics)': '/assets/svgs/firebase.svg',
 };

@@ -372,11 +372,6 @@
   text-decoration: none;
 }
 
-.cert-list li a:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--accent-dark);
-}
-
 /* ── Skills table ────────────────────────────────── */
 .skills-table {
   display: flex;
@@ -410,6 +405,7 @@
   bottom: 1.5rem;
   z-index: 80;
   display: inline-flex;
+  align-items: center;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 8px 24px rgba(13, 21, 32, 0.16);
@@ -426,6 +422,15 @@
   pointer-events: none;
 }
 
+.resume-toggle__label {
+  padding: 0 0.3rem 0 0.6rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
 .resume-toggle__btn {
   display: inline-flex;
   align-items: center;
@@ -439,7 +444,7 @@
   padding: 0.5rem 0.9rem;
   border-radius: 100px;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .resume-toggle__btn i {
@@ -459,6 +464,11 @@
   .resume-toggle {
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .resume-toggle__label {
+    padding: 0 0.2rem 0 0.5rem;
+    font-size: 0.6rem;
   }
 
   .resume-toggle__btn {
@@ -492,22 +502,6 @@
   border-radius: 0;
   margin-bottom: 0;
   padding: 3rem max(1.5rem, calc((100% - var(--max-width)) / 2));
-}
-
-/* Prose sections stay at the old readable column width even though the band
-   itself now matches the portfolio page's 1200px width. Summary is also
-   centered as a unit so it doesn't read as a stray left-stuck column inside
-   the wider band; text within it stays left-aligned (see #summary title
-   override below) for that "document" feel. */
-.resume-page[data-view='card'] #summary .resume-section__title,
-.resume-page[data-view='card'] #summary .resume-summary {
-  max-width: 860px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.resume-page[data-view='card'] .skills-table {
-  max-width: 860px;
 }
 
 .resume-page[data-view='card'] .resume-section:nth-of-type(even) {
@@ -768,7 +762,8 @@ img.expertise-icon {
   border-radius: 100px;
 }
 
-/* Certifications → icon chips, 2 per row */
+/* Certifications → greenish icon chips, 2 per row, issuer badge pinned to
+   the end of the row, hover-lift like the other mini-cards */
 .resume-page[data-view='card'] .cert-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -777,17 +772,39 @@ img.expertise-icon {
 
 .resume-page[data-view='card'] .cert-list li {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.07);
+  background: rgba(14, 165, 160, 0.07);
+  border: 1px solid rgba(14, 165, 160, 0.18);
   border-radius: 12px;
   padding: 0.6rem 0.9rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .cert-list li {
-  background: var(--extra-light);
+/* When a cert links to a real PDF, the whole card becomes the tap target:
+   padding moves onto the anchor so there's no dead zone around the edges. */
+.resume-page[data-view='card'] .cert-list li:has(a) {
+  padding: 0;
+}
+
+.resume-page[data-view='card'] .cert-list li,
+.resume-page[data-view='card'] .cert-list li a {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.resume-page[data-view='card'] .cert-list li a {
+  display: flex;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-page[data-view='card'] .cert-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 21, 32, 0.08);
+  border-color: rgba(14, 165, 160, 0.4);
 }
 
 .resume-page[data-view='card'] .cert-list li::before {
@@ -798,16 +815,12 @@ img.expertise-icon {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: var(--extra-light);
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.09);
   padding: 0.22rem 0.65rem;
   border-radius: 100px;
   font-weight: 500;
   color: var(--text-light);
-}
-
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .cert-issuer.tag {
-  background: #ffffff;
 }
 
 .resume-page[data-view='card'] .cert-issuer.tag::before {
@@ -818,7 +831,48 @@ img.expertise-icon {
   display: inline-flex;
 }
 
-/* Skills table → chips */
+/* Other Skills & Tools → mini cards, one per skill group, with a heading
+   and a chip row (same anatomy/hover as the other resume mini-cards) */
+.resume-page[data-view='card'] .skills-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.resume-page[data-view='card'] .skills-row {
+  display: block;
+  background: var(--extra-light);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.resume-page[data-view='card'] .resume-section:nth-of-type(even) .skills-row {
+  background: #ffffff;
+}
+
+.resume-page[data-view='card'] .skills-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(13, 21, 32, 0.08);
+  border-color: rgba(14, 165, 160, 0.35);
+}
+
+.resume-page[data-view='card'] .skills-row dt {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-dark);
+  white-space: normal;
+  margin-bottom: 0.9rem;
+}
+
+.resume-page[data-view='card'] .skills-row dd {
+  margin: 0;
+}
+
 .resume-page[data-view='card'] .skills-tags {
   display: flex;
   flex-wrap: wrap;
@@ -829,18 +883,28 @@ img.expertise-icon {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: var(--extra-light);
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.09);
   padding: 0.22rem 0.65rem;
   border-radius: 100px;
 }
 
 .resume-page[data-view='card'] .resume-section:nth-of-type(even) .skills-tags .tag {
-  background: #ffffff;
+  background: var(--extra-light);
+}
+
+.resume-page[data-view='card'] .skills-tags .tag__icon {
+  display: inline-flex;
 }
 
 .resume-page[data-view='card'] .skills-tags .tag::after {
   content: none;
+}
+
+@media (width < 750px) {
+  .resume-page[data-view='card'] .skills-table {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (width < 750px) {
@@ -916,6 +980,10 @@ img.expertise-icon {
   border-radius: 0;
   font: inherit;
   color: inherit;
+}
+
+.skills-tags .tag__icon {
+  display: none;
 }
 
 .skills-tags .tag:not(:last-child)::after {
@@ -1058,6 +1126,34 @@ img.expertise-icon {
     padding: 0 !important;
   }
 
+  .resume-page[data-view='card'] .skills-table {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+  }
+
+  .resume-page[data-view='card'] .skills-row {
+    display: grid !important;
+    grid-template-columns: 200px 1fr !important;
+    gap: 1rem !important;
+    align-items: baseline !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .resume-page[data-view='card'] .skills-row dt {
+    font-size: inherit !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    color: var(--primary-color) !important;
+    white-space: nowrap !important;
+    margin-bottom: 0 !important;
+  }
+
   .resume-page[data-view='card'] .cert-issuer.tag,
   .resume-page[data-view='card'] .skills-tags .tag {
     display: inline !important;
@@ -1075,7 +1171,8 @@ img.expertise-icon {
     content: ', ' !important;
   }
 
-  .resume-page[data-view='card'] .cert-issuer .tag__icon {
+  .resume-page[data-view='card'] .cert-issuer .tag__icon,
+  .resume-page[data-view='card'] .skills-tags .tag__icon {
     display: none !important;
   }
 
