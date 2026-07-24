@@ -342,11 +342,6 @@
   color: var(--primary-color);
 }
 
-.cert-issuer {
-  font-weight: 600;
-  color: var(--text-light);
-}
-
 /* ── Skills table ────────────────────────────────── */
 .skills-table {
   display: flex;
@@ -373,6 +368,353 @@
   line-height: 1.6;
 }
 
+/* ── Layout toggle (floating, avoids hero/footer via JS-toggled class) */
+.resume-toggle {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 80;
+  display: inline-flex;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(13, 21, 32, 0.16);
+  border-radius: 100px;
+  padding: 0.3rem;
+  gap: 0.2rem;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+.resume-toggle--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.94);
+  pointer-events: none;
+}
+
+.resume-toggle__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: none;
+  background: transparent;
+  color: var(--text-light);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.resume-toggle__btn i {
+  font-size: 0.95rem;
+}
+
+.resume-toggle__btn:hover {
+  color: var(--primary-color);
+}
+
+.resume-toggle__btn[aria-pressed='true'] {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+@media (width < 750px) {
+  .resume-toggle {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .resume-toggle__btn {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.72rem;
+  }
+}
+
+/* ── Card view (data-view="card") ─────────────────── */
+/* Sections become full-width bands with alternating white/extra-light
+   backgrounds, same convention as the portfolio page's
+   .portfolio-section / .portfolio-section--alt pairing. */
+.resume-page[data-view='card'] .resume-wrap {
+  padding: 0 0 3rem;
+  background: #ffffff;
+}
+
+.resume-page[data-view='card'] .resume {
+  max-width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.resume-page[data-view='card'] .resume-section {
+  background: #ffffff;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0;
+  margin-bottom: 0;
+  padding: 3rem max(1.5rem, calc((100% - 860px) / 2));
+}
+
+.resume-page[data-view='card'] .resume-section:nth-of-type(even) {
+  background: var(--extra-light);
+}
+
+.resume-page[data-view='card'] .resume-section:last-child {
+  border-bottom: none;
+  padding-bottom: 3rem;
+}
+
+.resume-page[data-view='card'] .resume-section__title {
+  text-align: center;
+}
+
+.resume-page[data-view='card'] #summary .resume-section__title {
+  text-align: start;
+}
+
+/* Expertise grid → chips (short skill labels, like portfolio tech tags) */
+.resume-page[data-view='card'] .expertise-grid {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.resume-page[data-view='card'] .expertise-grid li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 0.9rem;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.resume-page[data-view='card'] .resume-section:nth-of-type(even) .expertise-grid li {
+  background: var(--extra-light);
+}
+
+.resume-page[data-view='card'] .expertise-grid li::before {
+  content: none;
+}
+
+/* Icon badge in front of each expertise chip/card — same anatomy as the
+   global .tag__icon badge used by the Technical Skills tags. */
+.expertise-icon {
+  display: none;
+}
+
+.resume-page[data-view='card'] .expertise-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-sizing: border-box;
+}
+
+img.expertise-icon {
+  padding: 3px;
+  object-fit: contain;
+}
+
+.expertise-icon--generic {
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+}
+
+/* Areas of Expertise — 2-column chip grid with a hover-lift animation
+   (same hover treatment as the portfolio page's .bw-chip). Items stay white
+   regardless of odd/even banding; section band itself keeps the alternating
+   greenish background. */
+.resume-page[data-view='card'] #skills .expertise-grid li {
+  background: #ffffff;
+}
+
+.resume-page[data-view='card'] .expertise-grid--columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.resume-page[data-view='card'] .expertise-grid--columns li {
+  width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.resume-page[data-view='card'] .expertise-grid--columns li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 21, 32, 0.1);
+  border-color: rgba(14, 165, 160, 0.35);
+}
+
+@media (width < 750px) {
+  .resume-page[data-view='card'] .expertise-grid--columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Jobs & education → proper elevated cards (inverse-nested like .pcard on
+   portfolio-section--alt, so cards stay legible against either band) */
+.resume-page[data-view='card'] .job,
+.resume-page[data-view='card'] .edu-item {
+  background: var(--extra-light);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 2px 10px rgba(13, 21, 32, 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.resume-page[data-view='card'] .resume-section:nth-of-type(even) .job,
+.resume-page[data-view='card'] .resume-section:nth-of-type(even) .edu-item {
+  background: #ffffff;
+}
+
+.resume-page[data-view='card'] .job:hover,
+.resume-page[data-view='card'] .edu-item:hover {
+  box-shadow: 0 10px 26px rgba(13, 21, 32, 0.08);
+  transform: translateY(-2px);
+}
+
+.resume-page[data-view='card'] .job__dates,
+.resume-page[data-view='card'] .edu-item__dates {
+  background: rgba(14, 165, 160, 0.08);
+  border: 1px solid rgba(14, 165, 160, 0.25);
+  color: var(--accent-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+}
+
+/* Certifications → icon chips */
+.resume-page[data-view='card'] .cert-list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.resume-page[data-view='card'] .cert-list li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  padding: 0.6rem 0.9rem;
+}
+
+.resume-page[data-view='card'] .resume-section:nth-of-type(even) .cert-list li {
+  background: var(--extra-light);
+}
+
+.resume-page[data-view='card'] .cert-list li::before {
+  content: none;
+}
+
+.resume-page[data-view='card'] .cert-issuer.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--extra-light);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  padding: 0.22rem 0.65rem;
+  border-radius: 100px;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.resume-page[data-view='card'] .resume-section:nth-of-type(even) .cert-issuer.tag {
+  background: #ffffff;
+}
+
+.resume-page[data-view='card'] .cert-issuer.tag::before {
+  content: none;
+}
+
+.resume-page[data-view='card'] .cert-issuer .tag__icon {
+  display: inline-flex;
+}
+
+/* Skills table → chips */
+.resume-page[data-view='card'] .skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.resume-page[data-view='card'] .skills-tags .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--extra-light);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  padding: 0.22rem 0.65rem;
+  border-radius: 100px;
+}
+
+.resume-page[data-view='card'] .resume-section:nth-of-type(even) .skills-tags .tag {
+  background: #ffffff;
+}
+
+.resume-page[data-view='card'] .skills-tags .tag::after {
+  content: none;
+}
+
+@media (width < 750px) {
+  .resume-page[data-view='card'] .resume-section {
+    padding: 2rem 1.25rem;
+  }
+
+  .resume-page[data-view='card'] .job,
+  .resume-page[data-view='card'] .edu-item {
+    padding: 1.25rem 1.25rem;
+  }
+}
+
+/* ── Plain view: cert issuer & skills tags render as plain text ── */
+.cert-issuer.tag {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.cert-issuer.tag::before {
+  content: '— ';
+}
+
+.cert-issuer .tag__icon {
+  display: none;
+}
+
+.skills-tags .tag {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.skills-tags .tag:not(:last-child)::after {
+  content: ', ';
+}
+
 /* ── Print header (hidden on screen, shown in print) */
 .print-header {
   display: none;
@@ -386,7 +728,8 @@
 
 @media print {
   nav,
-  .footer {
+  .footer,
+  .resume-toggle {
     display: none !important;
   }
 
@@ -409,6 +752,86 @@
     border-radius: 0;
     padding: 0;
     max-width: 100%;
+  }
+
+  /* Always print the plain layout, regardless of the active on-screen toggle */
+  .resume-page[data-view='card'] .resume-wrap {
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .resume-page[data-view='card'] .resume {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .resume-page[data-view='card'] .resume-section {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 2.5rem !important;
+    transform: none !important;
+  }
+
+  .resume-page[data-view='card'] .resume-section:last-child {
+    padding-bottom: 0 !important;
+  }
+
+  .resume-page[data-view='card'] .expertise-grid,
+  .resume-page[data-view='card'] .cert-list {
+    flex-direction: column !important;
+  }
+
+  .resume-page[data-view='card'] .expertise-grid li,
+  .resume-page[data-view='card'] .cert-list li {
+    display: block !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 0 1.1rem !important;
+  }
+
+  .resume-page[data-view='card'] .expertise-grid li::before,
+  .resume-page[data-view='card'] .cert-list li::before {
+    content: '·' !important;
+  }
+
+  .resume-page[data-view='card'] .job,
+  .resume-page[data-view='card'] .edu-item {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .resume-page[data-view='card'] .job__dates,
+  .resume-page[data-view='card'] .edu-item__dates {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .resume-page[data-view='card'] .cert-issuer.tag,
+  .resume-page[data-view='card'] .skills-tags .tag {
+    display: inline !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .resume-page[data-view='card'] .cert-issuer.tag::before {
+    content: '— ' !important;
+  }
+
+  .resume-page[data-view='card'] .skills-tags .tag::after {
+    content: ', ' !important;
+  }
+
+  .resume-page[data-view='card'] .cert-issuer .tag__icon {
+    display: none !important;
   }
 
   .print-header {

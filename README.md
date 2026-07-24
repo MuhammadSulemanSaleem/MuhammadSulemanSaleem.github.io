@@ -10,6 +10,7 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 - Plain CSS with custom properties
 - RemixIcon + Poppins (CDN)
 - Dependency-free scroll-reveal animations (`data-aos` attributes + `IntersectionObserver`)
+- Resume page ships a Plain/Cards layout toggle (one markup, two CSS treatments, persisted via `localStorage`)
 - GitHub Actions for CI/CD
 
 ## Getting Started
