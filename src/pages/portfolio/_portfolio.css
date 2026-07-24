@@ -100,7 +100,7 @@
 .built-with__marquee {
   display: flex;
   width: max-content;
-  animation: bw-marquee 90s linear infinite;
+  animation: bw-marquee 130s linear infinite;
 }
 
 .built-with__track:hover .built-with__marquee {
