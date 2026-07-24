@@ -2,7 +2,247 @@
 import BaseLayout from '../../layouts/BaseLayout/index.astro';
 import Navbar from '../../components/Navbar/index.astro';
 import Footer from '../../components/Footer/index.astro';
+import { techIcons } from '../../data/techIcons.js';
 import './_resume.css';
+
+const achievements = [
+  {
+    name: 'Employee of the Month (3×)',
+    badge: 'Techtiz',
+    metric: '3× recognized for high-impact delivery',
+    description:
+      'Recognized at Techtiz for consistent, high-impact delivery across projects and sprints.',
+    tech: [],
+  },
+  {
+    name: 'Built Production AI Systems',
+    badge: 'RAG · Multi-Provider LLM',
+    metric: 'Automatic provider failover',
+    description:
+      'Designed and shipped RAG pipelines and multi-provider LLM orchestration across Claude, GPT-4o, and ElevenLabs with automatic failover.',
+    tech: ['RAG', 'Claude API', 'GPT-4o', 'ElevenLabs'],
+  },
+  {
+    name: 'Enterprise System Integration',
+    badge: 'React Native · SAP ERP',
+    metric: 'Thousands of daily batch scans nationwide',
+    description:
+      'Integrated a React Native app with SAP ERP, supporting thousands of daily batch scans nationwide.',
+    tech: ['React Native', 'SAP RFC'],
+  },
+  {
+    name: 'Automation at Scale',
+    badge: 'n8n · Go High Level',
+    metric: '10+ automations · 1-minute lead response',
+    description:
+      'Designed 10+ business-process automations, including a lead response system that contacts new leads within 1 minute.',
+    tech: ['n8n', 'Go High Level'],
+  },
+  {
+    name: 'Technical Leadership',
+    badge: 'Flutter · Nest.js · Express',
+    metric: 'Led team · mentored engineers',
+    description:
+      'Led a development team and mentored engineers while maintaining clean, scalable architecture.',
+    tech: ['Flutter', 'Nest.js', 'Express'],
+  },
+];
+
+const experienceJobs = [
+  {
+    title: 'Full-Stack Software Engineer & AI Product Engineer / Team Lead',
+    company: 'Techtiz  |  Township, Lahore',
+    logo: '/assets/logos/techtiz.png',
+    dates: '2024 – Present',
+    items: [
+      {
+        name: 'AI Product — NebuFit',
+        badge: 'Flutter · PostgreSQL/Supabase · Redis',
+        metric: 'RAG · multi-provider AI · Stripe subscriptions',
+        description:
+          'Built a cross-platform AI fitness/health app covering computer-vision body analysis, AI-generated workout and nutrition plans, bloodwork report processing, and voice-based coaching. Designed a RAG system for contextual fitness/nutrition guidance, multi-provider AI orchestration (Claude, GPT-4o, ElevenLabs) with SSE streaming and failover, and full Stripe subscription/entitlement management.',
+        tech: ['Flutter', 'PostgreSQL', 'Supabase', 'Redis', 'RAG', 'Claude API', 'GPT-4o', 'ElevenLabs', 'Stripe'],
+      },
+      {
+        name: 'Enterprise Platform — Orient Champions',
+        badge: 'Nest.js · React Native · SAP RFC',
+        metric: 'Thousands of daily batch scans · nationwide',
+        description:
+          'Built a field-sales incentive platform used nationwide by field agents across Pakistan, architecting a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs across a four-level organisational hierarchy (National → Zone → Branch → FSM), with resilient offline queuing/reconciliation, JWT + Twilio OTP auth, and bulk Excel/CSV processing.',
+        tech: ['Nest.js', 'React Native', 'Expo', 'MongoDB', 'SAP RFC', 'AWS S3', 'JWT', 'Twilio'],
+      },
+      {
+        name: 'Lead Response Automation',
+        badge: 'n8n · Go High Level · Retell AI',
+        metric: 'Contacts leads in < 1 min · AI voice call in < 2 min',
+        description:
+          "Built an automated lead response system for United Global Vanline that contacts new leads within 1 minute and places an AI voice call within 2 minutes of form submission, using Go High Level (Opportunities, Pipelines, Automations) and OpenAI-based call scoring/fraud detection. Also synced The Ramirez Legal Group's ClickUp case data to a live client dashboard via Zapier and Emergent Labs.",
+        tech: ['n8n', 'Go High Level', 'Retell AI', 'Aloware', 'CloseBot', 'OpenAI', 'Zapier', 'Emergent Labs', 'ClickUp'],
+      },
+      {
+        name: 'Creative OS',
+        badge: 'Electron · Claude API · RAG',
+        metric: 'Local-first · MCP server architecture',
+        description:
+          'Built a local-first AI desktop app for writers/filmmakers indexing Final Draft scripts, PDFs, and notes via RAG, with Claude-powered rewriting, semantic search, and an extensible MCP server architecture.',
+        tech: ['Electron', 'React', 'Claude API', 'RAG', 'ChromaDB', 'MCP'],
+      },
+      {
+        name: 'Data & Reporting Automation',
+        badge: 'n8n · Apify · Nocodb',
+        metric: 'OCR extraction · daily lead discovery',
+        description:
+          "Built OCR-based document processing for bank statements ('Capital Shack'); a daily decision-maker lead-discovery pipeline ('AGENTC') delivering verified contacts before business hours every day; and a Leads Management System syncing campaign data to Google Data Studio.",
+        tech: ['n8n', 'Google Apps Script', 'Apify', 'Nocodb', 'ZeroBounce', 'Clearout Phone', 'OCR'],
+      },
+      {
+        name: 'Desktop & Web Platforms',
+        badge: 'Electron · Next.js · Nest.js',
+        metric: 'Role-based access · real-time notifications',
+        description:
+          "Fully built the 'UNITY' Electron desktop app and its Next.js/Nest.js admin web portal — role-based access, dynamic server-driven layouts, credential manager, script-injected auto-fill, and real-time notifications via sockets.",
+        tech: ['Electron', 'Next.js', 'Nest.js', 'WebSockets', 'Role-Based Access'],
+      },
+      {
+        name: 'Mobile App Development',
+        badge: 'Flutter · Express · Stripe',
+        metric: "Aniflex · Exodus App · Linked Golf",
+        description:
+          "Built Aniflex (Flutter fitness/gamification app), fully rebranded 'Exodus App' (formerly Blue Sky), and developed 'Linked Golf' (Flutter + Express + PubNub chat + Stripe + FCM), deployed to both stores.",
+        tech: ['Flutter', 'Express', 'PubNub', 'Stripe', 'FCM'],
+      },
+      {
+        name: 'Content & Outreach Automation',
+        badge: 'n8n · App Script · OpenAI',
+        metric: 'Scheduled posts · lead triage',
+        description:
+          'Built a social-media post scheduling system generating platform-specific captions on a schedule, and an outreach email triage pipeline routing qualified leads to the sales team via Slack.',
+        tech: ['n8n', 'Google Apps Script', 'OpenAI', 'Slack'],
+      },
+      {
+        name: 'Web Development',
+        badge: 'Astro · Go High Level',
+        metric: 'Corporate site rebuild · SEO',
+        description:
+          'Rebuilt the Techtiz corporate site in Astro for performance/SEO, and built a native-element homepage in Go High Level for ATTN Agency.',
+        tech: ['Astro', 'Go High Level'],
+      },
+      {
+        name: 'Team Leadership',
+        badge: 'Leadership',
+        metric: 'Sprints via Jira · tracked via Worktivity',
+        description:
+          'Led a development team, managed sprints via Jira, and tracked productivity through Worktivity.',
+        tech: ['Jira'],
+      },
+      {
+        name: 'FlutterFlow Templates',
+        badge: 'FlutterFlow',
+        metric: "'Kumquat – Talent Match' · 'Foodii – Recipe Book'",
+        description:
+          "Built two FlutterFlow templates — 'Kumquat – Talent Match' and 'Foodii – Recipe Book'.",
+        tech: ['FlutterFlow'],
+      },
+    ],
+  },
+  {
+    title: 'Flutter Developer',
+    company: 'BooleanBites Ltd.  |  Johar Town, Lahore',
+    logo: '/assets/logos/booleanbites.png',
+    dates: '2021 – 2024',
+    items: [
+      {
+        name: "Developed 'Houzi' App",
+        badge: 'Flutter · WordPress',
+        metric: '53,000+ users · 500+ Envato sales · 4.84/5 rating',
+        description:
+          'Created a real estate template app for the popular Houzez WordPress theme, used by over 53,000+ users globally. Achieved 500+ Envato sales, a 4.84/5 rating, and 5K+ downloads on Google Play Store.',
+        tech: ['Flutter', 'WordPress'],
+      },
+      {
+        name: 'Architecture & Scalability',
+        badge: 'Bloc · Clean Architecture',
+        metric: 'High maintainability · smooth performance',
+        description:
+          'Implemented clean architecture and efficient state management using Bloc, ensuring high maintainability and smooth performance.',
+        tech: ['Clean Architecture', 'Bloc'],
+      },
+      {
+        name: 'Cross-Platform Projects',
+        badge: 'Flutter · WordPress Plugin',
+        metric: 'Houzi · IPT Force · Linked Home · FSF-Ticket',
+        description:
+          'Delivered mobile apps (Houzi, IPT Force, Linked Home, FSF-Ticket), a desktop platform (HouziBuilder), and a WordPress plugin (Houzi-REST-API) for custom API extensions, including OneSignal push, chat, and comments integrations.',
+        tech: ['Flutter', 'Desktop', 'WordPress Plugin', 'OneSignal'],
+      },
+      {
+        name: 'Performance Optimisation',
+        badge: '',
+        metric: '',
+        description:
+          'Enhanced app load times, reduced API latency, and improved UI responsiveness, resulting in smoother user interaction.',
+        tech: [],
+      },
+      {
+        name: 'Collaboration',
+        badge: '',
+        metric: '',
+        description:
+          'Worked closely with designers, QA teams, and product owners to align on features and quality benchmarks across releases.',
+        tech: [],
+      },
+      {
+        name: 'Mentorship & Quality Assurance',
+        badge: '',
+        metric: '',
+        description:
+          'Provided technical mentorship, reviewed pull requests, and upheld clean coding standards across development teams.',
+        tech: [],
+      },
+    ],
+  },
+];
+
+const relevantExperience = {
+  title: 'Learning Developer / Research Assistant',
+  company: 'Information Technology University (ITU), Lahore',
+  logo: '/assets/logos/itu.png',
+  dates: '2015 – 2019',
+  items: [
+    {
+      name: 'Final Year Project — Intelligent Home Automation System',
+      badge: 'IoT · Team Project',
+      metric: 'Four-member team · companion Android app',
+      description:
+        'Collaborated in a four-member team to build a smart home automation system with a companion Android control app.',
+      tech: [],
+    },
+    {
+      name: 'Mobile Application Development',
+      badge: 'Java · Kotlin · Swift',
+      metric: 'Weather App · BMI Calculator · Tic Tac Toe',
+      description:
+        'Early Android (Java/Kotlin) and iOS (Swift) projects (Weather App, BMI Calculator, Tic Tac Toe), building a foundation in native app life cycles.',
+      tech: ['Java', 'Kotlin', 'Swift'],
+    },
+    {
+      name: 'Game Development',
+      badge: 'Unity 3D',
+      metric: 'Road Fury · Space Battle · BattleCopter',
+      description:
+        'Built 2D desktop/Android games (Road Fury, Space Battle, BattleCopter) in Unity, covering core game physics and interaction concepts.',
+      tech: ['Unity 3D'],
+    },
+    {
+      name: 'Software Testing',
+      badge: 'QA · Testing',
+      metric: 'Black-box & white-box testing',
+      description:
+        'Applied black-box/white-box testing on an open-source Java project (TEAMMATES), building debugging and QA skills.',
+      tech: ['Java'],
+    },
+  ],
+};
 
 const skillGroups = [
   { label: 'Programming Languages', items: ['Dart', 'Java', 'Kotlin', 'Swift', 'JavaScript', 'TypeScript', 'PHP', 'Python'] },
@@ -140,188 +380,119 @@ const skillGroups = [
         </section>
 
         <!-- Key Achievements -->
-        <section id="achievements" class="resume-section" data-aos="fade-up">
-          <h2 class="resume-section__title">Key Achievements</h2>
-          <ul class="resume-list">
-            <li>
-              <strong>Employee of the Month (3×):</strong> Recognized at Techtiz for consistent,
-              high-impact delivery.
-            </li>
-            <li>
-              <strong>Built Production AI Systems:</strong> RAG pipelines and multi-provider LLM
-              orchestration (Claude, GPT-4o, ElevenLabs) with automatic failover.
-            </li>
-            <li>
-              <strong>Enterprise System Integration:</strong> Integrated a React Native app with
-              SAP ERP, supporting thousands of daily batch scans nationwide.
-            </li>
-            <li>
-              <strong>Automation at Scale:</strong> Designed 10+ business-process automations
-              (n8n, Go High Level), including a 1-minute lead response system.
-            </li>
-            <li>
-              <strong>Technical Leadership:</strong> Led a development team and mentored engineers
-              while maintaining clean, scalable architecture across Flutter, Nest.js, and Express.
-            </li>
+        <section id="achievements" class="resume-section">
+          <h2 class="resume-section__title" data-aos="fade-up">Key Achievements</h2>
+          <ul class="resume-list resume-card-list">
+            {achievements.map((a) => (
+              <li class="resume-card">
+                <div class="resume-card__top">
+                  <span class="resume-card__badge">{a.badge}</span>
+                  <span class="resume-card__metric">{a.metric}</span>
+                </div>
+                <h3 class="resume-card__name">{a.name}</h3>
+                <p class="resume-card__desc">{a.description}</p>
+                {a.tech.length > 0 && (
+                  <div class="resume-card__tech">
+                    {a.tech.map((t) => (
+                      <span class="tag">
+                        {techIcons[t]
+                          ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                          : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ))}
           </ul>
         </section>
 
         <!-- Professional Experience -->
-        <section id="experience" class="resume-section" data-aos="fade-up">
-          <h2 class="resume-section__title">Professional Experience</h2>
+        <section id="experience" class="resume-section">
+          <h2 class="resume-section__title" data-aos="fade-up">Professional Experience</h2>
 
-          <div class="job" data-aos="fade-up">
-            <div class="job__header">
-              <div>
-                <p class="job__title">Full-Stack Software Engineer &amp; AI Product Engineer / Team Lead</p>
-                <p class="job__company">Techtiz &nbsp;|&nbsp; Township, Lahore</p>
+          {experienceJobs.map((job, ji) => (
+            <div class="job">
+              <div class="job__header" data-aos="fade-up" data-aos-delay={ji * 100}>
+                <div class="job__header-main">
+                  {job.logo && <img src={job.logo} alt="" width="32" height="32" class="job__logo" />}
+                  <div>
+                    <p class="job__title">{job.title}</p>
+                    <p class="job__company">{job.company}</p>
+                  </div>
+                </div>
+                <span class="job__dates">{job.dates}</span>
               </div>
-              <span class="job__dates">2024 – Present</span>
+              <ul class="resume-list resume-card-list">
+                {job.items.map((item) => (
+                  <li class="resume-card">
+                    {(item.badge || item.metric) && (
+                      <div class="resume-card__top">
+                        {item.badge && <span class="resume-card__badge">{item.badge}</span>}
+                        {item.metric && <span class="resume-card__metric">{item.metric}</span>}
+                      </div>
+                    )}
+                    <h3 class="resume-card__name">{item.name}</h3>
+                    <p class="resume-card__desc">{item.description}</p>
+                    {item.tech.length > 0 && (
+                      <div class="resume-card__tech">
+                        {item.tech.map((t) => (
+                          <span class="tag">
+                            {techIcons[t]
+                              ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                              : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul class="resume-list">
-              <li>
-                <strong>Team Leadership:</strong> Led a development team, managed sprints via
-                Jira, and tracked productivity through Worktivity.
-              </li>
-              <li>
-                <strong>AI Product — NebuFit</strong> (Flutter, PostgreSQL/Supabase, Redis): Built
-                a cross-platform AI fitness/health app covering computer-vision body analysis,
-                AI-generated workout and nutrition plans, bloodwork report processing, and
-                voice-based coaching. Designed a RAG system for contextual fitness/nutrition
-                guidance, multi-provider AI orchestration (Claude, GPT-4o, ElevenLabs) with SSE
-                streaming and failover, and full Stripe subscription/entitlement management.
-              </li>
-              <li>
-                <strong>Enterprise Platform — Orient Champions</strong> (Nest.js, React Native, Expo,
-                MongoDB, SAP RFC, AWS S3): Built a field-sales incentive platform used
-                <em>nationwide by field agents across Pakistan</em>, architecting a Nest.js backend
-                supporting <em>thousands of daily batch scans</em> with real-time SAP ERP sync via
-                custom BAPIs across a <em>four-level organisational hierarchy</em> (National → Zone
-                → Branch → FSM), with resilient offline queuing/reconciliation, JWT + Twilio OTP
-                auth, and bulk Excel/CSV processing.
-              </li>
-              <li>
-                <strong>Creative OS</strong> (Electron, React, Claude API, RAG, ChromaDB): Built a
-                local-first AI desktop app for writers/filmmakers indexing Final Draft scripts,
-                PDFs, and notes via RAG, with Claude-powered rewriting, semantic search, and an
-                extensible MCP server architecture.
-              </li>
-              <li>
-                <strong>Mobile App Development:</strong> Built Aniflex (Flutter fitness/gamification
-                app), fully rebranded 'Exodus App' (formerly Blue Sky), and developed 'Linked Golf'
-                (Flutter + Express + PubNub chat + Stripe + FCM), deployed to both stores.
-              </li>
-              <li>
-                <strong>Desktop &amp; Web Platforms:</strong> Fully built the 'UNITY' Electron
-                desktop app and its Next.js/Nest.js admin web portal — role-based access, dynamic
-                server-driven layouts, credential manager, script-injected auto-fill, and real-time
-                notifications via sockets.
-              </li>
-              <li>
-                <strong>FlutterFlow Templates:</strong> Built two FlutterFlow templates —
-                'Kumquat – Talent Match' and 'Foodii – Recipe Book'.
-              </li>
-              <li>
-                <strong>Lead Response Automation</strong> (n8n, Go High Level, Retell AI, Aloware,
-                CloseBot): Built an automated lead response system for United Global Vanline that
-                contacts new leads <em>within 1 minute</em> and places an <em>AI voice call within
-                2 minutes</em> of form submission, using Go High Level (Opportunities, Pipelines,
-                Automations) and OpenAI-based call scoring/fraud detection. Also synced The Ramirez
-                Legal Group's ClickUp case data to a live client dashboard via Zapier and Emergent
-                Labs.
-              </li>
-              <li>
-                <strong>Data &amp; Reporting Automation</strong> (n8n, App Script, Apify, Nocodb,
-                ZeroBounce, Clearout Phone): Built OCR-based document processing for bank statements
-                ('Capital Shack'); a daily decision-maker lead-discovery pipeline ('AGENTC')
-                delivering verified contacts before business hours every day; and a Leads Management
-                System syncing campaign data to Google Data Studio.
-              </li>
-              <li>
-                <strong>Content &amp; Outreach Automation</strong> (n8n, App Script, OpenAI): Built
-                a social-media post scheduling system generating platform-specific captions on a
-                schedule, and an outreach email triage pipeline routing qualified leads to the sales
-                team via Slack.
-              </li>
-              <li>
-                <strong>Web Development:</strong> Rebuilt the Techtiz corporate site in Astro for
-                performance/SEO, and built a native-element homepage in Go High Level for ATTN Agency.
-              </li>
-            </ul>
-          </div>
-
-          <div class="job" data-aos="fade-up" data-aos-delay="100">
-            <div class="job__header">
-              <div>
-                <p class="job__title">Flutter Developer</p>
-                <p class="job__company">BooleanBites Ltd. &nbsp;|&nbsp; Johar Town, Lahore</p>
-              </div>
-              <span class="job__dates">2021 – 2024</span>
-            </div>
-            <ul class="resume-list">
-              <li>
-                <strong>Developed 'Houzi' App:</strong> Created a real estate template app for the
-                popular Houzez WordPress theme, used by over <strong>53,000+</strong> users globally.
-                Achieved <strong>500+ Envato sales</strong>, a <strong>4.84/5</strong> rating, and
-                <strong>5K+ downloads</strong> on Google Play Store.
-              </li>
-              <li>
-                <strong>Architecture &amp; Scalability:</strong> Implemented clean architecture and
-                efficient state management using Bloc, ensuring high maintainability and smooth
-                performance.
-              </li>
-              <li>
-                <strong>Cross-Platform Projects:</strong> Delivered mobile apps (Houzi, IPT Force,
-                Linked Home, FSF-Ticket), a desktop platform (HouziBuilder), and a WordPress plugin
-                (Houzi-REST-API) for custom API extensions, including OneSignal push, chat, and
-                comments integrations.
-              </li>
-              <li>
-                <strong>Performance Optimisation:</strong> Enhanced app load times, reduced API
-                latency, and improved UI responsiveness, resulting in smoother user interaction.
-              </li>
-              <li>
-                <strong>Collaboration:</strong> Worked closely with designers, QA teams, and product
-                owners to align on features and quality benchmarks across releases.
-              </li>
-              <li>
-                <strong>Mentorship &amp; Quality Assurance:</strong> Provided technical mentorship,
-                reviewed pull requests, and upheld clean coding standards across development teams.
-              </li>
-            </ul>
-          </div>
+          ))}
         </section>
 
         <!-- Relevant Experience -->
-        <section class="resume-section" data-aos="fade-up">
-          <h2 class="resume-section__title">Relevant Experience</h2>
-          <div class="job" data-aos="fade-up">
-            <div class="job__header">
-              <div>
-                <p class="job__title">Learning Developer / Research Assistant</p>
-                <p class="job__company">Information Technology University (ITU), Lahore</p>
+        <section class="resume-section">
+          <h2 class="resume-section__title" data-aos="fade-up">Relevant Experience</h2>
+          <div class="job">
+            <div class="job__header" data-aos="fade-up">
+              <div class="job__header-main">
+                {relevantExperience.logo && <img src={relevantExperience.logo} alt="" width="32" height="32" class="job__logo" />}
+                <div>
+                  <p class="job__title">{relevantExperience.title}</p>
+                  <p class="job__company">{relevantExperience.company}</p>
+                </div>
               </div>
-              <span class="job__dates">2015 – 2019</span>
+              <span class="job__dates">{relevantExperience.dates}</span>
             </div>
-            <ul class="resume-list">
-              <li>
-                <strong>Final Year Project — Intelligent Home Automation System:</strong> Collaborated
-                in a four-member team to build a smart home automation system with a companion
-                Android control app.
-              </li>
-              <li>
-                <strong>Mobile Application Development:</strong> Early Android (Java/Kotlin) and iOS
-                (Swift) projects (Weather App, BMI Calculator, Tic Tac Toe), building a foundation
-                in native app life cycles.
-              </li>
-              <li>
-                <strong>Game Development:</strong> Built 2D desktop/Android games (Road Fury, Space
-                Battle, BattleCopter) in Unity, covering core game physics and interaction concepts.
-              </li>
-              <li>
-                <strong>Software Testing:</strong> Applied black-box/white-box testing on an
-                open-source Java project (TEAMMATES), building debugging and QA skills.
-              </li>
+            <ul class="resume-list resume-card-list">
+              {relevantExperience.items.map((item) => (
+                <li class="resume-card">
+                  {(item.badge || item.metric) && (
+                    <div class="resume-card__top">
+                      {item.badge && <span class="resume-card__badge">{item.badge}</span>}
+                      {item.metric && <span class="resume-card__metric">{item.metric}</span>}
+                    </div>
+                  )}
+                  <h3 class="resume-card__name">{item.name}</h3>
+                  <p class="resume-card__desc">{item.description}</p>
+                  {item.tech.length > 0 && (
+                    <div class="resume-card__tech">
+                      {item.tech.map((t) => (
+                        <span class="tag">
+                          {techIcons[t]
+                            ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
+                            : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </section>
@@ -332,23 +503,32 @@ const skillGroups = [
           <div class="edu-list">
             <div class="edu-item">
               <div class="edu-item__left">
-                <p class="edu-item__degree">Bachelor of Computer Science</p>
-                <p class="edu-item__institution">Information Technology University (ITU), Lahore</p>
-                <p class="edu-item__note">FYP: Intelligent Home Automation System with Dr. Suleman Mazhar</p>
+                <img src="/assets/logos/itu.png" alt="" width="32" height="32" class="edu-item__logo" />
+                <div>
+                  <p class="edu-item__degree">Bachelor of Computer Science</p>
+                  <p class="edu-item__institution">Information Technology University (ITU), Lahore</p>
+                  <p class="edu-item__note">FYP: Intelligent Home Automation System with Dr. Suleman Mazhar</p>
+                </div>
               </div>
               <span class="edu-item__dates">2015 – 2019</span>
             </div>
             <div class="edu-item">
               <div class="edu-item__left">
-                <p class="edu-item__degree">F.Sc Pre-Engineering</p>
-                <p class="edu-item__institution">Government College University (GCU), Lahore</p>
+                <img src="/assets/logos/gcu.png" alt="" width="32" height="32" class="edu-item__logo" />
+                <div>
+                  <p class="edu-item__degree">F.Sc Pre-Engineering</p>
+                  <p class="edu-item__institution">Government College University (GCU), Lahore</p>
+                </div>
               </div>
               <span class="edu-item__dates">2013 – 2015</span>
             </div>
             <div class="edu-item">
               <div class="edu-item__left">
-                <p class="edu-item__degree">Matriculation</p>
-                <p class="edu-item__institution">Hashmat Memorial High School (HMS)</p>
+                <img src="/assets/logos/hmss.png" alt="" width="32" height="32" class="edu-item__logo" />
+                <div>
+                  <p class="edu-item__degree">Matriculation</p>
+                  <p class="edu-item__institution">Hashmat Memorial High School (HMS)</p>
+                </div>
               </div>
               <span class="edu-item__dates">2011 – 2013</span>
             </div>
@@ -359,16 +539,16 @@ const skillGroups = [
         <section id="certifications" class="resume-section" data-aos="fade-up">
           <h2 class="resume-section__title">Certifications</h2>
           <ul class="cert-list">
-            <li><strong>Claude 101</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
-            <li><strong>Claude Code 101</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
-            <li><strong>Introduction to Agent Skills</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
-            <li><strong>Claude Code in Action</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
-            <li><strong>Introduction to Model Context Protocol</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
+            <li><a href="/certifications/anthropic/claude-101.pdf" target="_blank" rel="noopener noreferrer"><strong>Claude 101</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
+            <li><a href="/certifications/anthropic/claude-code-101.pdf" target="_blank" rel="noopener noreferrer"><strong>Claude Code 101</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
+            <li><a href="/certifications/anthropic/introduction-to-agent-skills.pdf" target="_blank" rel="noopener noreferrer"><strong>Introduction to Agent Skills</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
+            <li><a href="/certifications/anthropic/claude-code-in-action.pdf" target="_blank" rel="noopener noreferrer"><strong>Claude Code in Action</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
+            <li><a href="/certifications/anthropic/introduction-to-model-context-protocol.pdf" target="_blank" rel="noopener noreferrer"><strong>Introduction to Model Context Protocol</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></li>
             <li><strong>n8n Level 1</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
-            <li><strong>n8n Quickstart</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
-            <li><strong>n8n101 - Essentials: Your First Workflows</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
-            <li><strong>n8n102 - Integrations: APIs and Connected Workflows</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
-            <li><strong>n8n103 - In Practice: AI, Testing, and Best Practices</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
+            <li><a href="/certifications/n8n/n8n-quickstart.pdf" target="_blank" rel="noopener noreferrer"><strong>n8n Quickstart</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
+            <li><a href="/certifications/n8n/n8n101-essentials.pdf" target="_blank" rel="noopener noreferrer"><strong>n8n101 - Essentials: Your First Workflows</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
+            <li><a href="/certifications/n8n/n8n102-integrations.pdf" target="_blank" rel="noopener noreferrer"><strong>n8n102 - Integrations: APIs and Connected Workflows</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
+            <li><a href="/certifications/n8n/n8n103-in-practice.pdf" target="_blank" rel="noopener noreferrer"><strong>n8n103 - In Practice: AI, Testing, and Best Practices</strong></a> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
           </ul>
         </section>
 
