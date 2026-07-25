@@ -839,7 +839,8 @@ img.expertise-icon {
    and a chip row (same anatomy/hover as the other resume mini-cards) */
 .resume-page[data-view='card'] .skills-table {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
   gap: 1.25rem;
 }
 
