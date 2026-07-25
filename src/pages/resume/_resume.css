@@ -627,7 +627,11 @@ img.expertise-icon {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  /* opacity/transform kept at the body[data-aos] duration/easing so the scroll-reveal
+     fade isn't cut short — this selector's specificity would otherwise win and strip it
+     down to the hover durations below (see global.css [data-aos] comment). */
+  transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .resume-page[data-view='card'] .resume-card::before {

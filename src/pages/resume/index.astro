@@ -384,8 +384,8 @@ const skillGroups = [
         <section id="achievements" class="resume-section">
           <h2 class="resume-section__title" data-aos="fade-up">Key Achievements</h2>
           <ul class="resume-list resume-card-list">
-            {achievements.map((a) => (
-              <li class="resume-card">
+            {achievements.map((a, i) => (
+              <li class="resume-card" data-aos="fade-up" data-aos-delay={100 + i * 80}>
                 <div class="resume-card__top">
                   <span class="resume-card__badge">{a.badge}</span>
                   <span class="resume-card__metric">{a.metric}</span>
@@ -426,8 +426,8 @@ const skillGroups = [
                 <span class="job__dates">{job.dates}</span>
               </div>
               <ul class="resume-list resume-card-list">
-                {job.items.map((item) => (
-                  <li class="resume-card">
+                {job.items.map((item, i) => (
+                  <li class="resume-card" data-aos="fade-up" data-aos-delay={100 + i * 80}>
                     {(item.badge || item.metric) && (
                       <div class="resume-card__top">
                         {item.badge && <span class="resume-card__badge">{item.badge}</span>}
@@ -470,8 +470,8 @@ const skillGroups = [
               <span class="job__dates">{relevantExperience.dates}</span>
             </div>
             <ul class="resume-list resume-card-list">
-              {relevantExperience.items.map((item) => (
-                <li class="resume-card">
+              {relevantExperience.items.map((item, i) => (
+                <li class="resume-card" data-aos="fade-up" data-aos-delay={100 + i * 80}>
                   {(item.badge || item.metric) && (
                     <div class="resume-card__top">
                       {item.badge && <span class="resume-card__badge">{item.badge}</span>}
