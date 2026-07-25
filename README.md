@@ -30,6 +30,9 @@ src/
   layouts/        # BaseLayout — HTML shell shared by all pages
   pages/          # File-based routing (index, portfolio, resume, contact)
                   #   portfolio/resume/contact each ship a sibling _<page>.css
+                  #   certifications/[...slug].astro — per-cert PDF viewer page
+                  #   (favicon + title via BaseLayout, so cert PDFs open in a
+                  #   real HTML page instead of the browser's generic PDF tab)
   styles/         # global.css — CSS variables, reset, shared utility classes
 public/
   assets/

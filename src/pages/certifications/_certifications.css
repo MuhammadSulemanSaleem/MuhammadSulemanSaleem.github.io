@@ -1,0 +1,66 @@
+.cert-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 0;
+}
+
+.cert-viewer__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  flex-wrap: wrap;
+}
+
+.cert-viewer__back,
+.cert-viewer__download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.cert-viewer__back:hover,
+.cert-viewer__download:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: rgba(45, 212, 191, 0.08);
+}
+
+.cert-viewer__info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cert-viewer__frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+@media (max-width: 750px) {
+  .cert-viewer__bar {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cert-viewer__info {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -32,6 +32,9 @@ src/
     contact/
       index.astro           → /contact
       _contact.css
+    certifications/
+      [...slug].astro       → /certifications/<issuer>/<cert-slug> (HTML PDF viewer)
+      _certifications.css
   components/         # Reusable components (each has index.astro + CSS file)
     Navbar/            fixed nav, CSS-only hamburger menu
     Hero/               home page hero
@@ -62,6 +65,7 @@ public/
 - **Styles**: Global CSS variables and shared utility classes (`.section__label`, `.section__heading`, `.tag`, `.btn`, `.btn--primary`, `.btn--outline`, `.btn--outline-dark`) live in `src/styles/global.css`. Component-specific styles are in their own `.css` files (e.g. `Navbar.css`, `Hero.css`). Page-specific styles (Portfolio, Resume, Contact) live in a sibling `_<page>.css` file imported in the page's frontmatter — same convention as components, not scoped `<style>` blocks.
 - **Scroll-reveal animations**: Dependency-free fade-in-on-scroll effect (no AOS library). Add `data-aos="fade-up" | "fade-down" | "fade-left" | "fade-right" | "fade"` to an element (optionally `data-aos-delay`/`data-aos-duration` in ms) and the base styles in `global.css` plus the `IntersectionObserver` script in `BaseLayout` handle the rest — a `.aos-animate` class is added once the element scrolls into view. The base `[data-aos]` transition rule is written as `body [data-aos]` to out-specificity any component's own `transition:` shorthand (e.g. card hover effects), which otherwise silently strips the opacity transition.
 - **Navbar**: CSS-only hamburger (hidden checkbox `#check`) — no JavaScript. Navbar CSS is scoped under `.navbar` to avoid leaking into page styles. Logo uses `assets/favicons/android-chrome-192x192.png` next to the site name.
+- **Certification links**: Resume "Certifications" entries link to `/certifications/<issuer>/<cert-slug>` (e.g. `/certifications/anthropic/claude-101`) — an Astro page generated via `getStaticPaths` in `src/pages/certifications/[...slug].astro`, not directly to the PDF in `public/certifications/`. Opening a raw static PDF in a new tab shows the browser's generic PDF-viewer icon, since there's no HTML document to carry the favicon; the `[...slug].astro` viewer page renders through `BaseLayout` (so the tab gets the site favicon + a real `<title>`) and embeds the PDF in an `<iframe>`, with a "Download" link to the underlying file. The cert list (title/issuer/icon/pdf path) is defined **inside** `getStaticPaths()` itself, not as a sibling top-level const — Astro's compiler only hoists what `getStaticPaths` references directly, so an outer `const certs = [...]` used solely by that function gets silently dropped from the build, causing "certs is not defined" at build time.
 - **Resume layout toggle**: `/resume` renders one set of markup styled two ways — Plain (default) and Cards — switched by a floating pill toggle (bottom-right, `.resume-toggle`) that sets/removes `data-view="card"` on `#resume-page`. All card-mode visuals are CSS overrides scoped under `.resume-page[data-view='card'] ...` in `_resume.css`; nothing is duplicated in the markup. The choice persists via `localStorage` (`resumeView`), applied pre-paint by an `is:inline` script right after `<main>` opens to avoid a flash of the wrong layout. A second script (bottom of the page) wires up the buttons and keeps the toggle from overlapping the hero or footer: it compares the toggle's own `getBoundingClientRect()` against both on scroll/resize and hides it (`.resume-toggle--hidden`) whenever either would collide. `@media print` always forces the Plain layout and hides the toggle, regardless of the active on-screen view.
 - **Assets**: Static files in `public/` are served at the root. Reference them as `/assets/gifs/animated-code.gif`, `/Muhammad_Suleman_Saleem_Resume.pdf`, etc.
 - **Deployment**: GitHub Actions workflow (`.github/workflows/deploy.yml`) runs `npm ci && npm run build` on push to `main` and deploys `dist/` via the GitHub Pages Actions environment. In the repo Settings → Pages, set source to **GitHub Actions**.
@@ -87,6 +91,7 @@ Mobile breakpoint: `750px`. Navbar uses a CSS-only hamburger (hidden checkbox `#
 - **Portfolio** (`/portfolio`): 6 project sections (AI Products, Enterprise/Desktop, Mobile, Web, Automation, Templates)
 - **Resume** (`/resume`): HTML resume + Print/Save PDF button (links to `Muhammad_Suleman_Saleem_Resume.pdf`); floating Plain/Cards layout toggle (see Architecture)
 - **Contact** (`/contact`): contact cards (email, LinkedIn, phone, location) + LinkedIn CTA
+- **Certifications** (`/certifications/<issuer>/<cert-slug>`): per-certificate HTML viewer page (favicon + PDF embed + download link), linked from the Resume Certifications list
 - All pages have Navbar + Footer; `padding-top: 65px` on `<main>` for the fixed nav
 
 ## Confidentiality

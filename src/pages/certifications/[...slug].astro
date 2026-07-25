@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout/index.astro';
+import './_certifications.css';
+
+interface Cert {
+  slug: string;
+  title: string;
+  issuer: string;
+  issuerIcon: string;
+  pdf: string;
+}
+
+export function getStaticPaths() {
+  const certs: Cert[] = [
+    {
+      slug: 'anthropic/claude-101',
+      title: 'Claude 101',
+      issuer: 'Anthropic',
+      issuerIcon: '/assets/svgs/claude-api.svg',
+      pdf: '/certifications/anthropic/claude-101.pdf',
+    },
+    {
+      slug: 'anthropic/claude-code-101',
+      title: 'Claude Code 101',
+      issuer: 'Anthropic',
+      issuerIcon: '/assets/svgs/claude-api.svg',
+      pdf: '/certifications/anthropic/claude-code-101.pdf',
+    },
+    {
+      slug: 'anthropic/introduction-to-agent-skills',
+      title: 'Introduction to Agent Skills',
+      issuer: 'Anthropic',
+      issuerIcon: '/assets/svgs/claude-api.svg',
+      pdf: '/certifications/anthropic/introduction-to-agent-skills.pdf',
+    },
+    {
+      slug: 'anthropic/claude-code-in-action',
+      title: 'Claude Code in Action',
+      issuer: 'Anthropic',
+      issuerIcon: '/assets/svgs/claude-api.svg',
+      pdf: '/certifications/anthropic/claude-code-in-action.pdf',
+    },
+    {
+      slug: 'anthropic/introduction-to-model-context-protocol',
+      title: 'Introduction to Model Context Protocol',
+      issuer: 'Anthropic',
+      issuerIcon: '/assets/svgs/claude-api.svg',
+      pdf: '/certifications/anthropic/introduction-to-model-context-protocol.pdf',
+    },
+    {
+      slug: 'n8n/n8n-quickstart',
+      title: 'n8n Quickstart',
+      issuer: 'n8n',
+      issuerIcon: '/assets/svgs/n8n.svg',
+      pdf: '/certifications/n8n/n8n-quickstart.pdf',
+    },
+    {
+      slug: 'n8n/n8n101-essentials',
+      title: 'n8n101 - Essentials: Your First Workflows',
+      issuer: 'n8n',
+      issuerIcon: '/assets/svgs/n8n.svg',
+      pdf: '/certifications/n8n/n8n101-essentials.pdf',
+    },
+    {
+      slug: 'n8n/n8n102-integrations',
+      title: 'n8n102 - Integrations: APIs and Connected Workflows',
+      issuer: 'n8n',
+      issuerIcon: '/assets/svgs/n8n.svg',
+      pdf: '/certifications/n8n/n8n102-integrations.pdf',
+    },
+    {
+      slug: 'n8n/n8n103-in-practice',
+      title: 'n8n103 - In Practice: AI, Testing, and Best Practices',
+      issuer: 'n8n',
+      issuerIcon: '/assets/svgs/n8n.svg',
+      pdf: '/certifications/n8n/n8n103-in-practice.pdf',
+    },
+  ];
+
+  return certs.map((cert) => ({
+    params: { slug: cert.slug },
+    props: { cert },
+  }));
+}
+
+const { cert } = Astro.props as { cert: Cert };
+---
+
+<BaseLayout
+  title={`${cert.title} Certificate | Muhammad Suleman Saleem`}
+  description={`${cert.title} certificate issued by ${cert.issuer}.`}
+>
+  <main class="cert-viewer">
+    <header class="cert-viewer__bar">
+      <a href="/resume#certifications" class="cert-viewer__back">
+        <i class="ri-arrow-left-line" aria-hidden="true"></i> Back to Resume
+      </a>
+      <div class="cert-viewer__info">
+        <img src={cert.issuerIcon} alt="" width="16" height="16" />
+        <span>{cert.title}</span>
+      </div>
+      <a href={cert.pdf} download class="cert-viewer__download">
+        <i class="ri-download-2-line" aria-hidden="true"></i> Download
+      </a>
+    </header>
+    <iframe
+      src={cert.pdf}
+      class="cert-viewer__frame"
+      title={`${cert.title} certificate PDF`}
+    ></iframe>
+  </main>
+</BaseLayout>
