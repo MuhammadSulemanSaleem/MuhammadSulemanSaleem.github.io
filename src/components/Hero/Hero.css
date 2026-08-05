@@ -1,6 +1,6 @@
 .hero {
   background-color: var(--primary-color);
-  padding-top: 65px; /* navbar height */
+  padding-top: var(--navbar-height);
 }
 
 .hero__container {

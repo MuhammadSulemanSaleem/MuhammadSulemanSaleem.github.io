@@ -1,0 +1,453 @@
+---
+import BaseLayout from '../../layouts/BaseLayout/index.astro';
+import './_home-clone.css';
+
+const year = new Date().getFullYear();
+
+const builtWith = [
+  { name: 'Flutter', icon: '/assets/svgs/flutter.svg' },
+  { name: 'Dart', icon: '/assets/svgs/dart.svg' },
+  { name: 'React', icon: '/assets/svgs/react.svg' },
+  { name: 'React Native', icon: '/assets/svgs/react-native.svg' },
+  { name: 'Next.js', icon: '/assets/svgs/nextjs.svg' },
+  { name: 'Astro', icon: '/assets/svgs/astro.svg' },
+  { name: 'TypeScript', icon: '/assets/svgs/typescript.svg' },
+  { name: 'JavaScript', icon: '/assets/svgs/javascript.svg' },
+  { name: 'Node.js', icon: '/assets/svgs/nodejs.svg' },
+  { name: 'Nest.js', icon: '/assets/svgs/nestjs.svg' },
+  { name: 'Express', icon: '/assets/svgs/express.svg' },
+  { name: 'Electron', icon: '/assets/svgs/electron.svg' },
+  { name: 'PostgreSQL', icon: '/assets/svgs/postgresql.svg' },
+  { name: 'MongoDB', icon: '/assets/svgs/mongodb.svg' },
+  { name: 'Redis', icon: '/assets/svgs/redis.svg' },
+  { name: 'Supabase', icon: '/assets/svgs/supabase.svg' },
+  { name: 'SQLite', icon: '/assets/svgs/sqlite.svg' },
+  { name: 'Firebase', icon: '/assets/svgs/firebase.svg' },
+  { name: 'AWS S3', icon: '/assets/svgs/aws-s3.svg' },
+  { name: 'Claude API', icon: '/assets/svgs/claude-api.svg' },
+  { name: 'GPT-4o', icon: '/assets/svgs/gpt-4o.svg' },
+  { name: 'OpenAI', icon: '/assets/svgs/openai.svg' },
+  { name: 'RAG', icon: '/assets/svgs/rag.svg' },
+  { name: 'MCP', icon: '/assets/svgs/mcp.svg' },
+  { name: 'ChromaDB', icon: '/assets/logos/chromadb.png' },
+  { name: 'ElevenLabs', icon: '/assets/svgs/elevenlabs.svg' },
+  { name: 'n8n', icon: '/assets/svgs/n8n.svg' },
+  { name: 'Zapier', icon: '/assets/svgs/zapier.svg' },
+  { name: 'Stripe', icon: '/assets/svgs/stripe.svg' },
+  { name: 'Twilio', icon: '/assets/svgs/twilio.svg' },
+  { name: 'WordPress', icon: '/assets/svgs/wordpress.svg' },
+  { name: 'Go High Level', icon: '/assets/svgs/go-high-level.svg' },
+  { name: 'WebSockets', icon: '/assets/svgs/websockets.svg' },
+  { name: 'JWT', icon: '/assets/svgs/jwt.svg' },
+];
+
+const projects = [
+  {
+    mark: 'HZ',
+    tint: 'blue',
+    name: 'Houzi',
+    metric: '53K+ users · 4.84★ · 500+ sales',
+    description:
+      'Real estate template app for the Houzez WordPress theme used by 53,000+ users globally. Built with Bloc state management and clean architecture; shipped a desktop customization platform (HouziBuilder) and a WordPress plugin (Houzi-REST-API) for push notifications, in-app chat, and comments.',
+    anchor: '/portfolio#mobile',
+  },
+  {
+    mark: 'NF',
+    tint: 'violet',
+    name: 'NebuFit',
+    metric: 'RAG · multi-LLM · SSE streaming',
+    description:
+      'AI-powered fitness and health platform with computer-vision body analysis, AI-generated workout and nutrition plans, bloodwork report processing, and voice-based coaching. Multi-provider LLM orchestration (Claude + GPT-4o + ElevenLabs) with SSE streaming, automatic provider failover, and full Stripe subscription management.',
+    anchor: '/portfolio#ai',
+  },
+  {
+    mark: 'CO',
+    tint: 'blue',
+    name: 'Creative OS',
+    metric: 'Local-first · MCP server architecture',
+    description:
+      'Local-first AI desktop app for writers and filmmakers. Indexes Final Draft screenplays, PDFs, and notes via RAG for semantic search and Claude-powered rewriting and editing. Extensible MCP server architecture allows tool integration without modifying the core app.',
+    anchor: '/portfolio#ai',
+  },
+];
+
+const skillCategories = [
+  { label: 'Mobile & Frontend' },
+  { label: 'Backend & APIs' },
+  { label: 'AI & LLM' },
+  { label: 'Automation' },
+  { label: 'Databases & Cloud' },
+  { label: 'Desktop & Web' },
+  { label: 'Payments & Integrations' },
+  { label: 'Architecture & Patterns' },
+];
+
+const process = [
+  {
+    step: 'Understand',
+    description:
+      'Map the real requirements — what the system needs to do, who it serves, and where the constraints are: data, integrations, timeline.',
+    tags: ['requirements', 'system design', 'constraints'],
+  },
+  {
+    step: 'Build',
+    description:
+      'Build it end-to-end — clean architecture, the right LLM/data pipeline where AI is involved, and tests that catch regressions before users do.',
+    tags: ['clean architecture', 'RAG · LLM orchestration', 'testing'],
+  },
+  {
+    step: 'Ship',
+    description:
+      'Ship, monitor, and iterate — deployment, error tracking, and fast fixes when production tells a different story than the plan did.',
+    tags: ['CI/CD', 'monitoring', 'iteration'],
+  },
+];
+
+const stats = [
+  { number: '5+', label: 'Years Experience' },
+  { number: '15+', label: 'Projects Shipped' },
+  { number: '53K+', label: 'App Users Reached' },
+  { number: '10+', label: 'Automations Deployed' },
+];
+---
+
+<BaseLayout
+  title="Home (Clone) — Graflow-style redesign preview"
+  description="Full aesthetic clone exploring Graflow's visual language applied to Muhammad Suleman Saleem's real portfolio content — for internal review only."
+>
+  <div class="hc-page">
+
+    <!-- Ambient wash -->
+    <div class="hc-wash" aria-hidden="true"></div>
+
+    <!-- Nav -->
+    <nav class="hc-nav">
+      <div class="hc-nav__bar">
+        <a href="/home-clone" class="hc-nav__logo">
+          <img src="/assets/favicons/android-chrome-192x192.png" alt="" width="34" height="34" />
+          Muhammad Suleman Saleem
+        </a>
+        <label for="hc-check" class="hc-nav__toggle" aria-label="Toggle menu">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" id="hc-check" />
+        <ul class="hc-nav__links">
+          <li><a href="/">About</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li><a href="/resume">Resume</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+        <a href="/contact" class="hc-btn hc-btn--primary hc-nav__cta">Get in touch</a>
+      </div>
+    </nav>
+
+    <main class="hc-main">
+
+      <!-- Hero -->
+      <section class="hc-section">
+        <div class="hc-card hc-hero" data-aos="fade-up">
+          <div class="hc-hero__content" data-aos="fade-right" data-aos-duration="900">
+            <p class="hc-eyebrow">Hello, I'm</p>
+            <h1 class="hc-hero__name">Muhammad<br />Suleman Saleem</h1>
+            <p class="hc-hero__role">Full-Stack Software Engineer &amp; AI Product Engineer</p>
+            <p class="hc-hero__subtitle">LLM Systems &amp; Automation &nbsp;·&nbsp; Production-Ready AI Solutions</p>
+            <p class="hc-hero__desc">
+              5+ years building cross-platform mobile, web, and desktop apps — now shipping
+              production AI systems: RAG pipelines, multi-provider LLM orchestration, and
+              intelligent workflow automation that replace hours of manual work with reliable,
+              always-on processes.
+            </p>
+            <div class="hc-hero__actions">
+              <a href="/resume" class="hc-btn hc-btn--primary hc-btn--sm">Know Myself</a>
+              <a href="/resume" class="hc-icon-btn" aria-label="View resume">
+                <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hc-hero__image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
+            <img src="/assets/images/profile.png" alt="Muhammad Suleman Saleem" width="420" height="420" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Core stack strip -->
+      <section class="hc-section">
+        <div class="hc-card hc-stack" data-aos="fade-up">
+          <p class="hc-stack__badge">
+            <img src="/assets/svgs/built-with-black.svg" alt="" width="16" height="16" />
+            Working with the modern stack
+          </p>
+          <div class="hc-stack__track">
+            <div class="hc-stack__marquee">
+              <div class="hc-stack__row">
+                {builtWith.map((t) => (
+                  <span class="hc-stack__chip">
+                    <img src={t.icon} alt="" width="18" height="18" />
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+              <div class="hc-stack__row" aria-hidden="true">
+                {builtWith.map((t) => (
+                  <span class="hc-stack__chip">
+                    <img src={t.icon} alt="" width="18" height="18" />
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected work -->
+      <section class="hc-section">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Selected works</h2>
+          <p class="hc-section__subtitle">Glimpses into some of my projects since 2021—present.</p>
+        </div>
+
+        {projects.map((p) => (
+          <div class="hc-card hc-work">
+            <div class="hc-work__content">
+              <h3 class="hc-work__name">{p.name}</h3>
+              <p class="hc-work__desc">{p.description}</p>
+              <div class="hc-work__actions">
+                <a href={p.anchor} class="hc-btn hc-btn--primary hc-btn--sm">Case study</a>
+                <a href={p.anchor} class="hc-icon-btn" aria-label={`View ${p.name} case study`}>
+                  <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <div class={`hc-work__tile hc-work__tile--${p.tint}`}>
+              <span class="hc-work__mark">{p.mark}</span>
+              <span class="hc-work__tile-name">{p.name}</span>
+              <span class="hc-work__tile-metric">{p.metric}</span>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <!-- Skills as services list -->
+      <section class="hc-section">
+        <div class="hc-card hc-skills" data-aos="fade-up">
+          <div class="hc-skills__intro">
+            <h2 class="hc-heading">Services</h2>
+            <p class="hc-skills__note">Transforming ideas into scalable mobile, web, backend, AI, and automation solutions.</p>
+            <div class="hc-skills__actions">
+              <a href="/resume#skills" class="hc-btn hc-btn--primary hc-btn--sm">View All Services</a>
+              <a href="/resume#skills" class="hc-icon-btn" aria-label="View full resume">
+                <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hc-skills__track">
+            <div class="hc-skills__marquee">
+              <div class="hc-skills__col">
+                {skillCategories.map((cat) => (
+                  <span class="hc-skills__pill">{cat.label}</span>
+                ))}
+              </div>
+              <div class="hc-skills__col" aria-hidden="true">
+                {skillCategories.map((cat) => (
+                  <span class="hc-skills__pill">{cat.label}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Process -->
+      <section class="hc-section">
+        <div class="hc-section__header" data-aos="fade-up">
+          <p class="hc-eyebrow">Process</p>
+          <h2 class="hc-heading">How I build</h2>
+        </div>
+        <div class="hc-process">
+          {process.map((s, i) => (
+            <div class="hc-card hc-process__step" data-aos="fade-up" data-aos-delay={100 + i * 80}>
+              <h3>{s.step}</h3>
+              <p>{s.description}</p>
+              <ul class="hc-taglist hc-taglist--muted">
+                {s.tags.map((t) => <li>{t}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="hc-section hc-section--tight">
+        <div class="hc-card hc-stats" data-aos="fade-up">
+          {stats.map((s) => (
+            <div class="hc-stat">
+              <span class="hc-stat__number">{s.number}</span>
+              <span class="hc-stat__label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Credibility line -->
+      <section class="hc-section hc-section--tight">
+        <p class="hc-credibility" data-aos="fade-up">
+          Currently leading engineering on production AI systems at <strong>Techtiz</strong>,
+          after shipping a real-estate app used by 53,000+ people at <strong>BooleanBites</strong>.
+        </p>
+      </section>
+
+      <!-- CTA band -->
+      <section class="hc-section">
+        <div class="hc-card hc-cta" data-aos="fade-up">
+          <div>
+            <h2 class="hc-heading">Let's build something.</h2>
+            <p>Open to new projects and collaboration.</p>
+          </div>
+          <a href="/contact" class="hc-btn hc-btn--primary">Get in touch</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="hc-footer">
+      <div class="hc-card hc-footer__card" data-aos="fade-up">
+        <div class="hc-footer__top">
+          <div class="hc-footer__brand">
+            <p class="hc-footer__name">Muhammad Suleman Saleem</p>
+            <p class="hc-footer__tagline">
+              Full-Stack Software Engineer &amp; AI Product Engineer.<br />
+              Flutter · Node.js · Claude API · RAG · n8n
+            </p>
+            <div class="hc-footer__social">
+              <a href="https://linkedin.com/in/muhammad-suleman-saleem" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="ri-linkedin-fill" aria-hidden="true"></i>
+              </a>
+              <a href="tel:+923071123666" aria-label="Call">
+                <i class="ri-phone-fill" aria-hidden="true"></i>
+              </a>
+              <a href="mailto:rana.suleman2297@gmail.com" aria-label="Email">
+                <i class="ri-mail-fill" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="hc-footer__col">
+            <p class="hc-footer__col-heading">About</p>
+            <a href="/">Overview</a>
+            <a href="/#about">About Me</a>
+            <a href="/#skills">Skills</a>
+            <a href="/#projects">Projects</a>
+          </div>
+
+          <div class="hc-footer__col">
+            <p class="hc-footer__col-heading">Portfolio</p>
+            <a href="/portfolio#ai">AI Products</a>
+            <a href="/portfolio#mobile">Mobile Apps</a>
+            <a href="/portfolio#web">Web &amp; Desktop</a>
+            <a href="/portfolio#automation">Automation</a>
+          </div>
+
+          <div class="hc-footer__col">
+            <p class="hc-footer__col-heading">Contact</p>
+            <a href="/contact">Get in Touch</a>
+            <a href="mailto:rana.suleman2297@gmail.com">Send Email</a>
+            <a href="https://linkedin.com/in/muhammad-suleman-saleem" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+
+          <div class="hc-footer__location">
+            <p class="hc-footer__col-heading">Location</p>
+            <div class="hc-footer__location-item">
+              <i class="ri-map-pin-2-fill" aria-hidden="true"></i>
+              <div>
+                <span class="hc-footer__location-label">Based in</span>
+                <span>Lahore, Pakistan</span>
+              </div>
+            </div>
+            <div class="hc-footer__location-item">
+              <i class="ri-global-line" aria-hidden="true"></i>
+              <div>
+                <span class="hc-footer__location-label">Available</span>
+                <span>Remote Worldwide</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hc-footer__bottom">
+        <p>&copy; {year} Muhammad Suleman Saleem. All rights reserved. — Graflow-style redesign preview, not linked from the live site.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const hcNav = document.querySelector<HTMLElement>('.hc-nav');
+
+    if (hcNav) {
+      let hcLastScrollY = window.scrollY;
+      let hcTicking = false;
+
+      const hcUpdateNav = () => {
+        const currentY = window.scrollY;
+        if (currentY > hcLastScrollY && currentY > 80) {
+          hcNav.classList.add('hc-nav--hidden');
+        } else if (currentY < hcLastScrollY) {
+          hcNav.classList.remove('hc-nav--hidden');
+        }
+        hcLastScrollY = currentY;
+        hcTicking = false;
+      };
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!hcTicking) {
+            requestAnimationFrame(hcUpdateNav);
+            hcTicking = true;
+          }
+        },
+        { passive: true }
+      );
+    }
+  </script>
+
+  <script>
+    const hcStatNumbers = document.querySelectorAll<HTMLElement>('.hc-stat__number');
+    const hcPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!hcPrefersReducedMotion && hcStatNumbers.length) {
+      const animateCount = (el: HTMLElement) => {
+        const match = el.textContent?.trim().match(/^(\d+)(.*)$/);
+        if (!match) return;
+        const target = parseInt(match[1], 10);
+        const suffix = match[2];
+        const duration = 1100;
+        const start = performance.now();
+
+        const step = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = `${Math.round(eased * target)}${suffix}`;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      const hcStatsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCount(entry.target as HTMLElement);
+              hcStatsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      hcStatNumbers.forEach((el) => hcStatsObserver.observe(el));
+    }
+  </script>
+</BaseLayout>

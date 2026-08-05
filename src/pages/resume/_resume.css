@@ -1,5 +1,5 @@
 .resume-page {
-  padding-top: 65px;
+  padding-top: var(--navbar-height);
 }
 
 /* ── Page hero ───────────────────────────────────── */

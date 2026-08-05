@@ -86,6 +86,32 @@
   margin-top: 0.25rem;
 }
 
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  align-self: flex-start;
+  margin-top: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background: #ffffff;
+  border: 1px solid rgba(13, 21, 32, 0.14);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.project-card__link i {
+  font-size: 0.95rem;
+}
+
+.project-card__link:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+}
+
 /* ── CTA ─────────────────────────────────────────────── */
 .featured__cta {
   text-align: center;

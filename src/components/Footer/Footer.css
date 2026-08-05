@@ -1,11 +1,14 @@
 .footer {
-  background-color: var(--primary-color);
-  padding: 3.5rem 1.5rem 1.75rem;
+  padding: 1.5rem 1.5rem 2.25rem;
 }
 
-.footer__container {
+.footer__card {
   max-width: var(--max-width);
   margin: auto;
+  background-color: var(--primary-color);
+  border-radius: 32px;
+  padding: 3.5rem 3rem;
+  box-shadow: 0 24px 48px rgba(13, 21, 32, 0.16);
 }
 
 /* 6-column grid: brand | home | portfolio | resume | contact | location */
@@ -13,8 +16,6 @@
   display: grid;
   grid-template-columns: auto repeat(4, 1fr) auto;
   gap: 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   align-items: start;
 }
 
@@ -130,7 +131,7 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* ── Bottom bar ── */
+/* ── Bottom bar (sits below the card, on the page background) ── */
 .footer__bottom {
   padding-top: 1.5rem;
   text-align: center;
@@ -138,7 +139,7 @@
 
 .footer__bottom p {
   font-size: 0.78rem;
-  color: #ffffff;
+  color: var(--text-light);
 }
 
 /* ── Responsive ── */

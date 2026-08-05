@@ -1,11 +1,26 @@
 .about {
   background-color: #ffffff;
   padding: 5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  top: -140px;
+  right: -140px;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.14), transparent 70%);
+  pointer-events: none;
 }
 
 .about__container {
   max-width: var(--max-width);
   margin: auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Stats bar ───────────────────────────────────────── */

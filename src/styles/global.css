@@ -9,6 +9,7 @@
   --text-light: #6b7280;
   --extra-light: #f0f8f9;
   --max-width: 1200px;
+  --navbar-height: 84px;
 }
 
 * {

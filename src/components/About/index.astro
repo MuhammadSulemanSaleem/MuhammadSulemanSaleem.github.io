@@ -60,3 +60,41 @@ import './About.css';
 
   </div>
 </section>
+
+<script>
+  const statNumbers = document.querySelectorAll<HTMLElement>('.stat__number');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion && statNumbers.length) {
+    const animateCount = (el: HTMLElement) => {
+      const match = el.textContent?.trim().match(/^(\d+)(.*)$/);
+      if (!match) return;
+      const target = parseInt(match[1], 10);
+      const suffix = match[2];
+      const duration = 1100;
+      const start = performance.now();
+
+      const step = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = `${Math.round(eased * target)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const statsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target as HTMLElement);
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    statNumbers.forEach((el) => statsObserver.observe(el));
+  }
+</script>
