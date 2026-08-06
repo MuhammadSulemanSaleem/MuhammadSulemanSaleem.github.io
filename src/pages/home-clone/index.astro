@@ -82,24 +82,30 @@ const skillCategories = [
   { label: 'Architecture & Patterns' },
 ];
 
-const process = [
+const capabilities = [
   {
-    step: 'Understand',
+    name: 'Development',
     description:
-      'Map the real requirements — what the system needs to do, who it serves, and where the constraints are: data, integrations, timeline.',
-    tags: ['requirements', 'system design', 'constraints'],
+      'End-to-end mobile, web, and desktop development—from architecture and implementation to production deployment.',
+    anchor: '/portfolio#mobile',
+    cta: 'Explore development',
+    illustration: 'code',
   },
   {
-    step: 'Build',
+    name: 'AI & Intelligence',
     description:
-      'Build it end-to-end — clean architecture, the right LLM/data pipeline where AI is involved, and tests that catch regressions before users do.',
-    tags: ['clean architecture', 'RAG · LLM orchestration', 'testing'],
+      'Engineering intelligent systems with AI agents, RAG, and multi-provider LLM orchestration for real-world applications',
+    anchor: '/portfolio#ai',
+    cta: 'Explore AI & intelligence',
+    illustration: 'ai',
   },
   {
-    step: 'Ship',
+    name: 'Automation & AI',
     description:
-      'Ship, monitor, and iterate — deployment, error tracking, and fast fixes when production tells a different story than the plan did.',
-    tags: ['CI/CD', 'monitoring', 'iteration'],
+      'Designing intelligent workflows and integrations that automate repetitive tasks, streamline operations, and save valuable time.',
+    anchor: '/portfolio#automation',
+    cta: 'Explore automation',
+    illustration: 'automation',
   },
 ];
 
@@ -258,23 +264,97 @@ const stats = [
         </div>
       </section>
 
-      <!-- Process -->
+      <!-- Capabilities -->
       <section class="hc-section">
-        <div class="hc-section__header" data-aos="fade-up">
-          <p class="hc-eyebrow">Process</p>
-          <h2 class="hc-heading">How I build</h2>
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Engineering Expertise</h2>
+          <p class="hc-section__subtitle">Building scalable software, integrating AI, and automating workflows to solve real-world business problems.</p>
         </div>
-        <div class="hc-process">
-          {process.map((s, i) => (
-            <div class="hc-card hc-process__step" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-              <h3>{s.step}</h3>
-              <p>{s.description}</p>
-              <ul class="hc-taglist hc-taglist--muted">
-                {s.tags.map((t) => <li>{t}</li>)}
-              </ul>
+
+        {capabilities.map((c) => (
+          <div class="hc-card hc-work">
+            <div class="hc-work__content">
+              <h3 class="hc-work__name">{c.name}</h3>
+              <p class="hc-work__desc">{c.description}</p>
+              <div class="hc-work__actions">
+                <a href={c.anchor} class="hc-btn hc-btn--primary hc-btn--sm">{c.cta}</a>
+                <a href={c.anchor} class="hc-icon-btn" aria-label={c.cta}>
+                  <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+                </a>
+              </div>
             </div>
-          ))}
-        </div>
+
+            <div class="hc-cap__illus">
+              {c.illustration === 'code' && (
+                <>
+                  <div class="hc-cap-terminal">
+                    <div class="hc-cap-terminal__bar">
+                      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19h8"></path><path d="m4 17 6-6-6-6"></path></svg>
+                    </div>
+                    <div class="hc-cap-terminal__body">
+                      <div>$ npm run build</div>
+                      <div class="ok">✓ compiled 214 modules</div>
+                      <div class="ok">✓ type-check passed</div>
+                      <div class="hi">✓ build succeeded<span class="hc-cap-cursor"></span></div>
+                    </div>
+                  </div>
+                  <span class="hc-cap-chip hc-cap-chip--code">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    98% test coverage
+                  </span>
+                </>
+              )}
+
+              {c.illustration === 'ai' && (
+                <div class="hc-cap-orbit">
+                  <div class="hc-cap-orbit__ring"></div>
+                  <div class="hc-cap-orbit__center">AI</div>
+                  <span class="hc-cap-orbit__node node-top">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"></path><path d="M15 8V2"></path><path d="M17 8a1 1 0 0 1 1 1v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z"></path><path d="M9 8V2"></path></svg>
+                  </span>
+                  <span class="hc-cap-orbit__node node-right">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path></svg>
+                  </span>
+                  <span class="hc-cap-orbit__node node-bottom">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+                  </span>
+                  <span class="hc-cap-orbit__node node-left">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+                  </span>
+                </div>
+              )}
+
+              {c.illustration === 'automation' && (
+                <>
+                  <span class="hc-cap-chip hc-cap-chip--top">3 steps synced</span>
+                  <div class="hc-cap-flow">
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Trigger</span>
+                    </div>
+                    <svg class="hc-cap-flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon hc-cap-flow__icon--accent">
+                        <svg class="hc-cap-flow__icon-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Automation</span>
+                    </div>
+                    <svg class="hc-cap-flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Result</span>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        ))}
       </section>
 
       <!-- Stats -->
