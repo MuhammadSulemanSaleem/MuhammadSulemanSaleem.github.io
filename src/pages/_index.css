@@ -131,19 +131,51 @@
 .hc-icon-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 50%;
   border: 1px solid var(--hc-line);
   color: var(--hc-ink);
   flex-shrink: 0;
+  overflow: hidden;
   transition: background 0.2s, color 0.2s;
 }
 
 .hc-icon-btn:hover {
   background: var(--hc-ink);
   color: #ffffff;
+}
+
+.hc-icon-btn__track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  flex-shrink: 0;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.hc-icon-btn__track i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.hc-icon-btn:hover .hc-icon-btn__track {
+  transform: translateX(-50%);
+}
+
+.hc-btn:hover + .hc-icon-btn {
+  background: var(--hc-ink);
+  color: #ffffff;
+}
+
+.hc-btn:hover + .hc-icon-btn .hc-icon-btn__track {
+  transform: translateX(-50%);
 }
 
 /* ── Flat tag list (no icons) ─────────────────────────── */
