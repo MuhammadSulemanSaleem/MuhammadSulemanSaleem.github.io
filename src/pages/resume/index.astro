@@ -6,81 +6,76 @@ import { techIcons } from '../../data/techIcons.js';
 import '../../styles/hc-shared.css';
 import './_resume.css';
 
-const coreTech = [
-  { name: 'Flutter', icon: '/assets/svgs/flutter.svg' },
-  { name: 'Node.js', icon: '/assets/svgs/nodejs.svg' },
-  { name: 'Claude API', icon: '/assets/svgs/claude-api.svg' },
-  { name: 'RAG', icon: '/assets/svgs/rag.svg' },
-  { name: 'n8n', icon: '/assets/svgs/n8n.svg' },
-  { name: 'React Native', icon: '/assets/svgs/react-native.svg' },
-  { name: 'Electron', icon: '/assets/svgs/electron.svg' },
-  { name: 'Nest.js', icon: '/assets/svgs/nestjs.svg' },
-  { name: 'TypeScript', icon: '/assets/svgs/typescript.svg' },
+const capabilities = [
+  {
+    name: 'Development',
+    description:
+      'End-to-end mobile, web, and desktop development—from architecture and implementation to production deployment.',
+    anchor: '/portfolio#mobile',
+    cta: 'Explore development',
+    illustration: 'code',
+  },
+  {
+    name: 'AI & Intelligence',
+    description:
+      'Engineering intelligent systems with AI agents, RAG, and multi-provider LLM orchestration for real-world applications',
+    anchor: '/portfolio#ai',
+    cta: 'Explore AI & intelligence',
+    illustration: 'ai',
+  },
+  {
+    name: 'Automation & AI',
+    description:
+      'Designing intelligent workflows and integrations that automate repetitive tasks, streamline operations, and save valuable time.',
+    anchor: '/portfolio#automation',
+    cta: 'Explore automation',
+    illustration: 'automation',
+  },
 ];
 
-const stats = [
+const homeStats = [
   { number: '5+', label: 'Years Experience' },
-  { number: '2', label: 'Companies' },
-  { number: '10', label: 'Certifications' },
-  { number: '5', label: 'Key Achievements' },
-];
-
-const expertise = [
-  { icon: '/assets/svgs/flutter.svg', label: 'Flutter & Dart Development' },
-  { icon: '/assets/svgs/nodejs.svg', label: 'Full-Stack Development (Node.js, Nest.js, Express, Next.js)' },
-  { icon: '/assets/svgs/rag.svg', label: 'AI/LLM Integration & RAG Pipelines' },
-  { icon: '/assets/svgs/clean-architecture.svg', label: 'Scalable App & Backend Architecture' },
-  { icon: '/assets/svgs/n8n.svg', label: 'Workflow Automation (n8n, App Script, Zapier, Go High Level)' },
-  { icon: '/assets/svgs/css.svg', label: 'UI/UX Implementation & Responsive Design' },
-  { icon: '/assets/svgs/rest-apis.svg', label: 'API Integration & Third-Party Services' },
-  { icon: '/assets/svgs/firebase.svg', label: 'Cloud & Serverless (Firebase, Supabase, AWS)' },
-  { icon: '/assets/svgs/postgresql.svg', label: 'Database Management' },
-  { icon: '/assets/svgs/stripe.svg', label: 'Payment & Subscription Systems (Stripe)' },
-  { icon: '/assets/svgs/native-mobile.svg', label: 'Native iOS & Android Integrations' },
-  { icon: '/assets/svgs/leadership-mentorship.svg', label: 'Technical Leadership & Mentorship' },
-  { icon: '/assets/svgs/agile-scrum.svg', label: 'Agile & Scrum Methodologies' },
+  { number: '15+', label: 'Projects Shipped' },
+  { number: '53K+', label: 'Houzez Users Reached' },
+  { number: '10+', label: 'Automations Deployed' },
 ];
 
 const achievements = [
   {
     name: 'Employee of the Month (3×)',
-    badge: 'Techtiz',
-    metric: '3× recognized for high-impact delivery',
+    icon: 'ri-medal-line',
     description:
-      'Recognized at Techtiz for consistent, high-impact delivery across projects and sprints.',
-    tech: [],
+      'Recognized three times at Techtiz for consistent, high-impact delivery across projects, sprints, and client releases.',
   },
   {
     name: 'Built Production AI Systems',
-    badge: 'RAG · Multi-Provider LLM',
-    metric: 'Automatic provider failover',
+    icon: 'ri-brain-line',
     description:
-      'Designed and shipped RAG pipelines and multi-provider LLM orchestration across Claude, GPT-4o, and ElevenLabs with automatic failover.',
-    tech: ['RAG', 'Claude API', 'GPT-4o', 'ElevenLabs'],
+      'Designed and shipped RAG pipelines and multi-provider LLM orchestration across Claude, GPT-4o, and ElevenLabs.',
   },
   {
     name: 'Enterprise System Integration',
-    badge: 'React Native · SAP ERP',
-    metric: 'Thousands of daily batch scans nationwide',
+    icon: 'ri-links-line',
     description:
-      'Integrated a React Native app with SAP ERP, supporting thousands of daily batch scans nationwide.',
-    tech: ['React Native', 'SAP RFC'],
+      'Integrated a React Native app with SAP ERP, syncing thousands of daily batch scans across a nationwide field team.',
   },
   {
     name: 'Automation at Scale',
-    badge: 'n8n · Go High Level',
-    metric: '10+ automations · 1-minute lead response',
+    icon: 'ri-flashlight-line',
     description:
-      'Designed 10+ business-process automations, including a lead response system that contacts new leads within 1 minute.',
-    tech: ['n8n', 'Go High Level'],
+      'Designed 10+ business-process automations, including a lead response system that contacts new leads within one minute.',
   },
   {
     name: 'Technical Leadership',
-    badge: 'Flutter · Nest.js · Express',
-    metric: 'Led team · mentored engineers',
+    icon: 'ri-team-line',
     description:
-      'Led a development team and mentored engineers while maintaining clean, scalable architecture.',
-    tech: ['Flutter', 'Nest.js', 'Express'],
+      'Led a development team and mentored engineers, maintaining clean architecture and consistent code quality.',
+  },
+  {
+    name: 'Built a Best-Selling App',
+    icon: 'ri-store-2-line',
+    description:
+      'Shipped the Houzi app on Envato, reaching 53,000+ Houzez theme owners with 500+ sales and a 4.84-star rating.',
   },
 ];
 
@@ -92,92 +87,128 @@ const experienceJobs = [
     dates: '2024 – Present',
     items: [
       {
+        mark: 'NF',
         name: 'AI Product — NebuFit',
-        badge: 'Flutter · PostgreSQL/Supabase · Redis',
         metric: 'RAG · multi-provider AI · Stripe subscriptions',
-        description:
-          'Built a cross-platform AI fitness/health app covering computer-vision body analysis, AI-generated workout and nutrition plans, bloodwork report processing, and voice-based coaching. Designed a RAG system for contextual fitness/nutrition guidance, multi-provider AI orchestration (Claude, GPT-4o, ElevenLabs) with SSE streaming and failover, and full Stripe subscription/entitlement management.',
-        tech: ['Flutter', 'PostgreSQL', 'Supabase', 'Redis', 'RAG', 'Claude API', 'GPT-4o', 'ElevenLabs', 'Stripe'],
+        challenge:
+          "Fitness apps lean on generic templates instead of adapting to a user's real body data, bloodwork, and progress, with no conversational coaching layer.",
+        solution:
+          'Built a cross-platform AI fitness/health app covering computer-vision body analysis, AI-generated workout and nutrition plans, bloodwork report processing, and voice-based coaching — backed by a RAG system for contextual guidance, multi-provider AI orchestration (Claude, GPT-4o, ElevenLabs) with SSE streaming and failover, and full Stripe subscription/entitlement management.',
+        impact:
+          'Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance with resilient uptime and monetization built in from day one.',
       },
       {
+        mark: 'OC',
         name: 'Enterprise Platform — Orient Champions',
-        badge: 'Nest.js · React Native · SAP RFC',
         metric: 'Thousands of daily batch scans · nationwide',
-        description:
-          'Built a field-sales incentive platform used nationwide by field agents across Pakistan, architecting a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs across a four-level organisational hierarchy (National → Zone → Branch → FSM), with resilient offline queuing/reconciliation, JWT + Twilio OTP auth, and bulk Excel/CSV processing.',
-        tech: ['Nest.js', 'React Native', 'Expo', 'MongoDB', 'SAP RFC', 'AWS S3', 'JWT', 'Twilio'],
+        challenge:
+          'Orient Electronic needed a nationwide field-sales incentive program spanning a four-level hierarchy (National → Zone → Branch → FSM), with real-time sync into their existing SAP ERP — without disrupting agents working offline in the field.',
+        solution:
+          'Architected a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs, resilient offline queuing/reconciliation, JWT + Twilio OTP auth, and bulk Excel/CSV processing.',
+        impact:
+          'Delivered a nationwide platform that keeps field agents productive offline and reconciles cleanly with SAP the moment they reconnect.',
+        note: 'Client-attributed project — architecture and technical patterns discussed at a high level.',
       },
       {
+        mark: 'LR',
         name: 'Lead Response Automation',
-        badge: 'n8n · Go High Level · Retell AI',
         metric: 'Contacts leads in < 1 min · AI voice call in < 2 min',
-        description:
-          "Built an automated lead response system for United Global Vanline that contacts new leads within 1 minute and places an AI voice call within 2 minutes of form submission, using Go High Level (Opportunities, Pipelines, Automations) and OpenAI-based call scoring/fraud detection. Also synced The Ramirez Legal Group's ClickUp case data to a live client dashboard via Zapier and Emergent Labs.",
-        tech: ['n8n', 'Go High Level', 'Retell AI', 'Aloware', 'CloseBot', 'OpenAI', 'Zapier', 'Emergent Labs', 'ClickUp'],
+        challenge:
+          "A moving company was losing leads to slow response times, and a legal team's clients had no live view of case status outside ClickUp.",
+        solution:
+          "Built an automated lead response system for United Global Vanline using Go High Level (Opportunities, Pipelines, Automations) with OpenAI-based call scoring/fraud detection, contacting leads within 1 minute and placing an AI voice call within 2. Also synced The Ramirez Legal Group's ClickUp case data to a live client dashboard via Zapier and Emergent Labs.",
+        impact:
+          "Cut lead response time to under a minute with automatic quality filtering, and gave a legal team's clients one live view of case status with zero manual updates.",
       },
       {
+        mark: 'CO',
         name: 'Creative OS',
-        badge: 'Electron · Claude API · RAG',
         metric: 'Local-first · MCP server architecture',
-        description:
-          'Built a local-first AI desktop app for writers/filmmakers indexing Final Draft scripts, PDFs, and notes via RAG, with Claude-powered rewriting, semantic search, and an extensible MCP server architecture.',
-        tech: ['Electron', 'React', 'Claude API', 'RAG', 'ChromaDB', 'MCP'],
+        challenge:
+          'Writers and filmmakers wanted AI assistance on screenplays and notes without sending unfinished creative work to the cloud, and without being locked into one fixed set of AI tools.',
+        solution:
+          'Built a local-first AI desktop app indexing Final Draft scripts, PDFs, and notes via a RAG pipeline (ChromaDB) for semantic search and Claude-powered rewriting, with an extensible MCP server architecture.',
+        impact:
+          'Gave writers AI-powered editing and search that never leaves their machine, with a tool ecosystem that grows without touching the core app.',
       },
       {
+        mark: 'DR',
         name: 'Data & Reporting Automation',
-        badge: 'n8n · Apify · Nocodb',
         metric: 'OCR extraction · daily lead discovery',
-        description:
-          "Built OCR-based document processing for bank statements ('Capital Shack'); a daily decision-maker lead-discovery pipeline ('AGENTC') delivering verified contacts before business hours every day; and a Leads Management System syncing campaign data to Google Data Studio.",
-        tech: ['n8n', 'Google Apps Script', 'Apify', 'Nocodb', 'ZeroBounce', 'Clearout Phone', 'OCR'],
+        challenge:
+          'Manual bank-statement entry, decision-maker lead research, and campaign reporting were all slow, error-prone, and ate hours every day.',
+        solution:
+          "Built OCR-based document processing for bank statements ('Capital Shack'); a daily decision-maker lead-discovery pipeline ('AGENTC') using Apify, ZeroBounce, and Clearout Phone to deliver verified contacts before business hours; and a Leads Management System syncing campaign data to Google Data Studio.",
+        impact:
+          'Replaced three manual workflows with unattended pipelines that deliver clean data and verified leads automatically, every day.',
       },
       {
+        mark: 'UN',
         name: 'Desktop & Web Platforms',
-        badge: 'Electron · Next.js · Nest.js',
         metric: 'Role-based access · real-time notifications',
-        description:
-          "Fully built the 'UNITY' Electron desktop app and its Next.js/Nest.js admin web portal — role-based access, dynamic server-driven layouts, credential manager, script-injected auto-fill, and real-time notifications via sockets.",
-        tech: ['Electron', 'Next.js', 'Nest.js', 'WebSockets', 'Role-Based Access'],
+        challenge:
+          'A medical organisation (name withheld per client confidentiality) needed a desktop tool with role-based access and credential-managed auto-fill, paired with an admin portal giving staff live visibility into activity.',
+        solution:
+          "Built the 'UNITY' Electron desktop app with dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, paired with a Next.js + Nest.js admin web portal featuring real-time notifications via WebSockets.",
+        impact:
+          'Gave the client a secure, centrally-configurable desktop tool and a live admin view, without exposing any client-identifying details.',
+        note: 'Confidential client — no screenshots or client name disclosed.',
       },
       {
+        mark: 'MA',
         name: 'Mobile App Development',
-        badge: 'Flutter · Express · Stripe',
-        metric: "Aniflex · Exodus App · Linked Golf",
-        description:
-          "Built Aniflex (Flutter fitness/gamification app), fully rebranded 'Exodus App' (formerly Blue Sky), and developed 'Linked Golf' (Flutter + Express + PubNub chat + Stripe + FCM), deployed to both stores.",
-        tech: ['Flutter', 'Express', 'PubNub', 'Stripe', 'FCM'],
+        metric: 'Aniflex · Exodus App · Linked Golf',
+        challenge:
+          'Three separate product teams needed native-quality Flutter apps — a fitness/gamification app, a rebrand of an existing app, and a golf social app with real-time chat and payments.',
+        solution:
+          "Built Aniflex (Flutter fitness/gamification app), fully rebranded 'Exodus App' (formerly Blue Sky), and developed 'Linked Golf' (Flutter + Express + PubNub chat + Stripe + FCM push notifications).",
+        impact:
+          'Shipped all three apps to the App Store and Google Play, each with production-grade chat, payments, or gamification built in.',
       },
       {
+        mark: 'CA',
         name: 'Content & Outreach Automation',
-        badge: 'n8n · App Script · OpenAI',
         metric: 'Scheduled posts · lead triage',
-        description:
-          'Built a social-media post scheduling system generating platform-specific captions on a schedule, and an outreach email triage pipeline routing qualified leads to the sales team via Slack.',
-        tech: ['n8n', 'Google Apps Script', 'OpenAI', 'Slack'],
+        challenge:
+          'A client needed both a steady social content cadence and a way to keep sales focused on genuinely qualified inbound leads.',
+        solution:
+          'Built two n8n pipelines: one generates platform-specific captions on a schedule and auto-posts across channels; the other triages outreach emails and routes qualified leads to the sales team via Slack.',
+        impact:
+          'Kept a consistent posting cadence while routing only qualified leads to the sales team.',
       },
       {
+        mark: 'WD',
         name: 'Web Development',
-        badge: 'Astro · Go High Level',
         metric: 'Corporate site rebuild · SEO',
-        description:
-          'Rebuilt the Techtiz corporate site in Astro for performance/SEO, and built a native-element homepage in Go High Level for ATTN Agency.',
-        tech: ['Astro', 'Go High Level'],
+        challenge:
+          "Techtiz's corporate site was slow and under-optimised for search, and ATTN Agency needed a fast-turnaround marketing homepage without custom development.",
+        solution:
+          'Rebuilt the Techtiz corporate site in Astro for performance and SEO, and built a native-element homepage in Go High Level for ATTN Agency.',
+        impact:
+          'Delivered a faster, better-ranking corporate site and a quick-turnaround marketing homepage with no custom backend required.',
       },
       {
+        mark: 'TL',
         name: 'Team Leadership',
-        badge: 'Leadership',
         metric: 'Sprints via Jira · tracked via Worktivity',
-        description:
+        challenge:
+          'A growing development team needed a consistent sprint cadence and clear visibility into productivity without adding process overhead.',
+        solution:
           'Led a development team, managed sprints via Jira, and tracked productivity through Worktivity.',
-        tech: ['Jira'],
+        impact:
+          'Kept delivery predictable and gave the team clear sprint visibility without slowing anyone down.',
+        caseStudy: false,
       },
       {
+        mark: 'FF',
         name: 'FlutterFlow Templates',
-        badge: 'FlutterFlow',
         metric: "'Kumquat – Talent Match' · 'Foodii – Recipe Book'",
-        description:
-          "Built two FlutterFlow templates — 'Kumquat – Talent Match' and 'Foodii – Recipe Book'.",
-        tech: ['FlutterFlow'],
+        challenge:
+          'Recruitment/talent-matching and recipe/meal-planning apps both needed a proven, ready-to-customize starting point instead of a from-scratch build.',
+        solution:
+          "Built and published two FlutterFlow templates — 'Kumquat – Talent Match' with profile listings, filtering, and match requests; and 'Foodii – Recipe Book' covering browsing, saving, and categorising recipes.",
+        impact:
+          'Published both to the FlutterFlow Marketplace as reusable starting points for talent-matching and recipe apps.',
       },
     ],
   },
@@ -188,52 +219,75 @@ const experienceJobs = [
     dates: '2021 – 2024',
     items: [
       {
-        name: "Developed 'Houzi' App",
-        badge: 'Flutter · WordPress',
-        metric: '53,000+ users · 500+ Envato sales · 4.84/5 rating',
-        description:
-          'Created a real estate template app for the popular Houzez WordPress theme, used by over 53,000+ users globally. Achieved 500+ Envato sales, a 4.84/5 rating, and 5K+ downloads on Google Play Store.',
-        tech: ['Flutter', 'WordPress'],
+        mark: 'HZ',
+        name: 'Houzi',
+        metric: '53K+ users · 4.84★ · 500+ sales',
+        challenge:
+          'Houzez, a WordPress real estate theme used by 53,000+ site owners, had no companion mobile app — non-technical theme owners had no way to offer a native app experience without custom development.',
+        solution:
+          'Created Houzi, a Flutter real estate template app for the Houzez WordPress theme, with REST API integration, push notifications, in-app chat, and comments.',
+        impact:
+          'Reached 53,000+ Houzez theme owners with a ready-made mobile solution, earning a 4.84/5 rating, 500+ Envato sales, and 5,000+ Play Store downloads.',
       },
       {
+        mark: 'AS',
         name: 'Architecture & Scalability',
-        badge: 'Bloc · Clean Architecture',
         metric: 'High maintainability · smooth performance',
-        description:
-          'Implemented clean architecture and efficient state management using Bloc, ensuring high maintainability and smooth performance.',
-        tech: ['Clean Architecture', 'Bloc'],
+        challenge:
+          "Houzi's early codebase needed a state-management and architecture approach that could scale across a growing template ecosystem without becoming unmaintainable.",
+        solution:
+          'Implemented clean architecture and efficient state management using Bloc across the Houzi codebase.',
+        impact:
+          'Delivered high maintainability and smooth performance as the app and its feature set grew.',
+        caseStudy: false,
       },
       {
+        mark: 'CP',
         name: 'Cross-Platform Projects',
-        badge: 'Flutter · WordPress Plugin',
         metric: 'Houzi · IPT Force · Linked Home · FSF-Ticket',
-        description:
+        challenge:
+          'Beyond Houzi, the team needed several more mobile apps, a desktop customisation tool, and a way for non-technical theme owners to extend the WordPress API — all without duplicating effort.',
+        solution:
           'Delivered mobile apps (Houzi, IPT Force, Linked Home, FSF-Ticket), a desktop platform (HouziBuilder), and a WordPress plugin (Houzi-REST-API) for custom API extensions, including OneSignal push, chat, and comments integrations.',
-        tech: ['Flutter', 'Desktop', 'WordPress Plugin', 'OneSignal'],
+        impact:
+          'Extended the Houzi ecosystem across mobile, desktop, and WordPress with a shared, reusable integration layer.',
+        caseStudy: false,
       },
       {
+        mark: 'PO',
         name: 'Performance Optimisation',
-        badge: '',
-        metric: '',
-        description:
-          'Enhanced app load times, reduced API latency, and improved UI responsiveness, resulting in smoother user interaction.',
-        tech: [],
+        metric: 'Faster load times · lower latency',
+        challenge:
+          'Growing usage was surfacing slow load times, laggy UI, and rising API latency across the app.',
+        solution:
+          'Profiled and optimised app load times, reduced API latency, and improved UI responsiveness across critical user flows.',
+        impact:
+          'Delivered smoother, faster interactions across the app as usage scaled.',
+        caseStudy: false,
       },
       {
+        mark: 'CL',
         name: 'Collaboration',
-        badge: '',
-        metric: '',
-        description:
+        metric: 'Design · QA · Product alignment',
+        challenge:
+          'Feature and quality decisions were at risk of drifting out of sync across design, QA, and product without a shared process.',
+        solution:
           'Worked closely with designers, QA teams, and product owners to align on features and quality benchmarks across releases.',
-        tech: [],
+        impact:
+          'Kept design, QA, and product aligned release after release, reducing rework and last-minute surprises.',
+        caseStudy: false,
       },
       {
+        mark: 'MQ',
         name: 'Mentorship & Quality Assurance',
-        badge: '',
-        metric: '',
-        description:
+        metric: 'PR reviews · coding standards',
+        challenge:
+          'A growing team needed consistent code quality and coding standards as more developers joined the codebase.',
+        solution:
           'Provided technical mentorship, reviewed pull requests, and upheld clean coding standards across development teams.',
-        tech: [],
+        impact:
+          'Raised the code-quality bar across the team through consistent review and hands-on mentorship.',
+        caseStudy: false,
       },
     ],
   },
@@ -353,56 +407,34 @@ function renderTech(t: string) {
 
     <main class="hc-main">
 
-      <!-- Hero -->
-      <section class="hc-section">
-        <div class="hc-card rs-hero rs-panel" data-aos="fade-up">
-          <p class="hc-eyebrow">Resume</p>
-          <h1 class="rs-hero__name">Muhammad Suleman Saleem</h1>
-          <p class="rs-hero__role">Full-Stack Software Engineer &amp; AI Product Engineer</p>
-          <p class="rs-hero__focus">LLM Systems &amp; Automation &nbsp;·&nbsp; Production-Ready AI Solutions</p>
-          <ul class="rs-hero__tech" aria-label="Core technologies">
-            {coreTech.map((t) => (
-              <li><img src={t.icon} alt="" width="14" height="14" />{t.name}</li>
-            ))}
-          </ul>
-          <div class="rs-hero__actions">
-            <a
-              href="/Muhammad_Suleman_Saleem_Resume.pdf"
-              download="Muhammad_Suleman_Saleem_Resume.pdf"
-              class="hc-btn hc-btn--primary"
-            >
-              <i class="ri-download-2-line" aria-hidden="true"></i>
-              Download Resume
-            </a>
-            <a
-              href="https://linkedin.com/in/muhammad-suleman-saleem"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hc-btn hc-btn--outline"
-            >
-              <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
-              LinkedIn Profile
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Stats -->
-      <section class="hc-section hc-section--tight rs-noprint">
-        <div class="hc-card hc-stats" data-aos="fade-up">
-          {stats.map((s) => (
-            <div class="hc-stat">
-              <span class="hc-stat__number">{s.number}</span>
-              <span class="hc-stat__label">{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <!-- Professional Summary -->
       <section class="hc-section" id="summary">
-        <div class="hc-card rs-panel" data-aos="fade-up">
-          <p class="hc-eyebrow">Professional Summary</p>
+        <div class="hc-card rs-panel rs-summary-card" data-aos="fade-up">
+          <div class="rs-summary-heading">
+            <h2 class="hc-heading">My Journey So Far</h2>
+            <p class="rs-summary-tagline">From full-stack apps to AI-native products</p>
+            <div class="rs-summary-actions rs-noprint">
+              <a
+                href="/Muhammad_Suleman_Saleem_Resume.pdf"
+                download="Muhammad_Suleman_Saleem_Resume.pdf"
+                class="hc-btn hc-btn--primary hc-btn--sm"
+              >
+                <i class="ri-download-2-line" aria-hidden="true"></i>
+                Resume/CV
+              </a>
+              <a
+                href="/Muhammad_Suleman_Saleem_Resume.pdf"
+                download="Muhammad_Suleman_Saleem_Resume.pdf"
+                class="hc-icon-btn hc-icon-btn--down"
+                aria-label="Download Resume/CV"
+              >
+                <span class="hc-icon-btn__track">
+                  <i class="ri-arrow-down-line" aria-hidden="true"></i>
+                  <i class="ri-arrow-down-line" aria-hidden="true"></i>
+                </span>
+              </a>
+            </div>
+          </div>
           <p class="rs-summary">
             Full-stack Software Engineer with <strong>5+ years</strong> of experience building
             cross-platform mobile, web, and desktop applications and, more recently, production
@@ -421,15 +453,106 @@ function renderTech(t: string) {
         </div>
       </section>
 
-      <!-- Areas of Expertise -->
-      <section class="hc-section" id="skills">
-        <div class="hc-card rs-panel" data-aos="fade-up">
-          <p class="hc-eyebrow">Areas of Expertise</p>
-          <ul class="rs-expertise">
-            {expertise.map((e) => (
-              <li><img src={e.icon} alt="" width="14" height="14" />{e.label}</li>
-            ))}
-          </ul>
+      <!-- Stats -->
+      <section class="hc-section hc-section--tight rs-noprint">
+        <div class="hc-card hc-stats" data-aos="fade-up">
+          {homeStats.map((s) => (
+            <div class="hc-stat">
+              <span class="hc-stat__number">{s.number}</span>
+              <span class="hc-stat__label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Area of Expertise (Capabilities) -->
+      <section class="hc-section rs-noprint">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Area of Expertise</h2>
+          <p class="hc-section__subtitle">Building scalable software, integrating AI, and automating workflows to solve real-world business problems.</p>
+        </div>
+
+        <div class="rs-cap-row">
+        {capabilities.map((c, i) => (
+          <div class="hc-card hc-work rs-cap-card" data-aos="fade-up" data-aos-delay={i * 100}>
+            <div class="hc-work__content">
+              <h3 class="hc-work__name">{c.name}</h3>
+              <p class="hc-work__desc">{c.description}</p>
+            </div>
+
+            <div class="hc-cap__illus">
+              {c.illustration === 'code' && (
+                <>
+                  <div class="hc-cap-terminal">
+                    <div class="hc-cap-terminal__bar">
+                      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19h8"></path><path d="m4 17 6-6-6-6"></path></svg>
+                    </div>
+                    <div class="hc-cap-terminal__body">
+                      <div>$ npm run build</div>
+                      <div class="ok">✓ compiled 214 modules</div>
+                      <div class="ok">✓ type-check passed</div>
+                      <div class="hi">✓ build succeeded<span class="hc-cap-cursor"></span></div>
+                    </div>
+                  </div>
+                  <span class="hc-cap-chip hc-cap-chip--code">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    98% test coverage
+                  </span>
+                </>
+              )}
+
+              {c.illustration === 'ai' && (
+                <div class="hc-cap-orbit">
+                  <div class="hc-cap-orbit__ring"></div>
+                  <div class="hc-cap-orbit__center">AI</div>
+                  <div class="hc-cap-orbit__nodes">
+                    <span class="hc-cap-orbit__node node-top">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"></path><path d="M15 8V2"></path><path d="M17 8a1 1 0 0 1 1 1v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z"></path><path d="M9 8V2"></path></svg>
+                    </span>
+                    <span class="hc-cap-orbit__node node-right">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path></svg>
+                    </span>
+                    <span class="hc-cap-orbit__node node-bottom">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+                    </span>
+                    <span class="hc-cap-orbit__node node-left">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {c.illustration === 'automation' && (
+                <>
+                  <span class="hc-cap-chip hc-cap-chip--top">3 steps synced</span>
+                  <div class="hc-cap-flow">
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Trigger</span>
+                    </div>
+                    <svg class="hc-cap-flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon hc-cap-flow__icon--accent">
+                        <svg class="hc-cap-flow__icon-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Automation</span>
+                    </div>
+                    <svg class="hc-cap-flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Result</span>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        ))}
         </div>
       </section>
 
@@ -437,28 +560,14 @@ function renderTech(t: string) {
       <section class="hc-section" id="achievements">
         <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
           <h2 class="hc-heading">Key Achievements</h2>
+          <p class="hc-section__subtitle">Milestones that mattered along the way.</p>
         </div>
         <div class="rs-card-grid">
           {achievements.map((a, i) => (
-            <div class="hc-card rs-card" data-aos="fade-up" data-aos-delay={i * 60}>
-              <div class="rs-card__top">
-                <span class="rs-card__badge">{a.badge}</span>
-                <span class="rs-card__metric">{a.metric}</span>
-              </div>
+            <div class="hc-card rs-card rs-card--achievement" data-aos="fade-up" data-aos-delay={i * 60}>
+              <div class="rs-card__icon"><i class={a.icon} aria-hidden="true"></i></div>
               <h3 class="rs-card__name">{a.name}</h3>
               <p class="rs-card__desc">{a.description}</p>
-              {a.tech.length > 0 && (
-                <div class="rs-card__tech">
-                  {a.tech.map((t) => (
-                    <span class="rs-tag">
-                      {renderTech(t)
-                        ? <img src={renderTech(t)} alt="" width="12" height="12" />
-                        : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              )}
             </div>
           ))}
         </div>
@@ -471,8 +580,8 @@ function renderTech(t: string) {
         </div>
 
         {experienceJobs.map((job) => (
-          <div class="hc-card rs-job" data-aos="fade-up">
-            <div class="rs-job__header">
+          <section class="rs-job-group">
+            <div class="rs-job__header rs-job-group__header" data-aos="fade-up">
               <div class="rs-job__header-main">
                 {job.logo && <img src={job.logo} alt="" width="36" height="36" class="rs-job__logo" />}
                 <div>
@@ -482,33 +591,47 @@ function renderTech(t: string) {
               </div>
               <span class="rs-job__dates">{job.dates}</span>
             </div>
-            <div class="rs-card-grid rs-card-grid--nested">
-              {job.items.map((item) => (
-                <div class="rs-card rs-card--nested">
-                  {(item.badge || item.metric) && (
-                    <div class="rs-card__top">
-                      {item.badge && <span class="rs-card__badge">{item.badge}</span>}
-                      {item.metric && <span class="rs-card__metric">{item.metric}</span>}
+            {job.items.map((item, i) => (
+              <div class="hc-card hc-work" data-aos="fade-up">
+                <div class="hc-work__content">
+                  <h3 class="hc-work__name">{item.name}</h3>
+                  <dl class={`hc-work__breakdown ${i % 2 === 1 ? 'hc-work__breakdown--violet' : ''}`}>
+                    <div class="hc-work__point">
+                      <dt>Challenge</dt>
+                      <dd>{item.challenge}</dd>
                     </div>
+                    <div class="hc-work__point">
+                      <dt>Solution</dt>
+                      <dd>{item.solution}</dd>
+                    </div>
+                    <div class="hc-work__point">
+                      <dt>Impact</dt>
+                      <dd>{item.impact}</dd>
+                    </div>
+                  </dl>
+                  {item.note && (
+                    <p class="rs-note"><i class="ri-lock-line" aria-hidden="true"></i> {item.note}</p>
                   )}
-                  <h3 class="rs-card__name">{item.name}</h3>
-                  <p class="rs-card__desc">{item.description}</p>
-                  {item.tech.length > 0 && (
-                    <div class="rs-card__tech">
-                      {item.tech.map((t) => (
-                        <span class="rs-tag">
-                          {renderTech(t)
-                            ? <img src={renderTech(t)} alt="" width="12" height="12" />
-                            : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
-                          {t}
+                  {item.caseStudy !== false && (
+                    <div class="hc-work__actions">
+                      <span class="hc-btn hc-btn--primary hc-btn--sm">Case Study</span>
+                      <span class="hc-icon-btn" aria-hidden="true">
+                        <span class="hc-icon-btn__track">
+                          <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                          <i class="ri-arrow-right-line" aria-hidden="true"></i>
                         </span>
-                      ))}
+                      </span>
                     </div>
                   )}
                 </div>
-              ))}
-            </div>
-          </div>
+                <div class={`hc-work__tile hc-work__tile--${i % 2 === 1 ? 'violet' : 'blue'}`}>
+                  <span class="hc-work__mark">{item.mark}</span>
+                  <span class="hc-work__tile-name">{item.name}</span>
+                  <span class="hc-work__tile-metric">{item.metric}</span>
+                </div>
+              </div>
+            ))}
+          </section>
         ))}
       </section>
 
@@ -608,7 +731,7 @@ function renderTech(t: string) {
       </section>
 
       <!-- Other Skills & Tools -->
-      <section class="hc-section rs-noprint">
+      <section class="hc-section rs-noprint" id="skills">
         <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
           <h2 class="hc-heading">Other Skills &amp; Tools</h2>
         </div>
@@ -650,4 +773,42 @@ function renderTech(t: string) {
 
     <HcFooter />
   </div>
+
+  <script>
+    const hcStatNumbers = document.querySelectorAll<HTMLElement>('.hc-stat__number');
+    const hcPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!hcPrefersReducedMotion && hcStatNumbers.length) {
+      const animateCount = (el: HTMLElement) => {
+        const match = el.textContent?.trim().match(/^(\d+)(.*)$/);
+        if (!match) return;
+        const target = parseInt(match[1], 10);
+        const suffix = match[2];
+        const duration = 1100;
+        const start = performance.now();
+
+        const step = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = `${Math.round(eased * target)}${suffix}`;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      const hcStatsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCount(entry.target as HTMLElement);
+              hcStatsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      hcStatNumbers.forEach((el) => hcStatsObserver.observe(el));
+    }
+  </script>
 </BaseLayout>

@@ -1,5 +1,5 @@
 /* Resume page — built on the shared "hc-" design system (hc-shared.css).
-   Page-specific pieces (hero, mini-cards, job/education/cert layout, tag
+   Page-specific pieces (mini-cards, job/education/cert layout, tag
    chips, print rules) live here, same convention as _portfolio.css. */
 
 /* ── Print-only header (hidden on screen, shown when printing) ─── */
@@ -7,78 +7,81 @@
   display: none;
 }
 
-/* ── Padded panel (plain hc-card sections: hero, summary, expertise,
+/* ── Padded panel (plain hc-card sections: summary,
    education, certifications — hc-card itself has no padding, every
    usage must supply its own like hc-work/hc-cta/hc-stats do) ─────── */
 .rs-panel {
   padding: 2.75rem;
 }
 
-/* ── Hero ─────────────────────────────────────────────── */
-.rs-hero__name {
-  font-size: 2.3rem;
+/* ── Area of Expertise (capability cards, three-up row instead of
+   Home's stacked/sticky .hc-work layout) ─────────────────────── */
+.rs-cap-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.rs-cap-card {
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  position: static;
+  margin-bottom: 0;
+  padding: 2rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rs-cap-card .hc-cap__illus {
+  min-height: 180px;
+  margin-top: 1.5rem;
+  transition: transform 0.15s ease;
+}
+
+.rs-cap-card .hc-work__name {
+  font-size: 1.15rem;
   font-weight: 700;
-  margin: 0.4rem 0 0.6rem;
+  transition: color 0.25s ease;
 }
 
-.rs-hero__role {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
+.rs-cap-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 28px 52px rgba(20, 22, 27, 0.14);
 }
 
-.rs-hero__focus {
-  font-size: 0.88rem;
+.rs-cap-card:hover .hc-cap__illus {
+  transform: scale(1.05);
+}
+
+.rs-cap-card:hover .hc-work__name {
+  color: #378ade;
+}
+
+@media (width < 900px) {
+  .rs-cap-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Professional Summary (two-column: heading/tagline/actions on
+   the left, body copy on the right) ──────────────────────────── */
+.rs-summary-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.rs-summary-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.rs-summary-tagline {
+  font-size: 0.92rem;
   color: var(--hc-muted);
-  margin-bottom: 1.5rem;
+  margin-top: 0.75rem;
 }
 
-.rs-hero__tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  list-style: none;
-  margin-bottom: 1.75rem;
-}
-
-.rs-hero__tech li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--hc-ink);
-  background: var(--hc-bg);
-  border: 1px solid var(--hc-line);
-  padding: 0.4rem 0.85rem;
-  border-radius: 100px;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.rs-hero__tech li:hover {
-  transform: translateY(-2px);
-  border-color: var(--hc-ink);
-}
-
-.rs-hero__tech li img {
-  width: 14px;
-  height: 14px;
-  object-fit: contain;
-}
-
-.rs-hero__actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.rs-hero__actions .hc-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* ── Section body copy ───────────────────────────────── */
 .rs-summary {
   font-size: 0.95rem;
   line-height: 1.85;
@@ -89,39 +92,44 @@
   color: var(--hc-ink);
 }
 
-/* ── Areas of Expertise ──────────────────────────────── */
-.rs-expertise {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
-  list-style: none;
-}
-
-.rs-expertise li {
+.rs-summary-actions {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--hc-muted);
-  background: var(--hc-bg);
-  border: 1px solid var(--hc-line);
-  border-radius: 12px;
-  padding: 0.85rem 1rem;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
 }
 
-.rs-expertise li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(20, 22, 27, 0.08);
-  border-color: var(--hc-ink);
+@media (width < 900px) {
+  .rs-summary-card {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
 }
 
-.rs-expertise li img {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
+/* Circular icon button with a vertically sliding double-arrow track
+   (hc-icon-btn's shared track slides horizontally; this variant flips
+   it to a downward slide to read as a "download" affordance). Rest
+   state sits on the second (lower) icon so the hover transition moves
+   the track downward — the arrow visibly travels top-to-bottom ───── */
+.hc-icon-btn--down {
+  align-items: flex-start;
+}
+
+.hc-icon-btn--down .hc-icon-btn__track {
+  flex-direction: column;
+  width: 100%;
+  height: 200%;
+  transform: translateY(-50%);
+}
+
+.hc-icon-btn--down .hc-icon-btn__track i {
+  width: 100%;
+  height: 50%;
+}
+
+.hc-icon-btn--down:hover .hc-icon-btn__track,
+.hc-btn:hover + .hc-icon-btn--down .hc-icon-btn__track {
+  transform: translateY(0);
 }
 
 /* ── Tag chips (achievements/experience/skills tech tags) ────── */
@@ -165,13 +173,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition: transform 0.07s ease-out, box-shadow 0.07s ease-out;
 }
 
 .rs-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 32px rgba(20, 22, 27, 0.08);
-  border-color: var(--hc-ink);
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px rgba(20, 22, 27, 0.1);
 }
 
 .rs-card--nested {
@@ -204,6 +211,24 @@
   font-weight: 600;
   color: var(--hc-muted);
   text-align: right;
+}
+
+/* ── Achievement cards (Key Achievements) ─────────────── */
+.rs-card__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--hc-wash-blue);
+  color: var(--hc-ink);
+  font-size: 1.2rem;
+  align-self: flex-start;
+}
+
+.rs-card-grid .rs-card--achievement:nth-child(even) .rs-card__icon {
+  background: var(--hc-wash-violet);
 }
 
 .rs-card__name {
@@ -282,6 +307,34 @@
   border-radius: 100px;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+/* ── Job groups (Professional Experience — plain header above a
+   stack of .hc-work Challenge/Solution/Impact cards, reused from
+   Portfolio, rather than a card wrapping a grid of mini-cards) ── */
+.rs-job-group {
+  margin-bottom: 3rem;
+}
+
+.rs-job-group:last-child {
+  margin-bottom: 0;
+}
+
+.rs-job-group__header {
+  margin-bottom: 1.5rem;
+  padding: 0 2.75rem 1.25rem;
+  border-bottom: 1px solid var(--hc-line);
+}
+
+/* ── Per-project note (confidentiality) — matches _portfolio.css .pf-note ── */
+.rs-note {
+  font-size: 0.8rem;
+  color: var(--hc-muted);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: -0.3rem 0 0.4rem;
 }
 
 /* ── Education ────────────────────────────────────────── */
@@ -440,10 +493,6 @@ a.rs-cert:hover {
 
 /* ── Responsive ────────────────────────────────────────── */
 @media (width < 900px) {
-  .rs-expertise {
-    grid-template-columns: 1fr;
-  }
-
   .rs-cert-grid {
     grid-template-columns: 1fr;
   }
@@ -454,10 +503,6 @@ a.rs-cert:hover {
     padding: 1.75rem 1.5rem;
   }
 
-  .rs-hero__name {
-    font-size: 1.75rem;
-  }
-
   .rs-job {
     padding: 1.75rem 1.5rem;
   }
@@ -465,6 +510,11 @@ a.rs-cert:hover {
   .rs-job__header {
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .rs-job-group__header {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .rs-card-grid {
@@ -486,7 +536,6 @@ a.rs-cert:hover {
 @media print {
   .hc-nav,
   .hc-footer,
-  .rs-hero__actions,
   .rs-noprint {
     display: none !important;
   }
@@ -529,13 +578,11 @@ a.rs-cert:hover {
     border-radius: 0 !important;
   }
 
-  .rs-hero,
   .rs-panel {
     padding: 0 !important;
   }
 
   .rs-card--nested,
-  .rs-expertise li,
   .rs-tag,
   .rs-cert,
   .rs-job__dates,
@@ -547,12 +594,41 @@ a.rs-cert:hover {
   }
 
   .rs-job,
+  .hc-work,
   .hc-section:has(.rs-card-grid) {
     break-inside: avoid;
   }
 
   .rs-card-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rs-job-group__header {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    break-after: avoid;
+  }
+
+  .hc-work {
+    grid-template-columns: 1fr;
+    position: static !important;
+    padding: 0 0 1rem !important;
+    margin-bottom: 1rem !important;
+    gap: 0.5rem;
+  }
+
+  .hc-work__name {
+    font-size: 1.05rem;
+  }
+
+  .hc-work__point dd {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .hc-work__tile,
+  .hc-work__actions {
+    display: none !important;
   }
 
   .rs-cert-grid {

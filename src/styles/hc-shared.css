@@ -97,6 +97,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   padding: 0.85rem 1.9rem;
   border-radius: 100px;
   font-size: 0.92rem;
@@ -583,6 +584,271 @@
   font-weight: 600;
   color: var(--hc-ink);
   opacity: 0.65;
+}
+
+/* ── Capability illustrations (Engineering Expertise cards —
+   used by Home and Resume) ───────────────────────────────── */
+.hc-cap__illus {
+  position: relative;
+  min-height: 260px;
+  border-radius: 20px;
+  background: linear-gradient(150deg, var(--hc-wash-blue), #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Development illustration */
+.hc-cap-terminal {
+  width: 82%;
+  max-width: 300px;
+  border-radius: 12px;
+  background: var(--hc-ink);
+  padding: 0.9rem 1rem 1rem;
+  box-shadow: 0 20px 40px -18px rgba(20, 22, 27, 0.5);
+}
+
+.hc-cap-terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.hc-cap-terminal__bar .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.hc-cap-terminal__bar svg {
+  margin-left: auto;
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.hc-cap-terminal__body {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.9;
+  color: #94a3b8;
+}
+
+.hc-cap-terminal__body .ok {
+  color: #4ade80;
+}
+
+.hc-cap-terminal__body .hi {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.hc-cap-cursor {
+  display: inline-block;
+  width: 6px;
+  height: 12px;
+  background: #60a5fa;
+  margin-left: 4px;
+  vertical-align: -2px;
+  animation: hc-cap-blink 1s step-end infinite;
+}
+
+@keyframes hc-cap-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc-cap-cursor {
+    animation: none;
+  }
+}
+
+.hc-cap-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  color: var(--hc-ink);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.45rem 0.8rem;
+  border-radius: 100px;
+  box-shadow: 0 12px 20px -8px rgba(20, 22, 27, 0.4);
+  white-space: nowrap;
+}
+
+.hc-cap-chip svg {
+  width: 14px;
+  height: 14px;
+  color: #378ade;
+}
+
+.hc-cap-chip--code {
+  bottom: 14px;
+  right: 14px;
+}
+
+.hc-cap-chip--top {
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* AI & Intelligence illustration */
+.hc-cap-orbit {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.hc-cap-orbit__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(20, 22, 27, 0.22);
+}
+
+.hc-cap-orbit__center {
+  position: absolute;
+  inset: 41px;
+  border-radius: 50%;
+  background: var(--hc-ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--hc-font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 14px 24px -10px rgba(20, 22, 27, 0.4);
+}
+
+.hc-cap-orbit__nodes {
+  position: absolute;
+  inset: 0;
+  animation: hc-orbit-spin 16s linear infinite;
+}
+
+.hc-cap-orbit__node {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px -8px rgba(20, 22, 27, 0.4);
+  color: var(--hc-ink);
+}
+
+.hc-cap-orbit__node svg {
+  width: 16px;
+  height: 16px;
+  animation: hc-cap-spin 16s linear infinite;
+  transform-origin: center;
+}
+
+.hc-cap-orbit .node-top { top: -19px; left: 51px; }
+.hc-cap-orbit .node-right { top: 51px; right: -19px; }
+.hc-cap-orbit .node-bottom { bottom: -19px; left: 51px; }
+.hc-cap-orbit .node-left { top: 51px; left: -19px; }
+
+@keyframes hc-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc-cap-orbit__nodes,
+  .hc-cap-orbit__node svg {
+    animation: none;
+  }
+}
+
+/* Automation & AI illustration */
+.hc-cap-flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 2.5rem;
+}
+
+.hc-cap-flow__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.hc-cap-flow__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hc-ink);
+  box-shadow: 0 8px 18px -8px rgba(20, 22, 27, 0.4);
+}
+
+.hc-cap-flow__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hc-cap-flow__icon--accent {
+  background: #378ade;
+  color: #fff;
+}
+
+.hc-cap-flow__icon-spin {
+  animation: hc-cap-spin 2.4s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes hc-cap-spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc-cap-flow__icon-spin {
+    animation: none;
+  }
+}
+
+.hc-cap-flow__label {
+  font-size: 0.72rem;
+  color: var(--hc-muted);
+  font-weight: 500;
+}
+
+.hc-cap-flow__arrow {
+  width: 16px;
+  height: 16px;
+  color: var(--hc-muted);
+  margin-top: 14px;
+  flex-shrink: 0;
+}
+
+@media (width < 900px) {
+  .hc-cap__illus {
+    order: -1;
+    min-height: 220px;
+  }
 }
 
 /* ── Footer ────────────────────────────────────────────── */
