@@ -1,164 +1,240 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout/index.astro';
-import Navbar from '../../components/Navbar/index.astro';
-import Footer from '../../components/Footer/index.astro';
+import HcNav from '../../components/HcNav/index.astro';
+import HcFooter from '../../components/HcFooter/index.astro';
+import '../../styles/hc-shared.css';
 import './_portfolio.css';
-import { techIcons } from '../../data/techIcons.js';
 
 const aiProducts = [
   {
+    mark: 'NF',
     name: 'NebuFit',
-    badge: 'AI Product · Techtiz',
-    metric: 'RAG · multi-LLM · SSE streaming · Stripe',
-    description:
-      'AI-powered fitness and health platform with computer-vision body analysis, AI-generated workout and nutrition plans, bloodwork report processing, and voice-based coaching. Designed a RAG system for contextual guidance, multi-provider LLM orchestration (Claude, GPT-4o, ElevenLabs) with SSE streaming and automatic provider failover, and full Stripe subscription and entitlement management.',
-    tech: ['Flutter', 'PostgreSQL', 'Supabase', 'Redis', 'RAG', 'Claude API', 'GPT-4o', 'ElevenLabs', 'Stripe'],
+    metric: 'RAG · multi-LLM · SSE streaming',
+    challenge:
+      "Fitness apps lean on generic templates instead of adapting to a user's real body data, bloodwork, and progress, and users want conversational coaching rather than static charts.",
+    solution:
+      'Built computer-vision body analysis, AI-generated workout and nutrition plans, and bloodwork processing on a RAG system for contextual guidance, orchestrating multiple LLM providers (Claude + GPT-4o + ElevenLabs) with SSE streaming and automatic failover for resilient voice coaching, backed by full Stripe subscription and entitlement management.',
+    impact:
+      'Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance with resilient uptime and monetization built in from day one.',
   },
   {
+    mark: 'CO',
     name: 'Creative OS',
-    badge: 'AI Desktop · Techtiz',
-    metric: 'Local-first · MCP server',
-    description:
-      'Local-first AI desktop app for writers and filmmakers. Indexes Final Draft screenplays, PDFs, and notes via a RAG pipeline for semantic search and Claude-powered rewriting and editing. Extensible MCP server architecture enables tool integration without modifying the core app — Claude can interact with indexed content and external tools through a typed protocol.',
-    tech: ['Electron', 'React', 'TypeScript', 'Claude API', 'RAG', 'ChromaDB', 'MCP', 'SQLite'],
+    metric: 'Local-first · MCP server architecture',
+    challenge:
+      'Writers and filmmakers wanted AI assistance on screenplays and notes without sending unfinished creative work to the cloud, and without being locked into one fixed set of AI tools.',
+    solution:
+      'Built a local-first Electron/React desktop app that indexes Final Draft screenplays, PDFs, and notes via a RAG pipeline (ChromaDB + SQLite) for semantic search and Claude-powered rewriting, with an extensible MCP server architecture so Claude can reach indexed content and external tools through a typed protocol.',
+    impact:
+      'Gave writers AI-powered editing and search that never leaves their machine, with a tool ecosystem that grows without touching the core app.',
   },
 ];
 
 const enterprisePlatforms = [
   {
+    mark: 'OC',
     name: 'Orient Champions',
-    badge: 'Enterprise · Techtiz',
-    metric: 'Thousands of daily batch scans · nationwide · SAP ERP',
-    description:
-      'Field-sales incentive platform used nationwide by field agents across Pakistan for Orient Electronic. Architected a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs/RFC, spanning a four-level organisational hierarchy (National → Zone → Branch → FSM). Resilient offline queuing and reconciliation, JWT + Twilio OTP auth, bulk Excel/CSV processing, and AWS S3 storage. Available on both the App Store and Google Play.',
-    tech: ['Nest.js', 'React Native', 'Expo', 'MongoDB', 'SAP RFC', 'AWS S3', 'Twilio', 'JWT'],
+    metric: 'Thousands of daily batch scans · SAP ERP',
+    challenge:
+      'Orient Electronic needed a nationwide field-sales incentive program spanning a four-level hierarchy (National → Zone → Branch → FSM), with real-time sync into their existing SAP ERP — without disrupting agents working offline in the field.',
+    solution:
+      'Architected a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs/RFC, resilient offline queuing and reconciliation, JWT + Twilio OTP auth, and bulk Excel/CSV processing on AWS S3.',
+    impact:
+      'Delivered a nationwide platform on both the App Store and Google Play that keeps field agents productive offline and reconciles cleanly with SAP the moment they reconnect.',
     note: 'Client-attributed project — architecture and technical patterns discussed at a high level.',
   },
   {
+    mark: 'UN',
     name: 'UNITY Desktop App & Admin Portal',
-    badge: 'Desktop + Web · Techtiz',
     metric: 'Medical organisation · confidential client',
-    description:
-      'Built for a medical organisation (name withheld per client confidentiality). Electron + Node.js desktop app with dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill. Paired with a Next.js + Nest.js admin web portal featuring real-time notifications via WebSockets.',
-    tech: ['Electron', 'Node.js', 'Next.js', 'Nest.js', 'WebSockets', 'Role-Based Access'],
+    challenge:
+      'A medical organisation (name withheld per client confidentiality) needed a desktop tool with role-based access and credential-managed auto-fill, paired with an admin portal giving staff live visibility into activity.',
+    solution:
+      'Built an Electron + Node.js desktop app with dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, paired with a Next.js + Nest.js admin web portal featuring real-time notifications via WebSockets.',
+    impact:
+      'Gave the client a secure, centrally-configurable desktop tool and a live admin view, without exposing any client-identifying details.',
     note: 'Confidential client — no screenshots or client name disclosed.',
   },
 ];
 
 const mobileApps = [
   {
+    mark: 'HZ',
     name: 'Houzi',
-    badge: 'Flutter · BooleanBites',
-    metric: '53K+ users · 4.84★ · 500+ Envato sales · 5K+ Play downloads',
-    description:
-      'Real estate template app for the Houzez WordPress theme, used by 53,000+ users globally. Clean Architecture with Bloc state management, one-click theme configuration, REST API integration, push notifications via OneSignal, in-app chat, and comments. Also shipped the Houzi Builder desktop customisation platform and the Houzi-REST-API WordPress plugin.',
-    tech: ['Flutter', 'Dart', 'Bloc', 'Clean Architecture', 'REST APIs', 'OneSignal', 'WordPress'],
+    metric: '53K+ reach · 4.84★ · 500+ sales',
+    challenge:
+      'Houzez, a WordPress real estate theme used by 53,000+ site owners, had no companion mobile app — non-technical theme owners had no way to offer a native app experience without custom development.',
+    solution:
+      'Built Houzi, a Flutter real estate template app with Bloc state management and Clean Architecture, REST API integration, push notifications, in-app chat, and comments — plus the HouziBuilder desktop customisation platform and the Houzi-REST-API WordPress plugin.',
+    impact:
+      "Reached 53,000+ Houzez theme owners with a ready-made mobile solution, earning a 4.84★ rating, 500+ Envato sales, and 5,000+ Play Store downloads.",
   },
   {
+    mark: 'LG',
     name: 'Linked Golf',
-    badge: 'Flutter · Techtiz',
     metric: 'Deployed to App Store & Google Play',
-    description:
-      'Golf social and booking app with real-time in-app chat via PubNub, Stripe payment integration, FCM push notifications, and an Express backend. Shipped to both stores.',
-    tech: ['Flutter', 'Express', 'PubNub', 'Stripe', 'FCM', 'Node.js'],
+    challenge:
+      'A golf social and booking product needed real-time chat, payments, and push notifications working together without building each integration from scratch.',
+    solution:
+      'Built a Flutter app with real-time in-app chat via PubNub, Stripe payment integration, FCM push notifications, and an Express backend.',
+    impact:
+      'Shipped to both the App Store and Google Play as a complete golf social and booking experience.',
   },
   {
+    mark: 'AF',
     name: 'Aniflex',
-    badge: 'Flutter · Techtiz',
     metric: 'Fitness & gamification',
-    description:
-      'Fitness and gamification mobile app built in Flutter. Covers workout tracking, gamified progress milestones, and user achievements to keep users engaged with their fitness routines.',
-    tech: ['Flutter', 'Dart', 'Firebase'],
+    challenge:
+      'A fitness client wanted gamified progress tracking to keep users engaged with their workout routines, beyond a plain log of sets and reps.',
+    solution:
+      'Built a Flutter fitness and gamification app covering workout tracking, gamified progress milestones, and user achievements.',
+    impact:
+      'Delivered an engagement-first fitness app that turns routine tracking into a rewarding, achievement-driven experience.',
   },
   {
+    mark: 'EX',
     name: 'Exodus App',
-    badge: 'Flutter · Techtiz',
     metric: 'Full rebrand from Blue Sky (EPIC PC)',
-    description:
-      "Full visual and branding rebrand of the 'Blue Sky' app by EPIC PC. Updated theming, assets, navigation, and app-store metadata end-to-end.",
-    tech: ['Flutter', 'Dart'],
+    challenge:
+      "EPIC PC needed the 'Blue Sky' app fully rebranded — new visual identity, theming, and store presence — without disrupting the underlying app.",
+    solution:
+      'Delivered a full visual and branding rebrand: theming, assets, navigation, and app-store metadata updated end-to-end in Flutter.',
+    impact:
+      'Relaunched the app under its new identity with a consistent look across every screen and store listing.',
   },
   {
+    mark: 'LH',
     name: 'Linked Home · IPT Force · FSF-Ticket',
-    badge: 'Flutter · BooleanBites',
     metric: 'Multiple delivered apps',
-    description:
-      'Three separate Flutter mobile apps delivered during the BooleanBites era: Linked Home (property listing and management), IPT Force (field operations), and FSF-Ticket (support ticketing system).',
-    tech: ['Flutter', 'Dart', 'REST APIs', 'Firebase'],
+    challenge:
+      'Three separate BooleanBites-era clients each needed a purpose-built Flutter app — property management, field operations, and support ticketing — on tight, parallel timelines.',
+    solution:
+      'Delivered three independent Flutter apps: Linked Home (property listing and management), IPT Force (field operations), and FSF-Ticket (support ticketing system).',
+    impact:
+      'Shipped three production apps across different domains using a consistent Flutter + REST + Firebase toolkit.',
   },
 ];
 
 const webDesktop = [
   {
+    mark: 'HB',
     name: 'HouziBuilder',
-    badge: 'Desktop · BooleanBites',
     metric: 'Drag-and-drop theme configurator',
-    description:
-      'Desktop platform that lets non-technical users configure and preview the Houzi app theme — typography, colours, layout — before publishing changes. Built as a companion tool to the Houzi ecosystem.',
-    tech: ['Desktop', 'Flutter', 'Dart'],
+    challenge:
+      'Non-technical Houzi theme owners had no way to preview and configure typography, colours, and layout before publishing changes.',
+    solution:
+      'Built a desktop drag-and-drop theme configurator as a companion tool to the Houzi ecosystem.',
+    impact:
+      'Let theme owners self-serve visual changes with zero code, reducing back-and-forth support requests.',
   },
   {
+    mark: 'TC',
     name: 'Techtiz Corporate Website',
-    badge: 'Web · Techtiz',
     metric: 'Astro rebuild · performance & SEO',
-    description:
-      'Full rebuild of the Techtiz corporate site in Astro, improving performance scores and SEO fundamentals — faster first-load, better Core Web Vitals, and structured metadata.',
-    tech: ['Astro', 'HTML', 'CSS', 'JavaScript'],
+    challenge:
+      "Techtiz's corporate site needed better performance and SEO fundamentals than its previous stack could deliver.",
+    solution:
+      'Rebuilt the site fully in Astro, improving Core Web Vitals and structured metadata.',
+    impact:
+      'Faster first-load and stronger SEO fundamentals across the corporate site.',
   },
   {
+    mark: 'AA',
     name: 'ATTN Agency Homepage',
-    badge: 'Web · Techtiz',
     metric: 'Go High Level native-element build',
-    description:
-      'Agency homepage built natively inside Go High Level using custom CSS and HTML elements — no external page builder, full control over layout and performance.',
-    tech: ['Go High Level', 'HTML', 'CSS'],
+    challenge:
+      "ATTN wanted an agency homepage inside Go High Level without the constraints of its built-in page builder.",
+    solution:
+      'Built the homepage natively with custom CSS and HTML elements inside Go High Level, bypassing the external page builder entirely.',
+    impact:
+      'Full control over layout and performance within a platform that normally limits both.',
   },
 ];
 
 const automations = [
   {
+    mark: 'LR',
     name: 'Lead Response Automation — United Global Vanline',
-    badge: 'n8n · Go High Level · Retell AI',
-    metric: 'Contacts leads in < 1 min · AI voice call in < 2 min',
-    description:
-      'Automated lead response pipeline for a US-based moving company. A new lead submission triggers contact within 1 minute and an AI voice call within 2 minutes using Retell AI + Aloware. OpenAI-based call scoring and fraud detection routes genuine leads and suppresses junk. Built on n8n, Go High Level (Opportunities, Pipelines, Automations), and CloseBot.',
-    tech: ['n8n', 'Go High Level', 'Retell AI', 'Aloware', 'CloseBot', 'OpenAI'],
+    metric: 'Contact < 1 min · AI voice call < 2 min',
+    challenge:
+      'A US-based moving company was losing leads to slow response times — every minute of delay before first contact lowers conversion.',
+    solution:
+      'Built an n8n + Go High Level pipeline that contacts new leads within 1 minute and places an AI voice call within 2 minutes via Retell AI + Aloware, with OpenAI-based call scoring and fraud detection to route genuine leads and suppress junk.',
+    impact:
+      'Cut lead response time to under a minute with automatic quality filtering, built on n8n, Go High Level, and CloseBot.',
   },
   {
+    mark: 'AG',
     name: 'AGENTC — Agentic Job Discovery Automation',
-    badge: 'n8n · Apify · Nocodb',
     metric: 'Daily verified leads before business hours',
-    description:
-      'Daily pipeline that discovers decision-maker contacts matching a target profile, validates emails and phone numbers, deduplicates against a Nocodb CRM, and delivers a ready-to-call list before business hours every morning. Uses Apify scrapers, ZeroBounce email validation, and Clearout Phone verification.',
-    tech: ['n8n', 'Apify', 'Nocodb', 'ZeroBounce', 'Clearout Phone', 'OpenAI'],
+    challenge:
+      'Manually finding and verifying decision-maker contacts for outreach ate hours every morning before the sales team could start calling.',
+    solution:
+      'Built a daily n8n pipeline using Apify scrapers to discover matching contacts, ZeroBounce and Clearout Phone to validate emails and numbers, and Nocodb to dedupe against the existing CRM.',
+    impact:
+      'Delivers a ready-to-call, verified lead list before business hours every morning, automatically.',
   },
   {
+    mark: 'CS',
     name: 'Capital Shack — Document OCR Processing',
-    badge: 'Google Apps Script',
     metric: 'OCR bank statement extraction',
-    description:
-      'OCR-based document processing pipeline for bank statement analysis. Extracts structured financial data from PDF bank statements using Google Apps Script and routes it for downstream processing.',
-    tech: ['Google Apps Script', 'OCR', 'Google Sheets'],
+    challenge:
+      'Extracting structured financial data from PDF bank statements by hand was slow and error-prone.',
+    solution:
+      'Built an OCR-based document processing pipeline in Google Apps Script that extracts structured data from bank statement PDFs and routes it downstream.',
+    impact:
+      'Automated bank statement data extraction, removing manual entry from the workflow.',
   },
   {
+    mark: 'RL',
     name: 'Ramirez Legal Group — ClickUp Dashboard Sync',
-    badge: 'Zapier · Emergent Labs',
     metric: 'Real-time case data sync',
-    description:
-      'Real-time synchronisation of ClickUp case data to a live client-facing dashboard. Built on Zapier and Emergent Labs, giving the legal team and clients a single live view of case status without manual updates.',
-    tech: ['Zapier', 'Emergent Labs', 'ClickUp'],
+    challenge:
+      'The legal team and their clients had no single live view of case status — updates lived only inside ClickUp.',
+    solution:
+      'Built a Zapier + Emergent Labs pipeline that syncs ClickUp case data in real time to a client-facing dashboard.',
+    impact:
+      'Gave the legal team and clients one live view of case status with zero manual updates.',
   },
   {
+    mark: 'SM',
     name: 'Social Media & Outreach Automation',
-    badge: 'n8n · Google Apps Script · OpenAI',
     metric: 'Daily post scheduling · lead routing',
-    description:
-      'Two separate pipelines: (1) a social media post management system that generates platform-specific captions on a schedule and auto-posts across channels; (2) an outreach email triage pipeline that filters and validates inbound leads and routes qualified replies to the sales team via Slack.',
-    tech: ['n8n', 'Google Apps Script', 'OpenAI', 'Slack'],
+    challenge:
+      'A client needed both a steady social content cadence and a way to keep sales focused on genuinely qualified inbound leads.',
+    solution:
+      'Built two n8n pipelines: one generates platform-specific captions on a schedule and auto-posts across channels; the other filters and validates inbound leads and routes qualified replies to sales via Slack.',
+    impact:
+      'Kept a consistent posting cadence while routing only qualified leads to the sales team.',
   },
 ];
 
-// Curated tech stack for the "Built With" section below.
+const templates = [
+  {
+    mark: 'KQ',
+    name: 'Kumquat — Talent Match',
+    metric: 'Published FlutterFlow Marketplace',
+    challenge:
+      'Recruitment and talent-matching apps needed a proven FlutterFlow starting point instead of being built from a blank canvas.',
+    solution:
+      'Published Kumquat, a FlutterFlow starter template with profile listings, filtering, and match request flows.',
+    impact:
+      'Published to the FlutterFlow Marketplace as a reusable starting point for talent-matching apps.',
+  },
+  {
+    mark: 'FB',
+    name: 'Foodii — Recipe Book',
+    metric: 'Published FlutterFlow Marketplace',
+    challenge:
+      'Recipe and meal-planning apps needed a clean, card-based starting point rather than a from-scratch build.',
+    solution:
+      'Published Foodii, a FlutterFlow starter template covering browsing, saving, and categorising recipes.',
+    impact:
+      'Published to the FlutterFlow Marketplace as a reusable recipe-app starting point.',
+  },
+];
+
+// Curated tech stack for the "Built With" marquee below the hero.
 const builtWith = [
   { name: 'Flutter', icon: '/assets/svgs/flutter.svg' },
   { name: 'Dart', icon: '/assets/svgs/dart.svg' },
@@ -196,20 +272,48 @@ const builtWith = [
   { name: 'JWT', icon: '/assets/svgs/jwt.svg' },
 ];
 
-const templates = [
+const categories = [
   {
-    name: 'Kumquat — Talent Match',
-    badge: 'FlutterFlow Template',
-    metric: 'Published FlutterFlow Marketplace',
-    description: 'FlutterFlow starter template for talent-matching and recruitment apps. Includes profile listings, filtering, and match request flows.',
-    tech: ['FlutterFlow', 'Dart', 'Firebase'],
+    id: 'ai',
+    icon: 'ri-robot-line',
+    title: 'AI & LLM Products',
+    blurb: 'RAG pipelines and multi-provider LLM orchestration shipped into production products.',
+    items: aiProducts,
   },
   {
-    name: 'Foodii — Recipe Book',
-    badge: 'FlutterFlow Template',
-    metric: 'Published FlutterFlow Marketplace',
-    description: 'FlutterFlow starter template for recipe book and meal-planning apps. Covers browsing, saving, and categorising recipes with a clean card-based UI.',
-    tech: ['FlutterFlow', 'Dart', 'Firebase'],
+    id: 'enterprise',
+    icon: 'ri-building-2-line',
+    title: 'Enterprise & Desktop Platforms',
+    blurb: 'Field-sales and desktop platforms built for real organisational scale.',
+    items: enterprisePlatforms,
+  },
+  {
+    id: 'mobile',
+    icon: 'ri-smartphone-line',
+    title: 'Mobile Applications',
+    blurb: 'Cross-platform Flutter apps shipped to the App Store and Google Play.',
+    items: mobileApps,
+  },
+  {
+    id: 'web',
+    icon: 'ri-global-line',
+    title: 'Web & Desktop',
+    blurb: 'Corporate sites and desktop tools built for performance and control.',
+    items: webDesktop,
+  },
+  {
+    id: 'automation',
+    icon: 'ri-flow-chart',
+    title: 'Automation Systems',
+    blurb: 'n8n, Apify, and Zapier pipelines that replace hours of manual work.',
+    items: automations,
+  },
+  {
+    id: 'templates',
+    icon: 'ri-layout-grid-line',
+    title: 'Templates & Tools',
+    blurb: 'Reusable FlutterFlow starter kits published to the marketplace.',
+    items: templates,
   },
 ];
 ---
@@ -218,248 +322,127 @@ const templates = [
   title="Portfolio — Muhammad Suleman Saleem"
   description="Projects by Muhammad Suleman Saleem: AI products, enterprise platforms, mobile apps, automation systems, and web work."
 >
-  <Navbar />
-  <main class="portfolio-page">
+  <div class="hc-page">
+    <HcNav />
 
-    <!-- Page header -->
-    <header class="page-hero">
-      <div class="page-hero__container" data-aos="fade-up">
-        <p class="section__label">Work</p>
-        <h1 class="page-hero__title">Projects & Portfolio</h1>
-        <p class="page-hero__sub">
-          Production work spanning AI products, enterprise field-sales platforms, cross-platform
-          mobile apps, desktop tools, and workflow automation systems.
-        </p>
-      </div>
-    </header>
+    <main class="hc-main">
 
-    <!-- Built With -->
-    <section class="built-with" data-aos="fade-up">
-      <p class="built-with__label">
-        <img src="/assets/svgs/built-with.svg" alt="" width="16" height="16" /> Built With
-      </p>
-      <div class="built-with__track">
-        <div class="built-with__marquee">
-          <div class="built-with__row">
-            {builtWith.map((t) => (
-              <span class="bw-chip">
-                {t.icon
-                  ? <img src={t.icon} alt="" width="14" height="14" class="bw-chip__icon" />
-                  : <i class="ri-price-tag-3-line bw-chip__icon" aria-hidden="true"></i>}
-                {t.name}
-              </span>
+      <!-- Hero -->
+      <section class="hc-section">
+        <div class="hc-card pf-hero" data-aos="fade-up">
+          <p class="hc-eyebrow">Work</p>
+          <h1 class="pf-hero__title">Projects &amp; Portfolio</h1>
+          <p class="pf-hero__sub">
+            Production work spanning AI products, enterprise field-sales platforms, cross-platform
+            mobile apps, desktop tools, and workflow automation systems.
+          </p>
+          <nav class="pf-quicknav" aria-label="Jump to category">
+            {categories.map((c) => (
+              <a href={`#${c.id}`}>
+                <i class={c.icon} aria-hidden="true"></i>
+                {c.title}
+              </a>
             ))}
+          </nav>
+        </div>
+      </section>
+
+      <!-- Built With -->
+      <section class="hc-section">
+        <div class="hc-card hc-stack" data-aos="fade-up">
+          <p class="hc-stack__badge">
+            <img src="/assets/svgs/built-with-black.svg" alt="" width="16" height="16" />
+            Built With
+          </p>
+          <div class="hc-stack__track">
+            <div class="hc-stack__marquee">
+              <div class="hc-stack__row">
+                {builtWith.map((t) => (
+                  <span class="hc-stack__chip">
+                    <img src={t.icon} alt="" width="18" height="18" />
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+              <div class="hc-stack__row" aria-hidden="true">
+                {builtWith.map((t) => (
+                  <span class="hc-stack__chip">
+                    <img src={t.icon} alt="" width="18" height="18" />
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-          <div class="built-with__row" aria-hidden="true">
-            {builtWith.map((t) => (
-              <span class="bw-chip">
-                {t.icon
-                  ? <img src={t.icon} alt="" width="14" height="14" class="bw-chip__icon" />
-                  : <i class="ri-price-tag-3-line bw-chip__icon" aria-hidden="true"></i>}
-                {t.name}
-              </span>
-            ))}
+        </div>
+      </section>
+
+      <!-- Categories -->
+      {categories.map((cat) => (
+        <section class="hc-section pf-category" id={cat.id}>
+          <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+            <h2 class="hc-heading">{cat.title}</h2>
+            <p class="hc-section__subtitle">{cat.blurb}</p>
+          </div>
+
+          {cat.items.map((p, i) => (
+            <div class="hc-card hc-work" data-aos="fade-up">
+              <div class="hc-work__content">
+                <h3 class="hc-work__name">{p.name}</h3>
+                <dl class={`hc-work__breakdown ${i % 2 === 1 ? 'hc-work__breakdown--violet' : ''}`}>
+                  <div class="hc-work__point">
+                    <dt>Challenge</dt>
+                    <dd>{p.challenge}</dd>
+                  </div>
+                  <div class="hc-work__point">
+                    <dt>Solution</dt>
+                    <dd>{p.solution}</dd>
+                  </div>
+                  <div class="hc-work__point">
+                    <dt>Impact</dt>
+                    <dd>{p.impact}</dd>
+                  </div>
+                </dl>
+                {p.note && (
+                  <p class="pf-note"><i class="ri-lock-line" aria-hidden="true"></i> {p.note}</p>
+                )}
+                <div class="hc-work__actions">
+                  <span class="hc-btn hc-btn--primary hc-btn--sm">Case Study</span>
+                  <span class="hc-icon-btn" aria-hidden="true">
+                    <span class="hc-icon-btn__track">
+                      <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                      <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class={`hc-work__tile hc-work__tile--${i % 2 === 1 ? 'violet' : 'blue'}`}>
+                <span class="hc-work__mark">{p.mark}</span>
+                <span class="hc-work__tile-name">{p.name}</span>
+                <span class="hc-work__tile-metric">{p.metric}</span>
+              </div>
+            </div>
+          ))}
+        </section>
+      ))}
+
+      <!-- CTA band -->
+      <section class="hc-section">
+        <div class="hc-card hc-cta" data-aos="fade-up">
+          <div class="hc-cta__dots" aria-hidden="true"></div>
+          <div class="hc-cta__content">
+            <p class="hc-cta__status"><span class="hc-cta__dot"></span>Available for work</p>
+            <h2 class="hc-heading">Got a project like these<br />in mind?</h2>
+            <p class="hc-cta__subtitle">Let's talk about what you're building and how I can help ship it.</p>
+          </div>
+          <div class="hc-cta__actions">
+            <a href="/contact" class="hc-btn hc-btn--primary">Get in touch</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <div class="portfolio-content">
-
-      <!-- AI Products -->
-      <section id="ai" class="portfolio-section">
-        <div class="portfolio-section__head" data-aos="fade-up">
-          <h2 class="portfolio-section__title">
-            <i class="ri-robot-line" aria-hidden="true"></i>
-            AI &amp; LLM Products
-          </h2>
-        </div>
-        <div class="portfolio-grid">
-          {aiProducts.map((p, i) => (
-            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-              <div class="pcard__top">
-                <span class="pcard__badge">{p.badge}</span>
-                <span class="pcard__metric">{p.metric}</span>
-              </div>
-              <h3 class="pcard__name">{p.name}</h3>
-              <p class="pcard__desc">{p.description}</p>
-              <div class="pcard__tech">
-                {p.tech.map((t) => (
-                  <span class="tag">
-                    {techIcons[t]
-                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
       </section>
 
-      <!-- Enterprise -->
-      <section id="enterprise" class="portfolio-section portfolio-section--alt">
-        <div class="portfolio-section__head" data-aos="fade-up">
-          <h2 class="portfolio-section__title">
-            <i class="ri-building-2-line" aria-hidden="true"></i>
-            Enterprise &amp; Desktop Platforms
-          </h2>
-        </div>
-        <div class="portfolio-grid">
-          {enterprisePlatforms.map((p, i) => (
-            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-              <div class="pcard__top">
-                <span class="pcard__badge">{p.badge}</span>
-                <span class="pcard__metric">{p.metric}</span>
-              </div>
-              <h3 class="pcard__name">{p.name}</h3>
-              <p class="pcard__desc">{p.description}</p>
-              {p.note && <p class="pcard__note"><i class="ri-lock-line" aria-hidden="true"></i> {p.note}</p>}
-              <div class="pcard__tech">
-                {p.tech.map((t) => (
-                  <span class="tag">
-                    {techIcons[t]
-                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+    </main>
 
-      <!-- Mobile Apps -->
-      <section id="mobile" class="portfolio-section">
-        <div class="portfolio-section__head" data-aos="fade-up">
-          <h2 class="portfolio-section__title">
-            <i class="ri-smartphone-line" aria-hidden="true"></i>
-            Mobile Applications
-          </h2>
-        </div>
-        <div class="portfolio-grid">
-          {mobileApps.map((p, i) => (
-            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-              <div class="pcard__top">
-                <span class="pcard__badge">{p.badge}</span>
-                <span class="pcard__metric">{p.metric}</span>
-              </div>
-              <h3 class="pcard__name">{p.name}</h3>
-              <p class="pcard__desc">{p.description}</p>
-              <div class="pcard__tech">
-                {p.tech.map((t) => (
-                  <span class="tag">
-                    {techIcons[t]
-                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <!-- Web & Desktop -->
-      <section id="web" class="portfolio-section portfolio-section--alt">
-        <div class="portfolio-section__head" data-aos="fade-up">
-          <h2 class="portfolio-section__title">
-            <i class="ri-global-line" aria-hidden="true"></i>
-            Web &amp; Desktop
-          </h2>
-        </div>
-        <div class="portfolio-grid">
-          {webDesktop.map((p, i) => (
-            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-              <div class="pcard__top">
-                <span class="pcard__badge">{p.badge}</span>
-                <span class="pcard__metric">{p.metric}</span>
-              </div>
-              <h3 class="pcard__name">{p.name}</h3>
-              <p class="pcard__desc">{p.description}</p>
-              <div class="pcard__tech">
-                {p.tech.map((t) => (
-                  <span class="tag">
-                    {techIcons[t]
-                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <!-- Automations -->
-      <section id="automation" class="portfolio-section">
-        <div class="portfolio-section__head" data-aos="fade-up">
-          <h2 class="portfolio-section__title">
-            <i class="ri-flow-chart" aria-hidden="true"></i>
-            Automation Systems
-          </h2>
-        </div>
-        <div class="portfolio-grid portfolio-grid--wide">
-          {automations.map((p, i) => (
-            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-              <div class="pcard__top">
-                <span class="pcard__badge">{p.badge}</span>
-                <span class="pcard__metric">{p.metric}</span>
-              </div>
-              <h3 class="pcard__name">{p.name}</h3>
-              <p class="pcard__desc">{p.description}</p>
-              <div class="pcard__tech">
-                {p.tech.map((t) => (
-                  <span class="tag">
-                    {techIcons[t]
-                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <!-- Templates -->
-      <section id="templates" class="portfolio-section portfolio-section--alt">
-        <div class="portfolio-section__head" data-aos="fade-up">
-          <h2 class="portfolio-section__title">
-            <i class="ri-layout-grid-line" aria-hidden="true"></i>
-            Templates &amp; Tools
-          </h2>
-        </div>
-        <div class="portfolio-grid">
-          {templates.map((p, i) => (
-            <article class="pcard" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-              <div class="pcard__top">
-                <span class="pcard__badge">{p.badge}</span>
-                <span class="pcard__metric">{p.metric}</span>
-              </div>
-              <h3 class="pcard__name">{p.name}</h3>
-              <p class="pcard__desc">{p.description}</p>
-              <div class="pcard__tech">
-                {p.tech.map((t) => (
-                  <span class="tag">
-                    {techIcons[t]
-                      ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-    </div>
-  </main>
-  <Footer />
+    <HcFooter />
+  </div>
 </BaseLayout>

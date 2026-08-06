@@ -1,0 +1,61 @@
+---
+const links = [
+  { href: '/', label: 'About' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/resume', label: 'Resume' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<nav class="hc-nav">
+  <div class="hc-nav__bar">
+    <a href="/" class="hc-nav__logo">
+      <img src="/assets/favicons/android-chrome-192x192.png" alt="" width="34" height="34" />
+      Muhammad Suleman Saleem
+    </a>
+    <label for="hc-check" class="hc-nav__toggle" aria-label="Toggle menu">
+      <i class="ri-menu-line"></i>
+    </label>
+    <input type="checkbox" id="hc-check" />
+    <ul class="hc-nav__links">
+      {links.map((l) => (
+        <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
+      ))}
+    </ul>
+    <a href="/contact" class="hc-btn hc-btn--primary hc-nav__cta">Get in touch</a>
+  </div>
+</nav>
+
+<script>
+  const hcNav = document.querySelector<HTMLElement>('.hc-nav');
+
+  if (hcNav) {
+    let hcLastScrollY = window.scrollY;
+    let hcTicking = false;
+
+    const hcUpdateNav = () => {
+      const currentY = window.scrollY;
+      if (currentY > hcLastScrollY && currentY > 80) {
+        hcNav.classList.add('hc-nav--hidden');
+      } else if (currentY < hcLastScrollY) {
+        hcNav.classList.remove('hc-nav--hidden');
+      }
+      hcLastScrollY = currentY;
+      hcTicking = false;
+    };
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!hcTicking) {
+          requestAnimationFrame(hcUpdateNav);
+          hcTicking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+</script>
