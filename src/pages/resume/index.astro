@@ -1,9 +1,45 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout/index.astro';
-import Navbar from '../../components/Navbar/index.astro';
-import Footer from '../../components/Footer/index.astro';
+import HcNav from '../../components/HcNav/index.astro';
+import HcFooter from '../../components/HcFooter/index.astro';
 import { techIcons } from '../../data/techIcons.js';
+import '../../styles/hc-shared.css';
 import './_resume.css';
+
+const coreTech = [
+  { name: 'Flutter', icon: '/assets/svgs/flutter.svg' },
+  { name: 'Node.js', icon: '/assets/svgs/nodejs.svg' },
+  { name: 'Claude API', icon: '/assets/svgs/claude-api.svg' },
+  { name: 'RAG', icon: '/assets/svgs/rag.svg' },
+  { name: 'n8n', icon: '/assets/svgs/n8n.svg' },
+  { name: 'React Native', icon: '/assets/svgs/react-native.svg' },
+  { name: 'Electron', icon: '/assets/svgs/electron.svg' },
+  { name: 'Nest.js', icon: '/assets/svgs/nestjs.svg' },
+  { name: 'TypeScript', icon: '/assets/svgs/typescript.svg' },
+];
+
+const stats = [
+  { number: '5+', label: 'Years Experience' },
+  { number: '2', label: 'Companies' },
+  { number: '10', label: 'Certifications' },
+  { number: '5', label: 'Key Achievements' },
+];
+
+const expertise = [
+  { icon: '/assets/svgs/flutter.svg', label: 'Flutter & Dart Development' },
+  { icon: '/assets/svgs/nodejs.svg', label: 'Full-Stack Development (Node.js, Nest.js, Express, Next.js)' },
+  { icon: '/assets/svgs/rag.svg', label: 'AI/LLM Integration & RAG Pipelines' },
+  { icon: '/assets/svgs/clean-architecture.svg', label: 'Scalable App & Backend Architecture' },
+  { icon: '/assets/svgs/n8n.svg', label: 'Workflow Automation (n8n, App Script, Zapier, Go High Level)' },
+  { icon: '/assets/svgs/css.svg', label: 'UI/UX Implementation & Responsive Design' },
+  { icon: '/assets/svgs/rest-apis.svg', label: 'API Integration & Third-Party Services' },
+  { icon: '/assets/svgs/firebase.svg', label: 'Cloud & Serverless (Firebase, Supabase, AWS)' },
+  { icon: '/assets/svgs/postgresql.svg', label: 'Database Management' },
+  { icon: '/assets/svgs/stripe.svg', label: 'Payment & Subscription Systems (Stripe)' },
+  { icon: '/assets/svgs/native-mobile.svg', label: 'Native iOS & Android Integrations' },
+  { icon: '/assets/svgs/leadership-mentorship.svg', label: 'Technical Leadership & Mentorship' },
+  { icon: '/assets/svgs/agile-scrum.svg', label: 'Agile & Scrum Methodologies' },
+];
 
 const achievements = [
   {
@@ -244,6 +280,43 @@ const relevantExperience = {
   ],
 };
 
+const education = [
+  {
+    degree: 'Bachelor of Computer Science',
+    institution: 'Information Technology University (ITU), Lahore',
+    note: 'FYP: Intelligent Home Automation System with Dr. Suleman Mazhar',
+    dates: '2015 – 2019',
+    logo: '/assets/logos/itu.png',
+  },
+  {
+    degree: 'F.Sc Pre-Engineering',
+    institution: 'Government College University (GCU), Lahore',
+    note: '',
+    dates: '2013 – 2015',
+    logo: '/assets/logos/gcu.png',
+  },
+  {
+    degree: 'Matriculation',
+    institution: 'Hashmat Memorial High School (HMS)',
+    note: '',
+    dates: '2011 – 2013',
+    logo: '/assets/logos/hmss.png',
+  },
+];
+
+const certifications = [
+  { name: 'Claude 101', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/claude-101' },
+  { name: 'Claude Code 101', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/claude-code-101' },
+  { name: 'Introduction to Agent Skills', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/introduction-to-agent-skills' },
+  { name: 'Claude Code in Action', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/claude-code-in-action' },
+  { name: 'Introduction to Model Context Protocol', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/introduction-to-model-context-protocol' },
+  { name: 'n8n Level 1', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: null },
+  { name: 'n8n Quickstart', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n-quickstart' },
+  { name: 'n8n101 - Essentials: Your First Workflows', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n101-essentials' },
+  { name: 'n8n102 - Integrations: APIs and Connected Workflows', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n102-integrations' },
+  { name: 'n8n103 - In Practice: AI, Testing, and Best Practices', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n103-in-practice' },
+];
+
 const skillGroups = [
   { label: 'Programming Languages', items: ['Dart', 'Java', 'Kotlin', 'Swift', 'JavaScript', 'TypeScript', 'PHP', 'Python'] },
   { label: 'Frameworks & Technologies', items: ['Flutter', 'Electron', 'Node.js', 'Nest.js', 'Express', 'Next.js', 'FlutterFlow', 'Expo', 'React Native', 'Astro'] },
@@ -256,93 +329,81 @@ const skillGroups = [
   { label: 'Version Control & PM', items: ['Git', 'GitHub', 'SourceTree', 'Jira', 'Trello', 'Slack', 'Worktivity', 'ClickUp', 'Emergent Labs'] },
   { label: 'IDEs & Dev Tools', items: ['Android Studio', 'Xcode', 'Cursor', 'Visual Studio Code', 'Postman', 'Unity 3D'] },
 ];
+
+function renderTech(t: string) {
+  return techIcons[t] ?? null;
+}
 ---
 
 <BaseLayout
   title="Resume — Muhammad Suleman Saleem"
   description="Resume of Muhammad Suleman Saleem, Full-Stack Software Engineer and AI Product Engineer."
 >
-  <Navbar />
-  <main class="resume-page" id="resume-page">
-    <script is:inline>
-      (function () {
-        try {
-          if (localStorage.getItem('resumeView') !== 'plain') {
-            document.getElementById('resume-page').setAttribute('data-view', 'card');
-          }
-        } catch (e) {}
-      })();
-    </script>
+  <div class="hc-page">
+    <HcNav />
 
-    <!-- Layout toggle -->
-    <div class="resume-toggle" role="group" aria-label="Resume layout">
-      <button type="button" class="resume-toggle__btn" data-view="card" aria-pressed="true">
-        <i class="ri-layout-grid-line" aria-hidden="true"></i>
-        Grid
-      </button>
-      <button type="button" class="resume-toggle__btn" data-view="plain" aria-pressed="false">
-        <i class="ri-file-list-2-line" aria-hidden="true"></i>
-        Plain
-      </button>
+    <!-- Print-only header (hidden on screen) -->
+    <div class="rs-print-header">
+      <h1>Muhammad Suleman Saleem</h1>
+      <p>
+        Shahdara Town, Lahore, Pakistan &nbsp;·&nbsp; +92 307 1123666 &nbsp;·&nbsp;
+        rana.suleman2297@gmail.com &nbsp;·&nbsp; linkedin.com/in/muhammad-suleman-saleem
+      </p>
     </div>
 
-    <!-- Page hero -->
-    <header class="page-hero">
-      <div class="page-hero__inner" data-aos="fade-up">
-        <p class="section__label">Resume</p>
-        <h1 class="page-hero__title">Muhammad Suleman Saleem</h1>
-        <p class="page-hero__role">Full-Stack Software Engineer &amp; AI Product Engineer</p>
-        <p class="page-hero__focus">LLM Systems &amp; Automation &nbsp;·&nbsp; Production-Ready AI Solutions</p>
-        <div class="page-hero__tech" aria-label="Core technologies">
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/flutter.svg" alt="" width="14" height="14" /></span>Flutter</span>
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/nodejs.svg" alt="" width="14" height="14" /></span>Node.js</span>
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/claude-api.svg" alt="" width="14" height="14" /></span>Claude API</span>
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/rag.svg" alt="" width="14" height="14" /></span>RAG</span>
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/n8n.svg" alt="" width="14" height="14" /></span>n8n</span>
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/react-native.svg" alt="" width="14" height="14" /></span>React Native</span>
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/electron.svg" alt="" width="14" height="14" /></span>Electron</span>
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/nestjs.svg" alt="" width="14" height="14" /></span>Nest.js</span>
-          <span><span class="page-hero__tech-icon"><img src="/assets/svgs/typescript.svg" alt="" width="14" height="14" /></span>TypeScript</span>
-        </div>
-        <div class="page-hero__actions">
-          <a
-            href="/Muhammad_Suleman_Saleem_Resume.pdf"
-            download="Muhammad_Suleman_Saleem_Resume.pdf"
-            class="btn btn--primary"
-          >
-            <i class="ri-download-2-line" aria-hidden="true"></i>
-            Download Resume
-          </a>
-          <a
-            href="https://linkedin.com/in/muhammad-suleman-saleem"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn--outline"
-          >
-            <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
-            LinkedIn Profile
-          </a>
-        </div>
-      </div>
-    </header>
+    <main class="hc-main">
 
-    <!-- Resume content -->
-    <div class="resume-wrap">
-      <div class="resume">
-
-        <!-- Shown only when printing (replaces the dark page-hero) -->
-        <div class="print-header">
-          <h1 class="print-header__name">Muhammad Suleman Saleem</h1>
-          <p class="print-header__contact">
-            Shahdara Town, Lahore, Pakistan &nbsp;·&nbsp; +92 307 1123666 &nbsp;·&nbsp;
-            rana.suleman2297@gmail.com &nbsp;·&nbsp; linkedin.com/in/muhammad-suleman-saleem
-          </p>
+      <!-- Hero -->
+      <section class="hc-section">
+        <div class="hc-card rs-hero rs-panel" data-aos="fade-up">
+          <p class="hc-eyebrow">Resume</p>
+          <h1 class="rs-hero__name">Muhammad Suleman Saleem</h1>
+          <p class="rs-hero__role">Full-Stack Software Engineer &amp; AI Product Engineer</p>
+          <p class="rs-hero__focus">LLM Systems &amp; Automation &nbsp;·&nbsp; Production-Ready AI Solutions</p>
+          <ul class="rs-hero__tech" aria-label="Core technologies">
+            {coreTech.map((t) => (
+              <li><img src={t.icon} alt="" width="14" height="14" />{t.name}</li>
+            ))}
+          </ul>
+          <div class="rs-hero__actions">
+            <a
+              href="/Muhammad_Suleman_Saleem_Resume.pdf"
+              download="Muhammad_Suleman_Saleem_Resume.pdf"
+              class="hc-btn hc-btn--primary"
+            >
+              <i class="ri-download-2-line" aria-hidden="true"></i>
+              Download Resume
+            </a>
+            <a
+              href="https://linkedin.com/in/muhammad-suleman-saleem"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hc-btn hc-btn--outline"
+            >
+              <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
+              LinkedIn Profile
+            </a>
+          </div>
         </div>
+      </section>
 
-        <!-- Summary -->
-        <section id="summary" class="resume-section" data-aos="fade-up">
-          <h2 class="resume-section__title">Professional Summary</h2>
-          <p class="resume-summary">
+      <!-- Stats -->
+      <section class="hc-section hc-section--tight rs-noprint">
+        <div class="hc-card hc-stats" data-aos="fade-up">
+          {stats.map((s) => (
+            <div class="hc-stat">
+              <span class="hc-stat__number">{s.number}</span>
+              <span class="hc-stat__label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Professional Summary -->
+      <section class="hc-section" id="summary">
+        <div class="hc-card rs-panel" data-aos="fade-up">
+          <p class="hc-eyebrow">Professional Summary</p>
+          <p class="rs-summary">
             Full-stack Software Engineer with <strong>5+ years</strong> of experience building
             cross-platform mobile, web, and desktop applications and, more recently, production
             AI/LLM-powered systems. Deep expertise in <strong>Flutter and Dart</strong>, with
@@ -357,268 +418,236 @@ const skillGroups = [
             mentoring developers, automating repetitive business workflows, and translating
             ambiguous requirements into working production systems.
           </p>
-        </section>
+        </div>
+      </section>
 
-        <!-- Areas of Expertise -->
-        <section id="skills" class="resume-section" data-aos="fade-up">
-          <h2 class="resume-section__title">Areas of Expertise</h2>
-          <ul class="expertise-grid expertise-grid--columns">
-            <li><img src="/assets/svgs/flutter.svg" alt="" width="14" height="14" class="expertise-icon" />Flutter &amp; Dart Development</li>
-            <li><img src="/assets/svgs/nodejs.svg" alt="" width="14" height="14" class="expertise-icon" />Full-Stack Development (Node.js, Nest.js, Express, Next.js)</li>
-            <li><img src="/assets/svgs/rag.svg" alt="" width="14" height="14" class="expertise-icon" />AI/LLM Integration &amp; RAG Pipelines</li>
-            <li><img src="/assets/svgs/clean-architecture.svg" alt="" width="14" height="14" class="expertise-icon" />Scalable App &amp; Backend Architecture</li>
-            <li><img src="/assets/svgs/n8n.svg" alt="" width="14" height="14" class="expertise-icon" />Workflow Automation (n8n, App Script, Zapier, Go High Level)</li>
-            <li><img src="/assets/svgs/css.svg" alt="" width="14" height="14" class="expertise-icon" />UI/UX Implementation &amp; Responsive Design</li>
-            <li><img src="/assets/svgs/rest-apis.svg" alt="" width="14" height="14" class="expertise-icon" />API Integration &amp; Third-Party Services</li>
-            <li><img src="/assets/svgs/firebase.svg" alt="" width="14" height="14" class="expertise-icon" />Cloud &amp; Serverless (Firebase, Supabase, AWS)</li>
-            <li><img src="/assets/svgs/postgresql.svg" alt="" width="14" height="14" class="expertise-icon" />Database Management</li>
-            <li><img src="/assets/svgs/stripe.svg" alt="" width="14" height="14" class="expertise-icon" />Payment &amp; Subscription Systems (Stripe)</li>
-            <li><img src="/assets/svgs/native-mobile.svg" alt="" width="14" height="14" class="expertise-icon" />Native iOS &amp; Android Integrations</li>
-            <li><img src="/assets/svgs/leadership-mentorship.svg" alt="" width="14" height="14" class="expertise-icon" />Technical Leadership &amp; Mentorship</li>
-            <li><img src="/assets/svgs/agile-scrum.svg" alt="" width="14" height="14" class="expertise-icon" />Agile &amp; Scrum Methodologies</li>
-          </ul>
-        </section>
-
-        <!-- Key Achievements -->
-        <section id="achievements" class="resume-section">
-          <h2 class="resume-section__title" data-aos="fade-up">Key Achievements</h2>
-          <ul class="resume-list resume-card-list">
-            {achievements.map((a, i) => (
-              <li class="resume-card" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-                <div class="resume-card__top">
-                  <span class="resume-card__badge">{a.badge}</span>
-                  <span class="resume-card__metric">{a.metric}</span>
-                </div>
-                <h3 class="resume-card__name">{a.name}</h3>
-                <p class="resume-card__desc">{a.description}</p>
-                {a.tech.length > 0 && (
-                  <div class="resume-card__tech">
-                    {a.tech.map((t) => (
-                      <span class="tag">
-                        {techIcons[t]
-                          ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                          : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </li>
+      <!-- Areas of Expertise -->
+      <section class="hc-section" id="skills">
+        <div class="hc-card rs-panel" data-aos="fade-up">
+          <p class="hc-eyebrow">Areas of Expertise</p>
+          <ul class="rs-expertise">
+            {expertise.map((e) => (
+              <li><img src={e.icon} alt="" width="14" height="14" />{e.label}</li>
             ))}
           </ul>
-        </section>
+        </div>
+      </section>
 
-        <!-- Professional Experience -->
-        <section id="experience" class="resume-section">
-          <h2 class="resume-section__title" data-aos="fade-up">Professional Experience</h2>
-
-          {experienceJobs.map((job, ji) => (
-            <div class="job">
-              <div class="job__header" data-aos="fade-up" data-aos-delay={ji * 100}>
-                <div class="job__header-main">
-                  {job.logo && <img src={job.logo} alt="" width="32" height="32" class="job__logo" />}
-                  <div>
-                    <p class="job__title">{job.title}</p>
-                    <p class="job__company">{job.company}</p>
-                  </div>
-                </div>
-                <span class="job__dates">{job.dates}</span>
+      <!-- Key Achievements -->
+      <section class="hc-section" id="achievements">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Key Achievements</h2>
+        </div>
+        <div class="rs-card-grid">
+          {achievements.map((a, i) => (
+            <div class="hc-card rs-card" data-aos="fade-up" data-aos-delay={i * 60}>
+              <div class="rs-card__top">
+                <span class="rs-card__badge">{a.badge}</span>
+                <span class="rs-card__metric">{a.metric}</span>
               </div>
-              <ul class="resume-list resume-card-list">
-                {job.items.map((item, i) => (
-                  <li class="resume-card" data-aos="fade-up" data-aos-delay={100 + i * 80}>
-                    {(item.badge || item.metric) && (
-                      <div class="resume-card__top">
-                        {item.badge && <span class="resume-card__badge">{item.badge}</span>}
-                        {item.metric && <span class="resume-card__metric">{item.metric}</span>}
-                      </div>
-                    )}
-                    <h3 class="resume-card__name">{item.name}</h3>
-                    <p class="resume-card__desc">{item.description}</p>
-                    {item.tech.length > 0 && (
-                      <div class="resume-card__tech">
-                        {item.tech.map((t) => (
-                          <span class="tag">
-                            {techIcons[t]
-                              ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                              : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              <h3 class="rs-card__name">{a.name}</h3>
+              <p class="rs-card__desc">{a.description}</p>
+              {a.tech.length > 0 && (
+                <div class="rs-card__tech">
+                  {a.tech.map((t) => (
+                    <span class="rs-tag">
+                      {renderTech(t)
+                        ? <img src={renderTech(t)} alt="" width="12" height="12" />
+                        : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
-        </section>
+        </div>
+      </section>
 
-        <!-- Relevant Experience -->
-        <section class="resume-section">
-          <h2 class="resume-section__title" data-aos="fade-up">Relevant Experience</h2>
-          <div class="job">
-            <div class="job__header" data-aos="fade-up">
-              <div class="job__header-main">
-                {relevantExperience.logo && <img src={relevantExperience.logo} alt="" width="32" height="32" class="job__logo" />}
+      <!-- Professional Experience -->
+      <section class="hc-section" id="experience">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Professional Experience</h2>
+        </div>
+
+        {experienceJobs.map((job) => (
+          <div class="hc-card rs-job" data-aos="fade-up">
+            <div class="rs-job__header">
+              <div class="rs-job__header-main">
+                {job.logo && <img src={job.logo} alt="" width="36" height="36" class="rs-job__logo" />}
                 <div>
-                  <p class="job__title">{relevantExperience.title}</p>
-                  <p class="job__company">{relevantExperience.company}</p>
+                  <p class="rs-job__title">{job.title}</p>
+                  <p class="rs-job__company">{job.company}</p>
                 </div>
               </div>
-              <span class="job__dates">{relevantExperience.dates}</span>
+              <span class="rs-job__dates">{job.dates}</span>
             </div>
-            <ul class="resume-list resume-card-list">
-              {relevantExperience.items.map((item, i) => (
-                <li class="resume-card" data-aos="fade-up" data-aos-delay={100 + i * 80}>
+            <div class="rs-card-grid rs-card-grid--nested">
+              {job.items.map((item) => (
+                <div class="rs-card rs-card--nested">
                   {(item.badge || item.metric) && (
-                    <div class="resume-card__top">
-                      {item.badge && <span class="resume-card__badge">{item.badge}</span>}
-                      {item.metric && <span class="resume-card__metric">{item.metric}</span>}
+                    <div class="rs-card__top">
+                      {item.badge && <span class="rs-card__badge">{item.badge}</span>}
+                      {item.metric && <span class="rs-card__metric">{item.metric}</span>}
                     </div>
                   )}
-                  <h3 class="resume-card__name">{item.name}</h3>
-                  <p class="resume-card__desc">{item.description}</p>
+                  <h3 class="rs-card__name">{item.name}</h3>
+                  <p class="rs-card__desc">{item.description}</p>
                   {item.tech.length > 0 && (
-                    <div class="resume-card__tech">
+                    <div class="rs-card__tech">
                       {item.tech.map((t) => (
-                        <span class="tag">
-                          {techIcons[t]
-                            ? <img src={techIcons[t]} alt="" width="12" height="12" class="tag__icon" />
-                            : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}
+                        <span class="rs-tag">
+                          {renderTech(t)
+                            ? <img src={renderTech(t)} alt="" width="12" height="12" />
+                            : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
                           {t}
                         </span>
                       ))}
                     </div>
                   )}
-                </li>
+                </div>
               ))}
-            </ul>
-          </div>
-        </section>
-
-        <!-- Education -->
-        <section id="education" class="resume-section" data-aos="fade-up">
-          <h2 class="resume-section__title">Education</h2>
-          <div class="edu-list">
-            <div class="edu-item">
-              <div class="edu-item__left">
-                <img src="/assets/logos/itu.png" alt="" width="32" height="32" class="edu-item__logo" />
-                <div>
-                  <p class="edu-item__degree">Bachelor of Computer Science</p>
-                  <p class="edu-item__institution">Information Technology University (ITU), Lahore</p>
-                  <p class="edu-item__note">FYP: Intelligent Home Automation System with Dr. Suleman Mazhar</p>
-                </div>
-              </div>
-              <span class="edu-item__dates">2015 – 2019</span>
-            </div>
-            <div class="edu-item">
-              <div class="edu-item__left">
-                <img src="/assets/logos/gcu.png" alt="" width="32" height="32" class="edu-item__logo" />
-                <div>
-                  <p class="edu-item__degree">F.Sc Pre-Engineering</p>
-                  <p class="edu-item__institution">Government College University (GCU), Lahore</p>
-                </div>
-              </div>
-              <span class="edu-item__dates">2013 – 2015</span>
-            </div>
-            <div class="edu-item">
-              <div class="edu-item__left">
-                <img src="/assets/logos/hmss.png" alt="" width="32" height="32" class="edu-item__logo" />
-                <div>
-                  <p class="edu-item__degree">Matriculation</p>
-                  <p class="edu-item__institution">Hashmat Memorial High School (HMS)</p>
-                </div>
-              </div>
-              <span class="edu-item__dates">2011 – 2013</span>
             </div>
           </div>
-        </section>
+        ))}
+      </section>
 
-        <!-- Certifications -->
-        <section id="certifications" class="resume-section" data-aos="fade-up">
-          <h2 class="resume-section__title">Certifications</h2>
-          <ul class="cert-list">
-            <li><a href="/certifications/anthropic/claude-101" target="_blank" rel="noopener noreferrer"><strong>Claude 101</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></a></li>
-            <li><a href="/certifications/anthropic/claude-code-101" target="_blank" rel="noopener noreferrer"><strong>Claude Code 101</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></a></li>
-            <li><a href="/certifications/anthropic/introduction-to-agent-skills" target="_blank" rel="noopener noreferrer"><strong>Introduction to Agent Skills</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></a></li>
-            <li><a href="/certifications/anthropic/claude-code-in-action" target="_blank" rel="noopener noreferrer"><strong>Claude Code in Action</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></a></li>
-            <li><a href="/certifications/anthropic/introduction-to-model-context-protocol" target="_blank" rel="noopener noreferrer"><strong>Introduction to Model Context Protocol</strong> <span class="cert-issuer tag"><img src="/assets/svgs/claude-api.svg" alt="" width="12" height="12" class="tag__icon" />Anthropic</span></a></li>
-            <li><strong>n8n Level 1</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></li>
-            <li><a href="/certifications/n8n/n8n-quickstart" target="_blank" rel="noopener noreferrer"><strong>n8n Quickstart</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></a></li>
-            <li><a href="/certifications/n8n/n8n101-essentials" target="_blank" rel="noopener noreferrer"><strong>n8n101 - Essentials: Your First Workflows</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></a></li>
-            <li><a href="/certifications/n8n/n8n102-integrations" target="_blank" rel="noopener noreferrer"><strong>n8n102 - Integrations: APIs and Connected Workflows</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></a></li>
-            <li><a href="/certifications/n8n/n8n103-in-practice" target="_blank" rel="noopener noreferrer"><strong>n8n103 - In Practice: AI, Testing, and Best Practices</strong> <span class="cert-issuer tag"><img src="/assets/svgs/n8n.svg" alt="" width="12" height="12" class="tag__icon" />n8n</span></a></li>
-          </ul>
-        </section>
-
-        <!-- Other Skills & Tools -->
-        <section class="resume-section" data-aos="fade-up">
-          <h2 class="resume-section__title">Other Skills &amp; Tools</h2>
-          <dl class="skills-table">
-            {skillGroups.map((group) => (
-              <div class="skills-row">
-                <dt>{group.label}</dt>
-                <dd class="skills-tags">
-                  {group.items.map((item) => (
-                    <span class="tag skills-tag">{techIcons[item]
-                      ? <img src={techIcons[item]} alt="" width="12" height="12" class="tag__icon" />
-                      : <i class="ri-price-tag-3-line tag__icon tag__icon--generic" aria-hidden="true"></i>}{item}</span>
-                  ))}
-                </dd>
+      <!-- Relevant Experience -->
+      <section class="hc-section">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Relevant Experience</h2>
+        </div>
+        <div class="hc-card rs-job" data-aos="fade-up">
+          <div class="rs-job__header">
+            <div class="rs-job__header-main">
+              {relevantExperience.logo && <img src={relevantExperience.logo} alt="" width="36" height="36" class="rs-job__logo" />}
+              <div>
+                <p class="rs-job__title">{relevantExperience.title}</p>
+                <p class="rs-job__company">{relevantExperience.company}</p>
+              </div>
+            </div>
+            <span class="rs-job__dates">{relevantExperience.dates}</span>
+          </div>
+          <div class="rs-card-grid rs-card-grid--nested">
+            {relevantExperience.items.map((item) => (
+              <div class="rs-card rs-card--nested">
+                {(item.badge || item.metric) && (
+                  <div class="rs-card__top">
+                    {item.badge && <span class="rs-card__badge">{item.badge}</span>}
+                    {item.metric && <span class="rs-card__metric">{item.metric}</span>}
+                  </div>
+                )}
+                <h3 class="rs-card__name">{item.name}</h3>
+                <p class="rs-card__desc">{item.description}</p>
+                {item.tech.length > 0 && (
+                  <div class="rs-card__tech">
+                    {item.tech.map((t) => (
+                      <span class="rs-tag">
+                        {renderTech(t)
+                          ? <img src={renderTech(t)} alt="" width="12" height="12" />
+                          : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
-          </dl>
-        </section>
+          </div>
+        </div>
+      </section>
 
-      </div>
-    </div>
+      <!-- Education -->
+      <section class="hc-section" id="education">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Education</h2>
+        </div>
+        <div class="hc-card rs-panel" data-aos="fade-up">
+          <div class="rs-edu-list">
+            {education.map((e) => (
+              <div class="rs-edu-item">
+                <div class="rs-edu-item__left">
+                  <img src={e.logo} alt="" width="36" height="36" class="rs-edu-item__logo" />
+                  <div>
+                    <p class="rs-edu-item__degree">{e.degree}</p>
+                    <p class="rs-edu-item__institution">{e.institution}</p>
+                    {e.note && <p class="rs-edu-item__note">{e.note}</p>}
+                  </div>
+                </div>
+                <span class="rs-edu-item__dates">{e.dates}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-  </main>
-  <Footer />
+      <!-- Certifications -->
+      <section class="hc-section" id="certifications">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Certifications</h2>
+        </div>
+        <div class="hc-card rs-panel" data-aos="fade-up">
+          <ul class="rs-cert-grid">
+            {certifications.map((c) => {
+              const Tag = c.href ? 'a' : 'div';
+              const linkProps = c.href ? { href: c.href, target: '_blank', rel: 'noopener noreferrer' } : {};
+              return (
+                <li>
+                  <Tag class="rs-cert" {...linkProps}>
+                    <span class="rs-cert__name">{c.name}</span>
+                    <span class="rs-cert__issuer">
+                      <img src={c.icon} alt="" width="12" height="12" />
+                      {c.issuer}
+                    </span>
+                  </Tag>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
 
-  <script>
-    const root = document.getElementById('resume-page');
-    const buttons = document.querySelectorAll<HTMLButtonElement>('.resume-toggle__btn');
-    const toggle = document.querySelector<HTMLElement>('.resume-toggle');
-    const hero = document.querySelector<HTMLElement>('.page-hero');
-    const footer = document.querySelector<HTMLElement>('.footer');
+      <!-- Other Skills & Tools -->
+      <section class="hc-section rs-noprint">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Other Skills &amp; Tools</h2>
+        </div>
+        <div class="rs-skills-grid">
+          {skillGroups.map((group, i) => (
+            <div class="hc-card rs-skill-card" data-aos="fade-up" data-aos-delay={i * 40}>
+              <p class="rs-skill-card__label">{group.label}</p>
+              <div class="rs-skill-card__tags">
+                {group.items.map((item) => (
+                  <span class="rs-tag">
+                    {renderTech(item)
+                      ? <img src={renderTech(item)} alt="" width="12" height="12" />
+                      : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-    function setView(view: string) {
-      if (view === 'card') root?.setAttribute('data-view', 'card');
-      else root?.removeAttribute('data-view');
-      buttons.forEach((btn) => btn.setAttribute('aria-pressed', String(btn.dataset.view === view)));
-      try {
-        localStorage.setItem('resumeView', view);
-      } catch (e) {}
-    }
+      <!-- CTA band -->
+      <section class="hc-section rs-noprint">
+        <div class="hc-card hc-cta" data-aos="fade-up">
+          <div class="hc-cta__dots" aria-hidden="true"></div>
+          <div class="hc-cta__content">
+            <p class="hc-cta__status"><span class="hc-cta__dot"></span>Available for work</p>
+            <h2 class="hc-heading">Like what you see<br />on paper?</h2>
+            <p class="hc-cta__subtitle">Let's talk about what you're building and how I can help ship it.</p>
+          </div>
+          <div class="hc-cta__actions">
+            <a href="/contact" class="hc-btn hc-btn--primary">Get in touch</a>
+          </div>
+        </div>
+      </section>
 
-    buttons.forEach((btn) => btn.addEventListener('click', () => setView(btn.dataset.view ?? 'plain')));
-    setView(root?.getAttribute('data-view') === 'card' ? 'card' : 'plain');
+    </main>
 
-    if (toggle) {
-      const overlaps = (a: DOMRect, b: DOMRect) =>
-        !(a.right < b.left || a.left > b.right || a.bottom < b.top || a.top > b.bottom);
-
-      let ticking = false;
-      const updateVisibility = () => {
-        ticking = false;
-        const pad = 16;
-        const t = toggle.getBoundingClientRect();
-        const zone = new DOMRect(t.left - pad, t.top - pad, t.width + pad * 2, t.height + pad * 2);
-        const collides = [hero, footer].some((el) => el && overlaps(el.getBoundingClientRect(), zone));
-        toggle.classList.toggle('resume-toggle--hidden', collides);
-      };
-
-      const requestUpdate = () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(updateVisibility);
-      };
-
-      window.addEventListener('scroll', requestUpdate, { passive: true });
-      window.addEventListener('resize', requestUpdate);
-      updateVisibility();
-    }
-  </script>
+    <HcFooter />
+  </div>
 </BaseLayout>

@@ -8,11 +8,10 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 
 - [Astro](https://astro.build) (static output)
 - Plain CSS with custom properties
-- RemixIcon + Poppins (CDN); Home and Portfolio use their own Sora/Manrope pairing and "hc-" token set instead
+- RemixIcon + Poppins (CDN); Home, Portfolio, and Resume use their own Sora/Manrope pairing and "hc-" token set instead
 - Dependency-free scroll-reveal animations (`data-aos` attributes + `IntersectionObserver`)
-- Two design systems coexist mid-migration: Home + Portfolio share `HcNav`/`HcFooter` components and `src/styles/hc-shared.css` (Graflow-style); Resume/Contact/Certifications still use the legacy `Navbar`/`Footer` components and `src/styles/global.css` (navy/teal)
-- Portfolio's project cards use the same Challenge/Solution/Impact `.hc-work` pattern as Home's Selected Works section
-- Resume page ships a Plain/Cards layout toggle (one markup, two CSS treatments, persisted via `localStorage`)
+- Two design systems coexist mid-migration: Home + Portfolio + Resume share `HcNav`/`HcFooter` components and `src/styles/hc-shared.css` (Graflow-style); Contact/Certifications still use the legacy `Navbar`/`Footer` components and `src/styles/global.css` (navy/teal)
+- Portfolio's and Resume's project/achievement cards reuse `hc-card`-based patterns from the shared "hc-" system (Portfolio also reuses Home's Challenge/Solution/Impact `.hc-work` pattern)
 - GitHub Actions for CI/CD
 
 ## Getting Started
@@ -28,18 +27,19 @@ npm run preview   # preview dist/ locally
 
 ```
 src/
-  components/     # HcNav, HcFooter — used by Home/Portfolio (hc- design system)
-                  # Navbar, Footer — used by Resume/Contact/Certifications (legacy design system)
+  components/     # HcNav, HcFooter — used by Home/Portfolio/Resume (hc- design system)
+                  # Navbar, Footer — used by Contact/Certifications (legacy design system)
   layouts/        # BaseLayout — HTML shell shared by all pages
   pages/          # File-based routing
                   #   index.astro — home page (hc- design system), styled via hc-shared.css + sibling _index.css
                   #   portfolio/index.astro — also hc- design system, styled via hc-shared.css + sibling _portfolio.css
-                  #   resume/contact each ship a sibling _<page>.css (legacy design system)
+                  #   resume/index.astro — also hc- design system, styled via hc-shared.css + sibling _resume.css
+                  #   contact ships a sibling _contact.css (legacy design system)
                   #   certifications/[...slug].astro — per-cert PDF viewer page (legacy design system)
                   #   (favicon + title via BaseLayout, so cert PDFs open in a
                   #   real HTML page instead of the browser's generic PDF tab)
   styles/         # global.css — legacy CSS variables, reset, shared utility classes
-                  # hc-shared.css — shared "hc-" Graflow-style design system (Home + Portfolio)
+                  # hc-shared.css — shared "hc-" Graflow-style design system (Home + Portfolio + Resume)
 public/
   assets/
     gifs/           # Static GIFs

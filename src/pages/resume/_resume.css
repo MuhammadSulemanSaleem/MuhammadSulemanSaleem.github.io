@@ -1,644 +1,186 @@
-.resume-page {
-  padding-top: var(--navbar-height);
-}
-
-/* ── Page hero ───────────────────────────────────── */
-.page-hero {
-  background-color: var(--primary-color);
-  padding: 4rem 1.5rem 3.5rem;
-}
-
-.page-hero__inner {
-  max-width: var(--max-width);
-  margin: auto;
-}
-
-.page-hero__title {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0.5rem 0 0.75rem;
-}
-
-.page-hero__role {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--accent-color);
-  margin-bottom: 0.35rem;
-}
-
-.page-hero__focus {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 0.3px;
-  margin-bottom: 2rem;
-}
-
-/* ── Tech pill strip ─────────────────────────────────── */
-.page-hero__tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  max-width: 600px;
-  margin-bottom: 2rem;
-}
-
-.page-hero__tech span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.92);
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  padding: 0.24rem 0.7rem;
-  border-radius: 100px;
-  letter-spacing: 0.4px;
-  cursor: default;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-    background 0.25s ease, border-color 0.25s ease, color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.page-hero__tech-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.page-hero__tech span img {
-  width: 15px;
-  height: 15px;
-  object-fit: contain;
-}
-
-.page-hero__tech span:hover {
-  transform: translateY(-3px) scale(1.05);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: var(--accent-color);
-  color: #ffffff;
-  box-shadow: 0 8px 18px rgba(45, 212, 191, 0.2);
-}
-
-.page-hero__tech span:hover .page-hero__tech-icon {
-  transform: scale(1.15) rotate(-4deg);
-}
-
-.page-hero__inner.aos-animate .page-hero__tech span {
-  animation: page-hero-chip-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(1) { animation-delay: 0.05s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(2) { animation-delay: 0.12s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(3) { animation-delay: 0.19s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(4) { animation-delay: 0.26s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(5) { animation-delay: 0.33s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(6) { animation-delay: 0.4s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(7) { animation-delay: 0.47s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(8) { animation-delay: 0.54s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(9) { animation-delay: 0.61s; }
-.page-hero__inner.aos-animate .page-hero__tech span:nth-child(10) { animation-delay: 0.68s; }
-
-@keyframes page-hero-chip-pop {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .page-hero__tech span,
-  .page-hero__tech span img {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-.page-hero__actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.page-hero__actions .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.page-hero__actions .btn i {
-  font-size: 1.2rem;
-}
-
-/* ── Resume body ─────────────────────────────────── */
-.resume-wrap {
-  padding: 3rem 1.5rem 5rem;
-  background: var(--extra-light);
-}
-
-.resume {
-  max-width: 860px;
-  margin: auto;
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  padding: 3rem;
-}
-
-/* ── Section ─────────────────────────────────────── */
-.resume-section {
-  margin-bottom: 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-}
-
-.resume-section:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.resume-section__title {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--accent-dark);
-  margin-bottom: 1.25rem;
-}
-
-/* ── Summary ─────────────────────────────────────── */
-.resume-summary {
-  font-size: 0.92rem;
-  line-height: 1.85;
-  color: var(--text-dark);
-}
-
-.resume-summary strong {
-  color: var(--primary-color);
-}
-
-/* ── Expertise grid ──────────────────────────────── */
-.expertise-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  list-style: none;
-}
-
-.expertise-grid li {
-  font-size: 0.875rem;
-  color: var(--text-dark);
-  padding-left: 1.1rem;
-  position: relative;
-}
-
-.expertise-grid li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  color: var(--accent-dark);
-  font-weight: 700;
-}
-
-/* ── Lists ───────────────────────────────────────── */
-.resume-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.resume-list li {
-  font-size: 0.875rem;
-  line-height: 1.75;
-  color: var(--text-dark);
-  padding-left: 1.1rem;
-  position: relative;
-}
-
-.resume-list li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  color: var(--accent-dark);
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.resume-list li strong {
-  color: var(--primary-color);
-}
-
-/* ── Education ───────────────────────────────────── */
-.edu-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.edu-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.edu-item__left {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.edu-item__degree {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 0.15rem;
-}
-
-.edu-item__institution {
-  font-size: 0.875rem;
-  color: var(--text-dark);
-}
-
-.edu-item__note {
-  font-size: 0.8rem;
-  color: var(--text-light);
-  margin-top: 0.15rem;
-}
-
-.edu-item__dates {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-light);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* ── Jobs ────────────────────────────────────────── */
-.job {
-  margin-bottom: 2rem;
-}
-
-.job:last-child {
-  margin-bottom: 0;
-}
-
-.job__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.job__header-main {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.job__logo,
-.edu-item__logo {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
-  padding: 3px;
-  box-sizing: border-box;
-}
-
-.job__title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 0.2rem;
-}
-
-.job__company {
-  font-size: 0.85rem;
-  color: var(--accent-dark);
-  font-weight: 600;
-}
-
-.job__dates {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-light);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* ── Certifications ──────────────────────────────── */
-.cert-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.cert-list li {
-  font-size: 0.875rem;
-  color: var(--text-dark);
-  padding-left: 1.1rem;
-  position: relative;
-}
-
-.cert-list li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  color: var(--accent-dark);
-  font-weight: 700;
-}
-
-.cert-list li strong {
-  color: var(--primary-color);
-}
-
-.cert-list li a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* ── Skills table ────────────────────────────────── */
-.skills-table {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.skills-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 1rem;
-  font-size: 0.875rem;
-  align-items: baseline;
-}
-
-.skills-row dt {
-  font-weight: 700;
-  color: var(--primary-color);
-  white-space: nowrap;
-}
-
-.skills-row dd {
-  color: var(--text-dark);
-  line-height: 1.6;
-}
-
-/* ── Layout toggle (floating, avoids hero/footer via JS-toggled class) */
-.resume-toggle {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  z-index: 80;
-  display: inline-flex;
-  align-items: center;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 24px rgba(13, 21, 32, 0.16);
-  border-radius: 100px;
-  padding: 0.3rem;
-  gap: 0.2rem;
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
-}
-
-.resume-toggle--hidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(12px) scale(0.94);
-  pointer-events: none;
-}
-
-.resume-toggle__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  border: none;
-  background: transparent;
-  color: var(--text-light);
-  font-family: inherit;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 0.5rem 0.9rem;
-  border-radius: 100px;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.resume-toggle__btn i {
-  font-size: 0.95rem;
-}
-
-.resume-toggle__btn:hover {
-  color: var(--primary-color);
-}
-
-.resume-toggle__btn[aria-pressed='true'] {
-  background: var(--primary-color);
-  color: #ffffff;
-}
-
-@media (width < 750px) {
-  .resume-toggle {
-    right: 1rem;
-    bottom: 1rem;
-  }
-
-  .resume-toggle__btn {
-    padding: 0.5rem 0.7rem;
-    font-size: 0.72rem;
-  }
-}
-
-/* ── Card view (data-view="card") ─────────────────── */
-/* Sections become full-width bands with alternating white/extra-light
-   backgrounds, same convention as the portfolio page's
-   .portfolio-section / .portfolio-section--alt pairing. */
-.resume-page[data-view='card'] .resume-wrap {
-  padding: 0 0 3rem;
-  background: #ffffff;
-}
-
-.resume-page[data-view='card'] .resume {
-  max-width: 100%;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
-}
-
-.resume-page[data-view='card'] .resume-section {
-  background: #ffffff;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 0;
-  margin-bottom: 0;
-  padding: 3rem max(1.5rem, calc((100% - var(--max-width)) / 2));
-}
-
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) {
-  background: var(--extra-light);
-}
-
-.resume-page[data-view='card'] .resume-section:last-child {
-  border-bottom: none;
-  padding-bottom: 3rem;
-}
-
-.resume-page[data-view='card'] .resume-section__title {
-  text-align: center;
-}
-
-.resume-page[data-view='card'] #summary .resume-section__title {
-  text-align: start;
-}
-
-/* Expertise grid → chips (short skill labels, like portfolio tech tags) */
-.resume-page[data-view='card'] .expertise-grid {
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.resume-page[data-view='card'] .expertise-grid li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 0.9rem;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-dark);
-}
-
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .expertise-grid li {
-  background: var(--extra-light);
-}
-
-.resume-page[data-view='card'] .expertise-grid li::before {
-  content: none;
-}
-
-/* Icon badge in front of each expertise chip/card — same anatomy as the
-   global .tag__icon badge used by the Technical Skills tags. */
-.expertise-icon {
+/* Resume page — built on the shared "hc-" design system (hc-shared.css).
+   Page-specific pieces (hero, mini-cards, job/education/cert layout, tag
+   chips, print rules) live here, same convention as _portfolio.css. */
+
+/* ── Print-only header (hidden on screen, shown when printing) ─── */
+.rs-print-header {
   display: none;
 }
 
-.resume-page[data-view='card'] .expertise-icon {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 5px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  box-sizing: border-box;
+/* ── Padded panel (plain hc-card sections: hero, summary, expertise,
+   education, certifications — hc-card itself has no padding, every
+   usage must supply its own like hc-work/hc-cta/hc-stats do) ─────── */
+.rs-panel {
+  padding: 2.75rem;
 }
 
-img.expertise-icon {
-  padding: 3px;
+/* ── Hero ─────────────────────────────────────────────── */
+.rs-hero__name {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin: 0.4rem 0 0.6rem;
+}
+
+.rs-hero__role {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.rs-hero__focus {
+  font-size: 0.88rem;
+  color: var(--hc-muted);
+  margin-bottom: 1.5rem;
+}
+
+.rs-hero__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin-bottom: 1.75rem;
+}
+
+.rs-hero__tech li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--hc-ink);
+  background: var(--hc-bg);
+  border: 1px solid var(--hc-line);
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.rs-hero__tech li:hover {
+  transform: translateY(-2px);
+  border-color: var(--hc-ink);
+}
+
+.rs-hero__tech li img {
+  width: 14px;
+  height: 14px;
   object-fit: contain;
 }
 
-.expertise-icon--generic {
-  color: var(--accent-dark);
-  font-size: 0.78rem;
+.rs-hero__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
-/* Areas of Expertise — 2-column chip grid with a hover-lift animation
-   (same hover treatment as the portfolio page's .bw-chip). Items stay white
-   regardless of odd/even banding; section band itself keeps the alternating
-   greenish background. */
-.resume-page[data-view='card'] #skills .expertise-grid li {
-  background: #ffffff;
+.rs-hero__actions .hc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.resume-page[data-view='card'] .expertise-grid--columns {
+/* ── Section body copy ───────────────────────────────── */
+.rs-summary {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--hc-muted);
+}
+
+.rs-summary strong {
+  color: var(--hc-ink);
+}
+
+/* ── Areas of Expertise ──────────────────────────────── */
+.rs-expertise {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem;
+  list-style: none;
 }
 
-.resume-page[data-view='card'] .expertise-grid--columns li {
-  width: 100%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+.rs-expertise li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--hc-muted);
+  background: var(--hc-bg);
+  border: 1px solid var(--hc-line);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
-.resume-page[data-view='card'] .expertise-grid--columns li:hover {
+.rs-expertise li:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(13, 21, 32, 0.1);
-  border-color: rgba(14, 165, 160, 0.35);
+  box-shadow: 0 10px 24px rgba(20, 22, 27, 0.08);
+  border-color: var(--hc-ink);
 }
 
-@media (width < 750px) {
-  .resume-page[data-view='card'] .expertise-grid--columns {
-    grid-template-columns: 1fr;
-  }
+.rs-expertise li img {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
-/* Mini project-card anatomy (same as .pcard on the portfolio page: badge +
-   metric line, name, description, tech tags). Shared by Key Achievements
-   (direct child of a section band) and Professional Experience (nested one
-   level deeper, inside a .job card — see the inversion rules below). */
-.resume-page[data-view='card'] .resume-card-list {
+/* ── Tag chips (achievements/experience/skills tech tags) ────── */
+.rs-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--hc-muted);
+  background: var(--hc-bg);
+  border: 1px solid var(--hc-line);
+  padding: 0.24rem 0.65rem;
+  border-radius: 100px;
+}
+
+.rs-tag img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.rs-tag i {
+  font-size: 0.7rem;
+  color: var(--hc-muted);
+}
+
+/* ── Mini cards (Key Achievements / Experience / Relevant Experience) ── */
+.rs-card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.25rem;
 }
 
-.resume-page[data-view='card'] .resume-card {
-  background: var(--extra-light);
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 14px;
+.rs-card-grid--nested {
+  margin-top: 1.5rem;
+}
+
+.rs-card {
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  /* opacity/transform kept at the body[data-aos] duration/easing so the scroll-reveal
-     fade isn't cut short — this selector's specificity would otherwise win and strip it
-     down to the hover durations below (see global.css [data-aos] comment). */
-  transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
-    transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
-.resume-page[data-view='card'] .resume-card::before {
-  content: none;
-}
-
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .resume-card {
-  background: #ffffff;
-}
-
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .resume-card .tag {
-  background: var(--extra-light);
-}
-
-.resume-page[data-view='card'] .resume-card:hover {
-  box-shadow: 0 10px 30px rgba(13, 21, 32, 0.09);
+.rs-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(14, 165, 160, 0.35);
+  box-shadow: 0 16px 32px rgba(20, 22, 27, 0.08);
+  border-color: var(--hc-ink);
 }
 
-.resume-page[data-view='card'] .resume-card__top {
+.rs-card--nested {
+  background: var(--hc-bg);
+  border: 1px solid var(--hc-line);
+  border-radius: 20px;
+}
+
+.rs-card__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -646,600 +188,374 @@ img.expertise-icon {
   flex-wrap: wrap;
 }
 
-.resume-page[data-view='card'] .resume-card__badge {
-  font-size: 0.65rem;
+.rs-card__badge {
+  font-size: 0.64rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--accent-dark);
-  background: rgba(14, 165, 160, 0.07);
-  border: 1px solid rgba(14, 165, 160, 0.2);
+  color: var(--hc-ink);
+  background: var(--hc-wash-blue);
   padding: 0.2rem 0.6rem;
   border-radius: 100px;
 }
 
-.resume-page[data-view='card'] .resume-card__metric {
-  font-size: 0.67rem;
+.rs-card__metric {
+  font-size: 0.66rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--hc-muted);
   text-align: right;
 }
 
-.resume-page[data-view='card'] .resume-card__name {
-  display: block;
-  font-size: 1.1rem;
+.rs-card__name {
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--primary-color);
 }
 
-.resume-page[data-view='card'] .resume-card__name::after {
-  content: none;
-}
-
-.resume-page[data-view='card'] .resume-card__desc {
-  display: block;
+.rs-card__desc {
   font-size: 0.85rem;
   line-height: 1.75;
-  color: var(--text-dark);
+  color: var(--hc-muted);
   flex: 1;
 }
 
-.resume-page[data-view='card'] .resume-card__tech {
+.rs-card__tech {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
 }
 
-@media (width < 750px) {
-  .resume-page[data-view='card'] .resume-card-list {
-    grid-template-columns: 1fr;
-  }
+/* ── Job / relevant-experience cards ─────────────────── */
+.rs-job {
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Mini-cards nested inside a .job card need one more inversion: the .job
-   itself already flips white/extra-light per section parity below, so its
-   mini-cards flip the opposite way to stay legible against it. */
-.resume-page[data-view='card'] .job .resume-card-list {
-  margin-top: 0.25rem;
+.rs-job:last-child {
+  margin-bottom: 0;
 }
 
-.resume-page[data-view='card'] .job .resume-card {
+.rs-job__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rs-job__header-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.rs-job__logo {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
   background: #ffffff;
+  border: 1px solid var(--hc-line);
+  border-radius: 10px;
+  padding: 4px;
+  box-sizing: border-box;
 }
 
-.resume-page[data-view='card'] .job .resume-card .tag {
-  background: var(--extra-light);
+.rs-job__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
 }
 
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .job .resume-card {
-  background: var(--extra-light);
+.rs-job__company {
+  font-size: 0.85rem;
+  color: var(--hc-muted);
+  font-weight: 600;
 }
 
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .job .resume-card .tag {
-  background: #ffffff;
-}
-
-/* Jobs & education → proper elevated cards (inverse-nested like .pcard on
-   portfolio-section--alt, so cards stay legible against either band) */
-.resume-page[data-view='card'] .job,
-.resume-page[data-view='card'] .edu-item {
-  background: var(--extra-light);
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 14px;
-  padding: 1.75rem 2rem;
-  box-shadow: 0 2px 10px rgba(13, 21, 32, 0.04);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .job,
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .edu-item {
-  background: #ffffff;
-}
-
-.resume-page[data-view='card'] .job:hover,
-.resume-page[data-view='card'] .edu-item:hover {
-  box-shadow: 0 10px 26px rgba(13, 21, 32, 0.08);
-  transform: translateY(-2px);
-}
-
-.resume-page[data-view='card'] .job__dates,
-.resume-page[data-view='card'] .edu-item__dates {
-  background: rgba(14, 165, 160, 0.08);
-  border: 1px solid rgba(14, 165, 160, 0.25);
-  color: var(--accent-dark);
-  padding: 0.25rem 0.75rem;
+.rs-job__dates {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--hc-ink);
+  background: var(--hc-wash-violet);
+  padding: 0.3rem 0.85rem;
   border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-/* Certifications → greenish icon chips, 2 per row, issuer badge pinned to
-   the end of the row, hover-lift like the other mini-cards */
-.resume-page[data-view='card'] .cert-list {
+/* ── Education ────────────────────────────────────────── */
+.rs-edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.rs-edu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--hc-line);
+}
+
+.rs-edu-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.rs-edu-item__left {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.rs-edu-item__logo {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  background: #ffffff;
+  border: 1px solid var(--hc-line);
+  border-radius: 10px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.rs-edu-item__degree {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.rs-edu-item__institution {
+  font-size: 0.85rem;
+  color: var(--hc-muted);
+}
+
+.rs-edu-item__note {
+  font-size: 0.78rem;
+  color: var(--hc-muted);
+  margin-top: 0.15rem;
+  opacity: 0.8;
+}
+
+.rs-edu-item__dates {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--hc-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Certifications ───────────────────────────────────── */
+.rs-cert-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
+  gap: 0.65rem;
+  list-style: none;
 }
 
-.resume-page[data-view='card'] .cert-list li {
+.rs-cert {
   display: flex;
-  background: rgba(14, 165, 160, 0.07);
-  border: 1px solid rgba(14, 165, 160, 0.18);
-  border-radius: 12px;
-  padding: 0.6rem 0.9rem;
-  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
-
-/* When a cert links to a real PDF, the whole card becomes the tap target:
-   padding moves onto the anchor so there's no dead zone around the edges. */
-.resume-page[data-view='card'] .cert-list li:has(a) {
-  padding: 0;
-}
-
-.resume-page[data-view='card'] .cert-list li,
-.resume-page[data-view='card'] .cert-list li a {
   align-items: center;
   justify-content: space-between;
+  gap: 0.6rem;
   flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.resume-page[data-view='card'] .cert-list li a {
-  display: flex;
-  width: 100%;
-  padding: 0.6rem 0.9rem;
+  background: var(--hc-bg);
+  border: 1px solid var(--hc-line);
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
   color: inherit;
   text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
-.resume-page[data-view='card'] .cert-list li:hover {
+a.rs-cert:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(13, 21, 32, 0.08);
-  border-color: rgba(14, 165, 160, 0.4);
+  box-shadow: 0 12px 26px rgba(20, 22, 27, 0.08);
+  border-color: var(--hc-ink);
 }
 
-.resume-page[data-view='card'] .cert-list li::before {
-  content: none;
+.rs-cert__name {
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-.resume-page[data-view='card'] .cert-issuer.tag {
+.rs-cert__issuer {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--hc-muted);
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.09);
+  border: 1px solid var(--hc-line);
   padding: 0.22rem 0.65rem;
   border-radius: 100px;
-  font-weight: 500;
-  color: var(--text-light);
+  flex-shrink: 0;
 }
 
-.resume-page[data-view='card'] .cert-issuer.tag::before {
-  content: none;
+.rs-cert__issuer img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
 }
 
-.resume-page[data-view='card'] .cert-issuer .tag__icon {
-  display: inline-flex;
-}
-
-/* Other Skills & Tools → mini cards, one per skill group, with a heading
-   and a chip row (same anatomy/hover as the other resume mini-cards) */
-.resume-page[data-view='card'] .skills-table {
+/* ── Other Skills & Tools ─────────────────────────────── */
+.rs-skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   align-items: start;
   gap: 1.25rem;
 }
 
-.resume-page[data-view='card'] .skills-row {
-  display: block;
-  background: var(--extra-light);
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 14px;
+.rs-skill-card {
   padding: 1.5rem;
-  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .skills-row {
-  background: #ffffff;
-}
-
-.resume-page[data-view='card'] .skills-row:hover {
+.rs-skill-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(13, 21, 32, 0.08);
-  border-color: rgba(14, 165, 160, 0.35);
+  box-shadow: 0 14px 30px rgba(20, 22, 27, 0.08);
+  border-color: var(--hc-ink);
 }
 
-.resume-page[data-view='card'] .skills-row dt {
-  display: block;
-  font-size: 0.78rem;
+.rs-skill-card__label {
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--accent-dark);
-  white-space: normal;
+  letter-spacing: 1.5px;
+  color: var(--hc-muted);
   margin-bottom: 0.9rem;
 }
 
-.resume-page[data-view='card'] .skills-row dd {
-  margin: 0;
-}
-
-.resume-page[data-view='card'] .skills-tags {
+.rs-skill-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
-.resume-page[data-view='card'] .skills-tags .tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  padding: 0.28rem 0.55rem;
-  border-radius: 100px;
-  font-size: 0.68rem;
-  width: auto;
-  max-width: max-content;
-}
+/* ── Responsive ────────────────────────────────────────── */
+@media (width < 900px) {
+  .rs-expertise {
+    grid-template-columns: 1fr;
+  }
 
-.resume-page[data-view='card'] .resume-section:nth-of-type(even) .skills-tags .tag {
-  background: var(--extra-light);
-}
-
-.resume-page[data-view='card'] .skills-tags .tag__icon {
-  display: inline-flex;
-  width: 20px;
-  height: 20px;
-}
-
-.resume-page[data-view='card'] .skills-tags img.tag__icon {
-  padding: 3px;
-}
-
-.resume-page[data-view='card'] .skills-tags .tag__icon--generic {
-  font-size: 0.9rem;
-}
-
-.resume-page[data-view='card'] .skills-tags .tag::after {
-  content: none;
-}
-
-@media (width < 750px) {
-  .resume-page[data-view='card'] .skills-table {
+  .rs-cert-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (width < 750px) {
-  .resume-page[data-view='card'] .resume-section {
-    padding: 2rem 1.25rem;
+  .rs-panel {
+    padding: 1.75rem 1.5rem;
   }
 
-  .resume-page[data-view='card'] .job,
-  .resume-page[data-view='card'] .edu-item {
-    padding: 1.25rem 1.25rem;
+  .rs-hero__name {
+    font-size: 1.75rem;
   }
 
-  .resume-page[data-view='card'] .job .resume-card-list {
+  .rs-job {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .rs-job__header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .rs-card-grid {
     grid-template-columns: 1fr;
   }
 
-  .resume-page[data-view='card'] .job .resume-card {
-    padding: 1.25rem;
-  }
-
-  .resume-page[data-view='card'] .cert-list {
-    grid-template-columns: 1fr;
+  .rs-edu-item {
+    flex-direction: column;
+    gap: 0.4rem;
   }
 }
 
-/* ── Plain view: achievement/experience mini-cards render as a simple bullet list ── */
-.resume-card__top,
-.resume-card__tech {
-  display: none;
-}
-
-.resume-card__name,
-.resume-card__desc {
-  display: inline;
-  font-size: 0.875rem;
-  line-height: 1.75;
-  color: var(--text-dark);
-}
-
-.resume-card__name {
-  font-weight: 700;
-  color: var(--primary-color);
-}
-
-.resume-card__name::after {
-  content: ': ';
-}
-
-/* ── Plain view: cert issuer & skills tags render as plain text ── */
-.cert-issuer.tag {
-  display: inline;
-  background: none;
-  border: none;
-  padding: 0;
-  border-radius: 0;
-  font-weight: 600;
-  color: var(--text-light);
-}
-
-.cert-issuer.tag::before {
-  content: '— ';
-}
-
-.cert-issuer .tag__icon {
-  display: none;
-}
-
-.skills-tags .tag {
-  display: inline;
-  background: none;
-  border: none;
-  padding: 0;
-  border-radius: 0;
-  font: inherit;
-  color: inherit;
-}
-
-.skills-tags .tag__icon {
-  display: none;
-}
-
-.skills-tags .tag:not(:last-child)::after {
-  content: ', ';
-}
-
-/* ── Print header (hidden on screen, shown in print) */
-.print-header {
-  display: none;
-}
-
-/* ── Print styles ────────────────────────────────── */
+/* ── Print styles ─────────────────────────────────────── */
 @page {
   size: letter;
   margin: 0.65in 0.8in;
 }
 
 @media print {
-  nav,
-  .footer,
-  .resume-toggle {
+  .hc-nav,
+  .hc-footer,
+  .rs-hero__actions,
+  .rs-noprint {
     display: none !important;
   }
 
-  .resume-page {
-    padding-top: 0;
-  }
-
-  .page-hero {
-    display: none;
-  }
-
-  .resume-wrap {
-    padding: 0;
-    background: transparent;
-  }
-
-  .resume {
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    max-width: 100%;
-  }
-
-  /* Always print the plain layout, regardless of the active on-screen toggle */
-  .resume-page[data-view='card'] .resume-wrap {
-    padding: 0 !important;
-    background: transparent !important;
-  }
-
-  .resume-page[data-view='card'] .resume {
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-
-  .resume-page[data-view='card'] .resume-section {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 0 0 2.5rem !important;
-    transform: none !important;
-  }
-
-  .resume-page[data-view='card'] .resume-section:last-child {
-    padding-bottom: 0 !important;
-  }
-
-  .resume-page[data-view='card'] .expertise-grid {
-    flex-direction: column !important;
-  }
-
-  .resume-page[data-view='card'] .cert-list {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .resume-page[data-view='card'] .expertise-grid li,
-  .resume-page[data-view='card'] .cert-list li {
-    display: block !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 0 0 1.1rem !important;
-  }
-
-  .resume-page[data-view='card'] .expertise-grid li::before,
-  .resume-page[data-view='card'] .cert-list li::before {
-    content: '·' !important;
-  }
-
-  .resume-page[data-view='card'] .resume-card-list {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-  }
-
-  .resume-page[data-view='card'] .resume-card {
-    display: block !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0 0 0 1.1rem !important;
-  }
-
-  .resume-page[data-view='card'] .resume-card::before {
-    content: '·' !important;
-  }
-
-  .resume-page[data-view='card'] .resume-card__top,
-  .resume-page[data-view='card'] .resume-card__tech {
-    display: none !important;
-  }
-
-  .resume-page[data-view='card'] .resume-card__name,
-  .resume-page[data-view='card'] .resume-card__desc {
-    display: inline !important;
-    font-size: inherit !important;
-  }
-
-  .resume-page[data-view='card'] .resume-card__name::after {
-    content: ': ' !important;
-  }
-
-  .resume-page[data-view='card'] .job,
-  .resume-page[data-view='card'] .edu-item {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-  }
-
-  .resume-page[data-view='card'] .job__dates,
-  .resume-page[data-view='card'] .edu-item__dates {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-  }
-
-  .resume-page[data-view='card'] .skills-table {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.65rem !important;
-  }
-
-  .resume-page[data-view='card'] .skills-row {
-    display: grid !important;
-    grid-template-columns: 200px 1fr !important;
-    gap: 1rem !important;
-    align-items: baseline !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-  }
-
-  .resume-page[data-view='card'] .skills-row dt {
-    font-size: inherit !important;
-    font-weight: 700 !important;
-    text-transform: none !important;
-    letter-spacing: normal !important;
-    color: var(--primary-color) !important;
-    white-space: nowrap !important;
-    margin-bottom: 0 !important;
-  }
-
-  .resume-page[data-view='card'] .cert-issuer.tag,
-  .resume-page[data-view='card'] .skills-tags .tag {
-    display: inline !important;
+  .hc-page {
     background: none !important;
-    border: none !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
   }
 
-  .resume-page[data-view='card'] .cert-issuer.tag::before {
-    content: '— ' !important;
+  .hc-main {
+    padding-top: 0 !important;
   }
 
-  .resume-page[data-view='card'] .skills-tags .tag::after {
-    content: ', ' !important;
-  }
-
-  .resume-page[data-view='card'] .cert-issuer .tag__icon,
-  .resume-page[data-view='card'] .skills-tags .tag__icon {
-    display: none !important;
-  }
-
-  .print-header {
+  .rs-print-header {
     display: block;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #0d1520;
+    border-bottom: 2px solid #14161b;
   }
 
-  .print-header__name {
+  .rs-print-header h1 {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #0d1520;
+    color: #14161b;
     margin-bottom: 0.3rem;
   }
 
-  .print-header__contact {
+  .rs-print-header p {
     font-size: 0.78rem;
     color: #444;
   }
 
-  .resume-section__title,
-  .job__company {
-    color: #0ea5a0 !important;
+  .hc-section {
+    padding: 0 0 1.5rem;
+    max-width: 100%;
   }
 
-  .job {
+  .hc-card {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  .rs-hero,
+  .rs-panel {
+    padding: 0 !important;
+  }
+
+  .rs-card--nested,
+  .rs-expertise li,
+  .rs-tag,
+  .rs-cert,
+  .rs-job__dates,
+  .rs-card__badge,
+  .rs-cert__issuer {
+    background: transparent !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    box-shadow: none !important;
+  }
+
+  .rs-job,
+  .hc-section:has(.rs-card-grid) {
     break-inside: avoid;
   }
 
-  .resume-section {
-    break-inside: avoid;
-  }
-}
-
-/* ── Responsive ─────────────────────────────────── */
-@media (width < 750px) {
-  .page-hero__title {
-    font-size: 1.75rem;
+  .rs-card-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .resume {
-    padding: 1.75rem 1.25rem;
-  }
-
-  .skills-row {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-  }
-
-  .skills-row dt {
-    white-space: normal;
-  }
-
-  .job__header,
-  .edu-item {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .job__dates,
-  .edu-item__dates {
-    font-size: 0.78rem;
+  .rs-cert-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
