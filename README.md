@@ -8,8 +8,9 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 
 - [Astro](https://astro.build) (static output)
 - Plain CSS with custom properties
-- RemixIcon + Poppins (CDN)
+- RemixIcon + Poppins (CDN); Home page uses its own Sora/Manrope pairing and token set
 - Dependency-free scroll-reveal animations (`data-aos` attributes + `IntersectionObserver`)
+- Home page is self-contained — its own nav/footer markup and styles (`_index.css`), not the shared `Navbar`/`Footer` components used by Portfolio/Resume/Contact
 - Resume page ships a Plain/Cards layout toggle (one markup, two CSS treatments, persisted via `localStorage`)
 - GitHub Actions for CI/CD
 
@@ -26,9 +27,10 @@ npm run preview   # preview dist/ locally
 
 ```
 src/
-  components/     # Navbar, Hero, About, Skills, FeaturedProjects, Footer
+  components/     # Navbar, Footer — used by Portfolio/Resume/Contact, not Home
   layouts/        # BaseLayout — HTML shell shared by all pages
-  pages/          # File-based routing (index, portfolio, resume, contact)
+  pages/          # File-based routing
+                  #   index.astro — self-contained home page, styled via sibling _index.css
                   #   portfolio/resume/contact each ship a sibling _<page>.css
                   #   certifications/[...slug].astro — per-cert PDF viewer page
                   #   (favicon + title via BaseLayout, so cert PDFs open in a

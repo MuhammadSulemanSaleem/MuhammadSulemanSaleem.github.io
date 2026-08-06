@@ -1,23 +1,567 @@
 ---
 import BaseLayout from '../layouts/BaseLayout/index.astro';
-import Navbar from '../components/Navbar/index.astro';
-import Hero from '../components/Hero/index.astro';
-import About from '../components/About/index.astro';
-import Skills from '../components/Skills/index.astro';
-import FeaturedProjects from '../components/FeaturedProjects/index.astro';
-import Footer from '../components/Footer/index.astro';
+import './_index.css';
+
+const year = new Date().getFullYear();
+
+const builtWith = [
+  { name: 'Flutter', icon: '/assets/svgs/flutter.svg' },
+  { name: 'Dart', icon: '/assets/svgs/dart.svg' },
+  { name: 'React', icon: '/assets/svgs/react.svg' },
+  { name: 'React Native', icon: '/assets/svgs/react-native.svg' },
+  { name: 'Next.js', icon: '/assets/svgs/nextjs.svg' },
+  { name: 'Astro', icon: '/assets/svgs/astro.svg' },
+  { name: 'TypeScript', icon: '/assets/svgs/typescript.svg' },
+  { name: 'JavaScript', icon: '/assets/svgs/javascript.svg' },
+  { name: 'Node.js', icon: '/assets/svgs/nodejs.svg' },
+  { name: 'Nest.js', icon: '/assets/svgs/nestjs.svg' },
+  { name: 'Express', icon: '/assets/svgs/express.svg' },
+  { name: 'Electron', icon: '/assets/svgs/electron.svg' },
+  { name: 'PostgreSQL', icon: '/assets/svgs/postgresql.svg' },
+  { name: 'MongoDB', icon: '/assets/svgs/mongodb.svg' },
+  { name: 'Redis', icon: '/assets/svgs/redis.svg' },
+  { name: 'Supabase', icon: '/assets/svgs/supabase.svg' },
+  { name: 'SQLite', icon: '/assets/svgs/sqlite.svg' },
+  { name: 'Firebase', icon: '/assets/svgs/firebase.svg' },
+  { name: 'AWS S3', icon: '/assets/svgs/aws-s3.svg' },
+  { name: 'Claude API', icon: '/assets/svgs/claude-api.svg' },
+  { name: 'GPT-4o', icon: '/assets/svgs/gpt-4o.svg' },
+  { name: 'OpenAI', icon: '/assets/svgs/openai.svg' },
+  { name: 'RAG', icon: '/assets/svgs/rag.svg' },
+  { name: 'MCP', icon: '/assets/svgs/mcp.svg' },
+  { name: 'ChromaDB', icon: '/assets/logos/chromadb.png' },
+  { name: 'ElevenLabs', icon: '/assets/svgs/elevenlabs.svg' },
+  { name: 'n8n', icon: '/assets/svgs/n8n.svg' },
+  { name: 'Zapier', icon: '/assets/svgs/zapier.svg' },
+  { name: 'Stripe', icon: '/assets/svgs/stripe.svg' },
+  { name: 'Twilio', icon: '/assets/svgs/twilio.svg' },
+  { name: 'WordPress', icon: '/assets/svgs/wordpress.svg' },
+  { name: 'Go High Level', icon: '/assets/svgs/go-high-level.svg' },
+  { name: 'WebSockets', icon: '/assets/svgs/websockets.svg' },
+  { name: 'JWT', icon: '/assets/svgs/jwt.svg' },
+];
+
+const projects = [
+  {
+    mark: 'HZ',
+    tint: 'blue',
+    name: 'Houzi',
+    metric: '53K+ reach · 4.84★ · 500+ sales',
+    challenge:
+      "Houzez, a WordPress real estate theme used by 53,000+ site owners, had no companion mobile app — non-technical theme owners had no way to offer a native app experience without custom development.",
+    solution:
+      'Built Houzi, a Flutter real estate template app with Bloc state management and clean architecture, REST API integration, push notifications, in-app chat, and comments — plus a desktop customization platform (HouziBuilder) so theme owners can configure branding without writing code.',
+    impact:
+      "Positioned as a ready-made mobile solution for Houzez's 53,000+ theme owner base, earning a 4.84★ rating with 500+ Envato sales and 5,000+ Play Store downloads.",
+    anchor: '/portfolio#mobile',
+  },
+  {
+    mark: 'NF',
+    tint: 'violet',
+    name: 'NebuFit',
+    metric: 'RAG · multi-LLM · SSE streaming',
+    challenge:
+      "Fitness apps lean on generic templates instead of adapting to a user's real body data, bloodwork, and progress, and users want conversational coaching rather than static charts.",
+    solution:
+      'Built computer-vision body analysis, AI-generated workout and nutrition plans, and bloodwork processing on a RAG system for contextual guidance, orchestrating multiple LLM providers (Claude + GPT-4o + ElevenLabs) with SSE streaming and automatic failover for resilient voice coaching, backed by full Stripe subscription and entitlement management.',
+    impact:
+      'Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance with resilient uptime and monetization built in from day one.',
+    anchor: '/portfolio#ai',
+  },
+  {
+    mark: 'CO',
+    tint: 'blue',
+    name: 'Creative OS',
+    metric: 'Local-first · MCP server architecture',
+    challenge:
+      'Writers and filmmakers wanted AI assistance on screenplays and notes without sending unfinished creative work to the cloud, and without being locked into one fixed set of AI tools.',
+    solution:
+      'Built a local-first Electron/React desktop app that indexes Final Draft screenplays, PDFs, and notes via a RAG pipeline (ChromaDB + SQLite) for semantic search and Claude-powered rewriting, with an extensible MCP server architecture so Claude can reach indexed content and external tools through a typed protocol.',
+    impact:
+      'Gave writers AI-powered editing and search that never leaves their machine, with a tool ecosystem that grows without touching the core app.',
+    anchor: '/portfolio#ai',
+  },
+];
+
+const skillCategories = [
+  { label: 'Mobile & Frontend' },
+  { label: 'Backend & APIs' },
+  { label: 'AI & LLM' },
+  { label: 'Automation' },
+  { label: 'Databases & Cloud' },
+  { label: 'Desktop & Web' },
+  { label: 'Payments & Integrations' },
+  { label: 'Architecture & Patterns' },
+];
+
+const capabilities = [
+  {
+    name: 'Development',
+    description:
+      'End-to-end mobile, web, and desktop development—from architecture and implementation to production deployment.',
+    anchor: '/portfolio#mobile',
+    cta: 'Explore development',
+    illustration: 'code',
+  },
+  {
+    name: 'AI & Intelligence',
+    description:
+      'Engineering intelligent systems with AI agents, RAG, and multi-provider LLM orchestration for real-world applications',
+    anchor: '/portfolio#ai',
+    cta: 'Explore AI & intelligence',
+    illustration: 'ai',
+  },
+  {
+    name: 'Automation & AI',
+    description:
+      'Designing intelligent workflows and integrations that automate repetitive tasks, streamline operations, and save valuable time.',
+    anchor: '/portfolio#automation',
+    cta: 'Explore automation',
+    illustration: 'automation',
+  },
+];
+
+const stats = [
+  { number: '5+', label: 'Years Experience' },
+  { number: '15+', label: 'Projects Shipped' },
+  { number: '53K+', label: 'Houzez Users Reached' },
+  { number: '10+', label: 'Automations Deployed' },
+];
 ---
 
 <BaseLayout
   title="Muhammad Suleman Saleem — Full-Stack & AI Product Engineer"
   description="Portfolio of Muhammad Suleman Saleem, Full-Stack Software Engineer and AI Product Engineer based in Lahore. Flutter, Node.js, Claude API, RAG, n8n."
 >
-  <Navbar />
-  <main>
-    <Hero />
-    <About />
-    <Skills />
-    <FeaturedProjects />
-  </main>
-  <Footer />
+  <div class="hc-page">
+
+    <!-- Ambient wash -->
+    <div class="hc-wash" aria-hidden="true"></div>
+
+    <!-- Nav -->
+    <nav class="hc-nav">
+      <div class="hc-nav__bar">
+        <a href="/" class="hc-nav__logo">
+          <img src="/assets/favicons/android-chrome-192x192.png" alt="" width="34" height="34" />
+          Muhammad Suleman Saleem
+        </a>
+        <label for="hc-check" class="hc-nav__toggle" aria-label="Toggle menu">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" id="hc-check" />
+        <ul class="hc-nav__links">
+          <li><a href="/">About</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li><a href="/resume">Resume</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+        <a href="/contact" class="hc-btn hc-btn--primary hc-nav__cta">Get in touch</a>
+      </div>
+    </nav>
+
+    <main class="hc-main">
+
+      <!-- Hero -->
+      <section class="hc-section" id="about">
+        <div class="hc-card hc-hero" data-aos="fade-up">
+          <div class="hc-hero__content" data-aos="fade-right" data-aos-duration="900">
+            <p class="hc-eyebrow">Hello, I'm</p>
+            <h1 class="hc-hero__name">Muhammad<br />Suleman Saleem</h1>
+            <p class="hc-hero__role">Full-Stack Software Engineer &amp; AI Product Engineer</p>
+            <p class="hc-hero__subtitle">LLM Systems &amp; Automation &nbsp;·&nbsp; Production-Ready AI Solutions</p>
+            <p class="hc-hero__desc">
+              5+ years building cross-platform mobile, web, and desktop apps — now shipping
+              production AI systems: RAG pipelines, multi-provider LLM orchestration, and
+              intelligent workflow automation that replace hours of manual work with reliable,
+              always-on processes.
+            </p>
+            <div class="hc-hero__actions">
+              <a href="/resume" class="hc-btn hc-btn--primary hc-btn--sm">Know Myself</a>
+              <a href="/resume" class="hc-icon-btn" aria-label="View resume">
+                <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hc-hero__image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
+            <img src="/assets/images/profile.png" alt="Muhammad Suleman Saleem" width="420" height="420" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Core stack strip -->
+      <section class="hc-section">
+        <div class="hc-card hc-stack" data-aos="fade-up">
+          <p class="hc-stack__badge">
+            <img src="/assets/svgs/built-with-black.svg" alt="" width="16" height="16" />
+            Working with the modern stack
+          </p>
+          <div class="hc-stack__track">
+            <div class="hc-stack__marquee">
+              <div class="hc-stack__row">
+                {builtWith.map((t) => (
+                  <span class="hc-stack__chip">
+                    <img src={t.icon} alt="" width="18" height="18" />
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+              <div class="hc-stack__row" aria-hidden="true">
+                {builtWith.map((t) => (
+                  <span class="hc-stack__chip">
+                    <img src={t.icon} alt="" width="18" height="18" />
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected work -->
+      <section class="hc-section" id="projects">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Selected works</h2>
+          <p class="hc-section__subtitle">Glimpses into some of my projects since 2021—present.</p>
+        </div>
+
+        {projects.map((p) => (
+          <div class="hc-card hc-work">
+            <div class="hc-work__content">
+              <h3 class="hc-work__name">{p.name}</h3>
+              <dl class={`hc-work__breakdown hc-work__breakdown--${p.tint}`}>
+                <div class="hc-work__point">
+                  <dt>Challenge</dt>
+                  <dd>{p.challenge}</dd>
+                </div>
+                <div class="hc-work__point">
+                  <dt>Solution</dt>
+                  <dd>{p.solution}</dd>
+                </div>
+                <div class="hc-work__point">
+                  <dt>Impact</dt>
+                  <dd>{p.impact}</dd>
+                </div>
+              </dl>
+              <div class="hc-work__actions">
+                <a href={p.anchor} class="hc-btn hc-btn--primary hc-btn--sm">Case study</a>
+                <a href={p.anchor} class="hc-icon-btn" aria-label={`View ${p.name} case study`}>
+                  <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <div class={`hc-work__tile hc-work__tile--${p.tint}`}>
+              <span class="hc-work__mark">{p.mark}</span>
+              <span class="hc-work__tile-name">{p.name}</span>
+              <span class="hc-work__tile-metric">{p.metric}</span>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <!-- Skills as services list -->
+      <section class="hc-section" id="skills">
+        <div class="hc-card hc-skills" data-aos="fade-up">
+          <div class="hc-skills__intro">
+            <h2 class="hc-heading">Services</h2>
+            <p class="hc-skills__note">Transforming ideas into scalable mobile, web, backend, AI, and automation solutions.</p>
+            <div class="hc-skills__actions">
+              <a href="/resume#skills" class="hc-btn hc-btn--primary hc-btn--sm">View All Services</a>
+              <a href="/resume#skills" class="hc-icon-btn" aria-label="View full resume">
+                <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hc-skills__track">
+            <div class="hc-skills__marquee">
+              <div class="hc-skills__col">
+                {skillCategories.map((cat) => (
+                  <span class="hc-skills__pill">{cat.label}</span>
+                ))}
+              </div>
+              <div class="hc-skills__col" aria-hidden="true">
+                {skillCategories.map((cat) => (
+                  <span class="hc-skills__pill">{cat.label}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capabilities -->
+      <section class="hc-section">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Engineering Expertise</h2>
+          <p class="hc-section__subtitle">Building scalable software, integrating AI, and automating workflows to solve real-world business problems.</p>
+        </div>
+
+        {capabilities.map((c) => (
+          <div class="hc-card hc-work">
+            <div class="hc-work__content">
+              <h3 class="hc-work__name">{c.name}</h3>
+              <p class="hc-work__desc">{c.description}</p>
+              <div class="hc-work__actions">
+                <a href={c.anchor} class="hc-btn hc-btn--primary hc-btn--sm">{c.cta}</a>
+                <a href={c.anchor} class="hc-icon-btn" aria-label={c.cta}>
+                  <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="hc-cap__illus">
+              {c.illustration === 'code' && (
+                <>
+                  <div class="hc-cap-terminal">
+                    <div class="hc-cap-terminal__bar">
+                      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19h8"></path><path d="m4 17 6-6-6-6"></path></svg>
+                    </div>
+                    <div class="hc-cap-terminal__body">
+                      <div>$ npm run build</div>
+                      <div class="ok">✓ compiled 214 modules</div>
+                      <div class="ok">✓ type-check passed</div>
+                      <div class="hi">✓ build succeeded<span class="hc-cap-cursor"></span></div>
+                    </div>
+                  </div>
+                  <span class="hc-cap-chip hc-cap-chip--code">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    98% test coverage
+                  </span>
+                </>
+              )}
+
+              {c.illustration === 'ai' && (
+                <div class="hc-cap-orbit">
+                  <div class="hc-cap-orbit__ring"></div>
+                  <div class="hc-cap-orbit__center">AI</div>
+                  <div class="hc-cap-orbit__nodes">
+                    <span class="hc-cap-orbit__node node-top">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"></path><path d="M15 8V2"></path><path d="M17 8a1 1 0 0 1 1 1v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z"></path><path d="M9 8V2"></path></svg>
+                    </span>
+                    <span class="hc-cap-orbit__node node-right">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path></svg>
+                    </span>
+                    <span class="hc-cap-orbit__node node-bottom">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+                    </span>
+                    <span class="hc-cap-orbit__node node-left">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {c.illustration === 'automation' && (
+                <>
+                  <span class="hc-cap-chip hc-cap-chip--top">3 steps synced</span>
+                  <div class="hc-cap-flow">
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Trigger</span>
+                    </div>
+                    <svg class="hc-cap-flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon hc-cap-flow__icon--accent">
+                        <svg class="hc-cap-flow__icon-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Automation</span>
+                    </div>
+                    <svg class="hc-cap-flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <div class="hc-cap-flow__step">
+                      <span class="hc-cap-flow__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                      </span>
+                      <span class="hc-cap-flow__label">Result</span>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <!-- Stats -->
+      <section class="hc-section hc-section--tight">
+        <div class="hc-card hc-stats" data-aos="fade-up">
+          {stats.map((s) => (
+            <div class="hc-stat">
+              <span class="hc-stat__number">{s.number}</span>
+              <span class="hc-stat__label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA band -->
+      <section class="hc-section">
+        <div class="hc-card hc-cta" data-aos="fade-up">
+          <div class="hc-cta__dots" aria-hidden="true"></div>
+          <div class="hc-cta__content">
+            <p class="hc-cta__status"><span class="hc-cta__dot"></span>Available for work</p>
+            <h2 class="hc-heading">Let's collaborate on<br />your next project.</h2>
+            <p class="hc-cta__subtitle">Have an idea, product, or problem worth solving? I'd love to hear about it.</p>
+          </div>
+          <div class="hc-cta__actions">
+            <a href="/contact" class="hc-btn hc-btn--primary">Get in touch</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="hc-footer">
+      <div class="hc-card hc-footer__card" data-aos="fade-up">
+        <div class="hc-footer__top">
+          <div class="hc-footer__brand">
+            <p class="hc-footer__name">Muhammad Suleman Saleem</p>
+            <p class="hc-footer__tagline">
+              Software Engineer building intelligent products with AI, automation, and modern engineering.
+            </p>
+            <div class="hc-footer__social">
+              <a href="mailto:rana.suleman2297@gmail.com" aria-label="Email">
+                <i class="ri-mail-fill" aria-hidden="true"></i>
+              </a>
+              <a href="tel:+923071123666" aria-label="Call">
+                <i class="ri-phone-fill" aria-hidden="true"></i>
+              </a>
+              <a href="https://linkedin.com/in/muhammad-suleman-saleem" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="ri-linkedin-fill" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="hc-footer__col">
+            <p class="hc-footer__col-heading">About</p>
+            <a href="/">Overview</a>
+            <a href="/#about">About Me</a>
+            <a href="/#skills">Skills</a>
+            <a href="/#projects">Projects</a>
+          </div>
+
+          <div class="hc-footer__col">
+            <p class="hc-footer__col-heading">Portfolio</p>
+            <a href="/portfolio#ai">AI Products</a>
+            <a href="/portfolio#enterprise">Enterprise</a>
+            <a href="/portfolio#mobile">Mobile Apps</a>
+            <a href="/portfolio#web">Web &amp; Desktop</a>
+            <a href="/portfolio#automation">Automation</a>
+            <a href="/portfolio#templates">Templates</a>
+          </div>
+
+          <div class="hc-footer__col">
+            <p class="hc-footer__col-heading">Resume</p>
+            <a href="/resume">Summary</a>
+            <a href="/resume#experience">Experience</a>
+            <a href="/resume#skills">Skills</a>
+            <a href="/resume#achievements">Achievements</a>
+            <a href="/resume#education">Education</a>
+            <a href="/resume#certifications">Certifications</a>
+          </div>
+
+          <div class="hc-footer__col">
+            <p class="hc-footer__col-heading">Contact</p>
+            <a href="/contact">Get in Touch</a>
+            <a href="mailto:rana.suleman2297@gmail.com">Send Email</a>
+            <a href="https://linkedin.com/in/muhammad-suleman-saleem" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+
+          <div class="hc-footer__location">
+            <p class="hc-footer__col-heading">Location</p>
+            <div class="hc-footer__location-item">
+              <i class="ri-map-pin-2-fill" aria-hidden="true"></i>
+              <div>
+                <span class="hc-footer__location-label">Based in</span>
+                <span>Lahore, Pakistan</span>
+              </div>
+            </div>
+            <div class="hc-footer__location-item">
+              <i class="ri-global-line" aria-hidden="true"></i>
+              <div>
+                <span class="hc-footer__location-label">Available</span>
+                <span>Remote Worldwide</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hc-footer__bottom">
+        <p>&copy; {year} Muhammad Suleman Saleem. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const hcNav = document.querySelector<HTMLElement>('.hc-nav');
+
+    if (hcNav) {
+      let hcLastScrollY = window.scrollY;
+      let hcTicking = false;
+
+      const hcUpdateNav = () => {
+        const currentY = window.scrollY;
+        if (currentY > hcLastScrollY && currentY > 80) {
+          hcNav.classList.add('hc-nav--hidden');
+        } else if (currentY < hcLastScrollY) {
+          hcNav.classList.remove('hc-nav--hidden');
+        }
+        hcLastScrollY = currentY;
+        hcTicking = false;
+      };
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!hcTicking) {
+            requestAnimationFrame(hcUpdateNav);
+            hcTicking = true;
+          }
+        },
+        { passive: true }
+      );
+    }
+  </script>
+
+  <script>
+    const hcStatNumbers = document.querySelectorAll<HTMLElement>('.hc-stat__number');
+    const hcPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!hcPrefersReducedMotion && hcStatNumbers.length) {
+      const animateCount = (el: HTMLElement) => {
+        const match = el.textContent?.trim().match(/^(\d+)(.*)$/);
+        if (!match) return;
+        const target = parseInt(match[1], 10);
+        const suffix = match[2];
+        const duration = 1100;
+        const start = performance.now();
+
+        const step = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = `${Math.round(eased * target)}${suffix}`;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      const hcStatsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCount(entry.target as HTMLElement);
+              hcStatsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      hcStatNumbers.forEach((el) => hcStatsObserver.observe(el));
+    }
+  </script>
 </BaseLayout>

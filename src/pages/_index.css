@@ -411,11 +411,40 @@
   margin-bottom: 0.85rem;
 }
 
-.hc-work__desc {
+.hc-work__breakdown {
+  --hc-point-tint: var(--hc-wash-blue);
+  --hc-point-ink: #1d4ed8;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin: 0 0 0.75rem;
+}
+
+.hc-work__breakdown--violet {
+  --hc-point-tint: var(--hc-wash-violet);
+  --hc-point-ink: #9333ea;
+}
+
+.hc-work__point {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--hc-point-tint);
+}
+
+.hc-work__point dt {
+  font-family: var(--hc-font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--hc-point-ink);
+  margin-bottom: 0.4rem;
+}
+
+.hc-work__point dd {
   font-size: 0.95rem;
   line-height: 1.7;
   color: var(--hc-muted);
-  margin-bottom: 0.75rem;
+  margin: 0;
 }
 
 .hc-work__actions {
@@ -691,6 +720,12 @@
   box-shadow: 0 14px 24px -10px rgba(20, 22, 27, 0.4);
 }
 
+.hc-cap-orbit__nodes {
+  position: absolute;
+  inset: 0;
+  animation: hc-orbit-spin 16s linear infinite;
+}
+
 .hc-cap-orbit__node {
   position: absolute;
   width: 38px;
@@ -707,12 +742,27 @@
 .hc-cap-orbit__node svg {
   width: 16px;
   height: 16px;
+  animation: hc-cap-spin 16s linear infinite;
+  transform-origin: center;
 }
 
 .hc-cap-orbit .node-top { top: -19px; left: 51px; }
 .hc-cap-orbit .node-right { top: 51px; right: -19px; }
 .hc-cap-orbit .node-bottom { bottom: -19px; left: 51px; }
 .hc-cap-orbit .node-left { top: 51px; left: -19px; }
+
+@keyframes hc-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc-cap-orbit__nodes,
+  .hc-cap-orbit__node svg {
+    animation: none;
+  }
+}
 
 /* Automation & AI illustration */
 .hc-cap-flow {
@@ -815,33 +865,65 @@
   text-align: center;
 }
 
-/* ── Credibility line ──────────────────────────────────── */
-.hc-credibility {
-  text-align: center;
-  max-width: 640px;
-  margin: 0.5rem auto;
-  font-size: 1.02rem;
-  line-height: 1.7;
-  color: var(--hc-muted);
-}
-
-.hc-credibility strong {
-  color: var(--hc-ink);
-}
-
 /* ── CTA band ──────────────────────────────────────────── */
 .hc-cta {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 2.75rem 3rem;
+  padding: 3.5rem 3.5rem;
   flex-wrap: wrap;
+  overflow: hidden;
+  background: #ffffff;
 }
 
-.hc-cta p {
+.hc-cta__dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(20, 22, 27, 0.08) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(560px 320px at 100% 0%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(560px 320px at 100% 0%, #000 0%, transparent 70%);
+}
+
+.hc-cta__content {
+  position: relative;
+  z-index: 1;
+}
+
+.hc-cta__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--hc-muted);
-  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.hc-cta__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.hc-cta__subtitle {
+  color: var(--hc-muted);
+  margin-top: 0.6rem;
+  max-width: 420px;
+}
+
+.hc-cta__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 /* ── Footer ────────────────────────────────────────────── */
@@ -850,14 +932,18 @@
 }
 
 .hc-footer__card {
+  --hc-footer-accent: #7ba6ff;
   max-width: calc(var(--max-width) + 40px);
   margin: auto;
   padding: 3rem;
+  background: #000000;
+  border-color: transparent;
+  color: #ffffff;
 }
 
 .hc-footer__top {
   display: grid;
-  grid-template-columns: auto repeat(3, 1fr) auto;
+  grid-template-columns: auto repeat(4, 1fr) auto;
   gap: 2.5rem;
   align-items: start;
 }
@@ -871,38 +957,42 @@
 
 .hc-footer__name {
   font-family: var(--hc-font-display);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
+  color: #ffffff;
 }
 
 .hc-footer__tagline {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   line-height: 1.65;
-  color: var(--hc-muted);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 260px;
 }
 
 .hc-footer__social {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.6rem;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
 }
 
 .hc-footer__social a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 6px;
-  border: 1px solid var(--hc-line);
-  color: var(--hc-muted);
-  font-size: 1rem;
-  transition: color 0.2s, border-color 0.2s;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.05rem;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
 }
 
 .hc-footer__social a:hover {
-  color: var(--hc-ink);
-  border-color: var(--hc-ink);
+  color: #0d0f13;
+  background: var(--hc-footer-accent);
+  border-color: var(--hc-footer-accent);
+  transform: translateY(-2px);
 }
 
 .hc-footer__col {
@@ -912,21 +1002,23 @@
 }
 
 .hc-footer__col-heading {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--hc-muted);
-  margin-bottom: 0.35rem;
+  color: var(--hc-footer-accent);
+  margin-bottom: 0.5rem;
 }
 
 .hc-footer__col a {
   font-size: 0.86rem;
-  transition: color 0.2s;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s, transform 0.2s;
 }
 
 .hc-footer__col a:hover {
-  color: var(--hc-muted);
+  color: #ffffff;
+  transform: translateX(3px);
 }
 
 .hc-footer__location {
@@ -944,7 +1036,7 @@
 
 .hc-footer__location-item > i {
   font-size: 1.05rem;
-  color: var(--hc-muted);
+  color: var(--hc-footer-accent);
   margin-top: 0.15rem;
   flex-shrink: 0;
 }
@@ -955,12 +1047,16 @@
   gap: 0.08rem;
 }
 
+.hc-footer__location-item > div span:last-child {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .hc-footer__location-label {
   font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--hc-muted);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .hc-footer__bottom {
