@@ -90,6 +90,17 @@
   margin: -0.3rem 0 0.4rem;
 }
 
+/* Reversed slide direction for this page's project-card icon buttons —
+   opposite of the default hc-icon-btn hover (which slides left). */
+.hc-reverse-icon-btn .hc-icon-btn__track {
+  transform: translateX(-50%);
+}
+
+.hc-reverse-icon-btn:hover .hc-icon-btn__track,
+.hc-btn:hover + .hc-reverse-icon-btn .hc-icon-btn__track {
+  transform: translateX(0);
+}
+
 /* ── Responsive ────────────────────────────────────────── */
 @media (width < 900px) {
   .pf-hero {

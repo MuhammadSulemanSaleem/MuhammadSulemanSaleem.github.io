@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../../layouts/BaseLayout/index.astro';
+import HcNav from '../../components/HcNav/index.astro';
+import HcFooter from '../../components/HcFooter/index.astro';
+import '../../styles/hc-shared.css';
+import './_services.css';
+
+const services = [
+  {
+    id: 'ai',
+    icon: 'ri-brain-line',
+    title: 'AI & LLM Product Engineering',
+    desc: 'Production AI products, not demos — retrieval, orchestration, and voice/chat interfaces built to stay up under real usage.',
+    items: [
+      'RAG pipeline design & retrieval architecture',
+      'Multi-LLM orchestration (Claude, GPT-4o, ElevenLabs) with failover',
+      'MCP server development & tool integration',
+      'Streaming AI voice & chat interfaces (SSE)',
+    ],
+    count: '2+',
+  },
+  {
+    id: 'enterprise',
+    icon: 'ri-building-2-line',
+    title: 'Enterprise & Backend Systems',
+    desc: 'Backends that hold up at organisational scale, including the ERP integrations and offline edge cases that break generic APIs.',
+    items: [
+      'Nest.js / Node.js API architecture',
+      'SAP ERP integration via custom BAPIs/RFC',
+      'Role-based access control & admin portals',
+      'Offline-first sync & data reconciliation',
+    ],
+    count: '2+',
+  },
+  {
+    id: 'mobile',
+    icon: 'ri-smartphone-line',
+    title: 'Mobile App Development',
+    desc: 'Cross-platform Flutter apps built on Clean Architecture, shipped to both the App Store and Google Play.',
+    items: [
+      'Flutter apps with Bloc & Clean Architecture',
+      'REST/Firebase integration, push notifications',
+      'In-app chat & payments (Stripe, PubNub)',
+      'App Store & Google Play deployment',
+    ],
+    count: '5+',
+  },
+  {
+    id: 'web',
+    icon: 'ri-global-line',
+    title: 'Web & Desktop Development',
+    desc: 'Fast, SEO-solid sites and Electron desktop tools, including custom builds inside no-code platforms when that’s where a client already lives.',
+    items: [
+      'Astro / Next.js corporate & marketing sites',
+      'Electron desktop applications',
+      'Performance, SEO & Core Web Vitals tuning',
+      'Native builds inside no-code platforms (Go High Level)',
+    ],
+    count: '3+',
+  },
+  {
+    id: 'automation',
+    icon: 'ri-flow-chart',
+    title: 'Automation & Workflow Engineering',
+    desc: 'Workflows that remove hours of manual work a day, wired into the CRMs, inboxes, and sheets teams already use.',
+    items: [
+      'n8n / Apify / Zapier pipeline design',
+      'Lead response & CRM routing automation',
+      'OCR & document data extraction',
+      'AI-assisted content & outreach scheduling',
+    ],
+    count: '5+',
+  },
+  {
+    id: 'templates',
+    icon: 'ri-layout-grid-line',
+    title: 'Templates & Starter Kits',
+    desc: 'Reusable, marketplace-ready starting points for teams who want a proven foundation instead of a blank canvas.',
+    items: [
+      'FlutterFlow starter templates',
+      'Reusable component & design systems',
+      'Marketplace-ready publishing',
+      'Customisation & white-labelling support',
+    ],
+    count: '2+',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How do we start working together?',
+    a: 'Reach out through the Contact page or by email with a short description of what you need — I’ll usually reply within a day to schedule a call and scope the work.',
+  },
+  {
+    q: 'Do you work on fixed-price or hourly engagements?',
+    a: 'Both. Well-scoped projects work well fixed-price; open-ended or evolving work is usually better hourly or retainer. We’ll agree on whichever fits before starting.',
+  },
+  {
+    q: 'Can you join an existing team or codebase, or only greenfield builds?',
+    a: 'Either — I regularly join existing codebases and teams (Nest.js backends, Flutter apps, n8n workflows already in production) as well as building new products from scratch.',
+  },
+  {
+    q: 'What does a typical project timeline look like?',
+    a: 'It depends heavily on scope — a focused automation pipeline can ship in days, while a full AI product or mobile app typically runs several weeks to a few months. I’ll give a realistic estimate after scoping.',
+  },
+  {
+    q: 'Do you offer support after launch?',
+    a: 'Yes — bug fixes, monitoring, and iterative feature work after go-live, either ad hoc or on a standing retainer, depending on what the project needs.',
+  },
+];
+---
+
+<BaseLayout
+  title="Services — Muhammad Suleman Saleem"
+  description="Services offered by Muhammad Suleman Saleem — AI product engineering, enterprise backend systems, Flutter mobile apps, web & desktop development, and workflow automation."
+>
+  <div class="hc-page">
+    <HcNav />
+
+    <main class="hc-main">
+
+      <!-- Hero -->
+      <section class="hc-section">
+        <div class="hc-card sv-hero" data-aos="fade-up">
+          <div class="sv-hero__content" data-aos="fade-right" data-aos-duration="900">
+            <h1 class="sv-hero__title">What I can build for you</h1>
+            <p class="sv-hero__sub">
+              From AI-powered products to enterprise integrations, mobile apps, and the automations
+              that remove the manual work in between — here's how I can help, backed by real
+              production systems shipped since 2021.
+            </p>
+            <div class="hc-work__actions">
+              <a href="/work" class="hc-btn hc-btn--primary hc-btn--sm">View My Work</a>
+              <a href="/work" class="hc-icon-btn hc-reverse-icon-btn" aria-label="View Work">
+                <span class="hc-icon-btn__track">
+                  <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                  <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <nav class="sv-hero__directory" aria-label="Jump to service" data-aos="fade-left" data-aos-delay="150" data-aos-duration="900">
+            {services.map((s) => (
+              <a href={`#service-${s.id}`} class="sv-hero__directory-row">
+                <span class="sv-hero__directory-mark"><i class={s.icon} aria-hidden="true"></i></span>
+                <span class="sv-hero__directory-label">{s.title}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
+      </section>
+
+      <!-- Service cards -->
+      <section class="hc-section">
+        <div class="sv-grid">
+          {services.map((s, i) => (
+            <div class={`hc-card sv-card ${i % 2 === 1 ? 'sv-card--violet' : ''}`} id={`service-${s.id}`} data-aos="fade-up">
+              <div class="sv-card__icon"><i class={s.icon} aria-hidden="true"></i></div>
+              <h2 class="sv-card__title">{s.title}</h2>
+              <p class="sv-card__desc">{s.desc}</p>
+              <ul class="sv-card__list">
+                {s.items.map((item) => (
+                  <li class="sv-card__item">
+                    <i class="ri-check-line" aria-hidden="true"></i>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="sv-card__footer">
+                <span class="sv-card__count">{s.count} shipped</span>
+                <a href={`/work#${s.id}`} class="sv-card__link">
+                  Case studies
+                  <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ accordion -->
+      <section class="hc-section">
+        <div class="hc-card sv-faq" data-aos="fade-up">
+          <div class="sv-faq__head">
+            <h2 class="hc-heading">Any questions?</h2>
+          </div>
+          <div class="sv-accordion">
+            {faqs.map((item) => (
+              <div class="sv-accordion__item">
+                <button type="button" class="sv-accordion__toggle" aria-expanded="false">
+                  <span class="sv-accordion__title">{item.q}</span>
+                  <span class="sv-accordion__icon" aria-hidden="true"></span>
+                </button>
+                <div class="sv-accordion__body">
+                  <div class="sv-accordion__body-inner">
+                    <p class="sv-accordion__text">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA band -->
+      <section class="hc-section">
+        <div class="hc-card hc-cta" data-aos="fade-up">
+          <div class="hc-cta__dots" aria-hidden="true"></div>
+          <div class="hc-cta__content">
+            <p class="hc-cta__status"><span class="hc-cta__dot"></span>Available for work</p>
+            <h2 class="hc-heading">Ready to build<br />something?</h2>
+            <p class="hc-cta__subtitle">Tell me what you're working on and let's figure out how to ship it.</p>
+          </div>
+          <div class="hc-cta__actions">
+            <a href="/contact" class="hc-btn hc-btn--primary">Get in touch</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <HcFooter />
+  </div>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('.sv-accordion__toggle').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const item = toggle.closest('.sv-accordion__item');
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        item?.classList.toggle('sv-accordion__item--open', !isOpen);
+      });
+    });
+
+    const svPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll<HTMLAnchorElement>('.sv-hero__directory-row').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const id = link.getAttribute('href')?.slice(1);
+        const target = id ? document.getElementById(id) : null;
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({
+          behavior: svPrefersReducedMotion ? 'auto' : 'smooth',
+          block: 'start',
+        });
+        history.pushState(null, '', `#${id}`);
+      });
+    });
+  </script>
+</BaseLayout>

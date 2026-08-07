@@ -52,6 +52,18 @@
   object-fit: cover;
 }
 
+/* Reversed slide direction for this page's icon buttons (hero, capability
+   cards, selected-work cards, skills) — opposite of the default
+   hc-icon-btn hover (which slides left). */
+.hc-reverse-icon-btn .hc-icon-btn__track {
+  transform: translateX(-50%);
+}
+
+.hc-reverse-icon-btn:hover .hc-icon-btn__track,
+.hc-btn:hover + .hc-reverse-icon-btn .hc-icon-btn__track {
+  transform: translateX(0);
+}
+
 /* ── Skills as services list ──────────────────────────── */
 .hc-skills {
   display: grid;

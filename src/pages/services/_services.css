@@ -1,0 +1,320 @@
+/* Services-page-specific rules, adapted from the Graflow template's
+   /service page (see docs/research/graflow-template-source). Shared design
+   system (page shell, nav, footer, buttons, cards, cta band) lives in
+   ../../styles/hc-shared.css. */
+
+/* ── Hero ──────────────────────────────────────────────── */
+.sv-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 3rem;
+  text-align: start;
+}
+
+.sv-hero__title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  max-width: 640px;
+}
+
+.sv-hero__sub {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--hc-muted);
+  max-width: 560px;
+}
+
+/* ── Hero quick-jump directory ────────────────────────── */
+.sv-hero__directory {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-left: 2.5rem;
+  border-left: 1px solid var(--hc-line);
+}
+
+.sv-hero__directory-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.sv-hero__directory-row:hover {
+  background: var(--hc-bg);
+  transform: translateX(4px);
+}
+
+.sv-hero__directory-mark {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 10px;
+  background: var(--hc-ink);
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.sv-hero__directory-label {
+  flex: 1;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--hc-ink);
+  white-space: nowrap;
+}
+
+/* Reversed slide direction for this page's icon buttons (hero, service
+   cards) — opposite of the default hc-icon-btn hover (which slides left). */
+.hc-reverse-icon-btn .hc-icon-btn__track {
+  transform: translateX(-50%);
+}
+
+.hc-reverse-icon-btn:hover .hc-icon-btn__track,
+.hc-btn:hover + .hc-reverse-icon-btn .hc-icon-btn__track {
+  transform: translateX(0);
+}
+
+/* ── Service card grid ─────────────────────────────────── */
+.sv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.sv-card {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  scroll-margin-top: calc(var(--navbar-height) + 1rem);
+}
+
+.sv-card__icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--hc-wash-blue);
+  color: var(--hc-ink);
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.sv-card--violet .sv-card__icon {
+  background: var(--hc-wash-violet);
+}
+
+.sv-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.sv-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--hc-muted);
+}
+
+.sv-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  list-style: none;
+}
+
+.sv-card__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--hc-ink);
+  background: var(--hc-bg);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+}
+
+.sv-card__item i {
+  flex-shrink: 0;
+  color: #16a34a;
+  font-size: 1rem;
+}
+
+.sv-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--hc-line);
+}
+
+.sv-card__count {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hc-muted);
+}
+
+.sv-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--hc-ink);
+  transition: gap 0.2s;
+}
+
+.sv-card__link:hover {
+  gap: 0.65rem;
+}
+
+/* ── FAQ accordion (mirrors Contact's ct-faq/ct-accordion) ─ */
+.sv-faq {
+  padding: 3rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.sv-faq__head {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.sv-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sv-accordion__item {
+  background: var(--hc-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sv-accordion__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  background: none;
+  border: none;
+  font-family: var(--hc-font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.sv-accordion__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hc-ink);
+}
+
+.sv-accordion__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.sv-accordion__icon::before,
+.sv-accordion__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--hc-ink);
+  transform: translate(-50%, -50%);
+}
+
+.sv-accordion__icon::before {
+  width: 0.85rem;
+  height: 2px;
+}
+
+.sv-accordion__icon::after {
+  width: 2px;
+  height: 0.85rem;
+  transition: transform 0.25s ease;
+}
+
+.sv-accordion__item--open .sv-accordion__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg) scaleY(0);
+}
+
+.sv-accordion__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.sv-accordion__item--open .sv-accordion__body {
+  grid-template-rows: 1fr;
+}
+
+.sv-accordion__body-inner {
+  overflow: hidden;
+}
+
+.sv-accordion__text {
+  color: var(--hc-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  padding: 0 1.1rem 0.9rem;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (width < 900px) {
+  .sv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sv-hero {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+
+  .sv-hero__title {
+    font-size: 2.3rem;
+  }
+
+  .sv-hero__directory {
+    padding-left: 0;
+    padding-top: 2rem;
+    margin-top: 0.5rem;
+    border-left: none;
+    border-top: 1px solid var(--hc-line);
+  }
+}
+
+@media (width < 750px) {
+  .sv-hero__title {
+    font-size: 2rem;
+  }
+
+  .sv-card {
+    padding: 1.75rem;
+  }
+
+  .sv-faq {
+    padding: 1.75rem 1.25rem;
+  }
+}
