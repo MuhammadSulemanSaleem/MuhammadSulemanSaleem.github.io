@@ -248,36 +248,40 @@ const relevantExperience = {
   dates: '2015 – 2019',
   items: [
     {
-      name: 'Final Year Project — Intelligent Home Automation System',
-      badge: 'IoT · Team Project',
+      mark: 'HA',
+      name: 'Intelligent Home Automation',
       metric: 'Four-member team · companion Android app',
-      description:
-        'Collaborated in a four-member team to build a smart home automation system with a companion Android control app.',
-      tech: [],
+      challenge: 'No existing student project paired IoT hardware with a mobile control app.',
+      solution: 'Built a smart home automation system with a four-member team and a companion Android app.',
+      impact: 'Delivered a working IoT + mobile prototype as the final year project.',
+      caseStudy: false,
     },
     {
+      mark: 'MA',
       name: 'Mobile Application Development',
-      badge: 'Java · Kotlin · Swift',
       metric: 'Weather App · BMI Calculator · Tic Tac Toe',
-      description:
-        'Early Android (Java/Kotlin) and iOS (Swift) projects (Weather App, BMI Calculator, Tic Tac Toe), building a foundation in native app life cycles.',
-      tech: ['Java', 'Kotlin', 'Swift'],
+      challenge: 'Needed hands-on practice with native Android and iOS development.',
+      solution: 'Built early Android (Java/Kotlin) and iOS (Swift) apps — Weather App, BMI Calculator, Tic Tac Toe.',
+      impact: 'Built a foundation in native app lifecycles across two platforms.',
+      caseStudy: false,
     },
     {
+      mark: 'GD',
       name: 'Game Development',
-      badge: 'Unity 3D',
       metric: 'Road Fury · Space Battle · BattleCopter',
-      description:
-        'Built 2D desktop/Android games (Road Fury, Space Battle, BattleCopter) in Unity, covering core game physics and interaction concepts.',
-      tech: ['Unity 3D'],
+      challenge: 'Needed practical experience with game physics and interaction design.',
+      solution: 'Built 2D desktop/Android games in Unity — Road Fury, Space Battle, BattleCopter.',
+      impact: 'Gained hands-on experience with core game physics and interaction concepts.',
+      caseStudy: false,
     },
     {
+      mark: 'QA',
       name: 'Software Testing',
-      badge: 'QA · Testing',
       metric: 'Black-box & white-box testing',
-      description:
-        'Applied black-box/white-box testing on an open-source Java project (TEAMMATES), building debugging and QA skills.',
-      tech: ['Java'],
+      challenge: 'Needed real-world QA experience beyond classroom theory.',
+      solution: 'Applied black-box/white-box testing on the open-source TEAMMATES Java project.',
+      impact: 'Built practical debugging and QA skills on a live codebase.',
+      caseStudy: false,
     },
   ],
 };
@@ -588,9 +592,10 @@ function renderTech(t: string) {
       <section class="hc-section">
         <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
           <h2 class="hc-heading">Relevant Experience</h2>
+          <p class="hc-section__subtitle">Hands-on experience delivering software, AI, and automation solutions across diverse projects.</p>
         </div>
-        <div class="hc-card rs-job" data-aos="fade-up">
-          <div class="rs-job__header">
+        <section class="hc-card rs-job-group">
+          <div class="rs-job__header rs-job-group__header" data-aos="fade-up">
             <div class="rs-job__header-main">
               {relevantExperience.logo && <img src={relevantExperience.logo} alt="" width="36" height="36" class="rs-job__logo" />}
               <div>
@@ -600,33 +605,44 @@ function renderTech(t: string) {
             </div>
             <span class="rs-job__dates">{relevantExperience.dates}</span>
           </div>
-          <div class="rs-card-grid rs-card-grid--nested">
-            {relevantExperience.items.map((item) => (
-              <div class="rs-card rs-card--nested">
-                {(item.badge || item.metric) && (
-                  <div class="rs-card__top">
-                    {item.badge && <span class="rs-card__badge">{item.badge}</span>}
-                    {item.metric && <span class="rs-card__metric">{item.metric}</span>}
+          <div class="rs-work-grid">
+            {relevantExperience.items.map((item, i) => (
+              <div class={`rs-work-card ${i % 2 === 1 ? 'rs-work-card--violet' : ''}`} data-aos="fade-up" data-aos-delay={(i % 3) * 60}>
+                <div class="rs-work-card__tile">
+                  <span class="rs-work-card__mark">{item.mark}</span>
+                  <span class="rs-work-card__tile-name">{item.name}</span>
+                  <span class="rs-work-card__tile-metric">{item.metric}</span>
+                </div>
+                <h3 class="rs-work-card__name">{item.name}</h3>
+                <dl class={`hc-work__breakdown ${i % 2 === 1 ? 'hc-work__breakdown--violet' : ''}`}>
+                  <div class="hc-work__point">
+                    <dt>Challenge</dt>
+                    <dd>{item.challenge}</dd>
                   </div>
-                )}
-                <h3 class="rs-card__name">{item.name}</h3>
-                <p class="rs-card__desc">{item.description}</p>
-                {item.tech.length > 0 && (
-                  <div class="rs-card__tech">
-                    {item.tech.map((t) => (
-                      <span class="rs-tag">
-                        {renderTech(t)
-                          ? <img src={renderTech(t)} alt="" width="12" height="12" />
-                          : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
-                        {t}
+                  <div class="hc-work__point">
+                    <dt>Solution</dt>
+                    <dd>{item.solution}</dd>
+                  </div>
+                  <div class="hc-work__point">
+                    <dt>Impact</dt>
+                    <dd>{item.impact}</dd>
+                  </div>
+                </dl>
+                {item.caseStudy !== false && (
+                  <div class="hc-work__actions">
+                    <span class="hc-btn hc-btn--primary hc-btn--sm">Case Study</span>
+                    <span class="hc-icon-btn" aria-hidden="true">
+                      <span class="hc-icon-btn__track">
+                        <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                        <i class="ri-arrow-right-line" aria-hidden="true"></i>
                       </span>
-                    ))}
+                    </span>
                   </div>
                 )}
               </div>
             ))}
           </div>
-        </div>
+        </section>
       </section>
 
       <!-- Education -->
@@ -636,10 +652,10 @@ function renderTech(t: string) {
         </div>
         <div class="hc-card rs-panel" data-aos="fade-up">
           <div class="rs-edu-list">
-            {education.map((e) => (
-              <div class="rs-edu-item">
+            {education.map((e, i) => (
+              <div class={`rs-edu-item ${i % 2 === 1 ? 'rs-edu-item--violet' : ''}`}>
                 <div class="rs-edu-item__left">
-                  <img src={e.logo} alt="" width="36" height="36" class="rs-edu-item__logo" />
+                  <img src={e.logo} alt="" width="48" height="48" class="rs-edu-item__logo" />
                   <div>
                     <p class="rs-edu-item__degree">{e.degree}</p>
                     <p class="rs-edu-item__institution">{e.institution}</p>
