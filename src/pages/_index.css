@@ -1,6 +1,14 @@
 /* Home-page-specific rules. Shared design system (page shell, nav, footer,
    buttons, cards, stack marquee, cta band) lives in ../styles/hc-shared.css. */
 
+/* ── Anchor sections (footer/nav deep links) ──────────── */
+#about,
+#expertise,
+#projects,
+#skills {
+  scroll-margin-top: calc(var(--navbar-height) + 1rem);
+}
+
 /* ── Hero ────────────────────────────────────────────── */
 .hc-hero {
   display: grid;
