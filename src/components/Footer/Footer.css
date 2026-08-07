@@ -11,7 +11,7 @@
   box-shadow: 0 24px 48px rgba(13, 21, 32, 0.16);
 }
 
-/* 6-column grid: brand | home | portfolio | resume | contact | location */
+/* 6-column grid: brand | home | work | resume | contact | location */
 .footer__top {
   display: grid;
   grid-template-columns: auto repeat(4, 1fr) auto;

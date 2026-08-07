@@ -273,12 +273,18 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--hc-muted);
-  transition: color 0.2s;
+  border-radius: 8px;
+  transition: color 0.2s, background-color 0.2s;
 }
 
-.hc-nav__links a:hover,
+.hc-nav__links a:hover {
+  color: var(--hc-ink);
+  background-color: var(--hc-bg);
+}
+
 .hc-nav__links a[aria-current="page"] {
   color: var(--hc-ink);
+  background-color: rgba(207, 224, 255, 0.4);
 }
 
 .hc-nav__toggle,

@@ -1,6 +1,6 @@
 /* Resume page — built on the shared "hc-" design system (hc-shared.css).
    Page-specific pieces (mini-cards, job/education/cert layout, tag
-   chips, print rules) live here, same convention as _portfolio.css. */
+   chips, print rules) live here, same convention as _work.css. */
 
 /* ── Print-only header (hidden on screen, shown when printing) ─── */
 .rs-print-header {
@@ -370,7 +370,7 @@
   padding-top: 1rem;
 }
 
-/* ── Per-project note (confidentiality) — matches _portfolio.css .pf-note ── */
+/* ── Per-project note (confidentiality) — matches _work.css .pf-note ── */
 .rs-note {
   font-size: 0.8rem;
   color: var(--hc-muted);

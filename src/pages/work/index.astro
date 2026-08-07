@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout/index.astro';
 import HcNav from '../../components/HcNav/index.astro';
 import HcFooter from '../../components/HcFooter/index.astro';
 import '../../styles/hc-shared.css';
-import './_portfolio.css';
+import './_work.css';
 
 const aiProducts = [
   {
@@ -234,48 +234,10 @@ const templates = [
   },
 ];
 
-// Curated tech stack for the "Built With" marquee below the hero.
-const builtWith = [
-  { name: 'Flutter', icon: '/assets/svgs/flutter.svg' },
-  { name: 'Dart', icon: '/assets/svgs/dart.svg' },
-  { name: 'React', icon: '/assets/svgs/react.svg' },
-  { name: 'React Native', icon: '/assets/svgs/react-native.svg' },
-  { name: 'Next.js', icon: '/assets/svgs/nextjs.svg' },
-  { name: 'Astro', icon: '/assets/svgs/astro.svg' },
-  { name: 'TypeScript', icon: '/assets/svgs/typescript.svg' },
-  { name: 'JavaScript', icon: '/assets/svgs/javascript.svg' },
-  { name: 'Node.js', icon: '/assets/svgs/nodejs.svg' },
-  { name: 'Nest.js', icon: '/assets/svgs/nestjs.svg' },
-  { name: 'Express', icon: '/assets/svgs/express.svg' },
-  { name: 'Electron', icon: '/assets/svgs/electron.svg' },
-  { name: 'PostgreSQL', icon: '/assets/svgs/postgresql.svg' },
-  { name: 'MongoDB', icon: '/assets/svgs/mongodb.svg' },
-  { name: 'Redis', icon: '/assets/svgs/redis.svg' },
-  { name: 'Supabase', icon: '/assets/svgs/supabase.svg' },
-  { name: 'SQLite', icon: '/assets/svgs/sqlite.svg' },
-  { name: 'Firebase', icon: '/assets/svgs/firebase.svg' },
-  { name: 'AWS S3', icon: '/assets/svgs/aws-s3.svg' },
-  { name: 'Claude API', icon: '/assets/svgs/claude-api.svg' },
-  { name: 'GPT-4o', icon: '/assets/svgs/gpt-4o.svg' },
-  { name: 'OpenAI', icon: '/assets/svgs/openai.svg' },
-  { name: 'RAG', icon: '/assets/svgs/rag.svg' },
-  { name: 'MCP', icon: '/assets/svgs/mcp.svg' },
-  { name: 'ChromaDB', icon: '/assets/logos/chromadb.png' },
-  { name: 'ElevenLabs', icon: '/assets/svgs/elevenlabs.svg' },
-  { name: 'n8n', icon: '/assets/svgs/n8n.svg' },
-  { name: 'Zapier', icon: '/assets/svgs/zapier.svg' },
-  { name: 'Stripe', icon: '/assets/svgs/stripe.svg' },
-  { name: 'Twilio', icon: '/assets/svgs/twilio.svg' },
-  { name: 'WordPress', icon: '/assets/svgs/wordpress.svg' },
-  { name: 'Go High Level', icon: '/assets/svgs/go-high-level.svg' },
-  { name: 'WebSockets', icon: '/assets/svgs/websockets.svg' },
-  { name: 'JWT', icon: '/assets/svgs/jwt.svg' },
-];
-
 const categories = [
   {
     id: 'ai',
-    icon: 'ri-robot-line',
+    icon: 'ri-brain-line',
     title: 'AI & LLM Products',
     blurb: 'RAG pipelines and multi-provider LLM orchestration shipped into production products.',
     items: aiProducts,
@@ -316,10 +278,19 @@ const categories = [
     items: templates,
   },
 ];
+
+const totalProjects = categories.reduce((sum, c) => sum + c.items.length, 0);
+
+const stats = [
+  { number: `${totalProjects}+`, label: 'Projects Shipped' },
+  { number: `${categories.length}`, label: 'Project Categories' },
+  { number: `${aiProducts.length}+`, label: 'AI & LLM Products' },
+  { number: `${automations.length}+`, label: 'Automation Systems' },
+];
 ---
 
 <BaseLayout
-  title="Portfolio — Muhammad Suleman Saleem"
+  title="Work — Muhammad Suleman Saleem"
   description="Projects by Muhammad Suleman Saleem: AI products, enterprise platforms, mobile apps, automation systems, and web work."
 >
   <div class="hc-page">
@@ -330,50 +301,35 @@ const categories = [
       <!-- Hero -->
       <section class="hc-section">
         <div class="hc-card pf-hero" data-aos="fade-up">
-          <p class="hc-eyebrow">Work</p>
-          <h1 class="pf-hero__title">Projects &amp; Portfolio</h1>
-          <p class="pf-hero__sub">
-            Production work spanning AI products, enterprise field-sales platforms, cross-platform
-            mobile apps, desktop tools, and workflow automation systems.
-          </p>
-          <nav class="pf-quicknav" aria-label="Jump to category">
+          <div class="pf-hero__content" data-aos="fade-right" data-aos-duration="900">
+            <h1 class="pf-hero__title">Projects</h1>
+            <p class="pf-hero__sub">
+              Production systems shipped since 2021 — from RAG-powered coaching platforms and
+              SAP-integrated field-sales tools to Flutter apps reaching tens of thousands of users
+              and n8n automations that replace hours of manual work. Every project below covers the
+              challenge, the build, and the shipped result.
+            </p>
+          </div>
+          <nav class="pf-directory" aria-label="Jump to category" data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
             {categories.map((c) => (
-              <a href={`#${c.id}`}>
-                <i class={c.icon} aria-hidden="true"></i>
-                {c.title}
+              <a href={`#${c.id}`} class="pf-directory__row">
+                <span class="pf-directory__mark"><i class={c.icon} aria-hidden="true"></i></span>
+                <span class="pf-directory__label">{c.title}</span>
               </a>
             ))}
           </nav>
         </div>
       </section>
 
-      <!-- Built With -->
-      <section class="hc-section">
-        <div class="hc-card hc-stack" data-aos="fade-up">
-          <p class="hc-stack__badge">
-            <img src="/assets/svgs/built-with-black.svg" alt="" width="16" height="16" />
-            Built With
-          </p>
-          <div class="hc-stack__track">
-            <div class="hc-stack__marquee">
-              <div class="hc-stack__row">
-                {builtWith.map((t) => (
-                  <span class="hc-stack__chip">
-                    <img src={t.icon} alt="" width="18" height="18" />
-                    {t.name}
-                  </span>
-                ))}
-              </div>
-              <div class="hc-stack__row" aria-hidden="true">
-                {builtWith.map((t) => (
-                  <span class="hc-stack__chip">
-                    <img src={t.icon} alt="" width="18" height="18" />
-                    {t.name}
-                  </span>
-                ))}
-              </div>
+      <!-- Stats -->
+      <section class="hc-section hc-section--tight">
+        <div class="hc-card hc-stats" data-aos="fade-up">
+          {stats.map((s) => (
+            <div class="hc-stat">
+              <span class="hc-stat__number">{s.number}</span>
+              <span class="hc-stat__label">{s.label}</span>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -445,4 +401,42 @@ const categories = [
 
     <HcFooter />
   </div>
+
+  <script>
+    const hcStatNumbers = document.querySelectorAll<HTMLElement>('.hc-stat__number');
+    const hcPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!hcPrefersReducedMotion && hcStatNumbers.length) {
+      const animateCount = (el: HTMLElement) => {
+        const match = el.textContent?.trim().match(/^(\d+)(.*)$/);
+        if (!match) return;
+        const target = parseInt(match[1], 10);
+        const suffix = match[2];
+        const duration = 1100;
+        const start = performance.now();
+
+        const step = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = `${Math.round(eased * target)}${suffix}`;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      const hcStatsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCount(entry.target as HTMLElement);
+              hcStatsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      hcStatNumbers.forEach((el) => hcStatsObserver.observe(el));
+    }
+  </script>
 </BaseLayout>
