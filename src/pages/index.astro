@@ -54,7 +54,7 @@ const projects = [
       'Built Houzi, a Flutter real estate template app with Bloc state management and clean architecture, REST API integration, push notifications, in-app chat, and comments — plus a desktop customization platform (HouziBuilder) so theme owners can configure branding without writing code.',
     impact:
       "Positioned as a ready-made mobile solution for Houzez's 53,000+ theme owner base, earning a 4.84★ rating with 500+ Envato sales and 5,000+ Play Store downloads.",
-    anchor: '/work#mobile',
+    slug: 'houzi',
   },
   {
     mark: 'NF',
@@ -67,7 +67,7 @@ const projects = [
       'Built computer-vision body analysis, AI-generated workout and nutrition plans, and bloodwork processing on a RAG system for contextual guidance, orchestrating multiple LLM providers (Claude + GPT-4o + ElevenLabs) with SSE streaming and automatic failover for resilient voice coaching, backed by full Stripe subscription and entitlement management.',
     impact:
       'Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance with resilient uptime and monetization built in from day one.',
-    anchor: '/work#ai',
+    slug: 'nebufit',
   },
   {
     mark: 'CO',
@@ -80,7 +80,7 @@ const projects = [
       'Built a local-first Electron/React desktop app that indexes Final Draft screenplays, PDFs, and notes via a RAG pipeline (ChromaDB + SQLite) for semantic search and Claude-powered rewriting, with an extensible MCP server architecture so Claude can reach indexed content and external tools through a typed protocol.',
     impact:
       'Gave writers AI-powered editing and search that never leaves their machine, with a tool ecosystem that grows without touching the core app.',
-    anchor: '/work#ai',
+    slug: 'creative-os',
   },
 ];
 
@@ -328,8 +328,8 @@ const stats = [
                 </div>
               </dl>
               <div class="hc-work__actions">
-                <a href={p.anchor} class="hc-btn hc-btn--primary hc-btn--sm">Case study</a>
-                <a href={p.anchor} class="hc-icon-btn hc-reverse-icon-btn" aria-label={`View ${p.name} case study`}>
+                <a href={`/work/${p.slug}`} class="hc-btn hc-btn--primary hc-btn--sm">Case study</a>
+                <a href={`/work/${p.slug}`} class="hc-icon-btn hc-reverse-icon-btn" aria-label={`View ${p.name} case study`}>
                   <span class="hc-icon-btn__track">
                   <i class="ri-arrow-right-line" aria-hidden="true"></i>
                   <i class="ri-arrow-right-line" aria-hidden="true"></i>

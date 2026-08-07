@@ -1,0 +1,203 @@
+/* /work/[slug] case-study page rules. Shared design system (page shell, nav,
+   footer, buttons, hc-work breakdown/tile) lives in ../../styles/hc-shared.css;
+   .pf-note and .hc-reverse-icon-btn come from ./_work.css (same page family). */
+
+/* ── Breadcrumb ──────────────────────────────────────── */
+.cs-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--hc-muted);
+  margin-bottom: 1.25rem;
+}
+
+.cs-breadcrumb a:hover {
+  color: var(--hc-ink);
+}
+
+.cs-breadcrumb__sep {
+  opacity: 0.5;
+}
+
+.cs-breadcrumb__current {
+  color: var(--hc-ink);
+  font-weight: 600;
+}
+
+/* ── Hero ────────────────────────────────────────────── */
+.cs-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.75rem;
+}
+
+.cs-hero__content .hc-eyebrow i {
+  display: inline-block;
+  margin-right: 0.4rem;
+  text-transform: none;
+}
+
+.cs-hero__title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0.5rem 0 0.9rem;
+}
+
+.cs-hero__metric {
+  font-size: 0.95rem;
+  color: var(--hc-muted);
+  margin-bottom: 1.25rem;
+}
+
+.cs-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cs-hero .hc-work__tile {
+  min-height: 220px;
+}
+
+/* ── Confidentiality callout ────────────────────────────── */
+.cs-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--hc-muted);
+  background: var(--hc-bg);
+  border: 1px solid var(--hc-line);
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.cs-callout i {
+  font-size: 1rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+/* ── Overview breakdown (full-width, larger than the pf-category cards) ── */
+.cs-overview__breakdown {
+  gap: 1.75rem;
+}
+
+.cs-overview__breakdown .hc-work__point dt {
+  font-size: 0.78rem;
+}
+
+.cs-overview__breakdown .hc-work__point dd {
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+/* ── Tech stack chips ────────────────────────────────────── */
+.cs-stack__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.1rem;
+}
+
+.cs-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--hc-line);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cs-tag:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(20, 22, 27, 0.08);
+}
+
+.cs-tag img,
+.cs-tag i {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: var(--hc-muted);
+}
+
+/* ── Prev/next project navigation ───────────────────────── */
+.cs-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.cs-nav__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 20px;
+  border: 1px solid var(--hc-line);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.cs-nav__link:hover {
+  background: var(--hc-bg);
+  transform: translateY(-3px);
+}
+
+.cs-nav__link--next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.cs-nav__dir {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hc-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cs-nav__name {
+  font-family: var(--hc-font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--hc-ink);
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (width < 900px) {
+  .cs-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-nav__link--next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (width < 750px) {
+  .cs-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .cs-hero__title {
+    font-size: 1.9rem;
+  }
+}
