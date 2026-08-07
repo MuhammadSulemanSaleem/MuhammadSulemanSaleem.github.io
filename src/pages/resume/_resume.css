@@ -455,57 +455,50 @@
 }
 
 /* ── Certifications ───────────────────────────────────── */
-.rs-cert-grid {
+.rs-cert-card-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.65rem;
-  list-style: none;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.1rem;
 }
 
-.rs-cert {
+.rs-cert-card {
+  padding: 1.4rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  background: var(--hc-bg);
-  border: 1px solid var(--hc-line);
-  border-radius: 14px;
-  padding: 0.85rem 1.1rem;
+  flex-direction: column;
+  gap: 0.7rem;
   color: inherit;
   text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition: transform 0.07s ease-out, box-shadow 0.07s ease-out;
 }
 
-a.rs-cert:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(20, 22, 27, 0.08);
-  border-color: var(--hc-ink);
+.rs-cert-card--link:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px rgba(20, 22, 27, 0.1);
 }
 
-.rs-cert__name {
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.rs-cert__issuer {
-  display: inline-flex;
+.rs-cert-card__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--hc-muted);
-  background: #ffffff;
-  border: 1px solid var(--hc-line);
-  padding: 0.22rem 0.65rem;
-  border-radius: 100px;
-  flex-shrink: 0;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--hc-wash-blue);
 }
 
-.rs-cert__issuer img {
-  width: 12px;
-  height: 12px;
-  object-fit: contain;
+.rs-cert-card__icon--violet {
+  background: var(--hc-wash-violet);
+}
+
+.rs-cert-card__name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.rs-cert-card__issuer {
+  font-size: 0.78rem;
+  color: var(--hc-muted);
 }
 
 /* ── Other Skills & Tools ─────────────────────────────── */
@@ -546,12 +539,6 @@ a.rs-cert:hover {
 @media (width < 1100px) {
   .rs-work-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (width < 900px) {
-  .rs-cert-grid {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -640,10 +627,9 @@ a.rs-cert:hover {
 
   .rs-work-card,
   .rs-tag,
-  .rs-cert,
   .rs-job__dates,
   .rs-edu-item__dates,
-  .rs-cert__issuer {
+  .rs-cert-card__icon {
     background: transparent !important;
     border-color: rgba(0, 0, 0, 0.15) !important;
     box-shadow: none !important;
@@ -657,6 +643,10 @@ a.rs-cert:hover {
 
   .rs-edu-item__logo {
     box-shadow: none !important;
+  }
+
+  .rs-cert-card-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .rs-work-card,
@@ -688,9 +678,5 @@ a.rs-cert:hover {
 
   .hc-work__actions {
     display: none !important;
-  }
-
-  .rs-cert-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }

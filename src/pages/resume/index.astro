@@ -316,6 +316,8 @@ const certifications = [
   { name: 'Introduction to Agent Skills', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/introduction-to-agent-skills' },
   { name: 'Claude Code in Action', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/claude-code-in-action' },
   { name: 'Introduction to Model Context Protocol', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/introduction-to-model-context-protocol' },
+  { name: 'Claude Platform 101', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/claude-platform-101' },
+  { name: 'Introduction to Claude Cowork', issuer: 'Anthropic', icon: '/assets/svgs/claude-api.svg', href: '/certifications/anthropic/introduction-to-claude-cowork' },
   { name: 'n8n Level 1', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: null },
   { name: 'n8n Quickstart', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n-quickstart' },
   { name: 'n8n101 - Essentials: Your First Workflows', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n101-essentials' },
@@ -649,6 +651,7 @@ function renderTech(t: string) {
       <section class="hc-section" id="education">
         <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
           <h2 class="hc-heading">Education</h2>
+          <p class="hc-section__subtitle">The academic foundation that shaped my engineering journey.</p>
         </div>
         <div class="hc-card rs-panel" data-aos="fade-up">
           <div class="rs-edu-list">
@@ -673,25 +676,22 @@ function renderTech(t: string) {
       <section class="hc-section" id="certifications">
         <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
           <h2 class="hc-heading">Certifications</h2>
+          <p class="hc-section__subtitle">Continuous learning through industry-recognized certifications.</p>
         </div>
-        <div class="hc-card rs-panel" data-aos="fade-up">
-          <ul class="rs-cert-grid">
-            {certifications.map((c) => {
-              const Tag = c.href ? 'a' : 'div';
-              const linkProps = c.href ? { href: c.href, target: '_blank', rel: 'noopener noreferrer' } : {};
-              return (
-                <li>
-                  <Tag class="rs-cert" {...linkProps}>
-                    <span class="rs-cert__name">{c.name}</span>
-                    <span class="rs-cert__issuer">
-                      <img src={c.icon} alt="" width="12" height="12" />
-                      {c.issuer}
-                    </span>
-                  </Tag>
-                </li>
-              );
-            })}
-          </ul>
+        <div class="rs-cert-card-grid">
+          {certifications.map((c, i) => {
+            const Tag = c.href ? 'a' : 'div';
+            const linkProps = c.href ? { href: c.href, target: '_blank', rel: 'noopener noreferrer' } : {};
+            return (
+              <Tag class={`hc-card rs-cert-card ${c.href ? 'rs-cert-card--link' : ''}`} {...linkProps} data-aos="fade-up" data-aos-delay={i * 30}>
+                <span class={`rs-cert-card__icon ${i % 2 === 1 ? 'rs-cert-card__icon--violet' : ''}`}>
+                  <img src={c.icon} alt="" width="20" height="20" />
+                </span>
+                <span class="rs-cert-card__name">{c.name}</span>
+                <span class="rs-cert-card__issuer">{c.issuer}</span>
+              </Tag>
+            );
+          })}
         </div>
       </section>
 
@@ -699,6 +699,7 @@ function renderTech(t: string) {
       <section class="hc-section rs-noprint" id="skills">
         <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
           <h2 class="hc-heading">Other Skills &amp; Tools</h2>
+          <p class="hc-section__subtitle">The tools and technologies behind my day-to-day engineering workflow.</p>
         </div>
         <div class="rs-skills-grid">
           {skillGroups.map((group, i) => (
