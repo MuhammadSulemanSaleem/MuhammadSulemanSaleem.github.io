@@ -1,109 +1,134 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout/index.astro';
-import Navbar from '../../components/Navbar/index.astro';
-import Footer from '../../components/Footer/index.astro';
+import HcNav from '../../components/HcNav/index.astro';
+import HcFooter from '../../components/HcFooter/index.astro';
+import '../../styles/hc-shared.css';
 import './_contact.css';
+
+const faqs = [
+  {
+    q: 'What kind of projects do you take on?',
+    a: 'Full-stack and AI product engineering — RAG-powered platforms, enterprise systems integrated with SAP/ERP, Flutter mobile apps, n8n/Apify automation pipelines, and corporate web builds. See the Work page for examples of each.',
+  },
+  {
+    q: "Are you open to full-time roles, or only freelance?",
+    a: "Both. I'm open to full-time engineering roles as well as freelance and contract projects — happy to talk through what fits best for what you're building.",
+  },
+  {
+    q: 'Do you work with remote/international clients?',
+    a: "Yes. I'm based in Lahore, Pakistan, and work remotely with clients and teams worldwide.",
+  },
+  {
+    q: "What's your typical response time?",
+    a: 'I usually reply within a day of getting your message, whether it comes through this form, email, or LinkedIn.',
+  },
+  {
+    q: "What's your tech stack?",
+    a: 'Astro, Next.js, Node.js/Nest.js, and Flutter on the build side, with Claude/GPT-4o-based RAG systems for AI products and n8n/Apify for automation — the Work page breaks down which stack each project used.',
+  },
+];
 ---
 
 <BaseLayout
   title="Contact — Muhammad Suleman Saleem"
   description="Get in touch with Muhammad Suleman Saleem — Full-Stack Software Engineer and AI Product Engineer based in Lahore, Pakistan."
 >
-  <Navbar />
-  <main class="contact-page">
+  <div class="hc-page">
+    <HcNav />
 
-    <!-- Page hero -->
-    <header class="page-hero">
-      <div class="page-hero__inner" data-aos="fade-up">
-        <p class="section__label">Contact</p>
-        <h1 class="page-hero__title">Let's Work Together</h1>
-        <p class="page-hero__sub">
-          Open to full-stack and AI engineering opportunities, freelance projects,
-          and interesting conversations. Reach out via email or LinkedIn — I typically
-          respond within a day.
-        </p>
-      </div>
-    </header>
+    <main class="hc-main">
 
-    <!-- Contact cards -->
-    <section class="contact-section">
-      <div class="contact-section__inner">
+      <!-- Contact panel -->
+      <section class="hc-section ct-hero">
+        <div class="hc-card ct-intro" data-aos="fade-right" data-aos-duration="900">
+          <h1 class="ct-page-heading">Have an idea?<br />Let's talk.</h1>
 
-        <div class="contact-grid">
-
-          <a href="mailto:rana.suleman2297@gmail.com" class="contact-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="contact-card__icon">
-              <i class="ri-mail-send-line" aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="contact-card__label">Email</p>
-              <p class="contact-card__value">rana.suleman2297@gmail.com</p>
-            </div>
-            <i class="ri-arrow-right-line contact-card__arrow" aria-hidden="true"></i>
-          </a>
-
-          <a
-            href="https://linkedin.com/in/muhammad-suleman-saleem"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-card"
-            data-aos="fade-up"
-            data-aos-delay="180"
-          >
-            <div class="contact-card__icon">
-              <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="contact-card__label">LinkedIn</p>
-              <p class="contact-card__value">muhammad-suleman-saleem</p>
-            </div>
-            <i class="ri-external-link-line contact-card__arrow" aria-hidden="true"></i>
-          </a>
-
-          <a href="tel:+923071123666" class="contact-card" data-aos="fade-up" data-aos-delay="260">
-            <div class="contact-card__icon">
-              <i class="ri-phone-line" aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="contact-card__label">Phone / WhatsApp</p>
-              <p class="contact-card__value">+92 307 1123666</p>
-            </div>
-            <i class="ri-arrow-right-line contact-card__arrow" aria-hidden="true"></i>
-          </a>
-
-          <div class="contact-card contact-card--static" data-aos="fade-up" data-aos-delay="340">
-            <div class="contact-card__icon">
-              <i class="ri-map-pin-2-line" aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="contact-card__label">Location</p>
-              <p class="contact-card__value">Lahore, Pakistan</p>
+          <div class="ct-info">
+            <a href="tel:+923071123666" class="ct-info__row">
+              <span class="ct-info__icon"><i class="ri-phone-line" aria-hidden="true"></i></span>
+              <span class="ct-info__value">+92 307 1123666</span>
+            </a>
+            <a href="mailto:rana.suleman2297@gmail.com" class="ct-info__row">
+              <span class="ct-info__icon"><i class="ri-mail-line" aria-hidden="true"></i></span>
+              <span class="ct-info__value">rana.suleman2297@gmail.com</span>
+            </a>
+            <div class="ct-info__row ct-info__row--static">
+              <span class="ct-info__icon"><i class="ri-map-pin-2-line" aria-hidden="true"></i></span>
+              <span class="ct-info__value">Lahore, Pakistan</span>
             </div>
           </div>
-
         </div>
 
-        <!-- CTA block -->
-        <div class="contact-cta" data-aos="fade-up">
-          <h2 class="contact-cta__heading">Prefer LinkedIn?</h2>
-          <p class="contact-cta__body">
-            My LinkedIn profile has my full background, certifications, and work history.
-            It's the best single place to get the full picture.
-          </p>
-          <a
-            href="https://linkedin.com/in/muhammad-suleman-saleem"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn--primary"
-          >
-            <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
-            View LinkedIn Profile
-          </a>
+        <div class="hc-card ct-right" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+          <form class="ct-form">
+            <div class="ct-field-wrap">
+              <label for="ct-name" class="ct-form-label">Name</label>
+              <input id="ct-name" class="ct-form-field" type="text" name="name" placeholder="Your name" required />
+            </div>
+
+            <div class="ct-field-wrap">
+              <label for="ct-email" class="ct-form-label">Email address*</label>
+              <input id="ct-email" class="ct-form-field" type="email" name="email" placeholder="you@email.com" required />
+            </div>
+
+            <div class="ct-field-wrap">
+              <label for="ct-subject" class="ct-form-label">Subject</label>
+              <input id="ct-subject" class="ct-form-field" type="text" name="subject" placeholder="What's this about?" />
+            </div>
+
+            <div class="ct-field-wrap">
+              <label for="ct-message" class="ct-form-label">Message*</label>
+              <textarea
+                id="ct-message"
+                class="ct-form-field ct-textarea"
+                name="message"
+                placeholder="Tell me about your project…"
+                required
+              ></textarea>
+            </div>
+
+            <button type="button" class="hc-btn hc-btn--primary ct-submit">Send Message</button>
+          </form>
         </div>
+      </section>
 
-      </div>
-    </section>
+      <!-- FAQ accordion -->
+      <section class="hc-section">
+        <div class="hc-card ct-faq" data-aos="fade-up">
+          <div class="ct-faq__head">
+            <h2 class="hc-heading">Any questions?</h2>
+          </div>
+          <div class="ct-accordion">
+            {faqs.map((item) => (
+              <div class="ct-accordion__item">
+                <button type="button" class="ct-accordion__toggle" aria-expanded="false">
+                  <span class="ct-accordion__title">{item.q}</span>
+                  <span class="ct-accordion__icon" aria-hidden="true"></span>
+                </button>
+                <div class="ct-accordion__body">
+                  <div class="ct-accordion__body-inner">
+                    <p class="ct-accordion__text">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-  </main>
-  <Footer />
+    </main>
+
+    <HcFooter />
+  </div>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('.ct-accordion__toggle').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const item = toggle.closest('.ct-accordion__item');
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        item?.classList.toggle('ct-accordion__item--open', !isOpen);
+      });
+    });
+  </script>
 </BaseLayout>

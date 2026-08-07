@@ -1,158 +1,258 @@
-.contact-page {
-  padding-top: var(--navbar-height);
-}
+/* Contact-page-specific rules, adapted from the Graflow template's actual
+   /contact-us page structure (see docs/research/graflow-template-source).
+   Shared design system (page shell, nav, footer, buttons, cards) lives in
+   ../../styles/hc-shared.css. */
 
-/* ── Page hero ───────────────────────────────────── */
-.page-hero {
-  background-color: var(--primary-color);
-  padding: 4rem 1.5rem 3.5rem;
-}
-
-.page-hero__inner {
-  max-width: var(--max-width);
-  margin: auto;
-}
-
-.page-hero__title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.1;
-  margin: 0.5rem 0 1rem;
-}
-
-.page-hero__sub {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.65);
-  max-width: 620px;
-}
-
-/* ── Contact section ─────────────────────────────── */
-.contact-section {
-  background-color: var(--extra-light);
-  padding: 4rem 1.5rem 8rem;
-}
-
-.contact-section__inner {
-  max-width: 900px;
-  margin: auto;
-}
-
-/* ── Cards grid ──────────────────────────────────── */
-.contact-grid {
+/* ── Contact panel ─────────────────────────────────────── */
+.ct-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: 2rem;
+  align-items: stretch;
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
 }
 
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 12px;
-  padding: 1.25rem;
-  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-  color: inherit;
-}
-
-.contact-card:not(.contact-card--static) {
-  cursor: pointer;
-}
-
-.contact-card:not(.contact-card--static):hover {
-  box-shadow: 0 8px 24px rgba(13, 21, 32, 0.09);
-  transform: translateY(-2px);
-  border-color: rgba(14, 165, 160, 0.3);
-}
-
-.contact-card__icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: rgba(14, 165, 160, 0.08);
-  border: 1px solid rgba(14, 165, 160, 0.18);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-
-.contact-card__icon i {
-  font-size: 1.3rem;
-  color: var(--accent-dark);
-}
-
-.contact-card__label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-light);
-  margin-bottom: 0.2rem;
-}
-
-.contact-card__value {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  word-break: break-all;
-}
-
-.contact-card__arrow {
-  margin-left: auto;
-  font-size: 1.1rem;
-  color: var(--text-light);
-  flex-shrink: 0;
-  transition: transform 0.2s;
-}
-
-.contact-card:hover .contact-card__arrow {
-  transform: translateX(3px);
-  color: var(--accent-dark);
-}
-
-/* ── CTA block ───────────────────────────────────── */
-.contact-cta {
-  background: var(--primary-color);
-  border-radius: 16px;
+/* ── Intro (left column) ──────────────────────────────── */
+.ct-intro {
   padding: 2.5rem;
-  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.contact-cta__heading {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.75rem;
+.ct-page-heading {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 0.98;
+  margin-bottom: 2rem;
 }
 
-.contact-cta__body {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  max-width: 480px;
-}
-
-.contact-cta .btn {
-  display: inline-flex;
-  align-items: center;
+.ct-info {
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
-/* ── Responsive ─────────────────────────────────── */
-@media (width < 750px) {
-  .page-hero__title {
-    font-size: 2rem;
-  }
+.ct-info__row {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.6rem 0;
+  color: inherit;
+}
 
-  .contact-grid {
+a.ct-info__row {
+  transition: transform 0.2s;
+}
+
+a.ct-info__row:hover {
+  transform: translateX(4px);
+}
+
+.ct-info__icon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--hc-line);
+  box-shadow: 0 4px 14px rgba(20, 22, 27, 0.06);
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  color: var(--hc-ink);
+}
+
+.ct-info__value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hc-ink);
+}
+
+/* ── Form (right column) ──────────────────────────────── */
+.ct-right {
+  padding: 2rem;
+}
+
+.ct-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ct-field-wrap {
+  margin-bottom: 1.5rem;
+}
+
+.ct-field-wrap:last-of-type {
+  margin-bottom: 1.25rem;
+}
+
+.ct-form-label {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--hc-ink);
+}
+
+.ct-form-field {
+  width: 100%;
+  background: var(--hc-bg);
+  color: var(--hc-ink);
+  border: none;
+  border-radius: 8px;
+  min-height: 3.2rem;
+  padding: 0.75rem 1rem;
+  font-family: var(--hc-font-body);
+  font-size: 1rem;
+}
+
+.ct-form-field::placeholder {
+  color: #9aa0ad;
+}
+
+.ct-form-field:focus {
+  outline: 1px solid var(--hc-muted);
+  outline-offset: 0;
+}
+
+select.ct-form-field {
+  cursor: pointer;
+}
+
+.ct-textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+}
+
+.ct-submit {
+  align-self: stretch;
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+}
+
+/* ── FAQ accordion ─────────────────────────────────────── */
+.ct-faq {
+  padding: 3rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ct-faq__head {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.ct-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ct-accordion__item {
+  background: var(--hc-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ct-accordion__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  background: none;
+  border: none;
+  font-family: var(--hc-font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.ct-accordion__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hc-ink);
+}
+
+.ct-accordion__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.ct-accordion__icon::before,
+.ct-accordion__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--hc-ink);
+  transform: translate(-50%, -50%);
+}
+
+.ct-accordion__icon::before {
+  width: 0.85rem;
+  height: 2px;
+}
+
+.ct-accordion__icon::after {
+  width: 2px;
+  height: 0.85rem;
+  transition: transform 0.25s ease;
+}
+
+.ct-accordion__item--open .ct-accordion__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg) scaleY(0);
+}
+
+.ct-accordion__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.ct-accordion__item--open .ct-accordion__body {
+  grid-template-rows: 1fr;
+}
+
+.ct-accordion__body-inner {
+  overflow: hidden;
+}
+
+.ct-accordion__text {
+  color: var(--hc-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  padding: 0 1.1rem 0.9rem;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (width < 900px) {
+  .ct-hero {
     grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
 
-  .contact-cta {
+  .ct-page-heading {
+    font-size: 2.6rem;
+  }
+
+  .ct-intro,
+  .ct-right {
+    padding: 1.5rem;
+  }
+}
+
+@media (width < 750px) {
+  .ct-page-heading {
+    font-size: 2.1rem;
+  }
+
+  .ct-faq {
     padding: 1.75rem 1.25rem;
   }
 }
