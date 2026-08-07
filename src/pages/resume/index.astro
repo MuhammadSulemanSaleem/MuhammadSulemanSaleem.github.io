@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout/index.astro';
 import HcNav from '../../components/HcNav/index.astro';
 import HcFooter from '../../components/HcFooter/index.astro';
 import { techIcons } from '../../data/techIcons.js';
+import { skillGroups } from '../../data/resumeSkills.js';
 import '../../styles/hc-shared.css';
 import './_resume.css';
 
@@ -323,19 +324,6 @@ const certifications = [
   { name: 'n8n101 - Essentials: Your First Workflows', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n101-essentials' },
   { name: 'n8n102 - Integrations: APIs and Connected Workflows', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n102-integrations' },
   { name: 'n8n103 - In Practice: AI, Testing, and Best Practices', issuer: 'n8n', icon: '/assets/svgs/n8n.svg', href: '/certifications/n8n/n8n103-in-practice' },
-];
-
-const skillGroups = [
-  { label: 'Programming Languages', items: ['Dart', 'Java', 'Kotlin', 'Swift', 'JavaScript', 'TypeScript', 'PHP', 'Python'] },
-  { label: 'Frameworks & Technologies', items: ['Flutter', 'Electron', 'Node.js', 'Nest.js', 'Express', 'Next.js', 'FlutterFlow', 'Expo', 'React Native', 'Astro'] },
-  { label: 'AI / LLM', items: ['Claude API / Anthropic', 'OpenAI GPT-4o', 'ElevenLabs', 'RAG', 'MCP', 'ChromaDB'] },
-  { label: 'Databases', items: ['PostgreSQL', 'Firebase Firestore', 'MongoDB', 'MySQL', 'Hive', 'SQLite', 'Redis'] },
-  { label: 'Cloud & Serverless', items: ['Firebase Auth', 'Firebase Analytics', 'Firebase Crashlytics', 'Supabase', 'Google Cloud Functions', 'AWS S3'] },
-  { label: 'Automation', items: ['n8n', 'Zapier', 'Google Apps Script', 'AppSheet', 'Go High Level', 'Retell AI', 'Aloware', 'CloseBot', 'Apify'] },
-  { label: 'Integrations', items: ['Stripe', 'Twilio', 'SAP RFC', 'PubNub', 'JWT', 'Hunter.io', 'ZeroBounce', 'Nocodb'] },
-  { label: 'Architecture & Patterns', items: ['Clean Architecture', 'MVC', 'Singleton', 'Observer'] },
-  { label: 'Version Control & PM', items: ['Git', 'GitHub', 'SourceTree', 'Jira', 'Trello', 'Slack', 'Worktivity', 'ClickUp', 'Emergent Labs'] },
-  { label: 'IDEs & Dev Tools', items: ['Android Studio', 'Xcode', 'Cursor', 'Visual Studio Code', 'Postman', 'Unity 3D'] },
 ];
 
 function renderTech(t: string) {
@@ -704,12 +692,17 @@ function renderTech(t: string) {
         <div class="rs-skills-grid">
           {skillGroups.map((group, i) => (
             <div class="hc-card rs-skill-card" data-aos="fade-up" data-aos-delay={i * 40}>
-              <p class="rs-skill-card__label">{group.label}</p>
+              <div class="rs-skill-card__header">
+                <span class={`rs-skill-card__icon ${i % 2 === 1 ? 'rs-skill-card__icon--violet' : ''}`}>
+                  <i class={group.icon} aria-hidden="true"></i>
+                </span>
+                <p class="rs-skill-card__label">{group.label}</p>
+              </div>
               <div class="rs-skill-card__tags">
                 {group.items.map((item) => (
                   <span class="rs-tag">
                     {renderTech(item)
-                      ? <img src={renderTech(item)} alt="" width="12" height="12" />
+                      ? <img src={renderTech(item)} alt="" width="20" height="20" />
                       : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
                     {item}
                   </span>

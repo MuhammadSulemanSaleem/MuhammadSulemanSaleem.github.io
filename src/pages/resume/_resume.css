@@ -132,28 +132,35 @@
   transform: translateY(0);
 }
 
-/* ── Tag chips (achievements/experience/skills tech tags) ────── */
+/* ── Tag chips (skills tech tags) ──────────────────────────────── */
 .rs-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.72rem;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--hc-muted);
   background: var(--hc-bg);
   border: 1px solid var(--hc-line);
-  padding: 0.24rem 0.65rem;
-  border-radius: 100px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.rs-tag:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(20, 22, 27, 0.1);
 }
 
 .rs-tag img {
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 
 .rs-tag i {
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: var(--hc-muted);
 }
 
@@ -504,35 +511,54 @@
 /* ── Other Skills & Tools ─────────────────────────────── */
 .rs-skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  align-items: start;
+  grid-template-columns: 1fr;
   gap: 1.25rem;
 }
 
 .rs-skill-card {
   padding: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .rs-skill-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(20, 22, 27, 0.08);
-  border-color: var(--hc-ink);
+}
+
+.rs-skill-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.rs-skill-card__icon {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--hc-wash-blue);
+  color: var(--hc-ink);
+  font-size: 1.05rem;
+}
+
+.rs-skill-card__icon--violet {
+  background: var(--hc-wash-violet);
 }
 
 .rs-skill-card__label {
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   color: var(--hc-muted);
-  margin-bottom: 0.9rem;
 }
 
 .rs-skill-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
 }
 
 /* ── Responsive ────────────────────────────────────────── */
