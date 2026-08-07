@@ -88,127 +88,93 @@ const experienceJobs = [
     items: [
       {
         mark: 'NF',
-        name: 'AI Product — NebuFit',
+        name: 'NebuFit',
         metric: 'RAG · multi-provider AI · Stripe subscriptions',
-        challenge:
-          "Fitness apps lean on generic templates instead of adapting to a user's real body data, bloodwork, and progress, with no conversational coaching layer.",
-        solution:
-          'Built a cross-platform AI fitness/health app covering computer-vision body analysis, AI-generated workout and nutrition plans, bloodwork report processing, and voice-based coaching — backed by a RAG system for contextual guidance, multi-provider AI orchestration (Claude, GPT-4o, ElevenLabs) with SSE streaming and failover, and full Stripe subscription/entitlement management.',
-        impact:
-          'Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance with resilient uptime and monetization built in from day one.',
+        challenge: 'Fitness apps lean on generic templates, not real user data.',
+        solution: 'Built an AI coaching app with computer vision, RAG, and multi-provider AI orchestration.',
+        impact: 'Shipped a production-ready platform with resilient uptime and monetization.',
       },
       {
         mark: 'OC',
-        name: 'Enterprise Platform — Orient Champions',
+        name: 'Orient Champions',
         metric: 'Thousands of daily batch scans · nationwide',
-        challenge:
-          'Orient Electronic needed a nationwide field-sales incentive program spanning a four-level hierarchy (National → Zone → Branch → FSM), with real-time sync into their existing SAP ERP — without disrupting agents working offline in the field.',
-        solution:
-          'Architected a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs, resilient offline queuing/reconciliation, JWT + Twilio OTP auth, and bulk Excel/CSV processing.',
-        impact:
-          'Delivered a nationwide platform that keeps field agents productive offline and reconciles cleanly with SAP the moment they reconnect.',
-        note: 'Client-attributed project — architecture and technical patterns discussed at a high level.',
+        challenge: 'Needed a nationwide field-sales platform synced to SAP ERP.',
+        solution: 'Architected a Nest.js backend with real-time SAP sync and offline queuing.',
+        impact: 'Delivered a platform that stays productive offline and reconciles instantly.',
       },
       {
         mark: 'LR',
         name: 'Lead Response Automation',
         metric: 'Contacts leads in < 1 min · AI voice call in < 2 min',
-        challenge:
-          "A moving company was losing leads to slow response times, and a legal team's clients had no live view of case status outside ClickUp.",
-        solution:
-          "Built an automated lead response system for United Global Vanline using Go High Level (Opportunities, Pipelines, Automations) with OpenAI-based call scoring/fraud detection, contacting leads within 1 minute and placing an AI voice call within 2. Also synced The Ramirez Legal Group's ClickUp case data to a live client dashboard via Zapier and Emergent Labs.",
-        impact:
-          "Cut lead response time to under a minute with automatic quality filtering, and gave a legal team's clients one live view of case status with zero manual updates.",
+        challenge: 'Slow lead response and no live case-status visibility for clients.',
+        solution: 'Built automated response and dashboard-sync pipelines with Go High Level and Zapier.',
+        impact: 'Cut response time to under a minute with zero manual updates.',
       },
       {
         mark: 'CO',
         name: 'Creative OS',
         metric: 'Local-first · MCP server architecture',
-        challenge:
-          'Writers and filmmakers wanted AI assistance on screenplays and notes without sending unfinished creative work to the cloud, and without being locked into one fixed set of AI tools.',
-        solution:
-          'Built a local-first AI desktop app indexing Final Draft scripts, PDFs, and notes via a RAG pipeline (ChromaDB) for semantic search and Claude-powered rewriting, with an extensible MCP server architecture.',
-        impact:
-          'Gave writers AI-powered editing and search that never leaves their machine, with a tool ecosystem that grows without touching the core app.',
+        challenge: 'Writers needed AI tools without sending work to the cloud.',
+        solution: 'Built a local-first desktop app with RAG search and an MCP server architecture.',
+        impact: 'Gave writers AI editing and search that never leaves their machine.',
       },
       {
         mark: 'DR',
         name: 'Data & Reporting Automation',
         metric: 'OCR extraction · daily lead discovery',
-        challenge:
-          'Manual bank-statement entry, decision-maker lead research, and campaign reporting were all slow, error-prone, and ate hours every day.',
-        solution:
-          "Built OCR-based document processing for bank statements ('Capital Shack'); a daily decision-maker lead-discovery pipeline ('AGENTC') using Apify, ZeroBounce, and Clearout Phone to deliver verified contacts before business hours; and a Leads Management System syncing campaign data to Google Data Studio.",
-        impact:
-          'Replaced three manual workflows with unattended pipelines that deliver clean data and verified leads automatically, every day.',
+        challenge: 'Manual data entry and lead research were slow and error-prone.',
+        solution: 'Built OCR, lead-discovery, and reporting pipelines using n8n and Apify.',
+        impact: 'Replaced three manual workflows with unattended daily automation.',
       },
       {
         mark: 'UN',
         name: 'Desktop & Web Platforms',
         metric: 'Role-based access · real-time notifications',
-        challenge:
-          'A medical organisation (name withheld per client confidentiality) needed a desktop tool with role-based access and credential-managed auto-fill, paired with an admin portal giving staff live visibility into activity.',
-        solution:
-          "Built the 'UNITY' Electron desktop app with dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, paired with a Next.js + Nest.js admin web portal featuring real-time notifications via WebSockets.",
-        impact:
-          'Gave the client a secure, centrally-configurable desktop tool and a live admin view, without exposing any client-identifying details.',
+        challenge: 'Needed a secure desktop tool with a live admin portal.',
+        solution: 'Built an Electron app and a Next.js/Nest.js admin portal with real-time updates.',
+        impact: 'Delivered a secure, centrally-configurable tool with live visibility.',
         note: 'Confidential client — no screenshots or client name disclosed.',
       },
       {
         mark: 'MA',
         name: 'Mobile App Development',
         metric: 'Aniflex · Exodus App · Linked Golf',
-        challenge:
-          'Three separate product teams needed native-quality Flutter apps — a fitness/gamification app, a rebrand of an existing app, and a golf social app with real-time chat and payments.',
-        solution:
-          "Built Aniflex (Flutter fitness/gamification app), fully rebranded 'Exodus App' (formerly Blue Sky), and developed 'Linked Golf' (Flutter + Express + PubNub chat + Stripe + FCM push notifications).",
-        impact:
-          'Shipped all three apps to the App Store and Google Play, each with production-grade chat, payments, or gamification built in.',
+        challenge: 'Three teams needed native-quality Flutter apps, fast.',
+        solution: 'Built Aniflex, rebranded Exodus App, and developed Linked Golf with chat and payments.',
+        impact: 'Shipped all three apps to the App Store and Google Play.',
       },
       {
         mark: 'CA',
         name: 'Content & Outreach Automation',
         metric: 'Scheduled posts · lead triage',
-        challenge:
-          'A client needed both a steady social content cadence and a way to keep sales focused on genuinely qualified inbound leads.',
-        solution:
-          'Built two n8n pipelines: one generates platform-specific captions on a schedule and auto-posts across channels; the other triages outreach emails and routes qualified leads to the sales team via Slack.',
-        impact:
-          'Kept a consistent posting cadence while routing only qualified leads to the sales team.',
+        challenge: 'Needed steady content output and better lead qualification.',
+        solution: 'Built n8n pipelines for scheduled posting and lead triage.',
+        impact: 'Kept a consistent cadence while routing only qualified leads.',
       },
       {
         mark: 'WD',
         name: 'Web Development',
         metric: 'Corporate site rebuild · SEO',
-        challenge:
-          "Techtiz's corporate site was slow and under-optimised for search, and ATTN Agency needed a fast-turnaround marketing homepage without custom development.",
-        solution:
-          'Rebuilt the Techtiz corporate site in Astro for performance and SEO, and built a native-element homepage in Go High Level for ATTN Agency.',
-        impact:
-          'Delivered a faster, better-ranking corporate site and a quick-turnaround marketing homepage with no custom backend required.',
-      },
-      {
-        mark: 'TL',
-        name: 'Team Leadership',
-        metric: 'Sprints via Jira · tracked via Worktivity',
-        challenge:
-          'A growing development team needed a consistent sprint cadence and clear visibility into productivity without adding process overhead.',
-        solution:
-          'Led a development team, managed sprints via Jira, and tracked productivity through Worktivity.',
-        impact:
-          'Kept delivery predictable and gave the team clear sprint visibility without slowing anyone down.',
-        caseStudy: false,
+        challenge: 'Corporate site was slow, and a client needed a fast marketing page.',
+        solution: 'Rebuilt the Techtiz site in Astro and built a Go High Level homepage.',
+        impact: 'Delivered a faster site and a quick-turnaround marketing page.',
       },
       {
         mark: 'FF',
         name: 'FlutterFlow Templates',
         metric: "'Kumquat – Talent Match' · 'Foodii – Recipe Book'",
-        challenge:
-          'Recruitment/talent-matching and recipe/meal-planning apps both needed a proven, ready-to-customize starting point instead of a from-scratch build.',
-        solution:
-          "Built and published two FlutterFlow templates — 'Kumquat – Talent Match' with profile listings, filtering, and match requests; and 'Foodii – Recipe Book' covering browsing, saving, and categorising recipes.",
-        impact:
-          'Published both to the FlutterFlow Marketplace as reusable starting points for talent-matching and recipe apps.',
+        challenge: 'Needed ready-to-customize starting points for two app categories.',
+        solution: 'Built and published the Kumquat and Foodii FlutterFlow templates.',
+        impact: 'Published both as reusable FlutterFlow Marketplace starting points.',
+      },
+      {
+        mark: 'TL',
+        name: 'Team Leadership',
+        metric: 'Sprints via Jira · tracked via Worktivity',
+        challenge: 'Team needed consistent sprint cadence and visibility.',
+        solution: 'Led the team, managed sprints via Jira, tracked productivity via Worktivity.',
+        impact: 'Kept delivery predictable with clear sprint visibility.',
+        caseStudy: false,
       },
     ],
   },
@@ -222,71 +188,53 @@ const experienceJobs = [
         mark: 'HZ',
         name: 'Houzi',
         metric: '53K+ users · 4.84★ · 500+ sales',
-        challenge:
-          'Houzez, a WordPress real estate theme used by 53,000+ site owners, had no companion mobile app — non-technical theme owners had no way to offer a native app experience without custom development.',
-        solution:
-          'Created Houzi, a Flutter real estate template app for the Houzez WordPress theme, with REST API integration, push notifications, in-app chat, and comments.',
-        impact:
-          'Reached 53,000+ Houzez theme owners with a ready-made mobile solution, earning a 4.84/5 rating, 500+ Envato sales, and 5,000+ Play Store downloads.',
+        challenge: 'Houzez theme owners had no companion mobile app.',
+        solution: 'Built Houzi, a Flutter template app with REST API and push notifications.',
+        impact: 'Reached 53,000+ theme owners with a 4.84/5-rated app.',
       },
       {
         mark: 'AS',
         name: 'Architecture & Scalability',
         metric: 'High maintainability · smooth performance',
-        challenge:
-          "Houzi's early codebase needed a state-management and architecture approach that could scale across a growing template ecosystem without becoming unmaintainable.",
-        solution:
-          'Implemented clean architecture and efficient state management using Bloc across the Houzi codebase.',
-        impact:
-          'Delivered high maintainability and smooth performance as the app and its feature set grew.',
+        challenge: 'Needed an architecture that could scale with the app.',
+        solution: 'Implemented clean architecture and Bloc state management.',
+        impact: 'Delivered high maintainability as the app grew.',
         caseStudy: false,
       },
       {
         mark: 'CP',
         name: 'Cross-Platform Projects',
         metric: 'Houzi · IPT Force · Linked Home · FSF-Ticket',
-        challenge:
-          'Beyond Houzi, the team needed several more mobile apps, a desktop customisation tool, and a way for non-technical theme owners to extend the WordPress API — all without duplicating effort.',
-        solution:
-          'Delivered mobile apps (Houzi, IPT Force, Linked Home, FSF-Ticket), a desktop platform (HouziBuilder), and a WordPress plugin (Houzi-REST-API) for custom API extensions, including OneSignal push, chat, and comments integrations.',
-        impact:
-          'Extended the Houzi ecosystem across mobile, desktop, and WordPress with a shared, reusable integration layer.',
+        challenge: 'Needed more apps and a way to extend the WordPress API.',
+        solution: 'Delivered four apps, a desktop tool, and a WordPress plugin.',
+        impact: 'Extended the Houzi ecosystem with a shared integration layer.',
         caseStudy: false,
       },
       {
         mark: 'PO',
         name: 'Performance Optimisation',
         metric: 'Faster load times · lower latency',
-        challenge:
-          'Growing usage was surfacing slow load times, laggy UI, and rising API latency across the app.',
-        solution:
-          'Profiled and optimised app load times, reduced API latency, and improved UI responsiveness across critical user flows.',
-        impact:
-          'Delivered smoother, faster interactions across the app as usage scaled.',
+        challenge: 'Growing usage was slowing load times and UI.',
+        solution: 'Profiled and optimised load times, latency, and responsiveness.',
+        impact: 'Delivered smoother, faster interactions at scale.',
         caseStudy: false,
       },
       {
         mark: 'CL',
         name: 'Collaboration',
         metric: 'Design · QA · Product alignment',
-        challenge:
-          'Feature and quality decisions were at risk of drifting out of sync across design, QA, and product without a shared process.',
-        solution:
-          'Worked closely with designers, QA teams, and product owners to align on features and quality benchmarks across releases.',
-        impact:
-          'Kept design, QA, and product aligned release after release, reducing rework and last-minute surprises.',
+        challenge: 'Design, QA, and product risked drifting out of sync.',
+        solution: 'Worked closely across teams to align on features and quality.',
+        impact: 'Kept every release aligned with less rework.',
         caseStudy: false,
       },
       {
         mark: 'MQ',
         name: 'Mentorship & Quality Assurance',
         metric: 'PR reviews · coding standards',
-        challenge:
-          'A growing team needed consistent code quality and coding standards as more developers joined the codebase.',
-        solution:
-          'Provided technical mentorship, reviewed pull requests, and upheld clean coding standards across development teams.',
-        impact:
-          'Raised the code-quality bar across the team through consistent review and hands-on mentorship.',
+        challenge: 'Growing team needed consistent code quality.',
+        solution: 'Mentored developers and reviewed pull requests.',
+        impact: 'Raised the code-quality bar through consistent review.',
         caseStudy: false,
       },
     ],
@@ -412,7 +360,7 @@ function renderTech(t: string) {
         <div class="hc-card rs-panel rs-summary-card" data-aos="fade-up">
           <div class="rs-summary-heading">
             <h2 class="hc-heading">My Journey So Far</h2>
-            <p class="rs-summary-tagline">From full-stack apps to AI-native products</p>
+            <p class="rs-summary-tagline">From building scalable software to engineering AI-powered solutions.</p>
             <div class="rs-summary-actions rs-noprint">
               <a
                 href="/Muhammad_Suleman_Saleem_Resume.pdf"
@@ -560,7 +508,7 @@ function renderTech(t: string) {
       <section class="hc-section" id="achievements">
         <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
           <h2 class="hc-heading">Key Achievements</h2>
-          <p class="hc-section__subtitle">Milestones that mattered along the way.</p>
+          <p class="hc-section__subtitle">Highlights of the impact, growth, and milestones throughout my journey.</p>
         </div>
         <div class="rs-card-grid">
           {achievements.map((a, i) => (
@@ -577,10 +525,11 @@ function renderTech(t: string) {
       <section class="hc-section" id="experience">
         <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
           <h2 class="hc-heading">Professional Experience</h2>
+          <p class="hc-section__subtitle">Building impactful products and solving real-world challenges across every role.</p>
         </div>
 
         {experienceJobs.map((job) => (
-          <section class="rs-job-group">
+          <section class="hc-card rs-job-group">
             <div class="rs-job__header rs-job-group__header" data-aos="fade-up">
               <div class="rs-job__header-main">
                 {job.logo && <img src={job.logo} alt="" width="36" height="36" class="rs-job__logo" />}
@@ -591,10 +540,15 @@ function renderTech(t: string) {
               </div>
               <span class="rs-job__dates">{job.dates}</span>
             </div>
-            {job.items.map((item, i) => (
-              <div class="hc-card hc-work" data-aos="fade-up">
-                <div class="hc-work__content">
-                  <h3 class="hc-work__name">{item.name}</h3>
+            <div class="rs-work-grid">
+              {job.items.map((item, i) => (
+                <div class={`rs-work-card ${i % 2 === 1 ? 'rs-work-card--violet' : ''}`} data-aos="fade-up" data-aos-delay={(i % 3) * 60}>
+                  <div class="rs-work-card__tile">
+                    <span class="rs-work-card__mark">{item.mark}</span>
+                    <span class="rs-work-card__tile-name">{item.name}</span>
+                    <span class="rs-work-card__tile-metric">{item.metric}</span>
+                  </div>
+                  <h3 class="rs-work-card__name">{item.name}</h3>
                   <dl class={`hc-work__breakdown ${i % 2 === 1 ? 'hc-work__breakdown--violet' : ''}`}>
                     <div class="hc-work__point">
                       <dt>Challenge</dt>
@@ -624,13 +578,8 @@ function renderTech(t: string) {
                     </div>
                   )}
                 </div>
-                <div class={`hc-work__tile hc-work__tile--${i % 2 === 1 ? 'violet' : 'blue'}`}>
-                  <span class="hc-work__mark">{item.mark}</span>
-                  <span class="hc-work__tile-name">{item.name}</span>
-                  <span class="hc-work__tile-metric">{item.metric}</span>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </section>
         ))}
       </section>

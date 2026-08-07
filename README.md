@@ -11,7 +11,7 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 - RemixIcon + Poppins (CDN); Home, Portfolio, and Resume use their own Sora/Manrope pairing and "hc-" token set instead
 - Dependency-free scroll-reveal animations (`data-aos` attributes + `IntersectionObserver`)
 - Two design systems coexist mid-migration: Home + Portfolio + Resume share `HcNav`/`HcFooter` components and `src/styles/hc-shared.css` (Graflow-style); Contact/Certifications still use the legacy `Navbar`/`Footer` components and `src/styles/global.css` (navy/teal)
-- Portfolio's and Resume's project/achievement cards reuse `hc-card`-based patterns from the shared "hc-" system (Portfolio and Resume both reuse the Challenge/Solution/Impact `.hc-work` pattern — Resume for its Engineering Expertise section and, per-job, its Professional Experience entries)
+- Portfolio's and Resume's project/achievement cards reuse `hc-card`-based patterns from the shared "hc-" system (Resume's Engineering Expertise section reuses Home's `.hc-work` pattern verbatim; its Professional Experience section wraps the same Challenge/Solution/Impact breakdown into a compact 3-per-row card grid, inside the same outer `hc-card` treatment as Relevant Experience, instead of Portfolio's full two-column `.hc-work` card)
 - GitHub Actions for CI/CD
 
 ## Getting Started
