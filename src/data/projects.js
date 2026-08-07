@@ -3,6 +3,10 @@
 // entries are curated from the tech already named in each project's own
 // solution/challenge copy (not invented) and, where possible, match a key in
 // techIcons.js so the case study page can render an icon next to the label.
+// `challenge`/`solution`/`impact` stay short — they're what /work's category
+// cards render. `challengeDetail`/`solutionDetail`/`impactDetail` are the
+// fuller, multi-sentence versions used only by the /work/<slug> case study
+// breakdown; `overview` (case-study only) is a separate 1-3 paragraph narrative.
 export const categories = [
   {
     id: 'ai',
@@ -14,6 +18,7 @@ export const categories = [
         slug: 'nebufit',
         mark: 'NF',
         name: 'NebuFit',
+        logo: '/assets/logos/nebufit.jpg',
         metric: 'RAG · multi-LLM · SSE streaming',
         challenge:
           "Fitness apps lean on generic templates instead of adapting to a user's real body data, bloodwork, and progress, and users want conversational coaching rather than static charts.",
@@ -21,7 +26,15 @@ export const categories = [
           'Built computer-vision body analysis, AI-generated workout and nutrition plans, and bloodwork processing on a RAG system for contextual guidance, orchestrating multiple LLM providers (Claude + GPT-4o + ElevenLabs) with SSE streaming and automatic failover for resilient voice coaching, backed by full Stripe subscription and entitlement management.',
         impact:
           'Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance with resilient uptime and monetization built in from day one.',
-        stack: ['Claude API', 'GPT-4o', 'ElevenLabs', 'RAG', 'Stripe'],
+        challengeDetail:
+          "Fitness apps overwhelmingly lean on generic templates instead of adapting to a user's real body composition, bloodwork results, and week-to-week progress — a one-size-fits-all plan doesn't account for someone's actual physiology or how their body responds to training. Users increasingly want conversational, coach-like guidance rather than static charts and spreadsheets: a real answer to a question about a stalled plateau, not just another dashboard. Any solution also had to hold up under the realities of AI infrastructure at scale, since a single LLM provider is a single point of failure, and a coaching product that drops mid-session erodes trust fast.",
+        solutionDetail:
+          "Built computer-vision body analysis that reads a user's physique from photos, feeding AI-generated workout and nutrition plans that adapt as that data changes. Bloodwork is processed through a RAG system so recommendations are grounded in a user's actual lab results rather than generic advice, with the whole experience delivered conversationally. Multiple LLM providers (Claude, GPT-4o, and ElevenLabs) are orchestrated together behind an SSE streaming layer for real-time, token-by-token responses, with automatic failover between providers keeping voice coaching sessions resilient if one provider drops. Full Stripe subscription and entitlement management is wired in natively rather than bolted on.",
+        impactDetail:
+          "Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance grounded in each user's actual body data and bloodwork, rather than generic templates. Resilient multi-provider failover keeps voice coaching sessions from dropping, and Stripe-backed subscriptions mean monetization and entitlement management were built into the platform from day one — giving the product a complete, shippable path from AI pipeline to paying subscriber.",
+        overview:
+          "NebuFit set out to replace one-size-fits-all fitness templates with coaching that responds to a user's actual body data, bloodwork, and progress — rather than a fixed plan that ignores how an individual actually responds to training. Computer-vision body analysis reads a user's physique directly from photos, while bloodwork gets processed through a RAG system so nutrition and training recommendations stay grounded in real lab results instead of generic advice. The product is built to feel conversational throughout, giving users a coach to talk to rather than another dashboard of static charts.\n\nUnderneath that experience, multiple LLM providers — Claude, GPT-4o, and ElevenLabs — are orchestrated together behind an SSE streaming layer, so responses arrive token-by-token in real time instead of after a long wait. Automatic failover between providers keeps voice coaching sessions resilient even if one provider has an outage, which matters for a product where a dropped mid-session call would break trust fast.\n\nThe experience is delivered through a Flutter mobile app backed by a Nest.js and TypeScript API, keeping the client and server on a consistent, type-safe foundation. Subscription access and entitlements run on Stripe, so the coaching experience and its monetization shipped together as one production system from day one — giving NebuFit a complete path from AI pipeline to paying subscriber.",
+        stack: ['Flutter', 'Claude API', 'GPT-4o', 'ElevenLabs', 'RAG', 'Stripe', 'Nest.js', 'TypeScript'],
       },
       {
         slug: 'creative-os',
@@ -34,6 +47,14 @@ export const categories = [
           'Built a local-first Electron/React desktop app that indexes Final Draft screenplays, PDFs, and notes via a RAG pipeline (ChromaDB + SQLite) for semantic search and Claude-powered rewriting, with an extensible MCP server architecture so Claude can reach indexed content and external tools through a typed protocol.',
         impact:
           'Gave writers AI-powered editing and search that never leaves their machine, with a tool ecosystem that grows without touching the core app.',
+        challengeDetail:
+          "Writers and filmmakers wanted AI assistance on screenplays and notes without sending unfinished creative work to the cloud — for many, script drafts and story notes are sensitive material they don't want touching a third-party server before it's ready. At the same time, they didn't want to be locked into one fixed set of AI tools or a single vendor's ecosystem, since the AI landscape moves fast and a rigid integration risks going stale. Any solution also needed to make sense of unstructured creative material — screenplays in Final Draft format, scattered PDFs, and loose notes — well enough to actually answer questions about it, not just store it.",
+        solutionDetail:
+          "Built a local-first Electron/React desktop app that indexes Final Draft screenplays, PDFs, and notes through a RAG pipeline running on ChromaDB and SQLite entirely on the user's machine, so nothing leaves local storage. That indexed context feeds Claude for semantic search and rewriting, letting writers ask questions about their own material and get grounded answers instead of generic suggestions. An extensible MCP server architecture sits behind the app, giving Claude a typed protocol to reach indexed content and external tools — new capabilities can be added to that ecosystem without touching the core app.",
+        impactDetail:
+          "Gave writers and filmmakers AI-powered editing and search that never leaves their machine, addressing a confidentiality concern generic cloud-based writing tools couldn't. The MCP-based architecture means the tool ecosystem around the app can keep growing — new integrations, new capabilities — without requiring changes to the core application itself, keeping the product from going stale as the AI tooling landscape evolves.",
+        overview:
+          "Creative OS gives writers and filmmakers an AI writing partner that never leaves their machine. Script drafts and story notes are sensitive, unfinished material, so the entire pipeline — indexing, search, and rewriting — runs locally rather than routing content through a third-party cloud service. It indexes Final Draft screenplays, PDFs, and notes through a local RAG pipeline built on ChromaDB and SQLite, then surfaces that context to Claude for semantic search and rewriting inside an Electron/React desktop app.\n\nAn MCP server architecture keeps the tool ecosystem extensible, so new capabilities can reach indexed content and external tools through a typed protocol without touching the core app. That matters for a product built on a fast-moving AI landscape — writers get a tool that can grow new integrations over time instead of being locked into one fixed set of AI capabilities at launch.",
         stack: ['Electron', 'React', 'RAG', 'ChromaDB', 'SQLite', 'MCP', 'Claude API'],
       },
     ],
@@ -56,6 +77,14 @@ export const categories = [
         impact:
           'Delivered a nationwide platform on both the App Store and Google Play that keeps field agents productive offline and reconciles cleanly with SAP the moment they reconnect.',
         note: 'Client-attributed project — architecture and technical patterns discussed at a high level.',
+        challengeDetail:
+          "Orient Electronic needed a nationwide field-sales incentive program spanning a four-level organisational hierarchy — National, Zone, Branch, and FSM — with real-time sync into their existing SAP ERP system. Field sales agents work across the country, often without reliable connectivity, so the program couldn't assume a constant connection back to headquarters. Any platform also had to fit around SAP rather than replace it, syncing cleanly with an ERP system the business already depended on rather than disrupting it.",
+        solutionDetail:
+          "Architected a Nest.js backend that supports thousands of daily batch scans from field agents, syncing in real time with SAP ERP through custom BAPIs and RFC calls rather than a generic integration layer. Resilient offline queuing and reconciliation let agents keep scanning and working while disconnected, with everything settling cleanly against SAP the moment connectivity returns. JWT-based sessions paired with Twilio OTP secure the login flow for a nationwide field force, and bulk Excel/CSV processing on AWS S3 handles the program's data at scale.",
+        impactDetail:
+          'Delivered a nationwide platform on both the App Store and Google Play that keeps field agents productive even while working offline, reconciling cleanly with SAP the moment they reconnect. The four-level hierarchy — National down to individual FSM — gets real-time visibility into thousands of daily batch scans without the manual reconciliation overhead a less resilient offline strategy would have required.',
+        overview:
+          "Orient Champions is a nationwide field-sales incentive platform built for Orient Electronic, spanning a four-level hierarchy — National, Zone, Branch, and FSM — and syncing in real time with the client's existing SAP ERP. A Nest.js backend handles thousands of daily batch scans, custom BAPIs/RFC keep SAP in sync, and resilient offline queuing lets field agents keep working without connectivity, reconciling cleanly the moment they reconnect.\n\nJWT and Twilio OTP secure the login flow for a nationwide field force, and bulk Excel/CSV processing on AWS S3 handles the program's data at scale. The platform shipped to both the App Store and Google Play, giving Orient Electronic a single incentive program that works the same way whether an agent is online in a branch office or offline in the field.",
         stack: ['Nest.js', 'SAP ERP / RFC', 'JWT', 'Twilio', 'AWS S3'],
       },
       {
@@ -70,6 +99,14 @@ export const categories = [
         impact:
           'Gave the client a secure, centrally-configurable desktop tool and a live admin view, without exposing any client-identifying details.',
         note: 'Confidential client — no screenshots or client name disclosed.',
+        challengeDetail:
+          'A medical organisation, whose name is withheld per client confidentiality, needed a desktop tool that staff could use with tightly scoped, role-based access rather than a single shared login. Credentials for various downstream systems needed to be managed centrally and auto-filled into forms rather than handled manually by each staff member, reducing both friction and the risk of exposed credentials. The organisation also needed an admin layer giving oversight staff live visibility into desktop activity, without that visibility requiring a rebuild of the desktop app itself whenever requirements changed.',
+        solutionDetail:
+          'Built an Electron + Node.js desktop app with dynamic, server-driven layouts, so screens and workflows can be reconfigured from the server without shipping a new build. Role-based access control and a centralized credential manager govern who can see and do what, with script-injected auto-fill handling credential entry into downstream forms securely. A companion Next.js + Nest.js admin web portal gives oversight staff a live view into desktop activity, pushed in real time via WebSocket notifications rather than requiring a manual refresh.',
+        impactDetail:
+          'Gave the client a secure, centrally-configurable desktop tool paired with a live admin view, letting them adjust workflows and monitor activity without exposing any client-identifying details in the process. The combination of role-based access and centralized credential management reduced the manual overhead and security risk of staff handling downstream credentials individually.',
+        overview:
+          'Built for a medical organisation whose name is withheld per client confidentiality, this project pairs an Electron + Node.js desktop app with a Next.js + Nest.js admin web portal. The desktop app uses dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, giving staff a secure, centrally-configurable tool rather than a rigid one-size-fits-all interface.\n\nThe admin portal gives oversight staff live visibility into activity through real-time WebSocket notifications, so changes on the desktop side are reflected immediately rather than on a delay. The result is a secure, centrally-configurable desktop tool and a live admin view, delivered without exposing any client-identifying details.',
         stack: ['Electron', 'Node.js', 'Next.js', 'Nest.js', 'WebSockets', 'Role-Based Access'],
       },
     ],
@@ -91,6 +128,14 @@ export const categories = [
           'Built Houzi, a Flutter real estate template app with Bloc state management and Clean Architecture, REST API integration, push notifications, in-app chat, and comments — plus the HouziBuilder desktop customisation platform and the Houzi-REST-API WordPress plugin.',
         impact:
           "Reached 53,000+ Houzez theme owners with a ready-made mobile solution, earning a 4.84★ rating, 500+ Envato sales, and 5,000+ Play Store downloads.",
+        challengeDetail:
+          "Houzez, a WordPress real estate theme used by more than 53,000 site owners, had no companion mobile app — anyone wanting a native app experience alongside their Houzez site had no option but custom development from scratch. Most of those theme owners are non-technical, running real estate businesses rather than software teams, so a solution had to be something they could adopt off the shelf rather than commission and maintain themselves. It also needed to stay in sync with an existing WordPress site's listings and data rather than becoming a second, disconnected system.",
+        solutionDetail:
+          "Built Houzi, a Flutter real estate template app built on Bloc state management and Clean Architecture for a maintainable, testable codebase, with REST API integration connecting it directly to a Houzez WordPress site's listings. Push notifications, in-app chat, and comments round out the mobile experience, giving buyers and agents the interactions they'd expect from a native app. The ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing WordPress data.",
+        impactDetail:
+          "Reached over 53,000 Houzez theme owners with a ready-made mobile solution they could adopt without custom development, earning a 4.84★ rating, 500+ Envato sales, and over 5,000 Play Store downloads. The combination of the Flutter app, HouziBuilder, and the REST API plugin turned what would have been a one-off custom build into a reusable product serving an entire theme's customer base.",
+        overview:
+          "Houzi fills a gap for Houzez, a WordPress real estate theme used by over 53,000 site owners who had no way to offer a native mobile app without custom development. Built in Flutter with Bloc state management and Clean Architecture, it layers in REST API integration, push notifications, in-app chat, and comments, giving buyers and agents a full native experience tied directly to each owner's existing WordPress listings.\n\nThe ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets non-technical theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing site data. Together they turned a one-off custom-app problem into a reusable product, reaching over 53,000 theme owners with a 4.84★ rating, 500+ Envato sales, and 5,000+ Play Store downloads.",
         stack: ['Flutter', 'Bloc', 'Clean Architecture', 'REST APIs', 'WordPress Plugin'],
       },
       {
@@ -104,6 +149,14 @@ export const categories = [
           'Built a Flutter app with real-time in-app chat via PubNub, Stripe payment integration, FCM push notifications, and an Express backend.',
         impact:
           'Shipped to both the App Store and Google Play as a complete golf social and booking experience.',
+        challengeDetail:
+          'A golf social and booking product needed real-time chat, payments, and push notifications all working together as one coherent experience, rather than as three separate integrations bolted on independently. Building each of those systems from scratch — a chat backend, a payments flow, a notification pipeline — would have meant months of infrastructure work before the actual golf social and booking features could ship. The product also needed to launch on both major mobile platforms rather than picking just one.',
+        solutionDetail:
+          'Built a Flutter app that pairs PubNub for real-time in-app chat, so golfers can message each other without a custom-built messaging backend, with Stripe handling payment integration for bookings. FCM push notifications keep users informed of chat messages and booking updates, and an Express backend ties the business logic together behind these third-party services rather than reinventing them.',
+        impactDetail:
+          'Shipped to both the App Store and Google Play as a complete golf social and booking experience, with chat, payments, and notifications working together from day one rather than being added incrementally after launch. Leaning on established providers (PubNub, Stripe, FCM) instead of custom infrastructure meant engineering effort could go toward the golf-specific social and booking features instead of messaging or payments plumbing.',
+        overview:
+          'Linked Golf needed real-time chat, payments, and push notifications working together as one golf social and booking experience, rather than as separate bolted-on integrations built from scratch. The Flutter app pairs PubNub for real-time in-app chat with Stripe for payments and FCM for push notifications, running on an Express backend that ties the business logic together behind these established providers.\n\nLeaning on PubNub, Stripe, and FCM instead of custom-built infrastructure meant engineering effort could go toward the golf-specific social and booking features rather than messaging or payments plumbing. It shipped to both the App Store and Google Play as a complete social and booking product from day one.',
         stack: ['Flutter', 'PubNub', 'Stripe', 'FCM', 'Express'],
       },
       {
@@ -117,6 +170,14 @@ export const categories = [
           'Built a Flutter fitness and gamification app covering workout tracking, gamified progress milestones, and user achievements.',
         impact:
           'Delivered an engagement-first fitness app that turns routine tracking into a rewarding, achievement-driven experience.',
+        challengeDetail:
+          'A fitness client wanted gamified progress tracking to keep users engaged with their workout routines, since a plain log of sets and reps tends to lose users once the novelty of tracking wears off. The challenge was making consistency itself feel rewarding — turning the act of showing up and logging a workout into something with its own sense of progress, rather than just a record-keeping chore.',
+        solutionDetail:
+          'Built a Flutter fitness and gamification app covering standard workout tracking alongside gamified progress milestones and user achievements layered on top. Rather than treating gamification as a bolt-on feature, milestones and achievements are woven into the core tracking flow so consistency itself becomes visible and rewarded.',
+        impactDetail:
+          'Delivered an engagement-first fitness app that turns routine tracking into a rewarding, achievement-driven experience rather than a plain log of sets and reps. The gamification layer gives the client a product designed around retention — keeping users showing up — rather than just accurate record-keeping.',
+        overview:
+          'Aniflex turns fitness tracking into something users stay engaged with, rather than a plain log of sets and reps that tends to lose users once the novelty wears off. The Flutter app covers standard workout tracking alongside gamified progress milestones and achievements layered directly into that core flow.\n\nRather than treating gamification as an afterthought, milestones and achievements make consistency itself feel rewarding, giving the client an engagement-first product that rewards showing up rather than just recording it.',
         stack: ['Flutter'],
       },
       {
@@ -130,6 +191,14 @@ export const categories = [
           'Delivered a full visual and branding rebrand: theming, assets, navigation, and app-store metadata updated end-to-end in Flutter.',
         impact:
           'Relaunched the app under its new identity with a consistent look across every screen and store listing.',
+        challengeDetail:
+          "EPIC PC needed its 'Blue Sky' app fully rebranded to a new identity — new visual design, theming, and store presence — without disrupting the underlying app that users already relied on. The challenge was scope, not just visuals: a rebrand touches theming across every screen, updated assets, navigation that needs to feel consistent with the new identity, and app-store metadata, all of which had to land together rather than as a patchwork of partial updates.",
+        solutionDetail:
+          'Delivered a full visual and branding rebrand end-to-end in Flutter — new theming applied consistently across every screen, updated assets, navigation adjusted to match the new identity, and app-store metadata updated to reflect the relaunch. The underlying app logic and functionality stayed untouched, keeping the rebrand a presentation-layer change rather than a rewrite.',
+        impactDetail:
+          "Relaunched the app under its new identity with a consistent look across every screen and store listing, giving EPIC PC a clean rebrand without the risk or cost of rebuilding the app's underlying functionality from scratch.",
+        overview:
+          "EPIC PC needed its 'Blue Sky' app fully rebranded — new visual identity, theming, and store presence — without disrupting the app underneath it. A rebrand touches more than a color palette: theming across every screen, updated assets, navigation adjusted to match the new identity, and app-store metadata all needed to land together rather than as a patchwork of partial updates.\n\nThe rebrand was delivered end-to-end in Flutter as a presentation-layer change, leaving the app's underlying logic and functionality untouched. It relaunched under its new identity with a consistent look across every screen and store listing.",
         stack: ['Flutter'],
       },
       {
@@ -143,6 +212,14 @@ export const categories = [
           'Delivered three independent Flutter apps: Linked Home (property listing and management), IPT Force (field operations), and FSF-Ticket (support ticketing system).',
         impact:
           'Shipped three production apps across different domains using a consistent Flutter + REST + Firebase toolkit.',
+        challengeDetail:
+          "Three separate BooleanBites-era clients each needed a purpose-built Flutter app — one for property management, one for field operations, one for support ticketing — and all three needed to be built on tight, parallel timelines rather than sequentially. Each domain had its own requirements and users, so the three builds couldn't share a single codebase, only a consistent way of working.",
+        solutionDetail:
+          'Delivered three independent Flutter apps in parallel: Linked Home for property listing and management, IPT Force for field operations, and FSF-Ticket for a support ticketing system. Each app was built on the same underlying toolkit — Flutter for the client, REST APIs for backend integration, and Firebase for backend services — so the three builds could move at pace without reinventing infrastructure decisions for each client.',
+        impactDetail:
+          'Shipped three production apps across three different domains — property management, field operations, and support ticketing — using a consistent Flutter, REST, and Firebase toolkit throughout. Standardising on that toolkit across all three builds kept parallel delivery on tight timelines feasible without sacrificing the domain-specific functionality each client actually needed.',
+        overview:
+          "Three separate BooleanBites-era clients each needed a purpose-built Flutter app on tight, parallel timelines: Linked Home for property listing and management, IPT Force for field operations, and FSF-Ticket for support ticketing. Each domain had its own requirements and users, so the three builds couldn't share a single codebase — only a consistent way of working.\n\nAll three were built on the same underlying toolkit — Flutter for the client, REST APIs for backend integration, and Firebase for backend services — which kept parallel delivery on tight timelines feasible without reinventing infrastructure decisions for each client. All three shipped as independent production apps across very different domains.",
         stack: ['Flutter', 'REST APIs', 'Firebase'],
       },
     ],
@@ -164,6 +241,14 @@ export const categories = [
           'Built a desktop drag-and-drop theme configurator as a companion tool to the Houzi ecosystem.',
         impact:
           'Let theme owners self-serve visual changes with zero code, reducing back-and-forth support requests.',
+        challengeDetail:
+          'Non-technical Houzi theme owners had no way to preview and configure typography, colours, and layout before publishing changes to their live site — any visual tweak meant either learning to edit code directly or filing a support request and waiting. That gap turned simple visual preferences into either a technical barrier or an ongoing support burden for the Houzi team.',
+        solutionDetail:
+          'Built HouziBuilder, a desktop drag-and-drop theme configurator delivered as a companion tool to the Houzi ecosystem, letting theme owners adjust typography, colours, and layout visually and preview the result before publishing. No code editing or WordPress admin knowledge is required — the configurator handles translating visual choices into the underlying theme configuration.',
+        impactDetail:
+          "Let theme owners self-serve visual changes with zero code, reducing back-and-forth support requests that previously required the Houzi team's direct involvement for even simple visual tweaks. It turned a recurring support cost into a one-time tool investment.",
+        overview:
+          'Non-technical Houzi theme owners had no way to preview and configure typography, colours, and layout before publishing changes to their live site — any visual tweak meant either editing code directly or filing a support request. HouziBuilder is a desktop drag-and-drop theme configurator built as a companion tool to the Houzi ecosystem, letting theme owners adjust those settings visually and preview the result before publishing.\n\nNo code editing or WordPress admin knowledge is required to use it, letting theme owners self-serve visual changes with zero code and cutting down on the back-and-forth support requests that simple visual tweaks used to require.',
         stack: ['Desktop', 'WordPress'],
       },
       {
@@ -177,6 +262,14 @@ export const categories = [
           'Rebuilt the site fully in Astro, improving Core Web Vitals and structured metadata.',
         impact:
           'Faster first-load and stronger SEO fundamentals across the corporate site.',
+        challengeDetail:
+          "Techtiz's corporate site needed better performance and SEO fundamentals than its previous stack could deliver — slow first-load times and weak structured metadata were holding back both user experience and search visibility, and incremental fixes on the existing stack weren't closing the gap.",
+        solutionDetail:
+          "Rebuilt the site fully in Astro, taking advantage of its static-first output to cut down the JavaScript shipped to the browser and improve Core Web Vitals directly. Structured metadata was rebuilt alongside the migration so search engines could parse the site's content correctly rather than as an afterthought bolted onto the old stack.",
+        impactDetail:
+          'Delivered a faster first-load and stronger SEO fundamentals across the corporate site, giving Techtiz a foundation that scales with content rather than working against it.',
+        overview:
+          "Techtiz's corporate site needed stronger performance and SEO fundamentals than its previous stack could deliver — slow first-load times and weak structured metadata were holding back both user experience and search visibility. Rebuilding it fully in Astro took advantage of its static-first output to cut down the JavaScript shipped to the browser and improve Core Web Vitals directly.\n\nStructured metadata was rebuilt alongside the migration so search engines could parse the site's content correctly, resulting in a faster first-load and stronger SEO fundamentals across the site.",
         stack: ['Astro'],
       },
       {
@@ -190,6 +283,14 @@ export const categories = [
           'Built the homepage natively with custom CSS and HTML elements inside Go High Level, bypassing the external page builder entirely.',
         impact:
           'Full control over layout and performance within a platform that normally limits both.',
+        challengeDetail:
+          "ATTN wanted an agency homepage built inside Go High Level, but the platform's built-in page builder imposes real constraints on layout and performance — anything outside its templated components meant fighting the tool rather than building the page ATTN actually wanted.",
+        solutionDetail:
+          "Built the homepage natively with custom CSS and HTML elements inside Go High Level, bypassing the external page builder entirely rather than working within its templated constraints. That approach kept the page inside the Go High Level platform ATTN was already using, without inheriting the page builder's layout and performance limitations.",
+        impactDetail:
+          'Gave ATTN full control over layout and performance within a platform that normally limits both, delivering a homepage that looks and performs like a custom build while still living inside their existing Go High Level setup.',
+        overview:
+          "ATTN wanted an agency homepage inside Go High Level without being boxed in by its built-in page builder, which imposes real constraints on layout and performance for anything outside its templated components. The homepage was built natively with custom CSS and HTML elements inside Go High Level, bypassing the external page builder entirely.\n\nThat approach kept the page living inside the Go High Level platform ATTN was already using, without inheriting the page builder's layout and performance limitations — giving full control over layout and performance within a platform that normally limits both.",
         stack: ['Go High Level', 'HTML', 'CSS'],
       },
     ],
@@ -211,6 +312,14 @@ export const categories = [
           'Built an n8n + Go High Level pipeline that contacts new leads within 1 minute and places an AI voice call within 2 minutes via Retell AI + Aloware, with OpenAI-based call scoring and fraud detection to route genuine leads and suppress junk.',
         impact:
           'Cut lead response time to under a minute with automatic quality filtering, built on n8n, Go High Level, and CloseBot.',
+        challengeDetail:
+          'A US-based moving company was losing leads to slow response times, since every minute of delay before first contact measurably lowers conversion in a business where customers are often comparing multiple movers at once. Manual response meant leads sat unattended outside business hours or during busy periods, and there was no automatic way to separate genuine inquiries from junk before a rep spent time on them.',
+        solutionDetail:
+          'Built an n8n and Go High Level pipeline that contacts new leads within 1 minute of submission and places an AI voice call within 2 minutes via Retell AI and Aloware, so leads get a response regardless of when they come in. OpenAI-based call scoring and fraud detection run on top, routing genuine leads to the sales team and suppressing junk automatically rather than requiring a rep to manually triage every inquiry.',
+        impactDetail:
+          'Cut lead response time to under a minute with automatic quality filtering built on n8n, Go High Level, and CloseBot, turning what used to be a manual, delay-prone process into an automated pipeline that responds faster than a human rep could manage around the clock.',
+        overview:
+          'A US-based moving company was losing leads to slow response times, where every minute of delay before first contact lowers conversion. The pipeline, built on n8n and Go High Level, contacts new leads within 1 minute and places an AI voice call within 2 minutes via Retell AI and Aloware.\n\nOpenAI-based call scoring and fraud detection route genuine leads and suppress junk automatically, with CloseBot rounding out the stack. Together they cut lead response time to under a minute with automatic quality filtering — a response speed no manual process running only during business hours could match.',
         stack: ['n8n', 'Go High Level', 'Retell AI', 'Aloware', 'OpenAI', 'CloseBot'],
       },
       {
@@ -224,6 +333,14 @@ export const categories = [
           'Built a daily n8n pipeline using Apify scrapers to discover matching contacts, ZeroBounce and Clearout Phone to validate emails and numbers, and Nocodb to dedupe against the existing CRM.',
         impact:
           'Delivers a ready-to-call, verified lead list before business hours every morning, automatically.',
+        challengeDetail:
+          'Manually finding and verifying decision-maker contacts for outreach ate hours every morning before the sales team could even start calling, since raw scraped contact lists are full of stale emails, dead phone numbers, and duplicates already sitting in the CRM. That manual triage delayed the start of the actual sales day rather than adding value to it.',
+        solutionDetail:
+          "Built a daily n8n pipeline that uses Apify scrapers to discover matching decision-maker contacts overnight, then runs them through ZeroBounce and Clearout Phone to validate emails and phone numbers before they ever reach a rep. Nocodb dedupes the results against the existing CRM, so the sales team never gets a contact they've already worked.",
+        impactDetail:
+          'Delivers a ready-to-call, verified lead list before business hours every morning, automatically — turning what used to be hours of manual triage into a pipeline that runs overnight and hands the sales team a clean list the moment they start work.',
+        overview:
+          'Manually finding and verifying decision-maker contacts for outreach was eating hours every morning before the sales team could start calling. A daily n8n pipeline uses Apify scrapers to discover matching contacts, ZeroBounce and Clearout Phone to validate emails and numbers, and Nocodb to dedupe against the existing CRM.\n\nRunning overnight rather than first thing in the morning means the validation and dedupe work happens before anyone on the sales team logs in — delivering a ready-to-call, verified lead list before business hours every morning, automatically, with no manual triage required.',
         stack: ['n8n', 'Apify', 'ZeroBounce', 'Clearout Phone', 'Nocodb'],
       },
       {
@@ -237,6 +354,14 @@ export const categories = [
           'Built an OCR-based document processing pipeline in Google Apps Script that extracts structured data from bank statement PDFs and routes it downstream.',
         impact:
           'Automated bank statement data extraction, removing manual entry from the workflow.',
+        challengeDetail:
+          'Extracting structured financial data from PDF bank statements by hand was slow and error-prone, since every statement had to be opened, read, and manually transcribed into a usable format before it could be used downstream. That manual step was both a bottleneck and a source of transcription errors that propagated into whatever relied on the extracted data.',
+        solutionDetail:
+          'Built an OCR-based document processing pipeline in Google Apps Script that reads bank statement PDFs directly, extracts the structured financial data automatically, and routes it downstream without a human retyping any of it.',
+        impactDetail:
+          'Automated bank statement data extraction end-to-end, removing manual entry from the workflow entirely and eliminating the transcription errors that came with it.',
+        overview:
+          'Extracting structured financial data from PDF bank statements by hand was slow and error-prone — every statement had to be opened, read, and manually transcribed before it could be used downstream. An OCR-based document processing pipeline built in Google Apps Script reads those PDFs directly and extracts the structured data automatically.\n\nThat data routes downstream without a human retyping any of it, automating the extraction end-to-end and removing both the manual entry and the transcription errors that came with it.',
         stack: ['Google Apps Script', 'OCR'],
       },
       {
@@ -250,6 +375,14 @@ export const categories = [
           'Built a Zapier + Emergent Labs pipeline that syncs ClickUp case data in real time to a client-facing dashboard.',
         impact:
           'Gave the legal team and clients one live view of case status with zero manual updates.',
+        challengeDetail:
+          "The legal team and their clients had no single live view of case status — updates lived only inside ClickUp, which clients didn't have access to, so staff had to manually relay status through calls or emails whenever a client asked. That manual relay step meant status updates were only as current as the last time someone remembered to send one.",
+        solutionDetail:
+          "Built a Zapier and Emergent Labs pipeline that syncs ClickUp case data in real time to a client-facing dashboard, so status changes made inside ClickUp by the legal team appear on the client's dashboard automatically, without anyone manually re-entering or relaying the update.",
+        impactDetail:
+          'Gave the legal team and clients one live view of case status with zero manual updates, eliminating the status-update phone calls and emails that used to be the only way clients could check on their case.',
+        overview:
+          "The legal team and their clients had no single live view of case status — updates lived only inside ClickUp, which clients didn't have access to, so staff had to manually relay status through calls or emails. A Zapier and Emergent Labs pipeline syncs ClickUp case data in real time to a client-facing dashboard.\n\nStatus changes made inside ClickUp by the legal team appear on the client's dashboard automatically, giving both the legal team and clients one live view of case status with zero manual updates required.",
         stack: ['Zapier', 'Emergent Labs', 'ClickUp'],
       },
       {
@@ -263,6 +396,14 @@ export const categories = [
           'Built two n8n pipelines: one generates platform-specific captions on a schedule and auto-posts across channels; the other filters and validates inbound leads and routes qualified replies to sales via Slack.',
         impact:
           'Kept a consistent posting cadence while routing only qualified leads to the sales team.',
+        challengeDetail:
+          'A client needed both a steady social content cadence to stay visible across channels, and a way to keep sales focused on genuinely qualified inbound leads rather than sorting through every reply and comment manually. Maintaining a posting schedule by hand competed for the same time that should have gone toward following up on real sales opportunities.',
+        solutionDetail:
+          'Built two separate n8n pipelines to handle each half of the problem independently. One generates platform-specific captions on a schedule and auto-posts across channels, keeping the content cadence running without manual scheduling. The other filters and validates inbound leads and replies, routing only the qualified ones to sales via Slack rather than surfacing every comment and message as if it needed a response.',
+        impactDetail:
+          'Kept a consistent posting cadence running automatically while routing only qualified leads to the sales team, freeing up time that used to go toward manual scheduling and reply triage for actual sales follow-up.',
+        overview:
+          'A client needed both a steady social content cadence to stay visible across channels, and a way to keep sales focused on genuinely qualified inbound leads rather than sorting through every reply manually. Two separate n8n pipelines handle each half of the problem: one generates platform-specific captions on a schedule and auto-posts across channels.\n\nThe other filters and validates inbound leads and replies, routing only qualified ones to sales via Slack — keeping a consistent posting cadence running automatically while routing only qualified leads to the sales team.',
         stack: ['n8n', 'Slack'],
       },
     ],
@@ -284,6 +425,14 @@ export const categories = [
           'Published Kumquat, a FlutterFlow starter template with profile listings, filtering, and match request flows.',
         impact:
           'Published to the FlutterFlow Marketplace as a reusable starting point for talent-matching apps.',
+        challengeDetail:
+          'Recruitment and talent-matching apps needed a proven FlutterFlow starting point instead of being built from a blank canvas each time — the core flows (profile listings, filtering, match requests) are similar enough across talent-matching products that rebuilding them from scratch for every new project was pure repeated effort.',
+        solutionDetail:
+          'Published Kumquat, a FlutterFlow starter template covering profile listings, filtering, and match request flows out of the box, so a new talent-matching app can start from a working foundation instead of an empty canvas.',
+        impactDetail:
+          'Published to the FlutterFlow Marketplace as a reusable starting point for talent-matching apps, giving other builders a head start on the recruitment-specific flows that would otherwise need to be built from scratch every time.',
+        overview:
+          'Recruitment and talent-matching apps needed a proven FlutterFlow starting point instead of being built from a blank canvas each time, since the core flows — profile listings, filtering, match requests — repeat across nearly every talent-matching product. Kumquat is a FlutterFlow starter template covering those flows out of the box.\n\nRather than every new talent-matching project rebuilding the same profile and matching logic from scratch, Kumquat gives builders a working foundation to start from — published to the FlutterFlow Marketplace as a reusable starting point.',
         stack: ['FlutterFlow'],
       },
       {
@@ -297,6 +446,14 @@ export const categories = [
           'Published Foodii, a FlutterFlow starter template covering browsing, saving, and categorising recipes.',
         impact:
           'Published to the FlutterFlow Marketplace as a reusable recipe-app starting point.',
+        challengeDetail:
+          'Recipe and meal-planning apps needed a clean, card-based starting point rather than a from-scratch build, since the core browsing, saving, and categorising flows are largely the same from one recipe app to the next — rebuilding that foundation for every new project was avoidable repeated work.',
+        solutionDetail:
+          'Published Foodii, a FlutterFlow starter template covering recipe browsing, saving, and categorising in a clean, card-based UI, giving a new recipe or meal-planning app a working foundation to build on top of instead of starting empty.',
+        impactDetail:
+          'Published to the FlutterFlow Marketplace as a reusable recipe-app starting point, saving builders the work of recreating the same browsing, saving, and categorising flows for every new recipe-focused project.',
+        overview:
+          'Recipe and meal-planning apps needed a clean, card-based starting point rather than a from-scratch build, since the core browsing, saving, and categorising flows repeat across nearly every recipe app. Foodii is a FlutterFlow starter template covering those flows in a clean, card-based UI.\n\nRather than every new recipe-focused project rebuilding the same foundation, Foodii gives builders a working starting point — published to the FlutterFlow Marketplace as a reusable recipe-app template.',
         stack: ['FlutterFlow'],
       },
     ],

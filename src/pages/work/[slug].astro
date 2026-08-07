@@ -9,19 +9,29 @@ import './_work.css';
 import './_case-study.css';
 
 export function getStaticPaths() {
+  function getTint(p) {
+    const tintIndex = p.category.items.findIndex((item) => item.slug === p.slug);
+    return tintIndex % 2 === 1 ? 'violet' : 'blue';
+  }
   return allProjects.map((project, i) => {
     const prev = allProjects[(i - 1 + allProjects.length) % allProjects.length];
     const next = allProjects[(i + 1) % allProjects.length];
-    const tintIndex = project.category.items.findIndex((p) => p.slug === project.slug);
     return {
       params: { slug: project.slug },
-      props: { project, prev, next, tint: tintIndex % 2 === 1 ? 'violet' : 'blue' },
+      props: {
+        project,
+        prev,
+        next,
+        tint: getTint(project),
+        prevTint: getTint(prev),
+        nextTint: getTint(next),
+      },
     };
   });
 }
 
-const { project, prev, next, tint } = Astro.props;
-const { category } = project;
+const { project, prev, next, tint, prevTint, nextTint } = Astro.props;
+const heroDescription = project.overview.split('\n\n')[0];
 
 function renderTech(t) {
   return techIcons[t] ?? null;
@@ -37,73 +47,34 @@ function renderTech(t) {
 
     <main class="hc-main">
 
-      <!-- Breadcrumb -->
-      <section class="hc-section hc-section--tight">
-        <nav class="cs-breadcrumb" aria-label="Breadcrumb" data-aos="fade-up">
-          <a href="/work">Work</a>
-          <span class="cs-breadcrumb__sep">/</span>
-          <a href={`/work#${category.id}`}>{category.title}</a>
-          <span class="cs-breadcrumb__sep">/</span>
-          <span class="cs-breadcrumb__current">{project.name}</span>
-        </nav>
-      </section>
-
       <!-- Hero -->
       <section class="hc-section">
         <div class="hc-card cs-hero" data-aos="fade-up">
           <div class="cs-hero__content" data-aos="fade-right" data-aos-duration="900">
-            <p class="hc-eyebrow">
-              <i class={category.icon} aria-hidden="true"></i>
-              {category.title}
-            </p>
             <h1 class="cs-hero__title">{project.name}</h1>
-            <p class="cs-hero__metric">{project.metric}</p>
+            <p class="cs-hero__desc">{heroDescription}</p>
             {project.note && (
               <p class="cs-callout"><i class="ri-lock-line" aria-hidden="true"></i> {project.note}</p>
             )}
-            <div class="cs-hero__actions">
-              <a href="/work" class="hc-icon-btn" aria-label="Back to all work">
-                <span class="hc-icon-btn__track">
-                  <i class="ri-arrow-left-line" aria-hidden="true"></i>
-                  <i class="ri-arrow-left-line" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a href="/work" class="hc-btn hc-btn--outline hc-btn--sm">All Projects</a>
-              <a href="/contact" class="hc-btn hc-btn--primary hc-btn--sm">Start a project</a>
-            </div>
           </div>
-          <div class={`hc-work__tile hc-work__tile--${tint}`} data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
-            <span class="hc-work__mark">{project.mark}</span>
-            <span class="hc-work__tile-name">{project.name}</span>
-            <span class="hc-work__tile-metric">{project.metric}</span>
+          <div class={`hc-work__tile hc-work__tile--${tint} ${project.logo ? 'hc-work__tile--logo' : ''}`} data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
+            {project.logo ? (
+              <img src={project.logo} alt={`${project.name} logo`} class="hc-work__tile-logo" />
+            ) : (
+              <>
+                <span class="hc-work__mark">{project.mark}</span>
+                <span class="hc-work__tile-name">{project.name}</span>
+                <span class="hc-work__tile-metric">{project.metric}</span>
+              </>
+            )}
           </div>
-        </div>
-      </section>
-
-      <!-- Overview -->
-      <section class="hc-section hc-section--tight">
-        <div class="hc-card cs-overview" data-aos="fade-up">
-          <dl class={`hc-work__breakdown cs-overview__breakdown ${tint === 'violet' ? 'hc-work__breakdown--violet' : ''}`}>
-            <div class="hc-work__point">
-              <dt>Challenge</dt>
-              <dd>{project.challenge}</dd>
-            </div>
-            <div class="hc-work__point">
-              <dt>Solution</dt>
-              <dd>{project.solution}</dd>
-            </div>
-            <div class="hc-work__point">
-              <dt>Impact</dt>
-              <dd>{project.impact}</dd>
-            </div>
-          </dl>
         </div>
       </section>
 
       <!-- Tech stack -->
       <section class="hc-section hc-section--tight">
         <div class="hc-card cs-stack" data-aos="fade-up">
-          <p class="hc-eyebrow">Tech Stack</p>
+          <p class="hc-eyebrow"><i class="ri-stack-line" aria-hidden="true"></i> Built With</p>
           <div class="cs-stack__tags">
             {project.stack.map((t) => (
               <span class="cs-tag">
@@ -117,16 +88,56 @@ function renderTech(t) {
         </div>
       </section>
 
+      <!-- Detailed project overview -->
+      <section class="hc-section hc-section--tight">
+        <div class="hc-section__header hc-section__header--left" data-aos="fade-up">
+          <h2 class="hc-heading">Project Overview</h2>
+        </div>
+        <div class="hc-card cs-detail" data-aos="fade-up">
+          {project.overview.split('\n\n').map((para) => (
+            <p class="cs-detail__text">{para}</p>
+          ))}
+        </div>
+      </section>
+
+      <!-- Challenge / Solution / Impact breakdown -->
+      <section class="hc-section hc-section--tight">
+        <div class="hc-card cs-overview" data-aos="fade-up">
+          <dl class={`hc-work__breakdown cs-overview__breakdown ${tint === 'violet' ? 'hc-work__breakdown--violet' : ''}`}>
+            <div class="hc-work__point">
+              <dt>Challenge</dt>
+              <dd>{project.challengeDetail}</dd>
+            </div>
+            <div class="hc-work__point">
+              <dt>Solution</dt>
+              <dd>{project.solutionDetail}</dd>
+            </div>
+            <div class="hc-work__point">
+              <dt>Impact</dt>
+              <dd>{project.impactDetail}</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
       <!-- Prev / Next -->
       <section class="hc-section hc-section--tight">
         <div class="cs-nav" data-aos="fade-up">
-          <a href={`/work/${prev.slug}`} class="cs-nav__link cs-nav__link--prev">
-            <span class="cs-nav__dir"><i class="ri-arrow-left-line" aria-hidden="true"></i> Previous project</span>
-            <span class="cs-nav__name">{prev.name}</span>
+          <a href={`/work/${prev.slug}`} class="hc-card cs-nav__link cs-nav__link--prev">
+            <span class={`cs-nav__mark cs-nav__mark--${prevTint}`}>{prev.mark}</span>
+            <span class="cs-nav__body">
+              <span class="cs-nav__dir"><i class="ri-arrow-left-line" aria-hidden="true"></i> Previous project</span>
+              <span class="cs-nav__name">{prev.name}</span>
+              <span class="cs-nav__cat">{prev.category.title}</span>
+            </span>
           </a>
-          <a href={`/work/${next.slug}`} class="cs-nav__link cs-nav__link--next">
-            <span class="cs-nav__dir">Next project <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
-            <span class="cs-nav__name">{next.name}</span>
+          <a href={`/work/${next.slug}`} class="hc-card cs-nav__link cs-nav__link--next">
+            <span class="cs-nav__body">
+              <span class="cs-nav__dir">Next project <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
+              <span class="cs-nav__name">{next.name}</span>
+              <span class="cs-nav__cat">{next.category.title}</span>
+            </span>
+            <span class={`cs-nav__mark cs-nav__mark--${nextTint}`}>{next.mark}</span>
           </a>
         </div>
       </section>

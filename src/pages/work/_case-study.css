@@ -2,30 +2,6 @@
    footer, buttons, hc-work breakdown/tile) lives in ../../styles/hc-shared.css;
    .pf-note and .hc-reverse-icon-btn come from ./_work.css (same page family). */
 
-/* ── Breadcrumb ──────────────────────────────────────── */
-.cs-breadcrumb {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  color: var(--hc-muted);
-  margin-bottom: 1.25rem;
-}
-
-.cs-breadcrumb a:hover {
-  color: var(--hc-ink);
-}
-
-.cs-breadcrumb__sep {
-  opacity: 0.5;
-}
-
-.cs-breadcrumb__current {
-  color: var(--hc-ink);
-  font-weight: 600;
-}
-
 /* ── Hero ────────────────────────────────────────────── */
 .cs-hero {
   display: grid;
@@ -35,33 +11,40 @@
   padding: 2.75rem;
 }
 
-.cs-hero__content .hc-eyebrow i {
-  display: inline-block;
-  margin-right: 0.4rem;
-  text-transform: none;
-}
-
 .cs-hero__title {
   font-size: 2.4rem;
   font-weight: 800;
   line-height: 1.15;
-  margin: 0.5rem 0 0.9rem;
+  margin: 0 0 0.9rem;
 }
 
-.cs-hero__metric {
-  font-size: 0.95rem;
+.cs-hero__desc {
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--hc-muted);
+  max-width: 46ch;
   margin-bottom: 1.25rem;
-}
-
-.cs-hero__actions {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .cs-hero .hc-work__tile {
   min-height: 220px;
+}
+
+.hc-work__tile--logo {
+  padding: 0;
+  overflow: hidden;
+}
+
+.hc-work__tile-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 1.5rem;
 }
 
 /* ── Confidentiality callout ────────────────────────────── */
@@ -84,7 +67,27 @@
   flex-shrink: 0;
 }
 
+/* ── Detailed project overview (narrative paragraph, ahead of the
+   Challenge/Solution/Impact breakdown) ─────────────────────────── */
+.cs-detail {
+  padding: 2.75rem;
+}
+
+.cs-detail__text {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--hc-muted);
+}
+
+.cs-detail__text + .cs-detail__text {
+  margin-top: 1.1rem;
+}
+
 /* ── Overview breakdown (full-width, larger than the pf-category cards) ── */
+.cs-overview {
+  padding: 2.75rem;
+}
+
 .cs-overview__breakdown {
   gap: 1.75rem;
 }
@@ -99,9 +102,30 @@
 }
 
 /* ── Tech stack chips ────────────────────────────────────── */
+.cs-stack {
+  padding: 2.75rem;
+  background-color: #eef4ff;
+  text-align: center;
+}
+
+.cs-stack .hc-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: #1d4ed8;
+  font-weight: 800;
+}
+
+.cs-stack .hc-eyebrow i {
+  font-size: 1rem;
+  color: #1d4ed8;
+}
+
 .cs-stack__tags {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.65rem;
   margin-top: 1.1rem;
 }
@@ -113,6 +137,7 @@
   padding: 0.55rem 0.95rem;
   border-radius: 999px;
   border: 1px solid var(--hc-line);
+  background: #fff;
   font-size: 0.85rem;
   font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -140,22 +165,49 @@
 
 .cs-nav__link {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  padding: 1.5rem 1.75rem;
-  border-radius: 20px;
-  border: 1px solid var(--hc-line);
-  transition: background-color 0.2s, transform 0.2s;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.75rem 2rem;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .cs-nav__link:hover {
-  background: var(--hc-bg);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(20, 22, 27, 0.1);
+  border-color: transparent;
 }
 
 .cs-nav__link--next {
-  align-items: flex-end;
+  flex-direction: row-reverse;
   text-align: right;
+}
+
+.cs-nav__mark {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-family: var(--hc-font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.cs-nav__mark--blue {
+  background-color: var(--hc-wash-blue);
+}
+
+.cs-nav__mark--violet {
+  background-color: var(--hc-wash-violet);
+}
+
+.cs-nav__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
 }
 
 .cs-nav__dir {
@@ -169,11 +221,32 @@
   gap: 0.4rem;
 }
 
+.cs-nav__link--next .cs-nav__dir {
+  justify-content: flex-end;
+}
+
+.cs-nav__dir i {
+  transition: transform 0.2s;
+}
+
+.cs-nav__link--prev:hover .cs-nav__dir i {
+  transform: translateX(-4px);
+}
+
+.cs-nav__link--next:hover .cs-nav__dir i {
+  transform: translateX(4px);
+}
+
 .cs-nav__name {
   font-family: var(--hc-font-display);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--hc-ink);
+}
+
+.cs-nav__cat {
+  font-size: 0.8rem;
+  color: var(--hc-muted);
 }
 
 /* ── Responsive ────────────────────────────────────────── */
@@ -187,8 +260,12 @@
   }
 
   .cs-nav__link--next {
-    align-items: flex-start;
+    flex-direction: row;
     text-align: left;
+  }
+
+  .cs-nav__link--next .cs-nav__dir {
+    justify-content: flex-start;
   }
 }
 

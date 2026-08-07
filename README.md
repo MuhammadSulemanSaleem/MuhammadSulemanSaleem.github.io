@@ -13,7 +13,7 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 - Two design systems coexist mid-migration: Home + Work + Services + About + Contact share `HcNav`/`HcFooter` components and `src/styles/hc-shared.css` (Graflow-style); Certifications still uses the legacy `Navbar`/`Footer` components and `src/styles/global.css` (navy/teal)
 - Work's and About page's project/achievement cards reuse `hc-card`-based patterns from the shared "hc-" system (the About page's Engineering Expertise section reuses Home's `.hc-work` pattern verbatim; its Professional Experience and Relevant Experience sections both wrap the same Challenge/Solution/Impact breakdown into a compact 3-per-row card grid inside an outer `hc-card`, instead of Work's full two-column `.hc-work` card)
 - Services mirrors Work's six project categories as offerings (deliverables checklist + case-study link back to Work), with its own FAQ accordion
-- Every project on `/work` links to its own case study at `/work/<slug>` (breadcrumb, hero, full Challenge/Solution/Impact, tech-stack chips, prev/next nav), generated via `getStaticPaths` from the shared project list in `src/data/projects.js`; Home's "Selected works" and any About page entry that's the same underlying project (not a hand-grouped summary) link there too, via an explicit `slug` field rather than name matching
+- Every project on `/work` links to its own case study at `/work/<slug>` (hero with a mark tile or, if set, the project's real logo; tech-stack chips; a narrative Project Overview; full Challenge/Solution/Impact; prev/next nav), generated via `getStaticPaths` from the shared project list in `src/data/projects.js`; the case study page uses fuller `challengeDetail`/`solutionDetail`/`impactDetail`/`overview` fields, while `/work`'s own category cards use the shorter `challenge`/`solution`/`impact`, both written from the same underlying facts. Home's "Selected works" and any About page entry that's the same underlying project (not a hand-grouped summary) link there too, via an explicit `slug` field rather than name matching
 - `hc-icon-btn`'s hover-slide direction is page-scoped: pages that want it reversed pair the shared class with a page-local `.hc-reverse-icon-btn` modifier in their own `_<page>.css`, rather than flipping the shared default in `hc-shared.css`
 - GitHub Actions for CI/CD
 
@@ -33,7 +33,7 @@ src/
   components/     # HcNav, HcFooter — used by Home/Work/Services/About/Contact (hc- design system)
                   # Navbar, Footer — used by Certifications only (legacy design system)
   layouts/        # BaseLayout — HTML shell shared by all pages
-  data/           # projects.js (canonical 20-project list, source for /work + every /work/<slug>),
+  data/           # projects.js (canonical 19-project list, source for /work + every /work/<slug>),
                   # techIcons.js, resumeSkills.js
   pages/          # File-based routing
                   #   index.astro — home page (hc- design system), styled via hc-shared.css + sibling _index.css
