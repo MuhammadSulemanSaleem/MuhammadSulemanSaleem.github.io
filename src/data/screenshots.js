@@ -3,22 +3,25 @@
 // ones cleared to show real product screenshots (see Confidentiality in CLAUDE.md).
 // `hero` renders in the hero card itself, alongside the title/description,
 // replacing the generic mark-tile/logo for projects that have one — for NebuFit,
-// Creative OS, and Houzi this is a pre-rendered multi-device mockup composite
-// (real device renders + dust/smoke effect, not a raw in-app screenshot), so it
-// drops in as a plain image with no extra CSS device-frame chrome around it.
-// These composites are also reused as the project's `screenshot` tile image on
-// Home/Work/About (see the `screenshot` field in index.astro/about/index.astro/
-// projects.js) — one shared featured image across all four pages that render
-// that project. `gallery` is the full set of raw in-app screenshots rendered in
-// an auto-scrolling marquee placed after Project Overview (so the narrative sets
-// up what the screenshots show) and before the Challenge/Solution/Impact
-// breakdown — deliberately the complete screenshot set (not a curated highlight
-// reel), in the app's own narrative order (NebuFit: splash → onboarding →
-// dashboard → training/nutrition/coach → profile; Creative OS: splash → empty
-// state → workspace editor → library search → collections/tagging → analysis →
-// RAG chat; Houzi: home discovery → map search → results → filters → property
-// detail → agent profile → agent-side add-property/CRM/insights tools).
-// Keeping this separate from projects.js (rather than inline `screenshot`
+// Creative OS, Houzi, and Orient Champions this is a pre-rendered multi-device
+// mockup composite (real device renders + dust/smoke effect, not a raw in-app
+// screenshot), so it drops in as a plain image with no extra CSS device-frame
+// chrome around it. These composites are also reused as the project's
+// `screenshot` tile image on Home/Work/About (see the `screenshot` field in
+// index.astro/about/index.astro/projects.js) — one shared featured image
+// across all four pages that render that project (Orient Champions has no
+// Home entry since it isn't one of Home's 3 "Selected works"). `gallery` is
+// the full set of raw in-app screenshots rendered in an auto-scrolling
+// marquee placed after Project Overview (so the narrative sets up what the
+// screenshots show) and before the Challenge/Solution/Impact breakdown —
+// deliberately the complete screenshot set (not a curated highlight reel), in
+// the app's own narrative order (NebuFit: splash → onboarding → dashboard →
+// training/nutrition/coach → profile; Creative OS: splash → empty state →
+// workspace editor → library search → collections/tagging → analysis → RAG
+// chat; Houzi: home discovery → map search → results → filters → property
+// detail → agent profile → agent-side add-property/CRM/insights tools; Orient
+// Champions: splash → login → signup → dashboard → paid cards → help/FAQ →
+// more menu → account). Keeping this separate from projects.js (rather than inline `screenshot`
 // fields per item) means the case study page can do a single keyed lookup and
 // projects without screenshots need no extra fields.
 export const projectScreenshots = {
@@ -235,6 +238,46 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/houzi/10-insights.png',
         alt: 'Insights dashboard with unique view counts, a visits chart, and a top-countries breakdown',
+      },
+    ],
+  },
+  'orient-champions': {
+    hero: {
+      src: '/assets/screenshots/orient-champions/feature-mockup.png',
+      alt: 'Orient Champions shown across five iPhone screens — login, account creation, the paid/approved/outstanding dashboard, a paid cards list, and account settings',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/orient-champions/01-splash.webp',
+        alt: 'Orient Champions splash screen showing the brand mark while the app loads',
+      },
+      {
+        src: '/assets/screenshots/orient-champions/02-login.webp',
+        alt: 'Login screen with mobile number and password fields',
+      },
+      {
+        src: '/assets/screenshots/orient-champions/03-signup.webp',
+        alt: 'Account creation form with name, mobile number, CNIC/social security, dealer code, password, and company selection',
+      },
+      {
+        src: '/assets/screenshots/orient-champions/04-dashboard.webp',
+        alt: 'Dashboard showing total paid, approved, and outstanding amounts, plus paid/approved/verified/pending/rejected card counts and a scan button',
+      },
+      {
+        src: '/assets/screenshots/orient-champions/05-paid-cards.webp',
+        alt: 'Paid Cards list with card IDs, names, and amounts, paginated with previous/next controls',
+      },
+      {
+        src: '/assets/screenshots/orient-champions/06-help-faq.webp',
+        alt: 'Help/FAQ screen with About, FAQs, Contact Us, Privacy Policy, Gallery, and Terms & Conditions tiles',
+      },
+      {
+        src: '/assets/screenshots/orient-champions/07-more-menu.webp',
+        alt: 'More menu with links to videos, blogs, catalogue, policies, and the brand\'s social media profiles',
+      },
+      {
+        src: '/assets/screenshots/orient-champions/08-account.webp',
+        alt: 'Account screen with profile info and links to account settings, policies, help/FAQ, and sign out',
       },
     ],
   },

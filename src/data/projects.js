@@ -83,6 +83,7 @@ export const categories = [
         slug: 'orient-champions',
         mark: 'OC',
         name: 'Orient Champions',
+        screenshot: '/assets/screenshots/orient-champions/feature-mockup.png',
         metric: 'Thousands of daily batch scans · SAP ERP',
         challenge:
           'Orient Electronic needed a nationwide field-sales incentive program spanning a four-level hierarchy (National → Zone → Branch → FSM), with real-time sync into their existing SAP ERP — without disrupting agents working offline in the field.',
@@ -90,7 +91,6 @@ export const categories = [
           'Architected a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs/RFC, resilient offline queuing and reconciliation, JWT + Twilio OTP auth, and bulk Excel/CSV processing on AWS S3.',
         impact:
           'Delivered a nationwide platform on both the App Store and Google Play that keeps field agents productive offline and reconciles cleanly with SAP the moment they reconnect.',
-        note: 'Client-attributed project — architecture and technical patterns discussed at a high level.',
         challengeDetail:
           "Orient Electronic needed a nationwide field-sales incentive program spanning a four-level organisational hierarchy — National, Zone, Branch, and FSM — with real-time sync into their existing SAP ERP system. Field sales agents work across the country, often without reliable connectivity, so the program couldn't assume a constant connection back to headquarters. Any platform also had to fit around SAP rather than replace it, syncing cleanly with an ERP system the business already depended on rather than disrupting it.",
         solutionDetail:
