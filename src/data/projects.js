@@ -53,6 +53,7 @@ export const categories = [
         slug: 'creative-os',
         mark: 'CO',
         name: 'Creative OS',
+        screenshot: '/assets/screenshots/creative-os/feature-mockup.png',
         metric: 'Local-first · MCP server architecture',
         challenge:
           'Writers and filmmakers wanted AI assistance on screenplays and notes without sending unfinished creative work to the cloud, and without being locked into one fixed set of AI tools.',

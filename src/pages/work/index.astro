@@ -104,7 +104,11 @@ const stats = [
               </div>
               <div class={`hc-work__tile hc-work__tile--${i % 2 === 1 ? 'violet' : 'blue'} ${p.screenshot ? 'hc-work__tile--logo' : ''}`}>
                 {p.screenshot ? (
-                  <img src={p.screenshot} alt={`${p.name} preview`} class="hc-work__tile-logo" />
+                  <img
+                    src={p.screenshot}
+                    alt={`${p.name} preview`}
+                    class={`hc-work__tile-logo ${p.slug === 'creative-os' ? 'hc-work__tile-logo--zoom' : ''}`}
+                  />
                 ) : (
                   <>
                     <span class="hc-work__mark">{p.mark}</span>

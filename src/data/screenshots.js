@@ -4,14 +4,20 @@
 // `hero` renders in the hero card itself, alongside the title/description,
 // replacing the generic mark-tile/logo for projects that have one — for NebuFit
 // this is a pre-rendered iPhone mockup composite (real device render + dust/smoke
-// effect, not a raw in-app screenshot), so it's dropped in as a plain image with
-// no extra CSS phone-frame chrome around it. `gallery` is the full set of raw
-// in-app screenshots rendered in an auto-scrolling marquee placed after
-// Project Overview (so the narrative sets up what the screenshots show) and
-// before the Challenge/Solution/Impact breakdown — deliberately the complete
-// screenshot set (not a curated highlight reel), in the app's own narrative
-// order (splash → onboarding → dashboard → training/nutrition/coach → profile).
-// Keeping this separate from projects.js (rather than inline `screenshot`
+// effect, not a raw in-app screenshot), and Creative OS has the equivalent for
+// desktop (a pre-rendered laptop mockup composite), so both drop in as a plain
+// image with no extra CSS device-frame chrome around it. Both composites are
+// also reused as the project's `screenshot` tile image on Home/Work/About (see
+// the `screenshot` field in index.astro/about/index.astro/projects.js) — one
+// shared featured image across all four pages that render that project.
+// `gallery` is the full set of raw in-app screenshots rendered in
+// an auto-scrolling marquee placed after Project Overview (so the narrative sets
+// up what the screenshots show) and before the Challenge/Solution/Impact
+// breakdown — deliberately the complete screenshot set (not a curated highlight
+// reel), in the app's own narrative order (NebuFit: splash → onboarding →
+// dashboard → training/nutrition/coach → profile; Creative OS: splash → empty
+// state → workspace editor → library search → collections/tagging → analysis →
+// RAG chat). Keeping this separate from projects.js (rather than inline `screenshot`
 // fields per item) means the case study page can do a single keyed lookup and
 // projects without screenshots need no extra fields.
 export const projectScreenshots = {
@@ -144,6 +150,42 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/nebufit/30-blood-report.png',
         alt: 'Blood Report Analysis expanded marker detail with an AI-written explanation of what it measures and performance context',
+      },
+    ],
+  },
+  'creative-os': {
+    hero: {
+      src: '/assets/screenshots/creative-os/feature-mockup.png',
+      alt: 'Creative OS shown across three laptop screens — the Library semantic search, the Workspace screenplay editor with RAG + Claude chat, and the Analysis dashboard',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/creative-os/00-splash-branded.png',
+        alt: "Creative OS splash screen showing the app icon, name, and 'Writer's desktop' tagline while it loads",
+      },
+      {
+        src: '/assets/screenshots/creative-os/01-empty-state-onboarding.png',
+        alt: 'Empty state prompting the user to add a folder — Desktop, Downloads, Dropbox — to start watching files for indexing',
+      },
+      {
+        src: '/assets/screenshots/creative-os/02-workspace-screenplay-editor.png',
+        alt: 'Workspace view with a Final Draft screenplay open in the scene editor, AI actions, and a chat panel alongside',
+      },
+      {
+        src: '/assets/screenshots/creative-os/03-library-semantic-search.png',
+        alt: 'Library semantic search returning ranked results across indexed screenplay, outline, and production notes documents for a natural-language query',
+      },
+      {
+        src: '/assets/screenshots/creative-os/04-collections-ai-tagging.png',
+        alt: 'Collections page with a Festival Submissions collection and AI-suggested tags — Beat Outline, Tech Thriller, Character Arc, Themes — awaiting accept or dismiss',
+      },
+      {
+        src: '/assets/screenshots/creative-os/05-analysis-dashboard.png',
+        alt: 'Analysis dashboard showing document, scene, and word counts, tag frequency, scene length distribution, and a thematic clustering scatter plot',
+      },
+      {
+        src: '/assets/screenshots/creative-os/06-rag-chat.png',
+        alt: "RAG + Claude chat answering a question about the screenplay's plot with an answer grounded in the indexed script and outline",
       },
     ],
   },

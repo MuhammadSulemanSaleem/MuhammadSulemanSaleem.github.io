@@ -61,7 +61,12 @@ function renderTech(t) {
           </div>
           {shots ? (
             <div class="cs-hero__shot-wrap" data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
-              <img src={shots.hero.src} alt={shots.hero.alt} class="cs-hero__mockup" loading="lazy" />
+              <img
+                src={shots.hero.src}
+                alt={shots.hero.alt}
+                class={`cs-hero__mockup ${project.slug === 'creative-os' ? 'cs-hero__mockup--zoom' : ''}`}
+                loading="lazy"
+              />
             </div>
           ) : (
             <div class={`hc-work__tile hc-work__tile--${tint} ${project.logo ? 'hc-work__tile--logo' : ''}`} data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">

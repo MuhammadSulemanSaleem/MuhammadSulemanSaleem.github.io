@@ -118,6 +118,7 @@ const experienceJobs = [
       {
         mark: 'CO',
         name: 'Creative OS',
+        screenshot: '/assets/screenshots/creative-os/feature-mockup.png',
         metric: 'Local-first · MCP server architecture',
         challenge: 'Writers needed AI tools without sending work to the cloud.',
         solution: 'Built a local-first desktop app with RAG search and an MCP server architecture.',
@@ -546,7 +547,11 @@ function renderTech(t: string) {
                 <div class={`rs-work-card ${i % 2 === 1 ? 'rs-work-card--violet' : ''}`} data-aos="fade-up" data-aos-delay={(i % 3) * 60}>
                   <div class={`rs-work-card__tile ${item.screenshot ? 'rs-work-card__tile--screenshot' : ''}`}>
                     {item.screenshot ? (
-                      <img src={item.screenshot} alt={`${item.name} preview`} class="rs-work-card__tile-img" />
+                      <img
+                        src={item.screenshot}
+                        alt={`${item.name} preview`}
+                        class={`rs-work-card__tile-img ${item.slug === 'creative-os' ? 'rs-work-card__tile-img--zoom' : ''}`}
+                      />
                     ) : (
                       <>
                         <span class="rs-work-card__mark">{item.mark}</span>
