@@ -2,22 +2,23 @@
 // under public/assets/screenshots/<slug>/. Not every project has an entry — only
 // ones cleared to show real product screenshots (see Confidentiality in CLAUDE.md).
 // `hero` renders in the hero card itself, alongside the title/description,
-// replacing the generic mark-tile/logo for projects that have one — for NebuFit
-// this is a pre-rendered iPhone mockup composite (real device render + dust/smoke
-// effect, not a raw in-app screenshot), and Creative OS has the equivalent for
-// desktop (a pre-rendered laptop mockup composite), so both drop in as a plain
-// image with no extra CSS device-frame chrome around it. Both composites are
-// also reused as the project's `screenshot` tile image on Home/Work/About (see
-// the `screenshot` field in index.astro/about/index.astro/projects.js) — one
-// shared featured image across all four pages that render that project.
-// `gallery` is the full set of raw in-app screenshots rendered in
+// replacing the generic mark-tile/logo for projects that have one — for NebuFit,
+// Creative OS, and Houzi this is a pre-rendered multi-device mockup composite
+// (real device renders + dust/smoke effect, not a raw in-app screenshot), so it
+// drops in as a plain image with no extra CSS device-frame chrome around it.
+// These composites are also reused as the project's `screenshot` tile image on
+// Home/Work/About (see the `screenshot` field in index.astro/about/index.astro/
+// projects.js) — one shared featured image across all four pages that render
+// that project. `gallery` is the full set of raw in-app screenshots rendered in
 // an auto-scrolling marquee placed after Project Overview (so the narrative sets
 // up what the screenshots show) and before the Challenge/Solution/Impact
 // breakdown — deliberately the complete screenshot set (not a curated highlight
 // reel), in the app's own narrative order (NebuFit: splash → onboarding →
 // dashboard → training/nutrition/coach → profile; Creative OS: splash → empty
 // state → workspace editor → library search → collections/tagging → analysis →
-// RAG chat). Keeping this separate from projects.js (rather than inline `screenshot`
+// RAG chat; Houzi: home discovery → map search → results → filters → property
+// detail → agent profile → agent-side add-property/CRM/insights tools).
+// Keeping this separate from projects.js (rather than inline `screenshot`
 // fields per item) means the case study page can do a single keyed lookup and
 // projects without screenshots need no extra fields.
 export const projectScreenshots = {
@@ -186,6 +187,54 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/creative-os/06-rag-chat.png',
         alt: "RAG + Claude chat answering a question about the screenplay's plot with an answer grounded in the indexed script and outline",
+      },
+    ],
+  },
+  houzi: {
+    hero: {
+      src: '/assets/screenshots/houzi/feature-mockup.png',
+      alt: 'Houzi shown across five iPhone screens — the home discovery feed, map search, a property detail page, search results, and the agent-side insights dashboard',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/houzi/01-home-discovery.png',
+        alt: 'Houzi home screen for Miami with For Rent/For Sale/Commercial/Residential shortcuts, Featured Properties, and Latest Properties in Miami',
+      },
+      {
+        src: '/assets/screenshots/houzi/02-map-search.png',
+        alt: 'Map search screen with price-tagged property pins across Miami and a property card preview at the bottom',
+      },
+      {
+        src: '/assets/screenshots/houzi/03-search-results.png',
+        alt: 'Search results list showing 5 for-rent residential properties in Miami with photos, price, and specs',
+      },
+      {
+        src: '/assets/screenshots/houzi/04-filters.png',
+        alt: 'Filters screen for rent/sale type, location, property type, and price range',
+      },
+      {
+        src: '/assets/screenshots/houzi/05-property-detail.png',
+        alt: 'Property detail page for a single-family home for sale, with photo, price, bedroom/bathroom/garage counts, and a details table',
+      },
+      {
+        src: '/assets/screenshots/houzi/06-property-detail-description.png',
+        alt: 'Property detail page continued — description, address with map, floor plans, and agent contact information',
+      },
+      {
+        src: '/assets/screenshots/houzi/07-agent-profile.png',
+        alt: 'Agent profile page with an about section and contact details for a company agent',
+      },
+      {
+        src: '/assets/screenshots/houzi/08-quick-add-property.png',
+        alt: 'Quick Add Property form for agents, with title, description, price, area size, and bedroom/bathroom fields',
+      },
+      {
+        src: '/assets/screenshots/houzi/09-activities-crm.png',
+        alt: 'Activities dashboard with lead stats, a deals breakdown donut chart, and a feed of new reviews, leads, and deals',
+      },
+      {
+        src: '/assets/screenshots/houzi/10-insights.png',
+        alt: 'Insights dashboard with unique view counts, a visits chart, and a top-countries breakdown',
       },
     ],
   },

@@ -135,6 +135,7 @@ export const categories = [
         slug: 'houzi',
         mark: 'HZ',
         name: 'Houzi',
+        screenshot: '/assets/screenshots/houzi/feature-mockup.png',
         metric: '53K+ reach · 4.84★ · 500+ sales',
         challenge:
           'Houzez, a WordPress real estate theme used by 53,000+ site owners, had no companion mobile app — non-technical theme owners had no way to offer a native app experience without custom development.',
