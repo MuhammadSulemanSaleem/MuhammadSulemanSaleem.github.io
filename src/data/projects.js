@@ -11,7 +11,12 @@
 // from `overview` rather than reusing its first paragraph (the old default —
 // still the fallback for any project without this field), so the hero isn't
 // just a truncated duplicate of the Project Overview text sitting right below
-// it on the same page.
+// it on the same page. Optional `logo` (case-study hero fallback) and
+// `screenshot` (a real product image, shown in place of the mark/name/metric
+// tile on both /work's category card and the case-study hero — see
+// hc-work__tile--logo in hc-shared.css) render wherever `.hc-work__tile` is
+// used; screenshots.js's per-slug `hero` still wins over both on the case
+// study page specifically, since it's the more detailed override.
 export const categories = [
   {
     id: 'ai',
@@ -24,6 +29,7 @@ export const categories = [
         mark: 'NF',
         name: 'NebuFit',
         logo: '/assets/logos/nebufit.jpg',
+        screenshot: '/assets/screenshots/nebufit/feature-mockup.png',
         metric: 'RAG · multi-LLM · SSE streaming',
         challenge:
           "Fitness apps lean on generic templates instead of adapting to a user's real body data, bloodwork, and progress, and users want conversational coaching rather than static charts.",

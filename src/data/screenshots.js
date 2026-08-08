@@ -17,8 +17,8 @@
 export const projectScreenshots = {
   nebufit: {
     hero: {
-      src: '/assets/screenshots/nebufit/hero-mockup.png',
-      alt: 'NebuFit home dashboard shown on an iPhone, displaying a training streak, next check-in, blood report upload, and visual progress photos',
+      src: '/assets/screenshots/nebufit/feature-mockup.png',
+      alt: 'NebuFit shown across five iPhone screens — sign-in, AI coach chat, home dashboard, blood report analysis, and subscription management',
     },
     gallery: [
       {
