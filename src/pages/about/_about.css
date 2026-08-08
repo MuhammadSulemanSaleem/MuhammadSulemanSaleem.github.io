@@ -2,6 +2,20 @@
    Page-specific pieces (mini-cards, job/education/cert layout, tag
    chips, print rules) live here, same convention as _work.css. */
 
+/* ── Reversed icon-btn direction (see hc-shared.css note on
+   `.hc-icon-btn` being page-scoped) — used on the decorative/linked "Case
+   Study" buttons inside Professional/Relevant Experience cards. The
+   Resume/CV download button in the summary card intentionally keeps the
+   default (unreversed) direction. ─────────────────────────────────────── */
+.hc-reverse-icon-btn .hc-icon-btn__track {
+  transform: translateX(-50%);
+}
+
+.hc-reverse-icon-btn:hover .hc-icon-btn__track,
+.hc-btn:hover + .hc-reverse-icon-btn .hc-icon-btn__track {
+  transform: translateX(0);
+}
+
 /* ── Anchor sections (footer/nav deep links) ──────────── */
 #summary,
 #achievements,
@@ -331,6 +345,35 @@
 
 .rs-work-card--violet .rs-work-card__tile {
   background-color: var(--hc-wash-violet);
+}
+
+/* Full-bleed image variant — a real feature/product screenshot in place of
+   the mark/name/metric content, same idea as Work's `.hc-work__tile--logo`
+   but sized to this card's smaller tile. Flat dotted-pattern tint swaps for a
+   top-to-bottom gradient wash, matching the case study hero's treatment.
+   Negative margins cancel the outer `.rs-work-card`'s 1.5rem padding on the
+   top/left/right so the image runs edge-to-edge with the card and flush with
+   its top corners; only the top corners keep the card's own radius (20px) —
+   the bottom stays square since it flows straight into the text below. */
+.rs-work-card__tile--screenshot {
+  padding: 0;
+  overflow: hidden;
+  margin: -1.5rem -1.5rem 1.25rem;
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(180deg, var(--hc-wash-blue) 0%, transparent 70%), var(--hc-card);
+}
+
+.rs-work-card--violet .rs-work-card__tile--screenshot {
+  background: linear-gradient(180deg, var(--hc-wash-violet) 0%, transparent 70%), var(--hc-card);
+}
+
+.rs-work-card__tile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.5rem;
 }
 
 .rs-work-card__mark {

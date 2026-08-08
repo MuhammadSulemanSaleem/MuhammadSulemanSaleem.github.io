@@ -60,6 +60,7 @@ const projects = [
     mark: 'NF',
     tint: 'violet',
     name: 'NebuFit',
+    screenshot: '/assets/screenshots/nebufit/hero-mockup.png',
     metric: 'RAG · multi-LLM · SSE streaming',
     challenge:
       "Fitness apps lean on generic templates instead of adapting to a user's real body data, bloodwork, and progress, and users want conversational coaching rather than static charts.",
@@ -337,10 +338,16 @@ const stats = [
                 </a>
               </div>
             </div>
-            <div class={`hc-work__tile hc-work__tile--${p.tint}`}>
-              <span class="hc-work__mark">{p.mark}</span>
-              <span class="hc-work__tile-name">{p.name}</span>
-              <span class="hc-work__tile-metric">{p.metric}</span>
+            <div class={`hc-work__tile hc-work__tile--${p.tint} ${p.screenshot ? 'hc-work__tile--logo' : ''}`}>
+              {p.screenshot ? (
+                <img src={p.screenshot} alt={`${p.name} preview`} class="hc-work__tile-logo" />
+              ) : (
+                <>
+                  <span class="hc-work__mark">{p.mark}</span>
+                  <span class="hc-work__tile-name">{p.name}</span>
+                  <span class="hc-work__tile-metric">{p.metric}</span>
+                </>
+              )}
             </div>
           </div>
         ))}

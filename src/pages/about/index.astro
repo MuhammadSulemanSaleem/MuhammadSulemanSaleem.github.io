@@ -90,6 +90,7 @@ const experienceJobs = [
       {
         mark: 'NF',
         name: 'NebuFit',
+        screenshot: '/assets/screenshots/nebufit/hero-mockup.png',
         metric: 'RAG · multi-provider AI · Stripe subscriptions',
         challenge: 'Fitness apps lean on generic templates, not real user data.',
         solution: 'Built an AI coaching app with computer vision, RAG, and multi-provider AI orchestration.',
@@ -543,10 +544,16 @@ function renderTech(t: string) {
             <div class="rs-work-grid">
               {job.items.map((item, i) => (
                 <div class={`rs-work-card ${i % 2 === 1 ? 'rs-work-card--violet' : ''}`} data-aos="fade-up" data-aos-delay={(i % 3) * 60}>
-                  <div class="rs-work-card__tile">
-                    <span class="rs-work-card__mark">{item.mark}</span>
-                    <span class="rs-work-card__tile-name">{item.name}</span>
-                    <span class="rs-work-card__tile-metric">{item.metric}</span>
+                  <div class={`rs-work-card__tile ${item.screenshot ? 'rs-work-card__tile--screenshot' : ''}`}>
+                    {item.screenshot ? (
+                      <img src={item.screenshot} alt={`${item.name} preview`} class="rs-work-card__tile-img" />
+                    ) : (
+                      <>
+                        <span class="rs-work-card__mark">{item.mark}</span>
+                        <span class="rs-work-card__tile-name">{item.name}</span>
+                        <span class="rs-work-card__tile-metric">{item.metric}</span>
+                      </>
+                    )}
                   </div>
                   <h3 class="rs-work-card__name">{item.name}</h3>
                   <dl class={`hc-work__breakdown ${i % 2 === 1 ? 'hc-work__breakdown--violet' : ''}`}>
@@ -569,7 +576,7 @@ function renderTech(t: string) {
                   {item.caseStudy !== false && item.slug && (
                     <a href={`/work/${item.slug}`} class="hc-work__actions">
                       <span class="hc-btn hc-btn--primary hc-btn--sm">Case Study</span>
-                      <span class="hc-icon-btn" aria-hidden="true">
+                      <span class="hc-icon-btn hc-reverse-icon-btn" aria-hidden="true">
                         <span class="hc-icon-btn__track">
                           <i class="ri-arrow-right-line" aria-hidden="true"></i>
                           <i class="ri-arrow-right-line" aria-hidden="true"></i>
@@ -580,7 +587,7 @@ function renderTech(t: string) {
                   {item.caseStudy !== false && !item.slug && (
                     <div class="hc-work__actions">
                       <span class="hc-btn hc-btn--primary hc-btn--sm">Case Study</span>
-                      <span class="hc-icon-btn" aria-hidden="true">
+                      <span class="hc-icon-btn hc-reverse-icon-btn" aria-hidden="true">
                         <span class="hc-icon-btn__track">
                           <i class="ri-arrow-right-line" aria-hidden="true"></i>
                           <i class="ri-arrow-right-line" aria-hidden="true"></i>
@@ -638,7 +645,7 @@ function renderTech(t: string) {
                 {item.caseStudy !== false && item.slug && (
                   <a href={`/work/${item.slug}`} class="hc-work__actions">
                     <span class="hc-btn hc-btn--primary hc-btn--sm">Case Study</span>
-                    <span class="hc-icon-btn" aria-hidden="true">
+                    <span class="hc-icon-btn hc-reverse-icon-btn" aria-hidden="true">
                       <span class="hc-icon-btn__track">
                         <i class="ri-arrow-right-line" aria-hidden="true"></i>
                         <i class="ri-arrow-right-line" aria-hidden="true"></i>
@@ -649,7 +656,7 @@ function renderTech(t: string) {
                 {item.caseStudy !== false && !item.slug && (
                   <div class="hc-work__actions">
                     <span class="hc-btn hc-btn--primary hc-btn--sm">Case Study</span>
-                    <span class="hc-icon-btn" aria-hidden="true">
+                    <span class="hc-icon-btn hc-reverse-icon-btn" aria-hidden="true">
                       <span class="hc-icon-btn__track">
                         <i class="ri-arrow-right-line" aria-hidden="true"></i>
                         <i class="ri-arrow-right-line" aria-hidden="true"></i>

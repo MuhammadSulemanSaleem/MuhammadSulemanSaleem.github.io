@@ -588,6 +588,35 @@
   opacity: 0.65;
 }
 
+/* Full-bleed image variant — a project's real brand logo or a feature/product
+   screenshot in place of the mark/name/metric content, sized to its own
+   aspect ratio (not stretched, no blend-mode tricks). No background fill on
+   the image itself, and the flat dotted-pattern tint swaps for a top-to-bottom
+   gradient wash (same treatment as the case study hero's `.cs-hero--blue`/
+   `--violet`) so a floating mockup/screenshot reads as sitting on a soft
+   color surface rather than a flat tile. Shared across Home's "Selected
+   works", Work's case study hero, and anywhere else `.hc-work__tile` renders. */
+.hc-work__tile--logo {
+  padding: 0;
+  overflow: hidden;
+  min-height: 340px;
+}
+
+.hc-work__tile--logo.hc-work__tile--blue {
+  background: linear-gradient(180deg, var(--hc-wash-blue) 0%, transparent 70%), var(--hc-card);
+}
+
+.hc-work__tile--logo.hc-work__tile--violet {
+  background: linear-gradient(180deg, var(--hc-wash-violet) 0%, transparent 70%), var(--hc-card);
+}
+
+.hc-work__tile-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.75rem;
+}
+
 /* ── Capability illustrations (Engineering Expertise cards —
    used by Home and Resume) ───────────────────────────────── */
 .hc-cap__illus {
