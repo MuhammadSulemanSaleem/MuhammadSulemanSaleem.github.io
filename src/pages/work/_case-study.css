@@ -11,6 +11,17 @@
   padding: 2.75rem;
 }
 
+/* Tinted full-bleed variants — only applied when the hero shows a real
+   screenshot mockup (see [slug].astro: `shots ? cs-hero--${tint} : ''`), so
+   projects still on the plain mark-tile hero are unaffected. */
+.cs-hero--blue {
+  background: linear-gradient(180deg, var(--hc-wash-blue) 0%, transparent 65%), var(--hc-card);
+}
+
+.cs-hero--violet {
+  background: linear-gradient(180deg, var(--hc-wash-violet) 0%, transparent 65%), var(--hc-card);
+}
+
 .cs-hero__title {
   font-size: 2.4rem;
   font-weight: 800;
@@ -22,11 +33,11 @@
   font-size: 1rem;
   line-height: 1.7;
   color: var(--hc-muted);
-  max-width: 46ch;
+  max-width: 48ch;
   margin-bottom: 1.25rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   overflow: hidden;
 }
 
@@ -45,6 +56,100 @@
   object-fit: contain;
   background: #ffffff;
   padding: 1.5rem;
+}
+
+/* ── Hero screenshot (replaces the mark-tile/logo in the hero for projects
+   with a projectScreenshots entry — see ../../data/screenshots.js). NebuFit's
+   `hero` is a pre-rendered iPhone mockup composite (real device render + its
+   own baked-in shadow/lighting), so it's just an <img>, no CSS phone-bezel
+   chrome. The tinted wash now lives on the whole `.cs-hero` card itself (see
+   `.cs-hero--blue`/`--violet` above), so this wrap is just a centering box. */
+.cs-hero__shot-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.cs-hero__mockup {
+  display: block;
+  width: min(560px, 100%);
+  height: auto;
+}
+
+/* ── Screenshot marquee (full shot set, further down the page — JS-driven
+   auto-scroll with hover-to-pause and prev/next arrows, see the <script> at
+   the bottom of [slug].astro) ───────────────────────────────────────── */
+.cs-marquee {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.cs-marquee__arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--hc-line);
+  background: #fff;
+  color: var(--hc-ink);
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(20, 22, 27, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+
+.cs-marquee__arrow:hover {
+  transform: translateY(-3px);
+  background: var(--hc-ink);
+  color: #fff;
+  box-shadow: 0 20px 36px rgba(20, 22, 27, 0.16);
+}
+
+.cs-marquee__arrow:active {
+  transform: translateY(-1px);
+}
+
+.cs-marquee__viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+}
+
+.cs-marquee__track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.cs-marquee__frame {
+  flex-shrink: 0;
+  width: 240px;
+  border-radius: 22px;
+  border: 1px solid var(--hc-line);
+  box-shadow: 0 16px 32px rgba(20, 22, 27, 0.08);
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cs-marquee__frame:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 44px rgba(20, 22, 27, 0.14);
+}
+
+.cs-marquee__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
 }
 
 /* ── Confidentiality callout ────────────────────────────── */
@@ -255,6 +360,10 @@
     grid-template-columns: 1fr;
   }
 
+  .cs-marquee__frame {
+    width: 210px;
+  }
+
   .cs-nav {
     grid-template-columns: 1fr;
   }
@@ -276,5 +385,24 @@
 
   .cs-hero__title {
     font-size: 1.9rem;
+  }
+
+  .cs-hero__shot-wrap {
+    min-height: 180px;
+    padding: 1.25rem;
+  }
+
+  .cs-marquee {
+    gap: 0.75rem;
+  }
+
+  .cs-marquee__arrow {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1.15rem;
+  }
+
+  .cs-marquee__frame {
+    width: 190px;
   }
 }

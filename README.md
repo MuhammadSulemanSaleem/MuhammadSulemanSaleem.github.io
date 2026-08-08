@@ -14,6 +14,7 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 - Work's and About page's project/achievement cards reuse `hc-card`-based patterns from the shared "hc-" system (the About page's Engineering Expertise section reuses Home's `.hc-work` pattern verbatim; its Professional Experience and Relevant Experience sections both wrap the same Challenge/Solution/Impact breakdown into a compact 3-per-row card grid inside an outer `hc-card`, instead of Work's full two-column `.hc-work` card)
 - Services mirrors Work's six project categories as offerings (deliverables checklist + case-study link back to Work), with its own FAQ accordion
 - Every project on `/work` links to its own case study at `/work/<slug>` (hero with a mark tile or, if set, the project's real logo; tech-stack chips; a narrative Project Overview; full Challenge/Solution/Impact; prev/next nav), generated via `getStaticPaths` from the shared project list in `src/data/projects.js`; the case study page uses fuller `challengeDetail`/`solutionDetail`/`impactDetail`/`overview` fields, while `/work`'s own category cards use the shorter `challenge`/`solution`/`impact`, both written from the same underlying facts. Home's "Selected works" and any About page entry that's the same underlying project (not a hand-grouped summary) link there too, via an explicit `slug` field rather than name matching
+- Projects cleared to show real product screenshots (currently NebuFit) have an entry in `src/data/screenshots.js`, keyed by slug: a `hero` image replaces the case study hero's mark-tile/logo alongside the title/description (NebuFit's is a pre-rendered iPhone mockup composite, not a raw screenshot), and a `gallery` (NebuFit's is the complete screenshot set) renders in an auto-scrolling "In the Product" marquee further down, with prev/next arrows and hover-to-pause. Both are conditional and simply omitted for projects without an entry (e.g. confidential ones)
 - `hc-icon-btn`'s hover-slide direction is page-scoped: pages that want it reversed pair the shared class with a page-local `.hc-reverse-icon-btn` modifier in their own `_<page>.css`, rather than flipping the shared default in `hc-shared.css`
 - GitHub Actions for CI/CD
 
@@ -34,7 +35,7 @@ src/
                   # Navbar, Footer — used by Certifications only (legacy design system)
   layouts/        # BaseLayout — HTML shell shared by all pages
   data/           # projects.js (canonical 19-project list, source for /work + every /work/<slug>),
-                  # techIcons.js, resumeSkills.js
+                  # techIcons.js, resumeSkills.js, screenshots.js (per-slug case-study screenshots)
   pages/          # File-based routing
                   #   index.astro — home page (hc- design system), styled via hc-shared.css + sibling _index.css
                   #   work/index.astro — also hc- design system, styled via hc-shared.css + sibling _work.css
@@ -53,6 +54,7 @@ public/
     gifs/           # Static GIFs
     images/         # Static images
     favicons/       # favicon set, apple/android touch icons
+    screenshots/    # Real product screenshots per project slug (e.g. nebufit/), used by src/data/screenshots.js
   resume PDF, app-ads.txt
 .github/
   workflows/      # GitHub Actions deploy workflow

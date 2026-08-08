@@ -7,6 +7,11 @@
 // cards render. `challengeDetail`/`solutionDetail`/`impactDetail` are the
 // fuller, multi-sentence versions used only by the /work/<slug> case study
 // breakdown; `overview` (case-study only) is a separate 1-3 paragraph narrative.
+// Optional `heroDescription`: a distinct hero-card summary, written separately
+// from `overview` rather than reusing its first paragraph (the old default —
+// still the fallback for any project without this field), so the hero isn't
+// just a truncated duplicate of the Project Overview text sitting right below
+// it on the same page.
 export const categories = [
   {
     id: 'ai',
@@ -34,6 +39,8 @@ export const categories = [
           "Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance grounded in each user's actual body data and bloodwork, rather than generic templates. Resilient multi-provider failover keeps voice coaching sessions from dropping, and Stripe-backed subscriptions mean monetization and entitlement management were built into the platform from day one — giving the product a complete, shippable path from AI pipeline to paying subscriber.",
         overview:
           "NebuFit set out to replace one-size-fits-all fitness templates with coaching that responds to a user's actual body data, bloodwork, and progress — rather than a fixed plan that ignores how an individual actually responds to training. Computer-vision body analysis reads a user's physique directly from photos, while bloodwork gets processed through a RAG system so nutrition and training recommendations stay grounded in real lab results instead of generic advice. The product is built to feel conversational throughout, giving users a coach to talk to rather than another dashboard of static charts.\n\nUnderneath that experience, multiple LLM providers — Claude, GPT-4o, and ElevenLabs — are orchestrated together behind an SSE streaming layer, so responses arrive token-by-token in real time instead of after a long wait. Automatic failover between providers keeps voice coaching sessions resilient even if one provider has an outage, which matters for a product where a dropped mid-session call would break trust fast.\n\nThe experience is delivered through a Flutter mobile app backed by a Nest.js and TypeScript API, keeping the client and server on a consistent, type-safe foundation. Subscription access and entitlements run on Stripe, so the coaching experience and its monetization shipped together as one production system from day one — giving NebuFit a complete path from AI pipeline to paying subscriber.",
+        heroDescription:
+          "An AI-powered fitness coaching platform built around a user's real body data — computer-vision physique analysis, RAG-processed bloodwork, and multi-LLM voice coaching — delivered through a production Flutter app with full Stripe subscription management.",
         stack: ['Flutter', 'Claude API', 'GPT-4o', 'ElevenLabs', 'RAG', 'Stripe', 'Nest.js', 'TypeScript'],
       },
       {

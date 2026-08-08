@@ -4,6 +4,7 @@ import HcNav from '../../components/HcNav/index.astro';
 import HcFooter from '../../components/HcFooter/index.astro';
 import { allProjects } from '../../data/projects.js';
 import { techIcons } from '../../data/techIcons.js';
+import { projectScreenshots } from '../../data/screenshots.js';
 import '../../styles/hc-shared.css';
 import './_work.css';
 import './_case-study.css';
@@ -31,7 +32,8 @@ export function getStaticPaths() {
 }
 
 const { project, prev, next, tint, prevTint, nextTint } = Astro.props;
-const heroDescription = project.overview.split('\n\n')[0];
+const heroDescription = project.heroDescription ?? project.overview.split('\n\n')[0];
+const shots = projectScreenshots[project.slug];
 
 function renderTech(t) {
   return techIcons[t] ?? null;
@@ -49,7 +51,7 @@ function renderTech(t) {
 
       <!-- Hero -->
       <section class="hc-section">
-        <div class="hc-card cs-hero" data-aos="fade-up">
+        <div class={`hc-card cs-hero ${shots ? `cs-hero--${tint}` : ''}`} data-aos="fade-up">
           <div class="cs-hero__content" data-aos="fade-right" data-aos-duration="900">
             <h1 class="cs-hero__title">{project.name}</h1>
             <p class="cs-hero__desc">{heroDescription}</p>
@@ -57,17 +59,23 @@ function renderTech(t) {
               <p class="cs-callout"><i class="ri-lock-line" aria-hidden="true"></i> {project.note}</p>
             )}
           </div>
-          <div class={`hc-work__tile hc-work__tile--${tint} ${project.logo ? 'hc-work__tile--logo' : ''}`} data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
-            {project.logo ? (
-              <img src={project.logo} alt={`${project.name} logo`} class="hc-work__tile-logo" />
-            ) : (
-              <>
-                <span class="hc-work__mark">{project.mark}</span>
-                <span class="hc-work__tile-name">{project.name}</span>
-                <span class="hc-work__tile-metric">{project.metric}</span>
-              </>
-            )}
-          </div>
+          {shots ? (
+            <div class="cs-hero__shot-wrap" data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
+              <img src={shots.hero.src} alt={shots.hero.alt} class="cs-hero__mockup" loading="lazy" />
+            </div>
+          ) : (
+            <div class={`hc-work__tile hc-work__tile--${tint} ${project.logo ? 'hc-work__tile--logo' : ''}`} data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
+              {project.logo ? (
+                <img src={project.logo} alt={`${project.name} logo`} class="hc-work__tile-logo" />
+              ) : (
+                <>
+                  <span class="hc-work__mark">{project.mark}</span>
+                  <span class="hc-work__tile-name">{project.name}</span>
+                  <span class="hc-work__tile-metric">{project.metric}</span>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -99,6 +107,34 @@ function renderTech(t) {
           ))}
         </div>
       </section>
+
+      <!-- Screenshot marquee -->
+      {shots && shots.gallery.length > 0 && (
+        <section class="hc-section hc-section--tight">
+          <div class="cs-marquee" data-aos="fade-up" data-marquee>
+            <button type="button" class="cs-marquee__arrow cs-marquee__arrow--prev" aria-label="Show previous screenshot" data-marquee-prev>
+              <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
+            </button>
+            <div class="cs-marquee__viewport">
+              <div class="cs-marquee__track" data-marquee-track>
+                {shots.gallery.map((shot) => (
+                  <div class="cs-marquee__frame">
+                    <img src={shot.src} alt={shot.alt} loading="lazy" />
+                  </div>
+                ))}
+                {shots.gallery.map((shot) => (
+                  <div class="cs-marquee__frame" aria-hidden="true">
+                    <img src={shot.src} alt="" loading="lazy" />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button type="button" class="cs-marquee__arrow cs-marquee__arrow--next" aria-label="Show next screenshot" data-marquee-next>
+              <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
+      )}
 
       <!-- Challenge / Solution / Impact breakdown -->
       <section class="hc-section hc-section--tight">
@@ -161,4 +197,59 @@ function renderTech(t) {
 
     <HcFooter />
   </div>
+
+  <script>
+    document.querySelectorAll<HTMLElement>('[data-marquee]').forEach((marquee) => {
+      const track = marquee.querySelector<HTMLElement>('[data-marquee-track]');
+      const prevBtn = marquee.querySelector<HTMLButtonElement>('[data-marquee-prev]');
+      const nextBtn = marquee.querySelector<HTMLButtonElement>('[data-marquee-next]');
+      if (!track) return;
+
+      const frames = Array.from(track.children) as HTMLElement[];
+      let step = frames[1] ? frames[1].offsetLeft - frames[0].offsetLeft : frames[0]?.offsetWidth ?? 0;
+      const measure = () => {
+        step = frames[1] ? frames[1].offsetLeft - frames[0].offsetLeft : frames[0]?.offsetWidth ?? 0;
+      };
+      window.addEventListener('resize', measure);
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const loopWidth = () => track.scrollWidth / 2;
+
+      let pos = 0;
+      let hovered = false;
+      let nudging = false;
+      const speed = 0.5;
+
+      function tick() {
+        if (!reduceMotion && !hovered && !nudging) {
+          pos -= speed;
+          const lw = loopWidth();
+          if (pos <= -lw) pos += lw;
+          track!.style.transform = `translateX(${pos}px)`;
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+
+      marquee.addEventListener('mouseenter', () => { hovered = true; });
+      marquee.addEventListener('mouseleave', () => { hovered = false; });
+
+      function nudge(dir: 1 | -1) {
+        nudging = true;
+        track!.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+        pos -= dir * step;
+        const lw = loopWidth();
+        if (pos <= -lw) pos += lw;
+        if (pos > 0) pos -= lw;
+        track!.style.transform = `translateX(${pos}px)`;
+        window.setTimeout(() => {
+          track!.style.transition = 'none';
+          nudging = false;
+        }, 500);
+      }
+
+      prevBtn?.addEventListener('click', () => nudge(-1));
+      nextBtn?.addEventListener('click', () => nudge(1));
+    });
+  </script>
 </BaseLayout>
