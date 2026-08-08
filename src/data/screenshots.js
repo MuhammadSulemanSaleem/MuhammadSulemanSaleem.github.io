@@ -74,6 +74,10 @@ export const projectScreenshots = {
         alt: 'Processing modal shown while the AI finalizes the initial body assessment',
       },
       {
+        src: '/assets/screenshots/nebufit/14-home-dashboard.png',
+        alt: 'NebuFit home dashboard showing a training streak, next check-in, blood report upload, and front/side/back visual progress photos',
+      },
+      {
         src: '/assets/screenshots/nebufit/15-ai-body-assessment.png',
         alt: 'AI-generated body assessment summarizing physique, estimated body fat, and conditioning',
       },
