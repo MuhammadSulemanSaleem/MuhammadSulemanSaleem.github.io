@@ -298,7 +298,7 @@ export const categories = [
           'Delivered a faster first-load and stronger SEO fundamentals across the corporate site, giving Techtiz a foundation that scales with content rather than working against it.',
         overview:
           "Techtiz's corporate site needed stronger performance and SEO fundamentals than its previous stack could deliver — slow first-load times and weak structured metadata were holding back both user experience and search visibility. Rebuilding it fully in Astro took advantage of its static-first output to cut down the JavaScript shipped to the browser and improve Core Web Vitals directly.\n\nStructured metadata was rebuilt alongside the migration so search engines could parse the site's content correctly, resulting in a faster first-load and stronger SEO fundamentals across the site.",
-        stack: ['Astro'],
+        stack: ['Astro', 'TypeScript', 'Tailwind CSS', 'Vercel', 'WordPress'],
       },
       {
         slug: 'attn-agency-homepage',

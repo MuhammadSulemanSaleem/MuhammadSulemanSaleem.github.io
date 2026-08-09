@@ -12,6 +12,8 @@ export const techIcons = {
   'React Native': '/assets/svgs/react-native.svg',
   'Next.js': '/assets/svgs/nextjs.svg',
   Astro: '/assets/svgs/astro.svg',
+  Vercel: '/assets/svgs/vercel.svg',
+  'Tailwind CSS': '/assets/svgs/tailwindcss.svg',
   TypeScript: '/assets/svgs/typescript.svg',
   JavaScript: '/assets/svgs/javascript.svg',
   'Node.js': '/assets/svgs/nodejs.svg',
