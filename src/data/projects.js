@@ -324,6 +324,7 @@ export const categories = [
         slug: 'attn-agency-homepage',
         mark: 'AA',
         name: 'ATTN Agency Homepage',
+        screenshot: '/assets/screenshots/attn-agency-homepage/feature-mockup.png',
         metric: 'Go High Level native-element build',
         challenge:
           "ATTN wanted an agency homepage inside Go High Level without the constraints of its built-in page builder.",
@@ -339,7 +340,7 @@ export const categories = [
           'Gave ATTN full control over layout and performance within a platform that normally limits both, delivering a homepage that looks and performs like a custom build while still living inside their existing Go High Level setup.',
         overview:
           "ATTN wanted an agency homepage inside Go High Level without being boxed in by its built-in page builder, which imposes real constraints on layout and performance for anything outside its templated components. The homepage was built natively with custom CSS and HTML elements inside Go High Level, bypassing the external page builder entirely.\n\nThat approach kept the page living inside the Go High Level platform ATTN was already using, without inheriting the page builder's layout and performance limitations — giving full control over layout and performance within a platform that normally limits both.",
-        stack: ['Go High Level', 'HTML', 'CSS'],
+        stack: ['Go High Level', 'Gemini AI'],
       },
     ],
   },

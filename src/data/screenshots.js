@@ -31,9 +31,12 @@
 // tabs → Results and Maps (two card designs) → Listing Details → Blog Details →
 // Add Property, each paired with its own live drag-and-drop layout panel — two
 // screens with a real Google Maps API key and AdMob ad unit IDs visible were
-// excluded from the set). Keeping this separate from projects.js (rather than inline `screenshot`
-// fields per item) means the case study page can do a single keyed lookup and
-// projects without screenshots need no extra fields.
+// excluded from the set; ATTN Agency Homepage: hero → featured-in/struggle points →
+// results and brand logos → services and lead-magnet download → client
+// testimonials → "Who is Will Giles" bio → final CTA and footer). Keeping this
+// separate from projects.js (rather than inline `screenshot` fields per item)
+// means the case study page can do a single keyed lookup and projects without
+// screenshots need no extra fields.
 export const projectScreenshots = {
   nebufit: {
     hero: {
@@ -492,6 +495,42 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/houzibuilder/13-add-property-form.png',
         alt: 'Add Property tab showing the multi-step Add Property form alongside its own page layout list',
+      },
+    ],
+  },
+  'attn-agency-homepage': {
+    hero: {
+      src: '/assets/screenshots/attn-agency-homepage/feature-mockup.png',
+      alt: 'ATTN Agency Homepage shown across two desktop monitors — the hero booking section and the results/brands section',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/attn-agency-homepage/01-hero.png',
+        alt: 'ATTN homepage hero with a "Back to the Future" themed video panel and a free strategy call booking form',
+      },
+      {
+        src: '/assets/screenshots/attn-agency-homepage/02-featured-in-struggles.png',
+        alt: 'As-featured-in press logo strip followed by a five-point "do you struggle with" section covering time, leads, trust, ROI, and strategy',
+      },
+      {
+        src: '/assets/screenshots/attn-agency-homepage/03-results-brands.png',
+        alt: 'Results panel citing $250M+ in combined client revenue alongside a ten-brand logo grid',
+      },
+      {
+        src: '/assets/screenshots/attn-agency-homepage/04-services-lead-magnet.png',
+        alt: 'Five-service breakdown (paid media, social media, websites, email marketing, AI & automation) above a free Growth Strategy Blueprint lead-magnet download',
+      },
+      {
+        src: '/assets/screenshots/attn-agency-homepage/05-testimonials.png',
+        alt: 'Client testimonials section with three five-star review cards',
+      },
+      {
+        src: '/assets/screenshots/attn-agency-homepage/06-who-is-will-giles.png',
+        alt: '"Who is Will Giles" bio section with four credibility points and a book-a-call button',
+      },
+      {
+        src: '/assets/screenshots/attn-agency-homepage/07-final-cta-footer.png',
+        alt: 'Final "let\'s build what\'s next" call-to-action form above the site footer',
       },
     ],
   },

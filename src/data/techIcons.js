@@ -42,6 +42,7 @@ export const techIcons = {
   Twilio: '/assets/svgs/twilio.svg',
   WordPress: '/assets/svgs/wordpress.svg',
   'Go High Level': '/assets/svgs/go-high-level.svg',
+  'Gemini AI': '/assets/svgs/gemini-ai.svg',
   WebSockets: '/assets/svgs/websockets.svg',
   'Socket.IO': '/assets/svgs/socketio.svg',
   JWT: '/assets/svgs/jwt.svg',
