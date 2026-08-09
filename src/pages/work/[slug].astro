@@ -211,11 +211,8 @@ function renderTech(t) {
       if (!track) return;
 
       const frames = Array.from(track.children) as HTMLElement[];
-      let step = frames[1] ? frames[1].offsetLeft - frames[0].offsetLeft : frames[0]?.offsetWidth ?? 0;
-      const measure = () => {
-        step = frames[1] ? frames[1].offsetLeft - frames[0].offsetLeft : frames[0]?.offsetWidth ?? 0;
-      };
-      window.addEventListener('resize', measure);
+      const frameCount = frames.length / 2;
+      const relOffset = (i: number) => frames[i].offsetLeft - frames[0].offsetLeft;
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const loopWidth = () => track.scrollWidth / 2;
@@ -241,11 +238,28 @@ function renderTech(t) {
 
       function nudge(dir: 1 | -1) {
         nudging = true;
-        track!.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
-        pos -= dir * step;
         const lw = loopWidth();
+        const travelled = ((-pos % lw) + lw) % lw;
+
+        // Find the frame currently leading the viewport, then target its neighbor's
+        // exact left edge — a fixed pixel step doesn't work here since frames have
+        // different widths (screenshots with different aspect ratios), so it would
+        // over/undershoot the next frame instead of aligning to it.
+        let idx = 0;
+        for (let i = 0; i < frameCount; i++) {
+          if (relOffset(i) <= travelled + 1) idx = i;
+        }
+        const targetIdx = idx + dir;
+        const targetOffset =
+          targetIdx < 0 ? relOffset(frameCount - 1) - lw
+          : targetIdx >= frameCount ? relOffset(frameCount)
+          : relOffset(targetIdx);
+
+        pos = -targetOffset;
         if (pos <= -lw) pos += lw;
         if (pos > 0) pos -= lw;
+
+        track!.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
         track!.style.transform = `translateX(${pos}px)`;
         window.setTimeout(() => {
           track!.style.transition = 'none';

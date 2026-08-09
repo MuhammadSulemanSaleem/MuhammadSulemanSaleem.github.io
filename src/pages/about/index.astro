@@ -136,12 +136,12 @@ const experienceJobs = [
       },
       {
         mark: 'UN',
-        name: 'Desktop & Web Platforms',
+        name: 'UNITY Desktop App & Admin Portal',
+        screenshot: '/assets/screenshots/unity-desktop-admin-portal/feature-mockup.png',
         metric: 'Role-based access · real-time notifications',
-        challenge: 'Needed a secure desktop tool with a live admin portal.',
+        challenge: 'A healthcare organisation needed a secure desktop tool with a live admin portal.',
         solution: 'Built an Electron app and a Next.js/Nest.js admin portal with real-time updates.',
         impact: 'Delivered a secure, centrally-configurable tool with live visibility.',
-        note: 'Confidential client — no screenshots or client name disclosed.',
         slug: 'unity-desktop-admin-portal',
       },
       {
@@ -552,7 +552,7 @@ function renderTech(t: string) {
                       <img
                         src={item.screenshot}
                         alt={`${item.name} preview`}
-                        class={`rs-work-card__tile-img ${item.slug === 'creative-os' ? 'rs-work-card__tile-img--zoom' : ''}`}
+                        class={`rs-work-card__tile-img ${item.slug === 'creative-os' ? 'rs-work-card__tile-img--zoom' : ''} ${item.slug === 'unity-desktop-admin-portal' ? 'rs-work-card__tile-img--up' : ''}`}
                       />
                     ) : (
                       <>

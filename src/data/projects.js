@@ -105,23 +105,39 @@ export const categories = [
         slug: 'unity-desktop-admin-portal',
         mark: 'UN',
         name: 'UNITY Desktop App & Admin Portal',
-        metric: 'Medical organisation · confidential client',
+        screenshot: '/assets/screenshots/unity-desktop-admin-portal/feature-mockup.png',
+        metric: 'Healthcare organisation · dual desktop + admin platform',
         challenge:
-          'A medical organisation (name withheld per client confidentiality) needed a desktop tool with role-based access and credential-managed auto-fill, paired with an admin portal giving staff live visibility into activity.',
+          'A healthcare organisation needed a desktop tool with role-based access and credential-managed auto-fill, paired with an admin portal giving staff live visibility into activity.',
         solution:
           'Built an Electron + Node.js desktop app with dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, paired with a Next.js + Nest.js admin web portal featuring real-time notifications via WebSockets.',
         impact:
-          'Gave the client a secure, centrally-configurable desktop tool and a live admin view, without exposing any client-identifying details.',
-        note: 'Confidential client — no screenshots or client name disclosed.',
+          'Gave the client a secure, centrally-configurable desktop tool and a live admin view spanning dozens of staff logins and organizations.',
         challengeDetail:
-          'A medical organisation, whose name is withheld per client confidentiality, needed a desktop tool that staff could use with tightly scoped, role-based access rather than a single shared login. Credentials for various downstream systems needed to be managed centrally and auto-filled into forms rather than handled manually by each staff member, reducing both friction and the risk of exposed credentials. The organisation also needed an admin layer giving oversight staff live visibility into desktop activity, without that visibility requiring a rebuild of the desktop app itself whenever requirements changed.',
+          'A healthcare organisation needed a desktop tool that staff could use with tightly scoped, role-based access rather than a single shared login. Credentials for various downstream systems needed to be managed centrally and auto-filled into forms rather than handled manually by each staff member, reducing both friction and the risk of exposed credentials. The organisation also needed an admin layer giving oversight staff live visibility into desktop activity, without that visibility requiring a rebuild of the desktop app itself whenever requirements changed.',
         solutionDetail:
           'Built an Electron + Node.js desktop app with dynamic, server-driven layouts, so screens and workflows can be reconfigured from the server without shipping a new build. Role-based access control and a centralized credential manager govern who can see and do what, with script-injected auto-fill handling credential entry into downstream forms securely. A companion Next.js + Nest.js admin web portal gives oversight staff a live view into desktop activity, pushed in real time via WebSocket notifications rather than requiring a manual refresh.',
         impactDetail:
-          'Gave the client a secure, centrally-configurable desktop tool paired with a live admin view, letting them adjust workflows and monitor activity without exposing any client-identifying details in the process. The combination of role-based access and centralized credential management reduced the manual overhead and security risk of staff handling downstream credentials individually.',
+          'Gave the client a secure, centrally-configurable desktop tool paired with a live admin view, letting oversight staff adjust workflows and monitor activity across dozens of organizations and staff logins. The combination of role-based access and centralized credential management reduced the manual overhead and security risk of staff handling downstream credentials individually.',
         overview:
-          'Built for a medical organisation whose name is withheld per client confidentiality, this project pairs an Electron + Node.js desktop app with a Next.js + Nest.js admin web portal. The desktop app uses dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, giving staff a secure, centrally-configurable tool rather than a rigid one-size-fits-all interface.\n\nThe admin portal gives oversight staff live visibility into activity through real-time WebSocket notifications, so changes on the desktop side are reflected immediately rather than on a delay. The result is a secure, centrally-configurable desktop tool and a live admin view, delivered without exposing any client-identifying details.',
-        stack: ['Electron', 'Node.js', 'Next.js', 'Nest.js', 'WebSockets', 'Role-Based Access'],
+          'Built for a healthcare organisation, this project pairs an Electron + Node.js desktop app with a Next.js + Nest.js admin web portal. The desktop app uses dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, giving staff a secure, centrally-configurable tool rather than a rigid one-size-fits-all interface — bundling tools like Instant Visit, Tasks and Projects, Remote Desktop, a ticketing system, and internal chat behind a single sidebar.\n\nThe admin portal gives oversight staff live visibility into activity through real-time WebSocket notifications, so changes on the desktop side are reflected immediately rather than on a delay. Admins manage organizations, role-based permissions, users, and the desktop app\'s own navigation structure — reconfiguring what staff see without shipping a new build. The result is a secure, centrally-configurable desktop tool and a live admin view spanning dozens of organizations and staff logins.',
+        stack: [
+          'Electron',
+          'Next.js',
+          'React',
+          'Node.js',
+          'Nest.js',
+          'TypeScript',
+          'JavaScript',
+          'MUI (Material UI)',
+          'ApexCharts',
+          'Axios',
+          'Prisma',
+          'PostgreSQL',
+          'Socket.IO',
+          'JWT',
+          'Sentry',
+        ],
       },
     ],
   },

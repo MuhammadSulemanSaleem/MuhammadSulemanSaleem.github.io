@@ -3,14 +3,14 @@
 // ones cleared to show real product screenshots (see Confidentiality in CLAUDE.md).
 // `hero` renders in the hero card itself, alongside the title/description,
 // replacing the generic mark-tile/logo for projects that have one — for NebuFit,
-// Creative OS, Houzi, and Orient Champions this is a pre-rendered multi-device
+// Creative OS, Houzi, Orient Champions, and UNITY this is a pre-rendered multi-device
 // mockup composite (real device renders + dust/smoke effect, not a raw in-app
 // screenshot), so it drops in as a plain image with no extra CSS device-frame
 // chrome around it. These composites are also reused as the project's
 // `screenshot` tile image on Home/Work/About (see the `screenshot` field in
 // index.astro/about/index.astro/projects.js) — one shared featured image
-// across all four pages that render that project (Orient Champions has no
-// Home entry since it isn't one of Home's 3 "Selected works"). `gallery` is
+// across all four pages that render that project (Orient Champions and UNITY have no
+// Home entry since neither is one of Home's 3 "Selected works"). `gallery` is
 // the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -21,7 +21,10 @@
 // chat; Houzi: home discovery → map search → results → filters → property
 // detail → agent profile → agent-side add-property/CRM/insights tools; Orient
 // Champions: splash → login → signup → dashboard → paid cards → help/FAQ →
-// more menu → account). Keeping this separate from projects.js (rather than inline `screenshot`
+// more menu → account; UNITY: desktop app screens first — login → home/browser
+// → tasks/tickets → how-to guide → bookmarks → credentials manager → IT helpdesk —
+// then the admin portal — login → dashboard → organizations → roles → navigation
+// builder → users). Keeping this separate from projects.js (rather than inline `screenshot`
 // fields per item) means the case study page can do a single keyed lookup and
 // projects without screenshots need no extra fields.
 export const projectScreenshots = {
@@ -278,6 +281,90 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/orient-champions/08-account.webp',
         alt: 'Account screen with profile info and links to account settings, policies, help/FAQ, and sign out',
+      },
+    ],
+  },
+  'unity-desktop-admin-portal': {
+    hero: {
+      src: '/assets/screenshots/unity-desktop-admin-portal/feature-mockup.png',
+      alt: 'UNITY shown across the Electron desktop app and the Next.js admin portal',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/01-desktop-login.png',
+        alt: 'UNITY desktop app authorization screen with email and password fields',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/02-desktop-home-browser.png',
+        alt: 'UNITY desktop app home screen with the Instant Visit panel and embedded browser view',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/03-desktop-tasks-workgroups.png',
+        alt: 'Tasks and Projects panel listing workgroups and projects with created and last-updated dates',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/04-desktop-notifications-tickets.png',
+        alt: 'Ticket Systems panel with Issue and Checklist ticket categories and a notifications history flyout',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/05-desktop-how-to-guide.png',
+        alt: 'UNITY Platform How To Guide page with an introduction and general menu section',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/06-desktop-bookmarks-manager.png',
+        alt: 'Bookmarks Manager panel listing saved links with edit and delete controls',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/07-desktop-credentials-manager.png',
+        alt: 'Credentials Manager panel listing connected third-party systems for centralized credential storage',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/08-desktop-it-helpdesk.png',
+        alt: 'IT HelpDesk page with Unlock Form, IT Ticket Form, and Laptop Request/Replacement Form links',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/09-admin-login.png',
+        alt: 'UNITY Admin Portal login screen with email and password fields',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/10-admin-dashboard.png',
+        alt: 'Admin Portal dashboard with Total Organizations, Total Users, Total Role Assigned, and Total Admin stat cards plus Organizations & Users and Users & Navigations charts',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/11-admin-organizations.png',
+        alt: 'Admin Portal Organizations list showing organization names, user counts, and active status',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/12-admin-roles.png',
+        alt: 'Admin Portal Roles page with a Create Role button and empty state',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/13-admin-add-role.png',
+        alt: 'Add Title modal for creating a new role with a role title field and organization selector',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/14-admin-roles-listing.png',
+        alt: 'Roles listing table with role name, organization name, status, and row actions',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/15-admin-navigations.png',
+        alt: 'Admin Portal Navigations page with an Add Navigation button and empty state',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/16-admin-add-navigation.png',
+        alt: 'Add Navigation Item modal with title, id, and type fields, type set to Navigation Dropdown',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/17-admin-navigation-listing-01.png',
+        alt: 'Draggable navigation items list including Notifications, How To Guide, Browser, Chat, and Patient Virtual Connect',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/18-admin-navigation-listing-02.png',
+        alt: 'Draggable navigation items list continued, including Incident Report, Playbook, Onboarding, Offboarding, and Credential Manager',
+      },
+      {
+        src: '/assets/screenshots/unity-desktop-admin-portal/19-admin-users-listing.png',
+        alt: 'Admin Portal Users table with email, current organization, current role, joining date, and status columns',
       },
     ],
   },
