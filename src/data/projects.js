@@ -467,6 +467,7 @@ export const categories = [
         slug: 'kumquat-talent-match',
         mark: 'KQ',
         name: 'Kumquat — Talent Match',
+        screenshot: '/assets/screenshots/kumquat-talent-match/feature-mockup.png',
         metric: 'Published FlutterFlow Marketplace',
         challenge:
           'Recruitment and talent-matching apps needed a proven FlutterFlow starting point instead of being built from a blank canvas.',
@@ -482,7 +483,7 @@ export const categories = [
           'Published to the FlutterFlow Marketplace as a reusable starting point for talent-matching apps, giving other builders a head start on the recruitment-specific flows that would otherwise need to be built from scratch every time.',
         overview:
           'Recruitment and talent-matching apps needed a proven FlutterFlow starting point instead of being built from a blank canvas each time, since the core flows — profile listings, filtering, match requests — repeat across nearly every talent-matching product. Kumquat is a FlutterFlow starter template covering those flows out of the box.\n\nRather than every new talent-matching project rebuilding the same profile and matching logic from scratch, Kumquat gives builders a working foundation to start from — published to the FlutterFlow Marketplace as a reusable starting point.',
-        stack: ['FlutterFlow'],
+        stack: ['FlutterFlow', 'Dart'],
       },
       {
         slug: 'foodii-recipe-book',

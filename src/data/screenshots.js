@@ -38,7 +38,15 @@
 // onboarding → welcome/auth choice → login → signup → home dashboard → recipe
 // detail → recipe ingredients/steps preview → full cooking steps → recommended
 // grid → explore → add-recipe basic info → add-recipe ingredients → favourites →
-// profile → notifications). Keeping this
+// profile → notifications; Kumquat — Talent Match: client login → create account →
+// choose client/professional account type → choose professional category →
+// email verification → registration success → Explore home feed → an expert's
+// public profile → chat conversation → incoming/active video call → book-an-
+// appointment calendar → payment methods → add card → payment summary →
+// payment success → messages inbox → scheduled/completed sessions → own-profile
+// menu → professional rate/summary editor → professional login → the
+// professional's home dashboard with pending session requests and upcoming
+// sessions). Keeping this
 // separate from projects.js (rather than inline `screenshot` fields per item)
 // means the case study page can do a single keyed lookup and projects without
 // screenshots need no extra fields.
@@ -536,6 +544,110 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/attn-agency-homepage/07-final-cta-footer.png',
         alt: 'Final "let\'s build what\'s next" call-to-action form above the site footer',
+      },
+    ],
+  },
+  'kumquat-talent-match': {
+    hero: {
+      src: '/assets/screenshots/kumquat-talent-match/feature-mockup.png',
+      alt: 'Kumquat shown across five phone screens — a chat conversation, the professional home dashboard, the Explore expert-search feed, the Sessions list, and an active video call',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/kumquat-talent-match/01-login-client.png',
+        alt: 'Login screen with Client selected, email and password fields, and Google/Facebook login options',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/02-create-account.png',
+        alt: 'Create Account form with User ID, email, and password fields',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/03-choose-account-type.png',
+        alt: 'Choose Your Profession screen offering Clients or Professionals account types',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/04-choose-profession-category.png',
+        alt: 'Professional category grid — Design & Creative, Development & Engineering, Content Writing, Marketing & Growth, Product & Strategy, Data & AI, Low Code, Virtual Assistance, and Add Other',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/05-verification-code.png',
+        alt: 'Email verification screen with a 5-digit code entry and resend option',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/06-register-success.png',
+        alt: 'Register Success confirmation modal with a Go to Login Page button',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/07-explore-home.png',
+        alt: 'Explore home feed with a search bar, category shortcuts, Featured Experts, Upcoming Sessions, and Recently Viewed rows',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/08-expert-profile.png',
+        alt: 'An expert\'s public profile with rating, Book a Consultation button, skills tags, summary, social links, and reviews',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/09-chat-conversation.png',
+        alt: 'Chat conversation thread with a client and an expert exchanging messages',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/10-video-call-incoming.png',
+        alt: 'Full-screen video call with a picture-in-picture self view and mic/speaker/camera/end-call controls',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/11-video-call-active.png',
+        alt: 'Active voice/video call screen with a circular avatar, call timer, and control buttons',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/12-book-appointment.png',
+        alt: 'Book An Appointment screen with the expert summary and a month calendar for selecting a date',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/13-payment-methods.png',
+        alt: 'Payment Methods screen listing saved cards plus PayPal, Apple Pay, and Google Pay options',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/14-add-new-card.png',
+        alt: 'Add New Card form with a live card preview and cardholder name, number, expiration, and CVV fields',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/15-appointment-payment-summary.png',
+        alt: 'Appointment Payment summary showing the expert, date and time, package, duration, and total amount due',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/16-payment-success.png',
+        alt: 'Payment Success confirmation modal stating the appointment is scheduled',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/17-messages.png',
+        alt: 'Messages inbox listing conversations with unread-count badges',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/18-sessions-scheduled.png',
+        alt: 'Sessions screen on the Scheduled tab, listing upcoming sessions with Reschedule and Join Call buttons',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/19-sessions-completed.png',
+        alt: 'Sessions screen on the Completed tab, listing past sessions with a Completed status pill',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/20-profile-menu.png',
+        alt: 'Own-profile screen with Edit Profile, Change Password, and Logout menu rows',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/21-profile-details-edit.png',
+        alt: 'Profile Details editor for a professional, with video/phone chat hourly rates, a summary field, and social link fields',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/22-login-professional.png',
+        alt: 'Login screen with Professional selected',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/23-professional-dashboard-requests.png',
+        alt: 'Professional home dashboard with rating and response scores, earnings and consultation stats, a pending session request to approve, and upcoming sessions',
+      },
+      {
+        src: '/assets/screenshots/kumquat-talent-match/24-professional-dashboard-upcoming.png',
+        alt: 'Professional home dashboard scrolled to the Upcoming Sessions list',
       },
     ],
   },
