@@ -6,12 +6,15 @@
 // Creative OS, Houzi, Orient Champions, UNITY, Linked Golf, HouziBuilder, and
 // Foodii this is a pre-rendered multi-device mockup composite (real device renders
 // + dust/smoke effect, not a raw in-app screenshot), so it drops in as a plain
-// image with no extra CSS device-frame chrome around it. These composites are also
-// reused as the project's `screenshot` tile image on Home/Work/About (see the
-// `screenshot` field in index.astro/about/index.astro/projects.js) — one shared
-// featured image across all pages that render that project (Orient Champions,
-// UNITY, Linked Golf, HouziBuilder, and Foodii have no Home entry since none is
-// one of Home's 3 "Selected works").
+// image with no extra CSS device-frame chrome around it. ATTN Agency Homepage and
+// Techtiz Corporate Website — both desktop websites rather than apps — use the
+// same kind of composite but across two desktop monitors instead of phones. These
+// composites are also reused as the project's `screenshot` tile image on
+// Home/Work/About (see the `screenshot` field in index.astro/about/index.astro/
+// projects.js) — one shared featured image across all pages that render that
+// project (Orient Champions, UNITY, Linked Golf, HouziBuilder, Techtiz Corporate
+// Website, and Foodii have no Home entry since none is one of Home's 3 "Selected
+// works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -46,7 +49,11 @@
 // payment success → messages inbox → scheduled/completed sessions → own-profile
 // menu → professional rate/summary editor → professional login → the
 // professional's home dashboard with pending session requests and upcoming
-// sessions). Keeping this
+// sessions; Techtiz Corporate Website: homepage hero → services capability grid →
+// expert-team credentials and stats bar → case studies preview → footer CTA →
+// Healthcare industry page hero → AI Agents service page hero → About page hero →
+// Case Studies listing page → SLED Subcontracting hub hero → Blog index).
+// Keeping this
 // separate from projects.js (rather than inline `screenshot` fields per item)
 // means the case study page can do a single keyed lookup and projects without
 // screenshots need no extra fields.
@@ -720,6 +727,58 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/foodii-recipe-book/16-notifications.png',
         alt: 'Notifications screen listing recipe likes, bookmarks, uploads, and new posts from chefs',
+      },
+    ],
+  },
+  'techtiz-corporate-website': {
+    hero: {
+      src: '/assets/screenshots/techtiz-corporate-website/feature-mockup.png',
+      alt: 'Techtiz corporate site shown across two desktop monitors — the SLED Subcontracting hub hero and the AI-native engineering homepage hero',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/01-homepage-hero.jpg',
+        alt: 'Techtiz homepage hero reading "AI-native engineering for products that ship" alongside a build-pipeline status panel and a live app preview card',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/02-services-grid.jpg',
+        alt: 'Services section grid listing six capabilities — Development, AI & Intelligence, Automation & AI, Digital Transformation, UX Design, and Data & Platform',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/03-expert-team-stats.jpg',
+        alt: 'Expert Team section citing 8+ average years of experience, followed by a stats bar of 5+ years shipping, 98% client satisfaction, 180+ projects delivered, and 200+ clients served',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/04-case-studies.jpg',
+        alt: 'Case studies preview cards for LinkedGolf, Dashboard.Earth, and Capsule Lab, each with a Challenge/Solution/Outcome breakdown',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/05-footer-cta.jpg',
+        alt: 'Footer call-to-action offering a 30-minute consultation call, above the site footer with services, industries, SLED subcontracting, and contact columns',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/06-healthcare-industry-hero.jpg',
+        alt: 'Healthcare industry page hero reading "We automate the healthcare admin that burns clinician hours" with a clinic photo and FHIR/HIPAA feature tags',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/07-ai-agent-service-hero.jpg',
+        alt: 'AI Agents service page hero reading "We ship AI agents that survive production" with a perceive/plan/act/reflect device illustration',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/08-about-hero.jpg',
+        alt: 'About Us page hero reading "We build the parts of your software that have to work in production" alongside a Lahore engineering studio photo',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/09-case-studies-listing.jpg',
+        alt: 'Case Studies listing page header with "Real-world success stories" copy and a healthcare-focused case studies intro',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/10-sled-hub-hero.jpg',
+        alt: 'SLED Subcontracting hub hero reading "AI engineering behind your SLED prime contract" over a U.S. Capitol building photo, with a Hub/How We Partner/Capabilities/Engagement Examples/Contact sub-nav',
+      },
+      {
+        src: '/assets/screenshots/techtiz-corporate-website/11-blog-index.jpg',
+        alt: 'Blog index page titled "Notes from the build" with a category filter bar and a featured healthcare article',
       },
     ],
   },

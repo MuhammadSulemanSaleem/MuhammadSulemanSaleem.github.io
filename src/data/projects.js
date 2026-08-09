@@ -282,6 +282,7 @@ export const categories = [
         slug: 'techtiz-corporate-website',
         mark: 'TC',
         name: 'Techtiz Corporate Website',
+        screenshot: '/assets/screenshots/techtiz-corporate-website/feature-mockup.png',
         metric: 'Astro rebuild · performance & SEO',
         challenge:
           "Techtiz's corporate site needed better performance and SEO fundamentals than its previous stack could deliver.",
