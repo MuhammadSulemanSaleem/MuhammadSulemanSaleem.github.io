@@ -173,6 +173,7 @@ export const categories = [
         slug: 'linked-golf',
         mark: 'LG',
         name: 'Linked Golf',
+        screenshot: '/assets/screenshots/linked-golf/feature-mockup.png',
         metric: 'Deployed to App Store & Google Play',
         challenge:
           'A golf social and booking product needed real-time chat, payments, and push notifications working together without building each integration from scratch.',
@@ -188,7 +189,22 @@ export const categories = [
           'Shipped to both the App Store and Google Play as a complete golf social and booking experience, with chat, payments, and notifications working together from day one rather than being added incrementally after launch. Leaning on established providers (PubNub, Stripe, FCM) instead of custom infrastructure meant engineering effort could go toward the golf-specific social and booking features instead of messaging or payments plumbing.',
         overview:
           'Linked Golf needed real-time chat, payments, and push notifications working together as one golf social and booking experience, rather than as separate bolted-on integrations built from scratch. The Flutter app pairs PubNub for real-time in-app chat with Stripe for payments and FCM for push notifications, running on an Express backend that ties the business logic together behind these established providers.\n\nLeaning on PubNub, Stripe, and FCM instead of custom-built infrastructure meant engineering effort could go toward the golf-specific social and booking features rather than messaging or payments plumbing. It shipped to both the App Store and Google Play as a complete social and booking product from day one.',
-        stack: ['Flutter', 'PubNub', 'Stripe', 'FCM', 'Express'],
+        stack: [
+          'Flutter',
+          'Dart',
+          'PubNub',
+          'Stripe',
+          'Node.js',
+          'Express',
+          'MongoDB',
+          'JWT',
+          'FCM',
+          'Firebase Admin',
+          'SendGrid',
+          'Nodemailer',
+          'Google APIs',
+          'QRCode',
+        ],
       },
       {
         slug: 'aniflex',

@@ -3,15 +3,15 @@
 // ones cleared to show real product screenshots (see Confidentiality in CLAUDE.md).
 // `hero` renders in the hero card itself, alongside the title/description,
 // replacing the generic mark-tile/logo for projects that have one — for NebuFit,
-// Creative OS, Houzi, Orient Champions, and UNITY this is a pre-rendered multi-device
-// mockup composite (real device renders + dust/smoke effect, not a raw in-app
-// screenshot), so it drops in as a plain image with no extra CSS device-frame
+// Creative OS, Houzi, Orient Champions, UNITY, and Linked Golf this is a pre-rendered
+// multi-device mockup composite (real device renders + dust/smoke effect, not a raw
+// in-app screenshot), so it drops in as a plain image with no extra CSS device-frame
 // chrome around it. These composites are also reused as the project's
 // `screenshot` tile image on Home/Work/About (see the `screenshot` field in
 // index.astro/about/index.astro/projects.js) — one shared featured image
-// across all four pages that render that project (Orient Champions and UNITY have no
-// Home entry since neither is one of Home's 3 "Selected works"). `gallery` is
-// the full set of raw in-app screenshots rendered in an auto-scrolling
+// across all four pages that render that project (Orient Champions, UNITY, and
+// Linked Golf have no Home entry since none is one of Home's 3 "Selected works").
+// `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
 // deliberately the complete screenshot set (not a curated highlight reel), in
@@ -24,7 +24,9 @@
 // more menu → account; UNITY: desktop app screens first — login → home/browser
 // → tasks/tickets → how-to guide → bookmarks → credentials manager → IT helpdesk —
 // then the admin portal — login → dashboard → organizations → roles → navigation
-// builder → users). Keeping this separate from projects.js (rather than inline `screenshot`
+// builder → users; Linked Golf: splash → onboarding/signup → profile → availability
+// (day → calendar → detail) → chat inbox → courses discover → course detail →
+// golf buddies → chat detail → settings). Keeping this separate from projects.js (rather than inline `screenshot`
 // fields per item) means the case study page can do a single keyed lookup and
 // projects without screenshots need no extra fields.
 export const projectScreenshots = {
@@ -365,6 +367,66 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/unity-desktop-admin-portal/19-admin-users-listing.png',
         alt: 'Admin Portal Users table with email, current organization, current role, joining date, and status columns',
+      },
+    ],
+  },
+  'linked-golf': {
+    hero: {
+      src: '/assets/screenshots/linked-golf/feature-mockup.png',
+      alt: 'Linked Golf shown across multiple phone screens',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/linked-golf/01-splash-logo.png',
+        alt: 'Linked Golf splash screen with the app logo over a putting green',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/02-splash-tagline.png',
+        alt: 'Linked Golf splash screen with the "Let\'s Golf." tagline',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/03-welcome-signup.png',
+        alt: 'Welcome screen with a golf course illustration and sign up with Google, Apple, or email options',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/04-profile.png',
+        alt: 'User profile screen with name, location, age, bio, and availability sections',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/05-availability-day.png',
+        alt: 'Availability screen for a selected day showing an empty golf buddies state and a prompt to invite friends',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/06-availability-calendar.png',
+        alt: 'Availability calendar for August 2026 with a marked available day',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/07-availability-detail.png',
+        alt: 'Availability detail panel with preferred golf course, round format tags, and golfers needed',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/08-chat-inbox.png',
+        alt: 'Chat inbox with direct messages and a group chats coming soon section',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/09-courses-discover.png',
+        alt: 'Courses discover list for Philadelphia with nearby golf clubs and follower counts',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/10-course-detail.png',
+        alt: 'Golf course profile page with ratings, reviews, photos, and contact details',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/11-golf-buddies.png',
+        alt: 'My Golf Buddies list with mutual buddy counts and an invite friends banner',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/12-chat-empty.png',
+        alt: 'Empty chat conversation state',
+      },
+      {
+        src: '/assets/screenshots/linked-golf/13-settings-account.png',
+        alt: 'Account settings screen with name, location, and a blocked users list',
       },
     ],
   },
