@@ -107,7 +107,7 @@ const stats = [
                   <img
                     src={p.screenshot}
                     alt={`${p.name} preview`}
-                    class={`hc-work__tile-logo ${p.slug === 'creative-os' ? 'hc-work__tile-logo--zoom' : ''} ${p.slug === 'unity-desktop-admin-portal' ? 'hc-work__tile-logo--up' : ''}`}
+                    class={`hc-work__tile-logo ${p.slug === 'creative-os' ? 'hc-work__tile-logo--zoom' : ''} ${p.slug === 'unity-desktop-admin-portal' || p.slug === 'houzibuilder' ? 'hc-work__tile-logo--up' : ''}`}
                   />
                 ) : (
                   <>
