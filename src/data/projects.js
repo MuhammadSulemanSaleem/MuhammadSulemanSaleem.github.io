@@ -248,27 +248,6 @@ export const categories = [
           "EPIC PC needed its 'Blue Sky' app fully rebranded — new visual identity, theming, and store presence — without disrupting the app underneath it. A rebrand touches more than a color palette: theming across every screen, updated assets, navigation adjusted to match the new identity, and app-store metadata all needed to land together rather than as a patchwork of partial updates.\n\nThe rebrand was delivered end-to-end in Flutter as a presentation-layer change, leaving the app's underlying logic and functionality untouched. It relaunched under its new identity with a consistent look across every screen and store listing.",
         stack: ['Flutter'],
       },
-      {
-        slug: 'linked-home-ipt-force-fsf-ticket',
-        mark: 'LH',
-        name: 'Linked Home · IPT Force · FSF-Ticket',
-        metric: 'Multiple delivered apps',
-        challenge:
-          'Three separate BooleanBites-era clients each needed a purpose-built Flutter app — property management, field operations, and support ticketing — on tight, parallel timelines.',
-        solution:
-          'Delivered three independent Flutter apps: Linked Home (property listing and management), IPT Force (field operations), and FSF-Ticket (support ticketing system).',
-        impact:
-          'Shipped three production apps across different domains using a consistent Flutter + REST + Firebase toolkit.',
-        challengeDetail:
-          "Three separate BooleanBites-era clients each needed a purpose-built Flutter app — one for property management, one for field operations, one for support ticketing — and all three needed to be built on tight, parallel timelines rather than sequentially. Each domain had its own requirements and users, so the three builds couldn't share a single codebase, only a consistent way of working.",
-        solutionDetail:
-          'Delivered three independent Flutter apps in parallel: Linked Home for property listing and management, IPT Force for field operations, and FSF-Ticket for a support ticketing system. Each app was built on the same underlying toolkit — Flutter for the client, REST APIs for backend integration, and Firebase for backend services — so the three builds could move at pace without reinventing infrastructure decisions for each client.',
-        impactDetail:
-          'Shipped three production apps across three different domains — property management, field operations, and support ticketing — using a consistent Flutter, REST, and Firebase toolkit throughout. Standardising on that toolkit across all three builds kept parallel delivery on tight timelines feasible without sacrificing the domain-specific functionality each client actually needed.',
-        overview:
-          "Three separate BooleanBites-era clients each needed a purpose-built Flutter app on tight, parallel timelines: Linked Home for property listing and management, IPT Force for field operations, and FSF-Ticket for support ticketing. Each domain had its own requirements and users, so the three builds couldn't share a single codebase — only a consistent way of working.\n\nAll three were built on the same underlying toolkit — Flutter for the client, REST APIs for backend integration, and Firebase for backend services — which kept parallel delivery on tight timelines feasible without reinventing infrastructure decisions for each client. All three shipped as independent production apps across very different domains.",
-        stack: ['Flutter', 'REST APIs', 'Firebase'],
-      },
     ],
   },
   {

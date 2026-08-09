@@ -34,7 +34,7 @@ src/
   components/     # HcNav, HcFooter — used by Home/Work/Services/About/Contact (hc- design system)
                   # Navbar, Footer — used by Certifications only (legacy design system)
   layouts/        # BaseLayout — HTML shell shared by all pages
-  data/           # projects.js (canonical 19-project list, source for /work + every /work/<slug>),
+  data/           # projects.js (canonical 18-project list, source for /work + every /work/<slug>),
                   # techIcons.js, resumeSkills.js, screenshots.js (per-slug case-study screenshots)
   pages/          # File-based routing
                   #   index.astro — home page (hc- design system), styled via hc-shared.css + sibling _index.css
