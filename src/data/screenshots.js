@@ -3,14 +3,15 @@
 // ones cleared to show real product screenshots (see Confidentiality in CLAUDE.md).
 // `hero` renders in the hero card itself, alongside the title/description,
 // replacing the generic mark-tile/logo for projects that have one — for NebuFit,
-// Creative OS, Houzi, Orient Champions, UNITY, Linked Golf, and HouziBuilder this
-// is a pre-rendered multi-device mockup composite (real device renders + dust/smoke
-// effect, not a raw in-app screenshot), so it drops in as a plain image with no
-// extra CSS device-frame chrome around it. These composites are also reused as the
-// project's `screenshot` tile image on Home/Work/About (see the `screenshot` field
-// in index.astro/about/index.astro/projects.js) — one shared featured image across
-// all pages that render that project (Orient Champions, UNITY, Linked Golf, and
-// HouziBuilder have no Home entry since none is one of Home's 3 "Selected works").
+// Creative OS, Houzi, Orient Champions, UNITY, Linked Golf, HouziBuilder, and
+// Foodii this is a pre-rendered multi-device mockup composite (real device renders
+// + dust/smoke effect, not a raw in-app screenshot), so it drops in as a plain
+// image with no extra CSS device-frame chrome around it. These composites are also
+// reused as the project's `screenshot` tile image on Home/Work/About (see the
+// `screenshot` field in index.astro/about/index.astro/projects.js) — one shared
+// featured image across all pages that render that project (Orient Champions,
+// UNITY, Linked Golf, HouziBuilder, and Foodii have no Home entry since none is
+// one of Home's 3 "Selected works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -33,7 +34,11 @@
 // screens with a real Google Maps API key and AdMob ad unit IDs visible were
 // excluded from the set; ATTN Agency Homepage: hero → featured-in/struggle points →
 // results and brand logos → services and lead-magnet download → client
-// testimonials → "Who is Will Giles" bio → final CTA and footer). Keeping this
+// testimonials → "Who is Will Giles" bio → final CTA and footer; Foodii: splash →
+// onboarding → welcome/auth choice → login → signup → home dashboard → recipe
+// detail → recipe ingredients/steps preview → full cooking steps → recommended
+// grid → explore → add-recipe basic info → add-recipe ingredients → favourites →
+// profile → notifications). Keeping this
 // separate from projects.js (rather than inline `screenshot` fields per item)
 // means the case study page can do a single keyed lookup and projects without
 // screenshots need no extra fields.
@@ -531,6 +536,78 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/attn-agency-homepage/07-final-cta-footer.png',
         alt: 'Final "let\'s build what\'s next" call-to-action form above the site footer',
+      },
+    ],
+  },
+  'foodii-recipe-book': {
+    hero: {
+      src: '/assets/screenshots/foodii-recipe-book/feature-mockup.png',
+      alt: 'Foodii shown across five iPhone screens — splash, onboarding, the home dashboard, a recipe detail page, and the Foodii Recommended grid',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/foodii-recipe-book/01-splash.png',
+        alt: "Foodii splash screen showing the app's sun-and-wave logo while it loads",
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/02-onboarding.png',
+        alt: 'Onboarding screen with a recipe-book illustration, "Explore now to experience the benefits" copy, and a Get Started button',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/03-welcome.png',
+        alt: 'Welcome screen with Log In and Sign Up buttons plus continue with Google or Facebook options',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/04-login.png',
+        alt: 'Login screen with email and password fields, remember me, and forgot password',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/05-signup.png',
+        alt: 'Sign up form with user name, email, password, and confirm password fields',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/06-home-dashboard.png',
+        alt: 'Home dashboard with a morning greeting, cuisine filter chips, a Foodii Recommended carousel, and a Trending Recipes grid',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/07-recipe-detail.png',
+        alt: 'Recipe detail page for Spaghetti with Tomato Garlic Sauce, with cook time, difficulty, and serving badges, chef info, and description',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/08-recipe-ingredients-preview.png',
+        alt: 'Recipe detail Ingredients list with quantities, and a preview of the Cooking Steps section below',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/09-recipe-steps.png',
+        alt: 'Recipe detail Cooking Steps list with all 7 numbered steps expanded',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/10-recommended-grid.png',
+        alt: 'Foodii Recommended full grid of recipe cards with chef avatars and names',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/11-explore.png',
+        alt: 'Explore tab with cuisine filter chips, a Popular Chefs row, and a Best Recipes row',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/12-add-recipe-basic-info.png',
+        alt: 'Add New Recipe form for title, category, description, cooking time, serving, and video URL',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/13-add-recipe-ingredients.png',
+        alt: 'Add New Recipe ingredients step showing an empty ingredients state with Back and Next buttons',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/14-favourites.png',
+        alt: 'Favourites tab showing saved recipe cards with chef names',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/15-profile.png',
+        alt: 'Profile screen with account info and language, privacy policy, terms, help, and logout options',
+      },
+      {
+        src: '/assets/screenshots/foodii-recipe-book/16-notifications.png',
+        alt: 'Notifications screen listing recipe likes, bookmarks, uploads, and new posts from chefs',
       },
     ],
   },

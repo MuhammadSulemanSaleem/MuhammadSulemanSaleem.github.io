@@ -488,6 +488,7 @@ export const categories = [
         slug: 'foodii-recipe-book',
         mark: 'FB',
         name: 'Foodii — Recipe Book',
+        screenshot: '/assets/screenshots/foodii-recipe-book/feature-mockup.png',
         metric: 'Published FlutterFlow Marketplace',
         challenge:
           'Recipe and meal-planning apps needed a clean, card-based starting point rather than a from-scratch build.',
@@ -503,7 +504,7 @@ export const categories = [
           'Published to the FlutterFlow Marketplace as a reusable recipe-app starting point, saving builders the work of recreating the same browsing, saving, and categorising flows for every new recipe-focused project.',
         overview:
           'Recipe and meal-planning apps needed a clean, card-based starting point rather than a from-scratch build, since the core browsing, saving, and categorising flows repeat across nearly every recipe app. Foodii is a FlutterFlow starter template covering those flows in a clean, card-based UI.\n\nRather than every new recipe-focused project rebuilding the same foundation, Foodii gives builders a working starting point — published to the FlutterFlow Marketplace as a reusable recipe-app template.',
-        stack: ['FlutterFlow'],
+        stack: ['FlutterFlow', 'Dart'],
       },
     ],
   },
