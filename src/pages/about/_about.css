@@ -379,7 +379,7 @@
 /* Creative OS-only zoom — see the matching comment in hc-shared.css next to
    .hc-work__tile-logo--zoom for why this is scoped to one project. */
 .rs-work-card__tile-img--zoom {
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
 
 /* UNITY-only nudge — see the matching comment in hc-shared.css next to

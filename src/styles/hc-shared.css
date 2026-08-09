@@ -626,7 +626,7 @@
    parent `.hc-work__tile--logo` already has `overflow: hidden`, so this crops
    cleanly instead of spilling past the tile. */
 .hc-work__tile-logo--zoom {
-  transform: scale(1.3) translateY(-16%);
+  transform: scale(1.1) translateY(-16%);
 }
 
 /* Nudge for mockups that render low in their tile (UNITY, HouziBuilder) —

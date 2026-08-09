@@ -68,7 +68,7 @@
 /* Creative OS-only zoom — see the matching comment in hc-shared.css next to
    .hc-work__tile-logo--zoom for why this is scoped to one project. */
 .cs-hero__mockup--zoom {
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
 
 /* ── Screenshot marquee (full shot set, further down the page — JS-driven
