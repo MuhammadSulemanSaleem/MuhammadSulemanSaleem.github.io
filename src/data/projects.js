@@ -281,6 +281,7 @@ export const categories = [
         slug: 'houzibuilder',
         mark: 'HB',
         name: 'HouziBuilder',
+        screenshot: '/assets/screenshots/houzibuilder/feature-mockup.png',
         metric: 'Drag-and-drop theme configurator',
         challenge:
           'Non-technical Houzi theme owners had no way to preview and configure typography, colours, and layout before publishing changes.',
@@ -296,7 +297,7 @@ export const categories = [
           "Let theme owners self-serve visual changes with zero code, reducing back-and-forth support requests that previously required the Houzi team's direct involvement for even simple visual tweaks. It turned a recurring support cost into a one-time tool investment.",
         overview:
           'Non-technical Houzi theme owners had no way to preview and configure typography, colours, and layout before publishing changes to their live site — any visual tweak meant either editing code directly or filing a support request. HouziBuilder is a desktop drag-and-drop theme configurator built as a companion tool to the Houzi ecosystem, letting theme owners adjust those settings visually and preview the result before publishing.\n\nNo code editing or WordPress admin knowledge is required to use it, letting theme owners self-serve visual changes with zero code and cutting down on the back-and-forth support requests that simple visual tweaks used to require.',
-        stack: ['Desktop', 'WordPress'],
+        stack: ['Flutter', 'Dart'],
       },
       {
         slug: 'techtiz-corporate-website',

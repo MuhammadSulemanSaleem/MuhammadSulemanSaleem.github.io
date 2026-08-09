@@ -3,14 +3,14 @@
 // ones cleared to show real product screenshots (see Confidentiality in CLAUDE.md).
 // `hero` renders in the hero card itself, alongside the title/description,
 // replacing the generic mark-tile/logo for projects that have one — for NebuFit,
-// Creative OS, Houzi, Orient Champions, UNITY, and Linked Golf this is a pre-rendered
-// multi-device mockup composite (real device renders + dust/smoke effect, not a raw
-// in-app screenshot), so it drops in as a plain image with no extra CSS device-frame
-// chrome around it. These composites are also reused as the project's
-// `screenshot` tile image on Home/Work/About (see the `screenshot` field in
-// index.astro/about/index.astro/projects.js) — one shared featured image
-// across all four pages that render that project (Orient Champions, UNITY, and
-// Linked Golf have no Home entry since none is one of Home's 3 "Selected works").
+// Creative OS, Houzi, Orient Champions, UNITY, Linked Golf, and HouziBuilder this
+// is a pre-rendered multi-device mockup composite (real device renders + dust/smoke
+// effect, not a raw in-app screenshot), so it drops in as a plain image with no
+// extra CSS device-frame chrome around it. These composites are also reused as the
+// project's `screenshot` tile image on Home/Work/About (see the `screenshot` field
+// in index.astro/about/index.astro/projects.js) — one shared featured image across
+// all pages that render that project (Orient Champions, UNITY, Linked Golf, and
+// HouziBuilder have no Home entry since none is one of Home's 3 "Selected works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -26,7 +26,12 @@
 // then the admin portal — login → dashboard → organizations → roles → navigation
 // builder → users; Linked Golf: splash → onboarding/signup → profile → availability
 // (day → calendar → detail) → chat inbox → courses discover → course detail →
-// golf buddies → chat detail → settings). Keeping this separate from projects.js (rather than inline `screenshot`
+// golf buddies → chat detail → settings; HouziBuilder: desktop app activation →
+// WordPress plugin integration test → Basic/Style/Home/Navigation Bar/Drawer/Search
+// tabs → Results and Maps (two card designs) → Listing Details → Blog Details →
+// Add Property, each paired with its own live drag-and-drop layout panel — two
+// screens with a real Google Maps API key and AdMob ad unit IDs visible were
+// excluded from the set). Keeping this separate from projects.js (rather than inline `screenshot`
 // fields per item) means the case study page can do a single keyed lookup and
 // projects without screenshots need no extra fields.
 export const projectScreenshots = {
@@ -427,6 +432,66 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/linked-golf/13-settings-account.png',
         alt: 'Account settings screen with name, location, and a blocked users list',
+      },
+    ],
+  },
+  houzibuilder: {
+    hero: {
+      src: '/assets/screenshots/houzibuilder/feature-mockup.png',
+      alt: 'HouziBuilder shown across two desktop screens — the activation splash and the Home Elegant configurator with a live phone preview',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/houzibuilder/01-activate-app.png',
+        alt: 'HouziBuilder desktop app activation screen with a purchase-code entry field',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/02-plugin-integration.png',
+        alt: 'Houzi Plug-in Integration screen with a WordPress URL field and a 5/5 passed API connectivity test',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/03-basic-home-preview.png',
+        alt: 'Basic tab showing a live Home Elegant phone preview alongside a drag-and-drop Home Layout widget list',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/04-style-appbar-colors.png',
+        alt: 'Style tab with an AppBar preview and hex color pickers for primary, secondary, slider, and icon tint colors',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/05-home-designs.png',
+        alt: 'Home tab with four selectable home-screen designs — Carousel, Elegant, Location, Tabbed — and a drag-and-drop layout list',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/06-navigation-bar-designs.png',
+        alt: 'Navigation Bar tab with three selectable bottom nav bar designs and a drag-and-drop layout list',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/07-drawer-layout.png',
+        alt: 'Drawer tab showing the side menu preview alongside a drag-and-drop Drawer Layout widget list',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/08-search-filters.png',
+        alt: 'Search tab showing the Filters screen preview alongside a drag-and-drop Search Layout list',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/09-results-list-design.png',
+        alt: 'Results and Maps tab with eight selectable result card designs and a list-style preview',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/10-results-grid-design.png',
+        alt: 'Results and Maps tab with a grid-style property card design selected in the preview',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/11-listing-details.png',
+        alt: 'Listing Details tab with contact-button configuration checkboxes and a drag-and-drop Listing Details Layout list',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/12-blog-details.png',
+        alt: 'Blog Details tab showing a blog post preview alongside a drag-and-drop Blog Details Layout list',
+      },
+      {
+        src: '/assets/screenshots/houzibuilder/13-add-property-form.png',
+        alt: 'Add Property tab showing the multi-step Add Property form alongside its own page layout list',
       },
     ],
   },
