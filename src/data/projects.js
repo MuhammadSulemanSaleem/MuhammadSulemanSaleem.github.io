@@ -231,6 +231,7 @@ export const categories = [
         slug: 'exodus-app',
         mark: 'EX',
         name: 'Exodus App',
+        screenshot: '/assets/screenshots/exodus-app/feature-mockup.png',
         metric: 'Full rebrand from Blue Sky (EPIC PC)',
         challenge:
           "EPIC PC needed the 'Blue Sky' app fully rebranded — new visual identity, theming, and store presence — without disrupting the underlying app.",
@@ -246,7 +247,7 @@ export const categories = [
           "Relaunched the app under its new identity with a consistent look across every screen and store listing, giving EPIC PC a clean rebrand without the risk or cost of rebuilding the app's underlying functionality from scratch.",
         overview:
           "EPIC PC needed its 'Blue Sky' app fully rebranded — new visual identity, theming, and store presence — without disrupting the app underneath it. A rebrand touches more than a color palette: theming across every screen, updated assets, navigation adjusted to match the new identity, and app-store metadata all needed to land together rather than as a patchwork of partial updates.\n\nThe rebrand was delivered end-to-end in Flutter as a presentation-layer change, leaving the app's underlying logic and functionality untouched. It relaunched under its new identity with a consistent look across every screen and store listing.",
-        stack: ['Flutter'],
+        stack: ['Flutter', 'Dart'],
       },
     ],
   },

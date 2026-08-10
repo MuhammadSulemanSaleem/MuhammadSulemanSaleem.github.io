@@ -3,18 +3,19 @@
 // ones cleared to show real product screenshots (see Confidentiality in CLAUDE.md).
 // `hero` renders in the hero card itself, alongside the title/description,
 // replacing the generic mark-tile/logo for projects that have one — for NebuFit,
-// Creative OS, Houzi, Orient Champions, UNITY, Linked Golf, HouziBuilder, and
-// Foodii this is a pre-rendered multi-device mockup composite (real device renders
-// + dust/smoke effect, not a raw in-app screenshot), so it drops in as a plain
-// image with no extra CSS device-frame chrome around it. ATTN Agency Homepage and
-// Techtiz Corporate Website — both desktop websites rather than apps — use the
-// same kind of composite but across two desktop monitors instead of phones. These
-// composites are also reused as the project's `screenshot` tile image on
-// Home/Work/About (see the `screenshot` field in index.astro/about/index.astro/
-// projects.js) — one shared featured image across all pages that render that
-// project (Orient Champions, UNITY, Linked Golf, HouziBuilder, Techtiz Corporate
-// Website, and Foodii have no Home entry since none is one of Home's 3 "Selected
-// works").
+// Creative OS, Houzi, Orient Champions, UNITY, Linked Golf, HouziBuilder, Exodus
+// App, and Foodii this is a pre-rendered multi-device mockup composite (real
+// device renders, not a raw in-app screenshot — Exodus App's lacks the
+// dust/smoke effect the others have, just plain phone renders), so it drops in
+// as a plain image with no extra CSS device-frame chrome around it. ATTN Agency
+// Homepage and Techtiz Corporate Website — both desktop websites rather than
+// apps — use the same kind of composite but across two desktop monitors instead
+// of phones. These composites are also reused as the project's `screenshot` tile
+// image on Home/Work/About (see the `screenshot` field in index.astro/about/
+// index.astro/projects.js) — one shared featured image across all pages that
+// render that project (Orient Champions, UNITY, Linked Golf, HouziBuilder,
+// Techtiz Corporate Website, Exodus App, and Foodii have no Home entry since
+// none is one of Home's 3 "Selected works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -52,7 +53,11 @@
 // sessions; Techtiz Corporate Website: homepage hero → services capability grid →
 // expert-team credentials and stats bar → case studies preview → footer CTA →
 // Healthcare industry page hero → AI Agents service page hero → About page hero →
-// Case Studies listing page → SLED Subcontracting hub hero → Blog index).
+// Case Studies listing page → SLED Subcontracting hub hero → Blog index; Exodus
+// App: splash icon → splash branded logo → home dashboard → create-schedule
+// appointment form → cancelled appointments list → Health Vitals list → Blood
+// Pressure detail graph → Test Result Questions message thread → Pharmacy
+// medications list → Test Results list).
 // Keeping this
 // separate from projects.js (rather than inline `screenshot` fields per item)
 // means the case study page can do a single keyed lookup and projects without
@@ -779,6 +784,54 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/techtiz-corporate-website/11-blog-index.jpg',
         alt: 'Blog index page titled "Notes from the build" with a category filter bar and a featured healthcare article',
+      },
+    ],
+  },
+  'exodus-app': {
+    hero: {
+      src: '/assets/screenshots/exodus-app/feature-mockup.png',
+      alt: 'Exodus App shown across five iPhone screens — the home dashboard, blood pressure detail graph, health vitals list, cancelled appointments list, and test results list',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/exodus-app/01-splash-icon.png',
+        alt: 'Exodus App splash screen showing the compass-star icon on a dark green background while the app loads',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/02-splash-branded.png',
+        alt: 'Exodus App splash screen with the full compass-star logo and "EXODUS" wordmark',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/03-home-dashboard.webp',
+        alt: 'Home dashboard with Health System Connect and Wearable rows, Previous/Upcoming/Schedule New appointment shortcuts, and Health Vitals, Communication, and Medication Management links',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/04-create-schedule.webp',
+        alt: 'Create Schedule form for entering appointment date, location, provider, and reason, with an available-slots count at the bottom',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/05-appointments-cancelled.webp',
+        alt: 'Appointments screen on the Cancelled tab, listing lab, X-ray, and office-visit appointments with dates and locations',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/06-health-vitals.webp',
+        alt: 'Health Vitals list showing temperature, pulse, pulse ox, blood pressure, and weight readings with last-updated dates',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/07-blood-pressure-detail.webp',
+        alt: 'Blood Pressure Detail screen with a systolic/diastolic trend graph, current values, and an explanation of what the readings mean',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/08-test-result-questions.webp',
+        alt: 'Test Result Questions message thread between a patient and their care team about delayed test results',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/09-pharmacy-medications.webp',
+        alt: 'Pharmacy screen listing current medications and their doses',
+      },
+      {
+        src: '/assets/screenshots/exodus-app/10-test-results.webp',
+        alt: 'Test Results screen with a search bar and a filtered list of ordered lab and imaging results',
       },
     ],
   },
