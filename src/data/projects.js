@@ -437,6 +437,28 @@ export const categories = [
           'A client needed both a steady social content cadence to stay visible across channels, and a way to keep sales focused on genuinely qualified inbound leads rather than sorting through every reply manually. Two separate n8n pipelines handle each half of the problem: one generates platform-specific captions on a schedule and auto-posts across channels.\n\nThe other filters and validates inbound leads and replies, routing only qualified ones to sales via Slack — keeping a consistent posting cadence running automatically while routing only qualified leads to the sales team.',
         stack: ['n8n', 'Slack'],
       },
+      {
+        slug: 'outreach-email-classification-automation',
+        mark: 'EC',
+        name: 'Outreach Email Classification Automation',
+        screenshot: '/assets/screenshots/outreach-email-classification-automation/feature-mockup.png',
+        metric: 'AI reply classification · instant Slack routing',
+        challenge:
+          'Every reply to an outreach campaign had to be opened and read by hand just to tell an interested prospect apart from a bounce, an out-of-office, or an unsubscribe request.',
+        solution:
+          "Built an n8n pipeline that receives outreach replies from a Gmail-polling Google Apps Script, classifies each one's intent with Gemini 2.5 Flash Lite, and posts a formatted status notification straight to Slack.",
+        impact:
+          'Replaced manual inbox triage with automatic classification and instant Slack visibility on every outreach reply.',
+        challengeDetail:
+          'Every reply to an outreach campaign had to be opened and read by hand just to tell an interested prospect apart from a bounce, an out-of-office, or an unsubscribe request, and that manual read-and-sort step delayed follow-up on the replies that actually mattered. There was no automatic way to surface a genuinely interested reply without someone first working through everything else in the inbox.',
+        solutionDetail:
+          "Built an n8n pipeline that receives outreach replies via webhook from a Google Apps Script Gmail poller, which filters incoming mail against allowed recipients, blocked domains/senders, and warmup or unsubscribe keywords before queuing valid replies through at a rate-limited pace. Each reply is formatted and passed to an AI agent running Gemini 2.5 Flash Lite, which classifies it as Interested, Not Interested, Schedule Later, Wrong Person, Out of Office, or Unsubscribe and drafts a status summary, before the pipeline normalizes that output and posts it as a formatted notification to a dedicated Slack channel.",
+        impactDetail:
+          "Replaced manual inbox triage with automatic classification and instant Slack visibility on every outreach reply, so the sales team sees a reply's status the moment it arrives instead of after someone works through the inbox by hand.",
+        overview:
+          "Every reply to an outreach campaign had to be opened and read by hand just to tell an interested prospect apart from a bounce, an out-of-office, or an unsubscribe request — delaying follow-up on the replies that actually mattered. An n8n pipeline now receives outreach replies via webhook from a Google Apps Script Gmail poller, which pre-filters incoming mail and queues valid replies through at a rate-limited pace.\n\nAn AI agent running Gemini 2.5 Flash Lite classifies each reply's intent — Interested, Not Interested, Schedule Later, Wrong Person, Out of Office, or Unsubscribe — and the pipeline posts a formatted status notification straight to a dedicated Slack channel, replacing manual inbox triage with instant, automatic visibility on every reply.",
+        stack: ['n8n', 'Google Apps Script', 'Google Gemini', 'Slack'],
+      },
     ],
   },
   {

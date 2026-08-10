@@ -13,12 +13,22 @@
 // of phones. AGENTC — Agentic Job Discovery Automation reuses the same
 // two-desktop-monitor composite style, but with n8n workflow canvases in
 // place of a website UI, since the "product" here is the automation itself.
+// Outreach Email Classification Automation reuses the single-monitor variant
+// of that same composite style (one Studio Display-style monitor on its
+// stand, not a two-monitor pair, since there's only the one workflow canvas
+// to show) — again an n8n workflow canvas rather than a website UI. Its
+// `gallery` is deliberately left empty — the raw workflow-canvas screenshot
+// backing the hero mockup isn't repeated in an "In the Product" marquee for
+// this project, unlike every other project with a screenshots.js entry, so
+// the case study page's marquee section (guarded by `gallery.length > 0`)
+// doesn't render for it.
 // These composites are also reused as the project's `screenshot` tile
 // image on Home/Work/About (see the `screenshot` field in index.astro/about/
 // index.astro/projects.js) — one shared featured image across all pages that
 // render that project (Orient Champions, UNITY, Linked Golf, HouziBuilder,
-// Techtiz Corporate Website, Exodus App, Foodii, and AGENTC have no Home entry
-// since none is one of Home's 3 "Selected works").
+// Techtiz Corporate Website, Exodus App, Foodii, AGENTC, and Outreach Email
+// Classification Automation have no Home entry since none is one of Home's 3
+// "Selected works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -61,7 +71,9 @@
 // report and email delivery → the separate Tech Inventory workflow that
 // monitors API credit balances across all four providers and reports NocoDB
 // record totals (these are n8n workflow-canvas screenshots, not app UI, so
-// each one is a full editor view rather than a single screen); Techtiz Corporate Website: homepage hero → services capability grid →
+// each one is a full editor view rather than a single screen); Outreach Email
+// Classification Automation has no gallery — see the note above `hero` in
+// this file for why; Techtiz Corporate Website: homepage hero → services capability grid →
 // expert-team credentials and stats bar → case studies preview → footer CTA →
 // Healthcare industry page hero → AI Agents service page hero → About page hero →
 // Case Studies listing page → SLED Subcontracting hub hero → Blog index; Exodus
@@ -885,5 +897,12 @@ export const projectScreenshots = {
         alt: 'Test Results screen with a search bar and a filtered list of ordered lab and imaging results',
       },
     ],
+  },
+  'outreach-email-classification-automation': {
+    hero: {
+      src: '/assets/screenshots/outreach-email-classification-automation/feature-mockup.png',
+      alt: 'The Outreach Email Notification n8n workflow canvas shown on a desktop monitor',
+    },
+    gallery: [],
   },
 };
