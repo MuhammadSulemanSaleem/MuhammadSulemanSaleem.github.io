@@ -87,6 +87,34 @@ const projects = [
       'Gave writers AI-powered editing and search that never leaves their machine, with a tool ecosystem that grows without touching the core app.',
     slug: 'creative-os',
   },
+  {
+    mark: 'AG',
+    tint: 'violet',
+    name: 'AGENTC — Agentic Job Discovery Automation',
+    screenshot: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
+    metric: 'Daily verified leads before business hours',
+    challenge:
+      'Manually finding and verifying decision-maker contacts for outreach ate hours every morning before the sales team could start calling.',
+    solution:
+      'Built a daily n8n pipeline using Apify scrapers to discover matching contacts, ZeroBounce and Clearout Phone to validate emails and numbers, and Nocodb to dedupe against the existing CRM.',
+    impact:
+      'Delivers a ready-to-call, verified lead list before business hours every morning, automatically.',
+    slug: 'agentc-job-discovery',
+  },
+  {
+    mark: 'SM',
+    tint: 'blue',
+    name: 'Social Media Posting Automation',
+    screenshot: '/assets/screenshots/social-media-posting-automation/feature-mockup.png',
+    metric: 'Auto-posts to 6 platforms · zero silent failures',
+    challenge:
+      'A client needed a steady posting cadence across six social platforms without a person writing captions by hand, juggling six sets of OAuth tokens, or finding out about a failed post days later.',
+    solution:
+      'Built a suite of five linked n8n workflows: an AI agent that turns a form submission into ready-to-publish captions and hashtags and books it on a content calendar, a webhook-triggered publisher that checks per-platform permissions before uploading to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok, a scheduled job that keeps every platform’s OAuth tokens refreshed, an auth-callback workflow that handles the OAuth handshake for each platform, and a centralized error logger that alerts the team the moment any of the above fails.',
+    impact:
+      'Replaced manual caption-writing, scheduling, and token babysitting with a fully automated pipeline that posts to six platforms and emails a status report after every run.',
+    slug: 'social-media-posting-automation',
+  },
 ];
 
 const skillCategories = [
