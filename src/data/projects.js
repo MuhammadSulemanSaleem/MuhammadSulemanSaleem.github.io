@@ -356,6 +356,7 @@ export const categories = [
         slug: 'agentc-job-discovery',
         mark: 'AG',
         name: 'AGENTC — Agentic Job Discovery Automation',
+        screenshot: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
         metric: 'Daily verified leads before business hours',
         challenge:
           'Manually finding and verifying decision-maker contacts for outreach ate hours every morning before the sales team could start calling.',

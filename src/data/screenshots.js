@@ -10,12 +10,15 @@
 // as a plain image with no extra CSS device-frame chrome around it. ATTN Agency
 // Homepage and Techtiz Corporate Website — both desktop websites rather than
 // apps — use the same kind of composite but across two desktop monitors instead
-// of phones. These composites are also reused as the project's `screenshot` tile
+// of phones. AGENTC — Agentic Job Discovery Automation reuses the same
+// two-desktop-monitor composite style, but with n8n workflow canvases in
+// place of a website UI, since the "product" here is the automation itself.
+// These composites are also reused as the project's `screenshot` tile
 // image on Home/Work/About (see the `screenshot` field in index.astro/about/
 // index.astro/projects.js) — one shared featured image across all pages that
 // render that project (Orient Champions, UNITY, Linked Golf, HouziBuilder,
-// Techtiz Corporate Website, Exodus App, and Foodii have no Home entry since
-// none is one of Home's 3 "Selected works").
+// Techtiz Corporate Website, Exodus App, Foodii, and AGENTC have no Home entry
+// since none is one of Home's 3 "Selected works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -50,7 +53,15 @@
 // payment success → messages inbox → scheduled/completed sessions → own-profile
 // menu → professional rate/summary editor → professional login → the
 // professional's home dashboard with pending session requests and upcoming
-// sessions; Techtiz Corporate Website: homepage hero → services capability grid →
+// sessions; AGENTC — Agentic Job Discovery Automation: schedule-trigger
+// orchestration overview of all five sub-workflows → LinkedIn & career sites
+// job scraping and NocoDB storage → decision-maker discovery via Hunter.io →
+// decision-maker enrichment and refresh → email verification via ZeroBounce →
+// phone number verification via Clearout Phone → AI-summarized daily CSV
+// report and email delivery → the separate Tech Inventory workflow that
+// monitors API credit balances across all four providers and reports NocoDB
+// record totals (these are n8n workflow-canvas screenshots, not app UI, so
+// each one is a full editor view rather than a single screen); Techtiz Corporate Website: homepage hero → services capability grid →
 // expert-team credentials and stats bar → case studies preview → footer CTA →
 // Healthcare industry page hero → AI Agents service page hero → About page hero →
 // Case Studies listing page → SLED Subcontracting hub hero → Blog index; Exodus
@@ -784,6 +795,46 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/techtiz-corporate-website/11-blog-index.jpg',
         alt: 'Blog index page titled "Notes from the build" with a category filter bar and a featured healthcare article',
+      },
+    ],
+  },
+  'agentc-job-discovery': {
+    hero: {
+      src: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
+      alt: 'AGENTC shown across two desktop monitors — the LinkedIn & Career Sites Job Scrapers Automation canvas and the Get Decision Makers Automation canvas',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/agentc-job-discovery/01-aiml-job-niche-automation.png',
+        alt: 'Orchestration overview showing five schedule-triggered sub-workflows — job scraping, decision-maker enrichment, email verification, phone number verification, and CSV generation',
+      },
+      {
+        src: '/assets/screenshots/agentc-job-discovery/02-linkedin-career-sites-scrapers.png',
+        alt: 'LinkedIn & Career Sites Job Scrapers Automation canvas — scraping and filtering LinkedIn and career-site job listings, then storing both sets to NocoDB',
+      },
+      {
+        src: '/assets/screenshots/agentc-job-discovery/03-get-decision-makers.png',
+        alt: 'Get Decision Makers Automation canvas — fetching decision-maker contacts from Hunter.io by phone number and email, with error handling and NocoDB storage',
+      },
+      {
+        src: '/assets/screenshots/agentc-job-discovery/04-decision-makers-enrichment.png',
+        alt: 'Decision Makers Enrichment Automation canvas — refreshing 30-day-old company data and enriching decision makers for new and existing companies',
+      },
+      {
+        src: '/assets/screenshots/agentc-job-discovery/05-email-verification.png',
+        alt: 'Email Verification Automation canvas — batch-validating decision-maker email addresses via the ZeroBounce API and updating their status',
+      },
+      {
+        src: '/assets/screenshots/agentc-job-discovery/06-phone-number-verification.png',
+        alt: 'Phone Number Verification Automation canvas — batch-validating decision-maker phone numbers via the Clearout Phone API and updating their status',
+      },
+      {
+        src: '/assets/screenshots/agentc-job-discovery/07-summarize-jobs-generate-csv.png',
+        alt: 'Summarize Jobs & Generate CSV Automation canvas — an AI agent summarizing the day\'s scraping and enrichment activity, generating a CSV, and emailing the report',
+      },
+      {
+        src: '/assets/screenshots/agentc-job-discovery/08-tech-inventory-automation.png',
+        alt: 'Tech Inventory Automation Workflow canvas — checking API credit balances across ZeroBounce, Hunter.io, Clearout Phone, and Apify, and emailing a merged status report',
       },
     ],
   },
