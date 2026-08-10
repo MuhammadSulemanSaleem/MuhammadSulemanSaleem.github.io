@@ -358,6 +358,7 @@ export const categories = [
         mark: 'CS',
         name: 'Capital Shack — Document OCR Processing',
         metric: 'OCR bank statement extraction',
+        note: 'Client confidentiality prevents sharing screenshots or product media for this project.',
         challenge:
           'Extracting structured financial data from PDF bank statements by hand was slow and error-prone.',
         solution:
