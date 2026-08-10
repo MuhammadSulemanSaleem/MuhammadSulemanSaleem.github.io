@@ -417,25 +417,26 @@ export const categories = [
         stack: ['Zapier', 'Emergent Labs', 'ClickUp'],
       },
       {
-        slug: 'social-media-outreach-automation',
+        slug: 'social-media-posting-automation',
         mark: 'SM',
-        name: 'Social Media & Outreach Automation',
-        metric: 'Daily post scheduling · lead routing',
+        name: 'Social Media Posting Automation',
+        screenshot: '/assets/screenshots/social-media-posting-automation/feature-mockup.png',
+        metric: 'Auto-posts to 6 platforms · zero silent failures',
         challenge:
-          'A client needed both a steady social content cadence and a way to keep sales focused on genuinely qualified inbound leads.',
+          'A client needed a steady posting cadence across six social platforms without a person writing captions by hand, juggling six sets of OAuth tokens, or finding out about a failed post days later.',
         solution:
-          'Built two n8n pipelines: one generates platform-specific captions on a schedule and auto-posts across channels; the other filters and validates inbound leads and routes qualified replies to sales via Slack.',
+          'Built a suite of five linked n8n workflows: an AI agent that turns a form submission into ready-to-publish captions and hashtags and books it on a content calendar, a webhook-triggered publisher that checks per-platform permissions before uploading to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok, a scheduled job that keeps every platform’s OAuth tokens refreshed, an auth-callback workflow that handles the OAuth handshake for each platform, and a centralized error logger that alerts the team the moment any of the above fails.',
         impact:
-          'Kept a consistent posting cadence while routing only qualified leads to the sales team.',
+          'Replaced manual caption-writing, scheduling, and token babysitting with a fully automated pipeline that posts to six platforms and emails a status report after every run.',
         challengeDetail:
-          'A client needed both a steady social content cadence to stay visible across channels, and a way to keep sales focused on genuinely qualified inbound leads rather than sorting through every reply and comment manually. Maintaining a posting schedule by hand competed for the same time that should have gone toward following up on real sales opportunities.',
+          'A client needed a steady posting cadence across six social platforms — YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok — without a person writing platform-specific captions by hand, tracking which of six separate OAuth tokens was about to expire, or discovering a failed upload only when someone happened to check. Each platform also has its own content-type quirks (YouTube Shorts vs. standard video, Instagram Reels vs. standard, Threads’ short-lived-then-long-lived token exchange) that a manual process had no consistent way to handle.',
         solutionDetail:
-          'Built two separate n8n pipelines to handle each half of the problem independently. One generates platform-specific captions on a schedule and auto-posts across channels, keeping the content cadence running without manual scheduling. The other filters and validates inbound leads and replies, routing only the qualified ones to sales via Slack rather than surfacing every comment and message as if it needed a response.',
+          'Built five linked n8n workflows that split the problem into independent, purpose-built pieces. A metadata-generation workflow watches a Google Sheets submission form, runs an AI agent to produce captions, hashtags, and titles, writes that metadata back to the sheet, and books a Google Calendar event for the scheduled post. A webhook-triggered publishing workflow normalizes the incoming post data, pulls the current access tokens, and — per platform — checks whether posting is enabled and whether the content is short-form before uploading through each platform’s API, then merges every platform’s result into a single summary emailed via Gmail. A scheduled token-refresh workflow checks each platform’s access and refresh tokens, silently renews what it can, and emails a re-authorization link when a refresh token itself has expired. An auth-callback workflow handles the one-time OAuth handshake for each platform — including Threads’ required deauthorization and data-deletion callbacks — and writes the resulting tokens to the sheet the other workflows read from. A centralized error-logging workflow is wired to all four, logging every failure to a sheet and emailing the team so nothing fails silently.',
         impactDetail:
-          'Kept a consistent posting cadence running automatically while routing only qualified leads to the sales team, freeing up time that used to go toward manual scheduling and reply triage for actual sales follow-up.',
+          'Replaced manual caption-writing, scheduling, and per-platform token babysitting with a pipeline that posts to six platforms on its own, keeps its own credentials valid ahead of time, and emails a status report after every run — so the team finds out about a failure from an alert, not from a missing post.',
         overview:
-          'A client needed both a steady social content cadence to stay visible across channels, and a way to keep sales focused on genuinely qualified inbound leads rather than sorting through every reply manually. Two separate n8n pipelines handle each half of the problem: one generates platform-specific captions on a schedule and auto-posts across channels.\n\nThe other filters and validates inbound leads and replies, routing only qualified ones to sales via Slack — keeping a consistent posting cadence running automatically while routing only qualified leads to the sales team.',
-        stack: ['n8n', 'Slack'],
+          'A client needed a steady posting cadence across six social platforms — YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok — without a person writing platform-specific captions by hand, tracking six sets of OAuth tokens, or finding out about a failed upload after the fact. Five linked n8n workflows now handle it end to end: one turns a Google Sheets form submission into AI-generated captions and hashtags and books it on a content calendar, one publishes to each platform’s API based on per-platform permissions and content type, one keeps every platform’s OAuth tokens refreshed on a schedule, one handles the OAuth handshake (and Threads’ required deauthorization/data-deletion callbacks) for each platform, and one centrally logs and alerts on any failure across the other four.\n\nTogether they replace manual caption-writing, scheduling, and token babysitting with a pipeline that posts to six platforms and emails a status report after every run, so the client hears about problems from an alert instead of a missing post.',
+        stack: ['n8n', 'OpenAI', 'Google Sheets', 'Google Calendar', 'Gmail'],
       },
       {
         slug: 'outreach-email-classification-automation',

@@ -10,9 +10,10 @@
 // as a plain image with no extra CSS device-frame chrome around it. ATTN Agency
 // Homepage and Techtiz Corporate Website — both desktop websites rather than
 // apps — use the same kind of composite but across two desktop monitors instead
-// of phones. AGENTC — Agentic Job Discovery Automation reuses the same
-// two-desktop-monitor composite style, but with n8n workflow canvases in
-// place of a website UI, since the "product" here is the automation itself.
+// of phones. AGENTC — Agentic Job Discovery Automation and Social Media
+// Posting Automation reuse the same two-desktop-monitor composite style, but
+// with n8n workflow canvases in place of a website UI, since the "product"
+// here is the automation itself.
 // Outreach Email Classification Automation reuses the single-monitor variant
 // of that same composite style (one Studio Display-style monitor on its
 // stand, not a two-monitor pair, since there's only the one workflow canvas
@@ -26,9 +27,9 @@
 // image on Home/Work/About (see the `screenshot` field in index.astro/about/
 // index.astro/projects.js) — one shared featured image across all pages that
 // render that project (Orient Champions, UNITY, Linked Golf, HouziBuilder,
-// Techtiz Corporate Website, Exodus App, Foodii, AGENTC, and Outreach Email
-// Classification Automation have no Home entry since none is one of Home's 3
-// "Selected works").
+// Techtiz Corporate Website, Exodus App, Foodii, AGENTC, Outreach Email
+// Classification Automation, and Social Media Posting Automation have no
+// Home entry since none is one of Home's 3 "Selected works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -80,7 +81,12 @@
 // App: splash icon → splash branded logo → home dashboard → create-schedule
 // appointment form → cancelled appointments list → Health Vitals list → Blood
 // Pressure detail graph → Test Result Questions message thread → Pharmacy
-// medications list → Test Results list).
+// medications list → Test Results list); Social Media Posting Automation:
+// Post Metadata Generation Automation canvas → Social Media Posts Automation
+// canvas → Refresh Access Token Automation canvas → Auth Code Callbacks
+// Automation canvas → Error Logging Automation canvas — the five linked n8n
+// workflows in the order they run/support each other, each screenshot a full
+// editor view (n8n workflow canvases, not app UI, same as AGENTC above).
 // Keeping this
 // separate from projects.js (rather than inline `screenshot` fields per item)
 // means the case study page can do a single keyed lookup and projects without
@@ -904,5 +910,33 @@ export const projectScreenshots = {
       alt: 'The Outreach Email Notification n8n workflow canvas shown on a desktop monitor',
     },
     gallery: [],
+  },
+  'social-media-posting-automation': {
+    hero: {
+      src: '/assets/screenshots/social-media-posting-automation/feature-mockup.png',
+      alt: 'Social Media Posting Automation shown across two desktop monitors — the Post Metadata Generation Automation canvas and the Social Media Posts Automation canvas',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/social-media-posting-automation/01-post-metadata-generation.png',
+        alt: 'Post Metadata Generation Automation canvas — an AI agent generating captions, hashtags, and titles from a Google Sheets form submission and booking a calendar event',
+      },
+      {
+        src: '/assets/screenshots/social-media-posting-automation/02-post-automation.png',
+        alt: 'Social Media Posts Automation canvas — the webhook-triggered publisher checking per-platform permissions before uploading to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok',
+      },
+      {
+        src: '/assets/screenshots/social-media-posting-automation/03-refresh-access-token.png',
+        alt: 'Refresh Access Token Automation canvas — the scheduled workflow that renews each platform’s OAuth tokens and emails a re-authorization link when a refresh token has expired',
+      },
+      {
+        src: '/assets/screenshots/social-media-posting-automation/04-auth-code-callbacks.png',
+        alt: 'Auth Code Callbacks Automation canvas — handling the OAuth handshake for each platform, including Threads’ deauthorization and data-deletion callbacks',
+      },
+      {
+        src: '/assets/screenshots/social-media-posting-automation/05-error-logging.png',
+        alt: 'Error Logging Automation canvas — the centralized error handler that logs failures and emails the team from any of the other four workflows',
+      },
+    ],
   },
 };
