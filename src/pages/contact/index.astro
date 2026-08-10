@@ -5,6 +5,10 @@ import HcFooter from '../../components/HcFooter/index.astro';
 import '../../styles/hc-shared.css';
 import './_contact.css';
 
+// Serverless function deployed separately on Vercel — see contact-api/README.md.
+// Update this once the Vercel project is live if the project name differs.
+const CONTACT_ENDPOINT = 'https://portfolio-contact-api-ecru.vercel.app/api/contact';
+
 const faqs = [
   {
     q: 'What kind of projects do you take on?',
@@ -60,7 +64,7 @@ const faqs = [
         </div>
 
         <div class="hc-card ct-right" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
-          <form class="ct-form">
+          <form id="ct-form" class="ct-form">
             <div class="ct-field-wrap">
               <label for="ct-name" class="ct-form-label">Name</label>
               <input id="ct-name" class="ct-form-field" type="text" name="name" placeholder="Your name" required />
@@ -87,7 +91,20 @@ const faqs = [
               ></textarea>
             </div>
 
-            <button type="button" class="hc-btn hc-btn--primary ct-submit">Send Message</button>
+            <!-- Honeypot: hidden from real users, left blank; bots often fill every field. -->
+            <input
+              id="ct-company"
+              class="ct-form-field"
+              type="text"
+              name="company"
+              tabindex="-1"
+              autocomplete="off"
+              style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;"
+              aria-hidden="true"
+            />
+
+            <button type="submit" class="hc-btn hc-btn--primary ct-submit">Send Message</button>
+            <p id="ct-form-status" class="ct-form__status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>
@@ -129,6 +146,47 @@ const faqs = [
         toggle.setAttribute('aria-expanded', String(!isOpen));
         item?.classList.toggle('ct-accordion__item--open', !isOpen);
       });
+    });
+  </script>
+
+  <script define:vars={{ CONTACT_ENDPOINT }}>
+    const form = document.getElementById('ct-form');
+    const status = document.getElementById('ct-form-status');
+    const submitBtn = form?.querySelector('.ct-submit');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      status.textContent = '';
+      status.className = 'ct-form__status';
+
+      try {
+        const res = await fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        const body = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          throw new Error(body.error || 'Something went wrong. Please try again.');
+        }
+
+        form.reset();
+        status.textContent = "Thanks — your message is on its way. I'll reply soon.";
+        status.classList.add('ct-form__status--success');
+      } catch (err) {
+        status.textContent = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+        status.classList.add('ct-form__status--error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
     });
   </script>
 </BaseLayout>

@@ -133,6 +133,26 @@ select.ct-form-field {
   border-radius: 8px;
 }
 
+.ct-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ct-form__status {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.ct-form__status--success {
+  color: #0ea5a0;
+}
+
+.ct-form__status--error {
+  color: #e0524c;
+}
+
 /* ── FAQ accordion ─────────────────────────────────────── */
 .ct-faq {
   padding: 3rem;

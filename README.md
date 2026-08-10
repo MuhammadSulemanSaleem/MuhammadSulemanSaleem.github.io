@@ -17,6 +17,7 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 - Projects cleared to show real product screenshots (NebuFit, Creative OS, Houzi, Orient Champions, UNITY, Linked Golf, HouziBuilder, ATTN Agency Homepage, Kumquat, Foodii, Techtiz Corporate Website, AGENTC, Exodus App, Outreach Email Classification Automation, Social Media Posting Automation) have an entry in `src/data/screenshots.js`, keyed by slug: a `hero` image replaces the case study hero's mark-tile/logo alongside the title/description (a pre-rendered multi-device mockup composite, not a raw screenshot — AGENTC's, Techtiz's/ATTN's, Outreach Email Classification Automation's, and Social Media Posting Automation's are desktop-monitor composites since those "products" are n8n workflow canvases or websites, not phone apps; Outreach Email Classification Automation's is a single-monitor composite, not the two-monitor pair AGENTC/Techtiz/ATTN/Social Media Posting Automation use), and a `gallery` (the complete screenshot set, not a curated highlight reel) renders in an auto-scrolling "In the Product" marquee further down, with prev/next arrows and hover-to-pause — both are conditional and simply omitted for projects without an entry, and Outreach Email Classification Automation deliberately sets an empty `gallery` so only its hero renders, no marquee
 - `hc-icon-btn`'s hover-slide direction is page-scoped: pages that want it reversed pair the shared class with a page-local `.hc-reverse-icon-btn` modifier in their own `_<page>.css`, rather than flipping the shared default in `hc-shared.css`
 - GitHub Actions for CI/CD
+- The `/contact` form submits to a Nodemailer-powered Vercel serverless function in the sibling `contact-api/` directory — a separate Vercel project (own `package.json`, deployed with Root Directory `contact-api/`), not part of this site's own build/deploy. The static site itself stays on GitHub Pages unchanged. Live at `https://portfolio-contact-api-ecru.vercel.app/api/contact`, deployed and verified end-to-end (real email delivery + validation/honeypot/CORS behavior); see `contact-api/README.md`
 
 ## Getting Started
 
@@ -58,12 +59,16 @@ public/
   resume PDF, app-ads.txt
 .github/
   workflows/      # GitHub Actions deploy workflow
+contact-api/      # Separate Vercel serverless function project (own package.json/README), powers the
+                  # /contact form's mail delivery via Nodemailer. Not built/deployed by this site — see below
 ```
 
 ## Deployment
 
 Pushes to `main` automatically build and deploy via GitHub Actions.
 GitHub Pages source must be set to **GitHub Actions** in repo Settings → Pages.
+
+The `contact-api/` function deploys separately and independently as its own Vercel project (Root Directory `contact-api/`, currently linked only via the local Vercel CLI, not GitHub auto-deploy) — see `contact-api/README.md` for setup.
 
 ## Documentation
 
