@@ -207,27 +207,6 @@ export const categories = [
         ],
       },
       {
-        slug: 'aniflex',
-        mark: 'AF',
-        name: 'Aniflex',
-        metric: 'Fitness & gamification',
-        challenge:
-          'A fitness client wanted gamified progress tracking to keep users engaged with their workout routines, beyond a plain log of sets and reps.',
-        solution:
-          'Built a Flutter fitness and gamification app covering workout tracking, gamified progress milestones, and user achievements.',
-        impact:
-          'Delivered an engagement-first fitness app that turns routine tracking into a rewarding, achievement-driven experience.',
-        challengeDetail:
-          'A fitness client wanted gamified progress tracking to keep users engaged with their workout routines, since a plain log of sets and reps tends to lose users once the novelty of tracking wears off. The challenge was making consistency itself feel rewarding — turning the act of showing up and logging a workout into something with its own sense of progress, rather than just a record-keeping chore.',
-        solutionDetail:
-          'Built a Flutter fitness and gamification app covering standard workout tracking alongside gamified progress milestones and user achievements layered on top. Rather than treating gamification as a bolt-on feature, milestones and achievements are woven into the core tracking flow so consistency itself becomes visible and rewarded.',
-        impactDetail:
-          'Delivered an engagement-first fitness app that turns routine tracking into a rewarding, achievement-driven experience rather than a plain log of sets and reps. The gamification layer gives the client a product designed around retention — keeping users showing up — rather than just accurate record-keeping.',
-        overview:
-          'Aniflex turns fitness tracking into something users stay engaged with, rather than a plain log of sets and reps that tends to lose users once the novelty wears off. The Flutter app covers standard workout tracking alongside gamified progress milestones and achievements layered directly into that core flow.\n\nRather than treating gamification as an afterthought, milestones and achievements make consistency itself feel rewarding, giving the client an engagement-first product that rewards showing up rather than just recording it.',
-        stack: ['Flutter'],
-      },
-      {
         slug: 'exodus-app',
         mark: 'EX',
         name: 'Exodus App',
