@@ -399,6 +399,7 @@ export const categories = [
         slug: 'ramirez-legal-clickup-sync',
         mark: 'RL',
         name: 'Ramirez Legal Group — ClickUp Dashboard Sync',
+        screenshot: '/assets/screenshots/ramirez-legal-clickup-sync/feature-mockup.png',
         metric: 'Real-time case data sync',
         challenge:
           'The legal team and their clients had no single live view of case status — updates lived only inside ClickUp.',

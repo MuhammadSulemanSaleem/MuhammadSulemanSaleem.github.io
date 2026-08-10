@@ -23,13 +23,19 @@
 // this project, unlike every other project with a screenshots.js entry, so
 // the case study page's marquee section (guarded by `gallery.length > 0`)
 // doesn't render for it.
+// Ramirez Legal Group — ClickUp Dashboard Sync reuses the same two-desktop-
+// monitor composite style as AGENTC/Social Media Posting Automation, but with
+// the ClickUp case board on one monitor and the synced client-facing Admin
+// Portal dashboard on the other, since the "product" here is the sync
+// pipeline between the two, not a single app UI.
 // These composites are also reused as the project's `screenshot` tile
 // image on Home/Work/About (see the `screenshot` field in index.astro/about/
 // index.astro/projects.js) — one shared featured image across all pages that
 // render that project (Orient Champions, UNITY, Linked Golf, HouziBuilder,
 // Techtiz Corporate Website, Exodus App, Foodii, AGENTC, Outreach Email
-// Classification Automation, and Social Media Posting Automation have no
-// Home entry since none is one of Home's 3 "Selected works").
+// Classification Automation, Social Media Posting Automation, and Ramirez
+// Legal Group — ClickUp Dashboard Sync have no Home entry since none is one
+// of Home's 3 "Selected works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -86,7 +92,13 @@
 // canvas → Refresh Access Token Automation canvas → Auth Code Callbacks
 // Automation canvas → Error Logging Automation canvas — the five linked n8n
 // workflows in the order they run/support each other, each screenshot a full
-// editor view (n8n workflow canvases, not app UI, same as AGENTC above).
+// editor view (n8n workflow canvases, not app UI, same as AGENTC above);
+// Ramirez Legal Group — ClickUp Dashboard Sync: Admin Portal dashboard before
+// any case exists → the ClickUp Personal Injury case board it syncs from →
+// creating a new case in ClickUp → the Admin Portal dashboard reflecting that
+// case after it syncs over → the case's detail page with its milestones →
+// the Admin Portal's registered-clients list — a before/after narrative
+// showing the sync working, rather than every screen in one static tour.
 // Keeping this
 // separate from projects.js (rather than inline `screenshot` fields per item)
 // means the case study page can do a single keyed lookup and projects without
@@ -910,6 +922,38 @@ export const projectScreenshots = {
       alt: 'The Outreach Email Notification n8n workflow canvas shown on a desktop monitor',
     },
     gallery: [],
+  },
+  'ramirez-legal-clickup-sync': {
+    hero: {
+      src: '/assets/screenshots/ramirez-legal-clickup-sync/feature-mockup.png',
+      alt: "Ramirez Legal Group's ClickUp case board and client-facing Admin Portal dashboard shown across two desktop monitors",
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/ramirez-legal-clickup-sync/01-admin-dashboard-empty.png',
+        alt: 'Admin Portal dashboard showing zero total cases, clients, and active cases before any data has synced over',
+      },
+      {
+        src: '/assets/screenshots/ramirez-legal-clickup-sync/02-clickup-personal-injury-board.png',
+        alt: 'ClickUp Personal Injury case list grouped into Litigation and Pre-Litigation status sections, with case manager, priority, and key date columns',
+      },
+      {
+        src: '/assets/screenshots/ramirez-legal-clickup-sync/03-clickup-create-task.png',
+        alt: "ClickUp task creation panel for a new 'TestUser v. ABC Corporation' case, with Case Status, Milestones, and custom personal-injury fields",
+      },
+      {
+        src: '/assets/screenshots/ramirez-legal-clickup-sync/04-admin-dashboard-synced.png',
+        alt: 'Admin Portal dashboard now showing 1 total case, 1 client, and 1 active case after the new ClickUp task synced over',
+      },
+      {
+        src: '/assets/screenshots/ramirez-legal-clickup-sync/05-case-detail-milestones.png',
+        alt: 'Case detail Overview tab for TestUser v. ABC Corporation showing Case Information, Current Status, and three completed Case Milestones',
+      },
+      {
+        src: '/assets/screenshots/ramirez-legal-clickup-sync/06-registered-clients.png',
+        alt: 'Admin Portal Clients tab listing the one registered client and their linked case',
+      },
+    ],
   },
   'social-media-posting-automation': {
     hero: {
