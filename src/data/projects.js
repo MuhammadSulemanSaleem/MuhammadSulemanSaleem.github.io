@@ -314,6 +314,7 @@ export const categories = [
         slug: 'lead-response-automation',
         mark: 'LR',
         name: 'Lead Response Automation — United Global Vanline',
+        screenshot: '/assets/screenshots/lead-response-automation/feature-mockup.png',
         metric: 'Contact < 1 min · AI voice call < 2 min',
         challenge:
           'A US-based moving company was losing leads to slow response times — every minute of delay before first contact lowers conversion.',

@@ -28,14 +28,23 @@
 // the ClickUp case board on one monitor and the synced client-facing Admin
 // Portal dashboard on the other, since the "product" here is the sync
 // pipeline between the two, not a single app UI.
-// These composites are also reused as the project's `screenshot` tile
+// Lead Response Automation — United Global Vanline is the one exception to
+// the device-mockup-composite convention above: its `hero` is the client-
+// supplied 6-monitor composite (Aloware dashboard, the WF1 n8n canvas, and a
+// Go High Level Contacts list) used as-is, since the account it's captured
+// from ("Automation Sandbox") is the team's own dev/test workspace rather
+// than a live customer database. The hero still drops into the same
+// `.cs-hero__shot-wrap` tinted wash card as every other hero image, just
+// without device-frame chrome around it.
+// These composites (and, for Lead Response Automation, its 6-monitor
+// composite) are also reused as the project's `screenshot` tile
 // image on Home/Work/About (see the `screenshot` field in index.astro/about/
 // index.astro/projects.js) — one shared featured image across all pages that
 // render that project (Orient Champions, UNITY, Linked Golf, HouziBuilder,
 // Techtiz Corporate Website, Exodus App, Foodii, AGENTC, Outreach Email
-// Classification Automation, Social Media Posting Automation, and Ramirez
-// Legal Group — ClickUp Dashboard Sync have no Home entry since none is one
-// of Home's 3 "Selected works").
+// Classification Automation, Social Media Posting Automation, Ramirez Legal
+// Group — ClickUp Dashboard Sync, and Lead Response Automation have no Home
+// entry since none is one of Home's 5 "Selected works").
 // `gallery` is the full set of raw in-app screenshots rendered in an auto-scrolling
 // marquee placed after Project Overview (so the narrative sets up what the
 // screenshots show) and before the Challenge/Solution/Impact breakdown —
@@ -99,6 +108,24 @@
 // case after it syncs over → the case's detail page with its milestones →
 // the Admin Portal's registered-clients list — a before/after narrative
 // showing the sync working, rather than every screen in one static tour.
+// Lead Response Automation — United Global Vanline: WF1 Lead Intake &
+// Multi-Source Deduplication → WF2 Speed-to-Contact Blitz → WF3 After-Hours
+// Handler → WF4 Aloware Human Dialer Attack → WF7-A Deposit Link Sender →
+// WF7-B Payment Processor → WF7-C Quote Given Stage → WF8 QA Call Scoring →
+// WF09 Agent QA Weekly Rollup → WF-B Revenue Ledger Subtract → WF-C Weekly
+// Rollover + Role Engine → Dashboard Daily Audit Report → HOT Lead
+// Enforcement Monitor (13 n8n workflow-canvas screens, the pipeline's own
+// build order from first lead contact through payment, QA, and the two
+// monitoring/audit workflows that watch the rest — same as AGENTC/Social
+// Media Posting Automation/Ramirez Legal Group above), followed by the
+// underlying Go High Level and Aloware screens the pipeline reads from and
+// writes to: the Sales Pipeline board → a contact detail/timeline view →
+// three automated deposit-link/refund/weekly-notes messages the pipeline
+// posts back to GHL → the pipeline board again scrolled to its later stages
+// → a contact's logged deposit-link email → the Agent Scorecards pipeline →
+// an automated QA scorecard task → the Aloware Users dashboard → the Aloware
+// Teams list. This curated subset (not every raw file supplied) reflects the
+// project owner's own pass over the screenshots.
 // Keeping this
 // separate from projects.js (rather than inline `screenshot` fields per item)
 // means the case study page can do a single keyed lookup and projects without
@@ -1000,6 +1027,110 @@ export const projectScreenshots = {
       {
         src: '/assets/screenshots/zendesk-ai-support-automation/03-ticket-summary-response-automation.png',
         alt: 'Ticket Summary Response Automation canvas — formatting the full ticket history and having GPT-4o draft a context-aware proposed response for agent review',
+      },
+    ],
+  },
+  'lead-response-automation': {
+    hero: {
+      src: '/assets/screenshots/lead-response-automation/feature-mockup.png',
+      alt: 'WF1 — Lead Intake + Multi-Source Deduplication n8n workflow canvas, the pipeline’s single front door for every inbound lead source',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/lead-response-automation/01-lead-intake-multi-source-deduplication.png',
+        alt: 'WF1 — Lead Intake + Multi-Source Deduplication canvas: normalizing every inbound lead source, deduping against existing GHL contacts, scoring the lead, and routing it to the live-hours or after-hours workflow',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/02-speed-to-contact-blitz.png',
+        alt: 'WF2 — Speed-to-Contact Blitz canvas: the immediate multi-channel outreach sequence that fires the moment a lead is scored during business hours',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/03-after-hours-handler.png',
+        alt: 'WF3 — After-Hours Handler canvas: queuing and re-engaging leads that come in outside business hours',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/04-aloware-human-dialer-attack.png',
+        alt: 'WF4 — Aloware Human Dialer Attack canvas: escalating a lead into the Aloware power dialer queue for a live agent call',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/05-deposit-link-sender.png',
+        alt: 'WF7-A — Deposit Link Sender canvas: sending the deposit payment link once a lead reaches the deposit stage',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/06-payment-processor.png',
+        alt: 'WF7-B — Payment Processor canvas: processing the deposit payment and updating the opportunity once it’s received',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/07-quote-given-stage.png',
+        alt: 'WF7-C — Quote Given Stage canvas: moving a contacted lead into the Quote Given pipeline stage',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/08-qa-call-scoring.png',
+        alt: 'WF8 — QA Call Scoring canvas: OpenAI-based scoring of agent calls for quality and fraud signals',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/09-agent-qa-weekly-rollup.png',
+        alt: 'WF09 — Agent QA Weekly Rollup canvas: aggregating each agent’s call scores into a weekly rollup report',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/10-revenue-ledger-subtract.png',
+        alt: 'WF-B — Revenue Ledger Subtract canvas: adjusting the revenue ledger when a booked deal falls through',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/11-weekly-rollover-role-engine.png',
+        alt: 'WF-C — Weekly Rollover + Role Engine canvas: rolling over weekly metrics and re-evaluating agent role assignments',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/12-dashboard-daily-audit-report.png',
+        alt: 'Dashboard — Daily Audit Report canvas: a scheduled funnel-leak audit across nine pipeline-stage checks that flags stuck leads and texts the manager a summary',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/13-hot-lead-enforcement-monitor.png',
+        alt: 'HOT Lead Enforcement Monitor canvas: a 3-minute safety-net check that SMS-alerts a manager when a HOT-tagged lead sits uncalled in the dialer for too long',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/14-ghl-sales-pipeline-board.png',
+        alt: 'Go High Level Sales Pipeline board showing leads moving through New Lead, Contact Attempted, Contacted, Live Conversation, and Quote Given stages',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/15-ghl-contact-detail-timeline.png',
+        alt: 'Go High Level contact detail view showing a contact record’s field layout and activity timeline',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/16-ghl-deposit-link-sms-3.png',
+        alt: 'Automated deposit-link SMS thread confirming the $300 deposit and assigned move coordinator',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/17-ghl-refund-processed-note.png',
+        alt: 'Automated refund-processed notification posted to the contact timeline, logging the Clover refund ID and agent revenue impact',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/18-ghl-agent-weekly-notes.png',
+        alt: 'Automated weekly revenue and QA score notes written to an agent’s opportunity record by the rollup workflow',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/19-ghl-deposit-ask-booked-columns.png',
+        alt: 'Go High Level Sales Pipeline board scrolled to the Deposit Ask and Booked stages',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/20-ghl-contact-deposit-thread.png',
+        alt: 'Go High Level contact detail view with an automated deposit-link email logged in the conversation thread',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/21-ghl-agent-scorecards-pipeline.png',
+        alt: 'Go High Level Agent Scorecards pipeline grouping agents into Fresh, Junior, Senior, On Leave, and Suspended stages',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/22-ghl-test-user-qa-task.png',
+        alt: 'An automated QA scorecard task showing the call-scoring breakdown — confidence, urgency, objection handling, deposit ask, call control, and fraud-risk flags',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/23-aloware-users-dashboard.png',
+        alt: 'Aloware Users dashboard showing a communications chart and active agent list for the dialer',
+      },
+      {
+        src: '/assets/screenshots/lead-response-automation/24-aloware-teams-list.png',
+        alt: 'Aloware Teams list showing the Fresh, Junior, and Senior Agents teams with inbox and user counts',
       },
     ],
   },
