@@ -38,3 +38,19 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v4
         id: deployment
+      - name: Notify IndexNow (Bing) of current URLs
+        continue-on-error: true
+        run: |
+          SITE="https://muhammadsulemansaleem.github.io"
+          KEY="e19d6a737bbb47e58de786025c1ced1f"
+          URLS=$(curl -s "$SITE/sitemap-0.xml" | grep -oE '<loc>[^<]*</loc>' | sed -E 's/<\/?loc>//g')
+          JSON_URLS=$(printf '%s\n' "$URLS" | jq -R . | jq -s .)
+          PAYLOAD=$(jq -n \
+            --arg host "muhammadsulemansaleem.github.io" \
+            --arg key "$KEY" \
+            --arg keyLocation "$SITE/$KEY.txt" \
+            --argjson urlList "$JSON_URLS" \
+            '{host: $host, key: $key, keyLocation: $keyLocation, urlList: $urlList}')
+          curl -s -w "\nIndexNow status: %{http_code}\n" -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            --data "$PAYLOAD"
