@@ -441,6 +441,28 @@ export const categories = [
           "Every reply to an outreach campaign had to be opened and read by hand just to tell an interested prospect apart from a bounce, an out-of-office, or an unsubscribe request — delaying follow-up on the replies that actually mattered. An n8n pipeline now receives outreach replies via webhook from a Google Apps Script Gmail poller, which pre-filters incoming mail and queues valid replies through at a rate-limited pace.\n\nAn AI agent running Gemini 2.5 Flash Lite classifies each reply's intent — Interested, Not Interested, Schedule Later, Wrong Person, Out of Office, or Unsubscribe — and the pipeline posts a formatted status notification straight to a dedicated Slack channel, replacing manual inbox triage with instant, automatic visibility on every reply.",
         stack: ['n8n', 'Google Apps Script', 'Google Gemini', 'Slack'],
       },
+      {
+        slug: 'zendesk-ai-support-automation',
+        mark: 'ZD',
+        name: 'Zendesk AI Support Automation',
+        screenshot: '/assets/screenshots/zendesk-ai-support-automation/feature-mockup.png',
+        metric: '3 linked workflows · tickets, calls & replies',
+        challenge:
+          "A support team's agents were spending time piecing together context by hand on every new ticket, every pending call recording, and every ongoing conversation before they could even start drafting a reply.",
+        solution:
+          'Built three linked n8n workflows — OCR-and-GPT-4o analysis of new tickets and their attachments, ElevenLabs transcription and summarization of pending call recordings, and full-history-aware response drafting for ongoing conversations — all logging into a shared Central Intelligence Hub database.',
+        impact:
+          'Every new ticket, pending call, and ongoing conversation now gets an instant AI-drafted summary and reply logged straight into Zendesk and the Intelligence Hub, before an agent even opens it.',
+        challengeDetail:
+          "A support team's agents were spending time piecing together context by hand before they could reply to a ticket: reading through attachments on a new ticket, listening back through a call recording to find out what was discussed, or re-reading a long conversation thread to draft the next reply. Each of those three situations needed a different kind of context-gathering, and none of it was logged anywhere central — so there was no shared record of what the AI had already summarized or proposed for a given ticket.",
+        solutionDetail:
+          "Built three linked n8n workflows, each triggered directly from Zendesk. New Ticket Response Automation fires when a ticket is created, downloads any attached images or PDFs, runs them through Google Vision AI for OCR, and feeds the extracted text to GPT-4o to generate a summary, sentiment, and a proposed first reply — posted back to the ticket as an internal note for the agent. Pending Call Analysis Automation fires when a ticket is tagged #summarize-call, finds the Aircall recording link in the ticket's comments, downloads it, transcribes it with ElevenLabs Speech-to-Text, and summarizes it with GPT-4o before posting the summary and sentiment as an internal note. Ticket Summary Response Automation fires when a ticket is tagged #propose-answer, pulls the full conversation history, formats it chronologically, and has GPT-4o draft a context-aware proposed response for the agent to review. All three write through the same SourceData → AiOutputs → Interactions tables in a shared Central Intelligence Hub database, so every ticket, call, and conversation the AI has touched is logged in one place.",
+        impactDetail:
+          "Every new ticket, pending call, and ongoing conversation now gets an instant AI-drafted summary and reply logged straight into Zendesk as an internal note, before an agent even opens it — replacing the manual read-transcribe-and-draft work that used to precede every reply. Because all three workflows log through the same Central Intelligence Hub tables, the team also gets a single, queryable audit trail of every AI summary and proposed response across tickets and calls, rather than three disconnected automations with no shared record.",
+        overview:
+          "A support team's agents were spending time piecing together context by hand before every reply — reading attachments on a new ticket, listening back through a call recording, or re-reading a long thread to draft the next response. Three linked n8n workflows now handle each case directly from Zendesk: one OCRs new-ticket attachments with Google Vision AI and drafts a GPT-4o summary and proposed reply the moment a ticket is created, one transcribes and summarizes Aircall recordings with ElevenLabs and GPT-4o when a ticket is tagged for a call summary, and one drafts a context-aware response from the full conversation history when a ticket is tagged for a proposed answer.\n\nAll three post their output straight back to Zendesk as an internal note for the agent to review, and all three log through the same SourceData, AiOutputs, and Interactions tables in a shared Central Intelligence Hub database — giving the team one audit trail of every AI summary and proposed response, instead of three disconnected automations with no shared record.",
+        stack: ['n8n', 'Zendesk', 'Google Vision AI', 'GPT-4o', 'ElevenLabs', 'Aircall'],
+      },
     ],
   },
   {

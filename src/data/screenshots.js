@@ -983,4 +983,24 @@ export const projectScreenshots = {
       },
     ],
   },
+  'zendesk-ai-support-automation': {
+    hero: {
+      src: '/assets/screenshots/zendesk-ai-support-automation/feature-mockup.png',
+      alt: 'Zendesk AI Support Automation shown across two desktop monitors — the Pending Call Analysis Automation canvas and the Ticket Summary Response Automation canvas',
+    },
+    gallery: [
+      {
+        src: '/assets/screenshots/zendesk-ai-support-automation/01-new-ticket-response-automation.png',
+        alt: 'New Ticket Response Automation canvas — downloading ticket attachments, OCR via Google Vision AI, and GPT-4o generating a summary, sentiment, and proposed reply posted back to Zendesk',
+      },
+      {
+        src: '/assets/screenshots/zendesk-ai-support-automation/02-pending-call-analysis-automation.png',
+        alt: 'Pending Call Analysis Automation canvas — fetching an Aircall recording from a tagged ticket, transcribing it with ElevenLabs, and posting a GPT-4o summary and sentiment as an internal note',
+      },
+      {
+        src: '/assets/screenshots/zendesk-ai-support-automation/03-ticket-summary-response-automation.png',
+        alt: 'Ticket Summary Response Automation canvas — formatting the full ticket history and having GPT-4o draft a context-aware proposed response for agent review',
+      },
+    ],
+  },
 };
