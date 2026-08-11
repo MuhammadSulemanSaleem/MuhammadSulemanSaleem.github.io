@@ -274,7 +274,7 @@ export const projectScreenshots = {
   'creative-os': {
     hero: {
       src: '/assets/screenshots/creative-os/feature-mockup.png',
-      alt: 'Creative OS shown across two laptop screens — the Workspace screenplay editor with RAG + Claude chat, and the Analysis dashboard',
+      alt: 'Creative OS shown across two desktop monitors — the Workspace screenplay editor with RAG + Claude chat, and the Analysis dashboard',
     },
     gallery: [
       {
