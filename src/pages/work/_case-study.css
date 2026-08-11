@@ -354,7 +354,7 @@
   }
 
   .cs-marquee__frame {
-    height: 320px;
+    height: 380px;
   }
 
   .cs-nav {
@@ -396,6 +396,6 @@
   }
 
   .cs-marquee__frame {
-    height: 220px;
+    height: 300px;
   }
 }
