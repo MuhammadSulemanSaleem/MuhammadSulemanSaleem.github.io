@@ -21,7 +21,7 @@ Two disciplines, same site:
 
 ## 2. Site-wide technical SEO
 
-- [x] `sitemap.xml` — `@astrojs/sitemap` generates `sitemap-index.xml`/`sitemap-0.xml` at build time (not yet submitted to Google Search Console / Bing Webmaster Tools — that's a manual one-time step outside this codebase)
+- [x] `sitemap.xml` — `@astrojs/sitemap` generates `sitemap-index.xml`/`sitemap-0.xml` at build time; submitted and verified in both Google Search Console and Bing Webmaster Tools (2026-08-11), site ownership confirmed on both via HTML-file + meta-tag verification (`public/google0e84be6cc33f7862.html`, `public/BingSiteAuth.xml`, and matching `google-site-verification`/`msvalidate.01` meta tags in `BaseLayout`)
 - [x] `robots.txt` — added at `public/robots.txt`, explicit `Allow` rules for GPTBot, ChatGPT-User, ClaudeBot, Google-Extended, and PerplexityBot, plus a `Sitemap:` pointer
 - [x] Structured data (JSON-LD):
   - `Person` schema — added, site-wide, in `BaseLayout` (name, job title, url, image, email, address, `sameAs` LinkedIn, `knowsAbout`)
@@ -86,4 +86,4 @@ AI engines and Google both weigh external validation heavily — a site alone ra
 
 **Task for Claude Code:** Audit the current site against the checkboxes above, implement missing meta tags/schema/sitemap/robots.txt, and restructure project page content per section 3 (front-loaded summary + Q&A block + bullet-based tech stack) without changing the visual design unless asked.
 
-**Status (2026-08-11):** Audited and implemented — sitemap (`@astrojs/sitemap`), `robots.txt`, canonical tags, Open Graph/Twitter Card meta, `Person` + per-project `CreativeWork` JSON-LD, and per-project Q&A accordions are all live, with no visual/design changes. Sections 5 and 7 (backlinks/third-party presence, and ongoing measurement) are manual/external practices, not code — still open. Full rationale and implementation notes live in the "SEO & GEO" section of `CLAUDE.md`.
+**Status (2026-08-11):** Audited and implemented — sitemap (`@astrojs/sitemap`), `robots.txt`, canonical tags, Open Graph/Twitter Card meta, `Person` + per-project `CreativeWork` JSON-LD, and per-project Q&A accordions are all live, with no visual/design changes. Site ownership verified and sitemap submitted in both Google Search Console and Bing Webmaster Tools the same day. Sections 5 and 7 (backlinks/third-party presence, and ongoing measurement) are manual/external practices, not code — still open. Full rationale and implementation notes live in the "SEO & GEO" section of `CLAUDE.md`.
