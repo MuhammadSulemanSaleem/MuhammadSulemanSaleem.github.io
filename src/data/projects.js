@@ -358,6 +358,7 @@ export const categories = [
         slug: 'capital-shack-ocr',
         mark: 'CS',
         name: 'Capital Shack — Document OCR Processing',
+        screenshot: '/assets/screenshots/capital-shack-ocr/feature-mockup.png',
         metric: 'OCR bank statement extraction',
         note: 'Client confidentiality prevents sharing screenshots or product media for this project.',
         challenge:

@@ -209,6 +209,19 @@
   font-size: 0.78rem;
 }
 
+/* Applied to <body> while the mobile slide-out menu is open (see HcNav's
+   <script>) — pins the page at its current scroll offset via `top` (set
+   inline by the script) rather than relying on `overflow: hidden` alone,
+   since that only blocks user-gesture scrolling and not every programmatic
+   scroll path. Restored (and scroll position re-applied) when the menu closes. */
+.hc-scroll-lock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 .hc-nav {
   position: fixed;
@@ -267,7 +280,12 @@
   margin-left: auto;
 }
 
-.hc-nav__links a {
+/* :not(.hc-btn) keeps this generic nav-link styling from leaking onto the
+   .hc-nav__links-cta pill button below — a bare `.hc-nav__links a` selector
+   has higher specificity than `.hc-btn`/`.hc-btn--primary` (element+class
+   beats a single class), so without this it silently overrides the button's
+   white text/pill padding/radius with the muted nav-link look. */
+.hc-nav__links a:not(.hc-btn) {
   display: block;
   padding: 0.5rem 0.9rem;
   font-size: 0.9rem;
@@ -277,7 +295,7 @@
   transition: color 0.2s, background-color 0.2s;
 }
 
-.hc-nav__links a:hover {
+.hc-nav__links a:not(.hc-btn):hover {
   color: var(--hc-ink);
   background-color: var(--hc-bg);
 }
@@ -287,9 +305,28 @@
   background-color: rgba(207, 224, 255, 0.4);
 }
 
+/* Duplicate of .hc-nav__cta shown inside the mobile slide-out menu instead —
+   .hc-nav__cta itself is `display: none` below 750px (see mobile media query),
+   since it lives outside the .hc-nav__links list that becomes that panel. */
+.hc-nav__links-cta {
+  display: none;
+}
+
 .hc-nav__toggle,
 .hc-nav__bar input {
   display: none;
+}
+
+.hc-nav__toggle-icon--close {
+  display: none;
+}
+
+#hc-check:checked ~ .hc-nav__toggle .hc-nav__toggle-icon--open {
+  display: none;
+}
+
+#hc-check:checked ~ .hc-nav__toggle .hc-nav__toggle-icon--close {
+  display: block;
 }
 
 .hc-main {
@@ -627,18 +664,6 @@
    cleanly instead of spilling past the tile. */
 .hc-work__tile-logo--zoom {
   transform: scale(1.1) translateY(-16%);
-}
-
-/* Nudge for mockups that render low in their tile (UNITY, HouziBuilder) —
-   `.hc-work__tile` is a column flex container with `justify-content: center`,
-   and this image never actually stretches to its box's full height
-   (percentage heights don't resolve against a flex container sized only by
-   `min-height`, so it falls back to its own aspect-ratio height and gets
-   flex-centered) — `object-position` has no slack to work with here and is
-   a no-op. `transform: translateY` moves the element's whole rendered box
-   instead, which isn't affected by that. */
-.hc-work__tile-logo--up {
-  transform: translateY(-70px);
 }
 
 /* ── Capability illustrations (Engineering Expertise cards —
@@ -1105,7 +1130,9 @@
   }
 
   .hc-nav__toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.6rem;
     cursor: pointer;
   }
@@ -1121,6 +1148,8 @@
     justify-content: center;
     gap: 1.5rem;
     margin-left: 0;
+    padding: 2rem 0;
+    overflow-y: auto;
     transition: left 0.3s;
     border-top: 1px solid var(--hc-line);
   }
@@ -1129,12 +1158,21 @@
     left: 0;
   }
 
-  .hc-nav__links a {
+  .hc-nav__links a:not(.hc-btn) {
     font-size: 1.1rem;
   }
 
   .hc-nav__cta {
     display: none;
+  }
+
+  .hc-nav__links-cta {
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .hc-nav__links-cta a {
+    display: inline-flex;
   }
 
   .hc-cta {

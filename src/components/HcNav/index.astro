@@ -16,14 +16,16 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
       <img src="/assets/favicons/android-chrome-192x192.png" alt="" width="34" height="34" />
       Muhammad Suleman Saleem
     </a>
-    <label for="hc-check" class="hc-nav__toggle" aria-label="Toggle menu">
-      <i class="ri-menu-line"></i>
-    </label>
     <input type="checkbox" id="hc-check" />
+    <label for="hc-check" class="hc-nav__toggle" aria-label="Toggle menu">
+      <i class="ri-menu-line hc-nav__toggle-icon hc-nav__toggle-icon--open" aria-hidden="true"></i>
+      <i class="ri-close-line hc-nav__toggle-icon hc-nav__toggle-icon--close" aria-hidden="true"></i>
+    </label>
     <ul class="hc-nav__links">
       {links.map((l) => (
         <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
       ))}
+      <li class="hc-nav__links-cta"><a href="/contact" class="hc-btn hc-btn--primary">Get in touch</a></li>
     </ul>
     <a href="/contact" class="hc-btn hc-btn--primary hc-nav__cta">Get in touch</a>
   </div>
@@ -31,12 +33,17 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 
 <script>
   const hcNav = document.querySelector<HTMLElement>('.hc-nav');
+  const hcCheck = document.getElementById('hc-check') as HTMLInputElement | null;
+  let hcLastScrollY = window.scrollY;
 
   if (hcNav) {
-    let hcLastScrollY = window.scrollY;
     let hcTicking = false;
 
     const hcUpdateNav = () => {
+      if (hcCheck?.checked) {
+        hcTicking = false;
+        return;
+      }
       const currentY = window.scrollY;
       if (currentY > hcLastScrollY && currentY > 80) {
         hcNav.classList.add('hc-nav--hidden');
@@ -57,5 +64,19 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
       },
       { passive: true }
     );
+  }
+
+  if (hcCheck) {
+    hcCheck.addEventListener('change', () => {
+      if (hcCheck.checked) {
+        hcLastScrollY = window.scrollY;
+        document.body.style.top = `-${hcLastScrollY}px`;
+        document.body.classList.add('hc-scroll-lock');
+      } else {
+        document.body.classList.remove('hc-scroll-lock');
+        document.body.style.top = '';
+        window.scrollTo(0, hcLastScrollY);
+      }
+    });
   }
 </script>

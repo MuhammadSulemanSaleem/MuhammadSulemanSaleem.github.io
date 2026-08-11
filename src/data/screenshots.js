@@ -23,6 +23,14 @@
 // this project, unlike every other project with a screenshots.js entry, so
 // the case study page's marquee section (guarded by `gallery.length > 0`)
 // doesn't render for it.
+// Capital Shack — Document OCR Processing also reuses the single-monitor
+// variant, but shows only the client's brand logo on the screen rather than
+// any product UI or document data — client confidentiality still prevents
+// sharing actual screenshots/product media for this project (see
+// Confidentiality in CLAUDE.md), so `gallery` stays empty the same way
+// Outreach Email's does, and the case study's confidentiality note (`.pf-note`
+// / `.cs-callout`) still renders alongside this hero rather than being
+// removed.
 // Ramirez Legal Group — ClickUp Dashboard Sync reuses the same two-desktop-
 // monitor composite style as AGENTC/Social Media Posting Automation, but with
 // the ClickUp case board on one monitor and the synced client-facing Admin
@@ -947,6 +955,13 @@ export const projectScreenshots = {
     hero: {
       src: '/assets/screenshots/outreach-email-classification-automation/feature-mockup.png',
       alt: 'The Outreach Email Notification n8n workflow canvas shown on a desktop monitor',
+    },
+    gallery: [],
+  },
+  'capital-shack-ocr': {
+    hero: {
+      src: '/assets/screenshots/capital-shack-ocr/feature-mockup.png',
+      alt: 'The Capital Shack logo shown on a desktop monitor',
     },
     gallery: [],
   },

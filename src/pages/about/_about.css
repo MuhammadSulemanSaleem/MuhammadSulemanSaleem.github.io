@@ -382,12 +382,6 @@
   transform: scale(1.1);
 }
 
-/* UNITY-only nudge — see the matching comment in hc-shared.css next to
-   .hc-work__tile-logo--up. */
-.rs-work-card__tile-img--up {
-  object-position: 50% 32%;
-}
-
 .rs-work-card__mark {
   display: inline-flex;
   align-items: center;
