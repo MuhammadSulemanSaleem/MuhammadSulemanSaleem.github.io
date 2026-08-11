@@ -628,7 +628,7 @@ function renderTech(t: string) {
           <section class="hc-card rs-job-group">
             <div class="rs-job__header rs-job-group__header" data-aos="fade-up">
               <div class="rs-job__header-main">
-                {job.logo && <img src={job.logo} alt="" width="36" height="36" class="rs-job__logo" />}
+                {job.logo && <img src={job.logo} alt={`${job.company} logo`} width="36" height="36" class="rs-job__logo" />}
                 <div>
                   <p class="rs-job__title">{job.title}</p>
                   <p class="rs-job__company">{job.company}</p>
@@ -710,7 +710,7 @@ function renderTech(t: string) {
         <section class="hc-card rs-job-group">
           <div class="rs-job__header rs-job-group__header" data-aos="fade-up">
             <div class="rs-job__header-main">
-              {relevantExperience.logo && <img src={relevantExperience.logo} alt="" width="36" height="36" class="rs-job__logo" />}
+              {relevantExperience.logo && <img src={relevantExperience.logo} alt={`${relevantExperience.company} logo`} width="36" height="36" class="rs-job__logo" />}
               <div>
                 <p class="rs-job__title">{relevantExperience.title}</p>
                 <p class="rs-job__company">{relevantExperience.company}</p>
@@ -780,7 +780,7 @@ function renderTech(t: string) {
             {education.map((e, i) => (
               <div class={`rs-edu-item ${i % 2 === 1 ? 'rs-edu-item--violet' : ''}`}>
                 <div class="rs-edu-item__left">
-                  <img src={e.logo} alt="" width="48" height="48" class="rs-edu-item__logo" />
+                  <img src={e.logo} alt={`${e.institution} logo`} width="48" height="48" class="rs-edu-item__logo" />
                   <div>
                     <p class="rs-edu-item__degree">{e.degree}</p>
                     <p class="rs-edu-item__institution">{e.institution}</p>
@@ -807,7 +807,7 @@ function renderTech(t: string) {
             return (
               <Tag class={`hc-card rs-cert-card ${c.href ? 'rs-cert-card--link' : ''}`} {...linkProps} data-aos="fade-up" data-aos-delay={i * 30}>
                 <span class={`rs-cert-card__icon ${i % 2 === 1 ? 'rs-cert-card__icon--violet' : ''}`}>
-                  <img src={c.icon} alt="" width="20" height="20" />
+                  <img src={c.icon} alt={`${c.issuer} logo`} width="20" height="20" />
                 </span>
                 <span class="rs-cert-card__name">{c.name}</span>
                 <span class="rs-cert-card__issuer">{c.issuer}</span>
@@ -836,7 +836,7 @@ function renderTech(t: string) {
                 {group.items.map((item) => (
                   <span class="rs-tag">
                     {renderTech(item)
-                      ? <img src={renderTech(item)} alt="" width="20" height="20" />
+                      ? <img src={renderTech(item)} alt={`${item} icon`} width="20" height="20" />
                       : <i class="ri-price-tag-3-line" aria-hidden="true"></i>}
                     {item}
                   </span>

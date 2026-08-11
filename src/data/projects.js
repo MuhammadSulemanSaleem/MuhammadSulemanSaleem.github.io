@@ -314,6 +314,7 @@ export const categories = [
         slug: 'lead-response-automation',
         mark: 'LR',
         name: 'Lead Response Automation — United Global Vanline',
+        shortName: 'Lead Response Automation',
         screenshot: '/assets/screenshots/lead-response-automation/feature-mockup.png',
         metric: 'Contact < 1 min · AI voice call < 2 min',
         challenge:
@@ -336,6 +337,7 @@ export const categories = [
         slug: 'agentc-job-discovery',
         mark: 'AG',
         name: 'AGENTC — Agentic Job Discovery Automation',
+        shortName: 'AGENTC — Agentic Job Discovery',
         screenshot: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
         metric: 'Daily verified leads before business hours',
         challenge:
