@@ -254,6 +254,105 @@
   color: var(--hc-muted);
 }
 
+/* ── FAQ accordion (per-project Q&A for scannability/extractability —
+   same interaction pattern as Contact's .ct-faq/.ct-accordion, independently
+   duplicated here rather than shared since it's a different page family) ── */
+.cs-faq {
+  padding: 3rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cs-faq__head {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.cs-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cs-accordion__item {
+  background: var(--hc-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cs-accordion__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  background: none;
+  border: none;
+  font-family: var(--hc-font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.cs-accordion__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hc-ink);
+}
+
+.cs-accordion__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.cs-accordion__icon::before,
+.cs-accordion__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--hc-ink);
+  transform: translate(-50%, -50%);
+}
+
+.cs-accordion__icon::before {
+  width: 0.85rem;
+  height: 2px;
+}
+
+.cs-accordion__icon::after {
+  width: 2px;
+  height: 0.85rem;
+  transition: transform 0.25s ease;
+}
+
+.cs-accordion__item--open .cs-accordion__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg) scaleY(0);
+}
+
+.cs-accordion__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.cs-accordion__item--open .cs-accordion__body {
+  grid-template-rows: 1fr;
+}
+
+.cs-accordion__body-inner {
+  overflow: hidden;
+}
+
+.cs-accordion__text {
+  color: var(--hc-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  padding: 0 1.1rem 0.9rem;
+}
+
 /* ── Prev/next project navigation ───────────────────────── */
 .cs-nav {
   display: grid;
@@ -397,5 +496,9 @@
 
   .cs-marquee__frame {
     height: 300px;
+  }
+
+  .cs-faq {
+    padding: 1.75rem 1.25rem;
   }
 }

@@ -18,6 +18,7 @@ Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 - `hc-icon-btn`'s hover-slide direction is page-scoped: pages that want it reversed pair the shared class with a page-local `.hc-reverse-icon-btn` modifier in their own `_<page>.css`, rather than flipping the shared default in `hc-shared.css`
 - GitHub Actions for CI/CD
 - The `/contact` form submits to a Nodemailer-powered Vercel serverless function in the sibling `contact-api/` directory — a separate Vercel project (own `package.json`, deployed with Root Directory `contact-api/`), not part of this site's own build/deploy. The static site itself stays on GitHub Pages unchanged. Live at `https://portfolio-contact-api-ecru.vercel.app/api/contact`, deployed and verified end-to-end (real email delivery + validation/honeypot/CORS behavior); see `contact-api/README.md`
+- SEO/GEO: `@astrojs/sitemap` (pinned to `3.2.1` — later versions need an Astro 5-only integration hook) generates `sitemap-index.xml`/`sitemap-0.xml` at build time; `public/robots.txt` explicitly allows GPTBot/ChatGPT-User/ClaudeBot/Google-Extended/PerplexityBot; `BaseLayout` adds canonical links, Open Graph/Twitter Card meta tags, and a site-wide `Person` JSON-LD schema; each case study (`work/[slug].astro`) adds its own `CreativeWork` JSON-LD plus a Q&A accordion (problem solved / tech stack / source availability) for AI-answer-engine extractability — see `docs/seo-geo-requirements.md` and the "SEO & GEO" section of `CLAUDE.md` for the full rationale
 
 ## Getting Started
 
@@ -56,7 +57,7 @@ public/
     images/         # Static images
     favicons/       # favicon set, apple/android touch icons
     screenshots/    # Real product screenshots per project slug (e.g. nebufit/), used by src/data/screenshots.js
-  resume PDF, app-ads.txt
+  resume PDF, app-ads.txt, robots.txt (AI-crawler allow rules + sitemap pointer)
 .github/
   workflows/      # GitHub Actions deploy workflow
 contact-api/      # Separate Vercel serverless function project (own package.json/README), powers the

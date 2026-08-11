@@ -34,18 +34,56 @@ export function getStaticPaths() {
 const { project, prev, next, tint, prevTint, nextTint } = Astro.props;
 const heroDescription = project.heroDescription ?? project.overview.split('\n\n')[0];
 const shots = projectScreenshots[project.slug];
+const ogImage = shots?.hero?.src ?? project.logo ?? project.screenshot;
 
 function renderTech(t) {
   return techIcons[t] ?? null;
 }
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const faqs = [
+  {
+    q: `What problem does ${project.name} solve?`,
+    a: project.challenge,
+  },
+  {
+    q: `What technologies were used to build ${project.name}?`,
+    a: `${project.name} was built with ${project.stack.join(', ')}.`,
+  },
+  {
+    q: 'Is the source code available?',
+    a: project.note
+      ? `No — this was built under client confidentiality, so neither the source code nor product details beyond this summary are publicly shareable.`
+      : `This was built as commercial/client work, so the source code isn't publicly available. Get in touch to discuss the implementation.`,
+  },
+];
+
+const projectSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: project.name,
+  description: heroDescription,
+  url: canonicalURL,
+  ...(ogImage ? { image: new URL(ogImage, Astro.site).toString() } : {}),
+  keywords: project.stack.join(', '),
+  author: {
+    '@type': 'Person',
+    name: 'Muhammad Suleman Saleem',
+    url: 'https://MuhammadSulemanSaleem.github.io',
+  },
+};
 ---
 
 <BaseLayout
   title={`${project.name} — Case Study — Muhammad Suleman Saleem`}
   description={project.impact}
+  image={ogImage}
 >
   <div class="hc-page">
     <HcNav />
+
+    <script type="application/ld+json" set:html={JSON.stringify(projectSchema)} />
 
     <main class="hc-main">
 
@@ -161,6 +199,30 @@ function renderTech(t) {
         </div>
       </section>
 
+      <!-- FAQ accordion -->
+      <section class="hc-section hc-section--tight">
+        <div class="hc-card cs-faq" data-aos="fade-up">
+          <div class="cs-faq__head">
+            <h2 class="hc-heading">Frequently Asked Questions</h2>
+          </div>
+          <div class="cs-accordion">
+            {faqs.map((item) => (
+              <div class="cs-accordion__item">
+                <button type="button" class="cs-accordion__toggle" aria-expanded="false">
+                  <span class="cs-accordion__title">{item.q}</span>
+                  <span class="cs-accordion__icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-accordion__body">
+                  <div class="cs-accordion__body-inner">
+                    <p class="cs-accordion__text">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <!-- Prev / Next -->
       <section class="hc-section hc-section--tight">
         <div class="cs-nav" data-aos="fade-up">
@@ -269,6 +331,15 @@ function renderTech(t) {
 
       prevBtn?.addEventListener('click', () => nudge(-1));
       nextBtn?.addEventListener('click', () => nudge(1));
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('.cs-accordion__toggle').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const item = toggle.closest('.cs-accordion__item');
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        item?.classList.toggle('cs-accordion__item--open', !isOpen);
+      });
     });
   </script>
 </BaseLayout>

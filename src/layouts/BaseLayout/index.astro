@@ -4,12 +4,44 @@ import '../../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'profile';
 }
 
 const {
   title = 'Suleman Portfolio',
   description = 'Muhammad Suleman Saleem — Software Developer Portfolio',
+  image = '/assets/images/profile.png',
+  type = 'website',
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(image, Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Muhammad Suleman Saleem',
+  jobTitle: 'Full-Stack Software Engineer & AI Product Engineer',
+  url: 'https://MuhammadSulemanSaleem.github.io',
+  image: ogImageURL.toString(),
+  email: 'mailto:rana.suleman2297@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Lahore',
+    addressCountry: 'PK',
+  },
+  sameAs: ['https://linkedin.com/in/muhammad-suleman-saleem'],
+  knowsAbout: [
+    'Full-Stack Development',
+    'AI Product Engineering',
+    'Flutter',
+    'Node.js',
+    'RAG Systems',
+    'Claude API',
+    'n8n Automation',
+  ],
+};
 ---
 
 <!doctype html>
@@ -19,6 +51,7 @@ const {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" href="/assets/favicons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
@@ -28,6 +61,23 @@ const {
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="Muhammad Suleman Saleem" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body>
     <slot />
