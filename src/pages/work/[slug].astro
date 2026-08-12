@@ -57,6 +57,7 @@ const faqs = [
       ? `No — this was built under client confidentiality, so neither the source code nor product details beyond this summary are publicly shareable.`
       : `This was built as commercial/client work, so the source code isn't publicly available. Get in touch to discuss the implementation.`,
   },
+  ...(project.faqs ?? []),
 ];
 
 const projectSchema = {

@@ -30,6 +30,7 @@ export const techIcons = {
   'Firebase Admin': '/assets/svgs/firebase.svg',
   SendGrid: '/assets/svgs/sendgrid.svg',
   'Google APIs': '/assets/svgs/google.svg',
+  'Google Maps': '/assets/svgs/google.svg',
   'Google Vision AI': '/assets/svgs/google.svg',
   'AWS S3': '/assets/svgs/aws-s3.svg',
   'Claude API': '/assets/svgs/claude-api.svg',

@@ -156,18 +156,57 @@ export const categories = [
         challenge:
           'Houzez, a WordPress real estate theme used by 53,000+ site owners, had no companion mobile app — non-technical theme owners had no way to offer a native app experience without custom development.',
         solution:
-          'Built Houzi, a Flutter real estate template app with Bloc state management and Clean Architecture, REST API integration, push notifications, in-app chat, and comments — plus the HouziBuilder desktop customisation platform and the Houzi-REST-API WordPress plugin.',
+          'Built Houzi, a Flutter real estate template app with Bloc state management and Clean Architecture, REST API integration, Google Maps-based search with marker clustering, RTL and multi-language localization, push notifications, in-app chat, comments, and an admin-only Houzez CRM insights view — plus the HouziBuilder desktop customisation platform and the Houzi-REST-API WordPress plugin.',
         impact:
-          "Reached 53,000+ Houzez theme owners with a ready-made mobile solution, earning a 4.84★ rating, 500+ Envato sales, and 5,000+ Play Store downloads.",
+          "Reached 53,000+ Houzez theme owners with a ready-made mobile solution, earning a 4.84★ rating, 500+ Code Canyon sales, and 5,000+ Play Store downloads.",
         challengeDetail:
-          "Houzez, a WordPress real estate theme used by more than 53,000 site owners, had no companion mobile app — anyone wanting a native app experience alongside their Houzez site had no option but custom development from scratch. Most of those theme owners are non-technical, running real estate businesses rather than software teams, so a solution had to be something they could adopt off the shelf rather than commission and maintain themselves. It also needed to stay in sync with an existing WordPress site's listings and data rather than becoming a second, disconnected system.",
+          "Houzez, a WordPress real estate theme used by more than 53,000 site owners, had no companion mobile app — anyone wanting a native app experience alongside their Houzez site had no option but custom development from scratch. Most of those theme owners are non-technical, running real estate businesses rather than software teams, so a solution had to be something they could adopt off the shelf rather than commission and maintain themselves. It also needed to stay in sync with an existing WordPress site's listings and data rather than becoming a second, disconnected system, and to serve Houzez's international, non-English-speaking theme owner base — including right-to-left languages — while giving site admins visibility into CRM activity without exposing that data to regular app users.",
         solutionDetail:
-          "Built Houzi, a Flutter real estate template app built on Bloc state management and Clean Architecture for a maintainable, testable codebase, with REST API integration connecting it directly to a Houzez WordPress site's listings. Push notifications, in-app chat, and comments round out the mobile experience, giving buyers and agents the interactions they'd expect from a native app. The ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing WordPress data.",
+          "Built Houzi, a Flutter real estate template app built on Bloc state management and Clean Architecture for a maintainable, testable codebase, with REST API integration connecting it directly to a Houzez WordPress site's listings. Property search runs on Google Maps, with marker clustering that keeps listings legible at any zoom level and lets users filter results straight from the map. The app ships with RTL layout support and full localization, so Houzez's international theme owner base can run Houzi in their own language and script rather than English-only. Push notifications, in-app chat, and comments round out the mobile experience, giving buyers and agents the interactions they'd expect from a native app, while an admin-only view surfaces Houzez CRM insights — leads and site activity — directly inside the app without exposing that data to regular users. The ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing WordPress data.",
         impactDetail:
-          "Reached over 53,000 Houzez theme owners with a ready-made mobile solution they could adopt without custom development, earning a 4.84★ rating, 500+ Envato sales, and over 5,000 Play Store downloads. The combination of the Flutter app, HouziBuilder, and the REST API plugin turned what would have been a one-off custom build into a reusable product serving an entire theme's customer base.",
+          "Reached over 53,000 Houzez theme owners with a ready-made mobile solution they could adopt without custom development, earning a 4.84★ rating, 500+ Code Canyon sales, and over 5,000 Play Store downloads. The combination of the Flutter app, HouziBuilder, and the REST API plugin turned what would have been a one-off custom build into a reusable product serving an entire theme's customer base.",
         overview:
-          "Houzi fills a gap for Houzez, a WordPress real estate theme used by over 53,000 site owners who had no way to offer a native mobile app without custom development. Built in Flutter with Bloc state management and Clean Architecture, it layers in REST API integration, push notifications, in-app chat, and comments, giving buyers and agents a full native experience tied directly to each owner's existing WordPress listings.\n\nThe ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets non-technical theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing site data. Together they turned a one-off custom-app problem into a reusable product, reaching over 53,000 theme owners with a 4.84★ rating, 500+ Envato sales, and 5,000+ Play Store downloads.",
-        stack: ['Flutter', 'Bloc', 'Clean Architecture', 'REST APIs', 'WordPress Plugin'],
+          "Houzi fills a gap for Houzez, a WordPress real estate theme used by over 53,000 site owners who had no way to offer a native mobile app without custom development. Built in Flutter with Bloc state management and Clean Architecture, it layers in REST API integration, push notifications, in-app chat, and comments, giving buyers and agents a full native experience tied directly to each owner's existing WordPress listings.\n\nProperty discovery runs on Google Maps, with marker clustering that keeps listings legible at any zoom level and lets users filter search results straight from the map. The app also ships with RTL layout support and full localization, so Houzez's international theme owner base can run Houzi in their own language rather than English-only, and an admin-only view surfaces Houzez CRM insights — leads and site activity — directly inside the app, hidden from regular users.\n\nThe ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets non-technical theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing site data. Together they turned a one-off custom-app problem into a reusable product, reaching over 53,000 theme owners with a 4.84★ rating, 500+ Code Canyon sales, and 5,000+ Play Store downloads.",
+        stack: [
+          'Flutter',
+          'Dart',
+          'Bloc',
+          'Clean Architecture',
+          'REST APIs',
+          'Google Maps',
+          'PHP',
+          'WordPress Plugin',
+        ],
+        faqs: [
+          {
+            q: 'Do I need coding knowledge to customize Houzi for my site?',
+            a: "No — the HouziBuilder desktop customisation platform lets non-technical Houzez theme owners configure the app without touching code.",
+          },
+          {
+            q: 'How does Houzi stay in sync with my Houzez WordPress site?',
+            a: "Through the Houzi-REST-API WordPress plugin, which bridges the Flutter app directly to each owner's existing WordPress listings and data.",
+          },
+          {
+            q: 'What features does the Houzi app include?',
+            a: 'Push notifications, in-app chat, and comments, giving buyers and agents a full native experience tied to the underlying Houzez listings.',
+          },
+          {
+            q: 'Where can I get Houzi?',
+            a: "It's available on Code Canyon (500+ sales) and the Play Store (5,000+ downloads), with a 4.84★ average rating.",
+          },
+          {
+            q: 'Does Houzi support other languages and right-to-left layouts?',
+            a: 'Yes — Houzi ships with full localization and RTL layout support, so theme owners can run it in their own language and script rather than English-only.',
+          },
+          {
+            q: 'How does property search work in Houzi?',
+            a: "Search runs on Google Maps with marker clustering, so listings stay readable at any zoom level and users can filter results directly from the map.",
+          },
+          {
+            q: 'Can site admins see CRM data inside the app?',
+            a: "Yes — an admin-only view surfaces Houzez CRM insights, like leads and site activity, directly inside the app. That view is hidden from regular users.",
+          },
+        ],
       },
       {
         slug: 'linked-golf',
