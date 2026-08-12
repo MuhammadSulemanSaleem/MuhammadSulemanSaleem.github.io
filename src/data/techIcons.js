@@ -21,6 +21,7 @@ export const techIcons = {
   Express: '/assets/svgs/express.svg',
   Electron: '/assets/svgs/electron.svg',
   PostgreSQL: '/assets/svgs/postgresql.svg',
+  'PostgreSQL (Supabase)': '/assets/svgs/postgresql.svg',
   MongoDB: '/assets/svgs/mongodb.svg',
   Redis: '/assets/svgs/redis.svg',
   Supabase: '/assets/svgs/supabase.svg',

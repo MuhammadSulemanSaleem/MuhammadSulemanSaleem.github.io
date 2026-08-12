@@ -501,4 +501,24 @@
   .cs-faq {
     padding: 1.75rem 1.25rem;
   }
+
+  .cs-stack {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .cs-stack__tags {
+    gap: 0.5rem;
+  }
+
+  .cs-tag {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .cs-tag img,
+  .cs-tag i {
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+  }
 }

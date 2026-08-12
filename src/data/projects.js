@@ -47,7 +47,38 @@ export const categories = [
           "NebuFit set out to replace one-size-fits-all fitness templates with coaching that responds to a user's actual body data, bloodwork, and progress — rather than a fixed plan that ignores how an individual actually responds to training. Computer-vision body analysis reads a user's physique directly from photos, while bloodwork gets processed through a RAG system so nutrition and training recommendations stay grounded in real lab results instead of generic advice. The product is built to feel conversational throughout, giving users a coach to talk to rather than another dashboard of static charts.\n\nUnderneath that experience, multiple LLM providers — Claude, GPT-4o, and ElevenLabs — are orchestrated together behind an SSE streaming layer, so responses arrive token-by-token in real time instead of after a long wait. Automatic failover between providers keeps voice coaching sessions resilient even if one provider has an outage, which matters for a product where a dropped mid-session call would break trust fast.\n\nThe experience is delivered through a Flutter mobile app backed by a Nest.js and TypeScript API, keeping the client and server on a consistent, type-safe foundation. Subscription access and entitlements run on Stripe, so the coaching experience and its monetization shipped together as one production system from day one — giving NebuFit a complete path from AI pipeline to paying subscriber.",
         heroDescription:
           "An AI-powered fitness coaching platform built around a user's real body data — computer-vision physique analysis, RAG-processed bloodwork, and multi-LLM voice coaching — delivered through a production Flutter app with full Stripe subscription management.",
-        stack: ['Flutter', 'Claude API', 'GPT-4o', 'ElevenLabs', 'RAG', 'Stripe', 'Nest.js', 'TypeScript'],
+        stack: [
+          'Flutter',
+          'Dart',
+          'Claude API',
+          'GPT-4o',
+          'ElevenLabs',
+          'RAG',
+          'Stripe',
+          'Node.js',
+          'Nest.js',
+          'TypeScript',
+          'PostgreSQL (Supabase)',
+          'Redis',
+        ],
+        faqs: [
+          {
+            q: 'How does NebuFit personalize coaching instead of using generic templates?',
+            a: "Computer-vision body analysis reads a user's physique directly from photos, and bloodwork is processed through a RAG system, so workout and nutrition recommendations stay grounded in a person's actual physiology and lab results rather than a one-size-fits-all plan.",
+          },
+          {
+            q: 'What happens if an AI provider goes down mid-session?',
+            a: 'NebuFit orchestrates multiple LLM providers — Claude, GPT-4o, and ElevenLabs — with automatic failover between them, so a voice coaching session stays resilient instead of dropping if one provider has an outage.',
+          },
+          {
+            q: 'Why do responses feel real-time instead of a static chat reply?',
+            a: 'Responses are streamed token-by-token over an SSE layer, so users see answers arrive live rather than waiting for a full response to generate.',
+          },
+          {
+            q: 'Does NebuFit handle subscriptions and payments?',
+            a: 'Yes — Stripe subscription and entitlement management is built natively into the platform, so monetization and the coaching product shipped together from day one rather than being bolted on afterward.',
+          },
+        ],
       },
       {
         slug: 'creative-os',
