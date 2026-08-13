@@ -667,22 +667,58 @@ export const categories = [
         name: 'AGENTC — Agentic Job Discovery Automation',
         shortName: 'AGENTC — Agentic Job Discovery',
         screenshot: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
-        metric: 'Daily verified leads before business hours',
+        metric: 'Nightly across 4 niches · $600–800/mo → $200–300/mo',
         challenge:
-          'Manually finding and verifying decision-maker contacts for outreach ate hours every morning before the sales team could start calling.',
+          "The client's Selenium-based scraper for finding and verifying decision-maker contacts across four industry niches was expensive to run and fragile to maintain, pushing the whole tool stack to $600–800/month with no room to add reliability or cost visibility.",
         solution:
-          'Built a daily n8n pipeline using Apify scrapers to discover matching contacts, ZeroBounce and Clearout Phone to validate emails and numbers, and Nocodb to dedupe against the existing CRM.',
+          'Replaced Selenium with Apify actors and orchestrated the entire nightly pipeline in n8n — Hunter.io for decision-maker discovery, ZeroBounce and Clearout Phone for verification, NocoDB as the dedupe layer, and an OpenAI agent to summarize and email the results before business hours.',
         impact:
-          'Delivers a ready-to-call, verified lead list before business hours every morning, automatically.',
+          'Brought monthly cost into the client\'s $200–300 target while covering four full niches a day, with dedupe, rate-limit handling, and credit monitoring that catch problems before a report goes missing.',
+        problemSolved:
+          "Businesses running outbound sales need a steady stream of decision-maker contacts at companies that are actively hiring — hiring activity signals budget and growth — but manually scanning job postings, identifying the right decision-makers, and verifying their emails and phone numbers before the data goes stale is slow, labor-intensive work that delays the start of every outreach cycle.",
         challengeDetail:
-          'Manually finding and verifying decision-maker contacts for outreach ate hours every morning before the sales team could even start calling, since raw scraped contact lists are full of stale emails, dead phone numbers, and duplicates already sitting in the CRM. That manual triage delayed the start of the actual sales day rather than adding value to it.',
+          "The client had been running decision-maker discovery across four industry niches — AI/ML, GIS, HealthTech, and Manufacturing — on a Selenium-based scraper paired with a patchwork of other tools, which meant maintaining scraper infrastructure, handling anti-bot measures, and paying for the compute/proxy overhead of full browser instances. That combination drove the monthly tool bill to $600–800, well above the client's $200–300 target, and the system had no built-in error handling or visibility into API credit balances — a failure or a depleted quota broke a stage silently, with nobody finding out until a report was missing or thin.",
         solutionDetail:
-          "Built a daily n8n pipeline that uses Apify scrapers to discover matching decision-maker contacts overnight, then runs them through ZeroBounce and Clearout Phone to validate emails and phone numbers before they ever reach a rep. Nocodb dedupes the results against the existing CRM, so the sales team never gets a contact they've already worked.",
+          "Rebuilt the pipeline as four parallel n8n workflows — one per niche — that all call the same shared sub-workflows in the same sequence overnight. Job Scraping runs two Apify actors (LinkedIn postings and company career-site postings, filtered to full-time U.S. roles at companies under 500 employees, posted in the last 7 days, excluding recruitment agencies) and saves deduplicated results to NocoDB. Decision-Maker Enrichment groups the new jobs by company domain and queries Hunter.io — requesting phone-inclusive results first and falling back to email-only — while detecting and routing around any 429 rate-limit responses instead of letting them stall the run. Email Verification and Phone Number Verification batch the results through ZeroBounce and Clearout Phone respectively, each sized to that API's rate limit. A final Summarize & CSV Report step uses an OpenAI-powered agent to write a plain-language recap of the night's run, builds a CSV of the verified contacts, and emails both to the client via Gmail before business hours. Two supporting workflows run alongside the pipeline: a shared Error Handling Workflow wired to every workflow's error trigger, logging failures to Google Sheets and emailing an incident report, and a Tech Inventory Automation that checks remaining credits across Apify, Hunter.io, ZeroBounce, and Clearout Phone plus NocoDB's record counts and emails a consolidated status report.",
         impactDetail:
-          'Delivers a ready-to-call, verified lead list before business hours every morning, automatically — turning what used to be hours of manual triage into a pipeline that runs overnight and hands the sales team a clean list the moment they start work.',
+          "Monthly automation cost landed in the client's $200–300 target range while still running four full niche pipelines every night, each covering the same scrape-enrich-verify-report cycle the old system did — a direct result of swapping Selenium for Apify and deduplicating every stage against NocoDB before spending a paid API call on a company or contact already on file. Hunter.io rate-limit events now get routed to a notification instead of taking down the run, failures anywhere in the system surface within minutes via the error workflow instead of being discovered the next morning, and the Tech Inventory Automation gives the client advance warning of a depleting API balance before it silently breaks a stage. The client still starts every business day with a ready-to-work, verified lead list and a plain-language summary of the prior night's run, with zero manual compilation.",
         overview:
-          'Manually finding and verifying decision-maker contacts for outreach was eating hours every morning before the sales team could start calling. A daily n8n pipeline uses Apify scrapers to discover matching contacts, ZeroBounce and Clearout Phone to validate emails and numbers, and Nocodb to dedupe against the existing CRM.\n\nRunning overnight rather than first thing in the morning means the validation and dedupe work happens before anyone on the sales team logs in — delivering a ready-to-call, verified lead list before business hours every morning, automatically, with no manual triage required.',
-        stack: ['n8n', 'Apify', 'ZeroBounce', 'Clearout Phone', 'Nocodb'],
+          "The client had been running decision-maker discovery across four industry niches — AI/ML, GIS, HealthTech, and Manufacturing — on a Selenium-based scraper and a patchwork of other tools costing $600–800 a month, with no error handling or visibility into API credit balances. The rebuild replaces Selenium with Apify actors and orchestrates the whole pipeline in n8n, bringing cost down to the client's $200–300 target while adding the reliability the original system lacked.\n\nFour niche workflows run in parallel overnight, each calling the same shared sub-workflows: Apify actors scrape LinkedIn and career-site job postings, Hunter.io identifies decision-makers at the hiring companies (phone-first, email-fallback), ZeroBounce and Clearout Phone verify the results, and an OpenAI agent writes a plain-language summary before the data is emailed out as a CSV — all before business hours. NocoDB backs every stage with a dedupe check, so no company gets re-enriched and no paid API call is spent twice.\n\nA shared Error Handling Workflow catches and reports any unhandled failure within minutes, and a separate Tech Inventory Automation tracks remaining credits across all four external APIs so a depleting balance never breaks a stage without warning.",
+        stack: ['n8n', 'Apify', 'Hunter.io', 'ZeroBounce', 'Clearout Phone', 'Nocodb', 'OpenAI', 'Google Sheets', 'Gmail'],
+        faqs: [
+          {
+            q: 'What is automated job-posting-based decision-maker discovery?',
+            a: 'It scans recent job postings — typically from LinkedIn and company career sites — to identify which companies are actively hiring in a target industry, then looks up and verifies the contact details of that company\'s key decision-makers, such as the CEO, CTO, or COO, turning hiring activity into a qualified, timely sales lead list.',
+          },
+          {
+            q: 'How can Apify actors replace Selenium for web scraping in an n8n workflow?',
+            a: "Apify actors are pre-built, hosted scrapers triggered directly from n8n's native Apify node, returning structured data via Apify's dataset API — removing the need to write, host, and maintain custom Selenium browser-automation scripts, which typically require separate infrastructure, proxy management, and anti-bot handling that Apify manages on the scraper provider's side instead.",
+          },
+          {
+            q: 'What is the difference between Hunter.io, ZeroBounce, and Clearout Phone in a contact-enrichment pipeline?',
+            a: 'Hunter.io discovers decision-maker contact details — name, email, sometimes phone number — associated with a company domain. ZeroBounce is an email-verification API that checks whether a discovered email address is valid and deliverable. Clearout Phone is a phone-number verification API that checks whether a discovered phone number is valid and reachable — together forming a discover-then-verify pipeline rather than one all-in-one tool.',
+          },
+          {
+            q: 'Why deduplicate company and contact data before calling paid enrichment APIs?',
+            a: 'Deduplicating against existing records before calling a paid API — such as Hunter.io for enrichment or ZeroBounce for verification — prevents spending API credits on companies or contacts that have already been processed, which directly controls the ongoing cost of an automation that relies on metered third-party APIs.',
+          },
+          {
+            q: 'How does an n8n workflow handle a third-party API rate limit (HTTP 429) without failing the entire pipeline?',
+            a: 'A resilient n8n workflow inspects the HTTP status codes returned from a batch of API requests, isolates any that returned a 429 rate-limited response, and routes those specifically to a notification or retry path — while requests that succeeded in the same batch continue through the pipeline — rather than letting one rate-limited call halt the entire execution.',
+          },
+          {
+            q: 'What is an "API credit inventory" automation and why is it useful?',
+            a: 'It\'s a scheduled workflow that periodically checks the remaining usage credits or quota across every metered third-party service a pipeline depends on — here, Apify, Hunter.io, ZeroBounce, and Clearout Phone — consolidates the results, and reports them to the team, giving advance warning of a depleting balance before it causes a silent pipeline failure.',
+          },
+          {
+            q: 'How can OpenAI be used to generate a daily operations summary report?',
+            a: "An AI agent powered by an OpenAI model can be given the day's raw pipeline metrics — jobs scraped, companies enriched, contacts verified — and prompted to generate a plain-language summary of that run, which is then combined with a generated CSV export and sent by email, turning raw automation logs into a readable daily report without manual write-up.",
+          },
+          {
+            q: "What does it mean to reduce a lead-generation automation's monthly cost from $600–800 to $200–300?",
+            a: 'It means replacing a more expensive combination of tools and infrastructure — here, Selenium-based scraping plus a broader tool stack — with a leaner set of purpose-built, usage-metered services chosen and configured through deduplication, batching, and rate-aware requests to minimize redundant API usage while preserving the same daily lead output.',
+          },
+        ],
       },
       {
         slug: 'capital-shack-ocr',
