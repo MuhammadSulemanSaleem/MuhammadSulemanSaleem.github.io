@@ -108,11 +108,11 @@ const projects = [
     screenshot: '/assets/screenshots/social-media-posting-automation/feature-mockup.png',
     metric: 'Auto-posts to 6 platforms · zero silent failures',
     challenge:
-      'A client needed a steady posting cadence across six social platforms without a person writing captions by hand, juggling six sets of OAuth tokens, or finding out about a failed post days later.',
+      'A client needed AI-drafted captions, minute-precise scheduling, and hands-off publishing across six social platforms — without a person juggling six different upload APIs, six sets of OAuth tokens, or finding out about a failed post days later.',
     solution:
-      'Built a suite of five linked n8n workflows: an AI agent that turns a form submission into ready-to-publish captions and hashtags and books it on a content calendar, a webhook-triggered publisher that checks per-platform permissions before uploading to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok, a scheduled job that keeps every platform’s OAuth tokens refreshed, an auth-callback workflow that handles the OAuth handshake for each platform, and a centralized error logger that alerts the team the moment any of the above fails.',
+      'Built a suite of five linked n8n workflows backed by per-platform Google Cloud Functions: an AI agent that drafts platform-specific captions from a Google Form submission and holds them for human approval, a minute-precision Google Apps Script scheduler, a webhook-triggered publisher that gates and uploads to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok, a scheduled OAuth token-refresh workflow, an auth-callback workflow handling every platform’s handshake, and a centralized error logger.',
     impact:
-      'Replaced manual caption-writing, scheduling, and token babysitting with a fully automated pipeline that posts to six platforms and emails a status report after every run.',
+      'Replaced manual caption-writing, scheduling, and OAuth babysitting with a pipeline where the only manual step left is approving AI-drafted copy — everything else runs on its own.',
     slug: 'social-media-posting-automation',
   },
 ];

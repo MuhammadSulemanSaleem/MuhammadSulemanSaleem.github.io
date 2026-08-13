@@ -1005,7 +1005,7 @@ export const projectScreenshots = {
     gallery: [
       {
         src: '/assets/screenshots/social-media-posting-automation/01-post-metadata-generation.png',
-        alt: 'Post Metadata Generation Automation canvas — an AI agent generating captions, hashtags, and titles from a Google Sheets form submission and booking a calendar event',
+        alt: 'Post Metadata Generation Automation canvas — an AI agent generating captions, hashtags, and titles from a Google Form submission and writing them back to the sheet as Pending',
       },
       {
         src: '/assets/screenshots/social-media-posting-automation/02-post-automation.png',

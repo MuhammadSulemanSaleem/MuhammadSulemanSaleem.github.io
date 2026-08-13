@@ -738,20 +738,84 @@ export const categories = [
         screenshot: '/assets/screenshots/social-media-posting-automation/feature-mockup.png',
         metric: 'Auto-posts to 6 platforms · zero silent failures',
         challenge:
-          'A client needed a steady posting cadence across six social platforms without a person writing captions by hand, juggling six sets of OAuth tokens, or finding out about a failed post days later.',
+          'A client needed AI-drafted captions, minute-precise scheduling, and hands-off publishing across six social platforms — without a person juggling six different upload APIs, six sets of OAuth tokens, or finding out about a failed post days later.',
         solution:
-          'Built a suite of five linked n8n workflows: an AI agent that turns a form submission into ready-to-publish captions and hashtags and books it on a content calendar, a webhook-triggered publisher that checks per-platform permissions before uploading to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok, a scheduled job that keeps every platform’s OAuth tokens refreshed, an auth-callback workflow that handles the OAuth handshake for each platform, and a centralized error logger that alerts the team the moment any of the above fails.',
+          'Built a suite of five linked n8n workflows backed by per-platform Google Cloud Functions: an AI agent that drafts platform-specific captions from a Google Form submission and holds them for human approval in a shared sheet, a minute-precision Google Apps Script scheduler, a webhook-triggered publisher that gates and uploads to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok, a scheduled OAuth token-refresh workflow, an auth-callback workflow handling every platform’s handshake (including Threads’ extra compliance requirements), and a centralized error logger.',
         impact:
-          'Replaced manual caption-writing, scheduling, and token babysitting with a fully automated pipeline that posts to six platforms and emails a status report after every run.',
+          'Replaced manual caption-writing, scheduling, and OAuth babysitting with a pipeline where the only manual step left is approving AI-drafted copy — everything else, from minute-precise publishing to token refresh to failure alerts, runs on its own.',
         challengeDetail:
-          'A client needed a steady posting cadence across six social platforms — YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok — without a person writing platform-specific captions by hand, tracking which of six separate OAuth tokens was about to expire, or discovering a failed upload only when someone happened to check. Each platform also has its own content-type quirks (YouTube Shorts vs. standard video, Instagram Reels vs. standard, Threads’ short-lived-then-long-lived token exchange) that a manual process had no consistent way to handle.',
+          'A client needed a steady posting cadence across six social platforms — YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok — that could take a raw video and campaign brief all the way to a live, scheduled post without a person writing six sets of platform-specific captions by hand, tracking which of six OAuth tokens was about to expire, publishing AI-drafted copy with no review checkpoint, or discovering a failed upload only when someone happened to check. Threads added its own compliance burden on top — Meta requires dedicated deauthorization and data-deletion callback endpoints plus an extra short-lived-to-long-lived token exchange that no other platform needs — and with six independent API calls firing per post, a partial failure on just one platform could easily go unnoticed.',
         solutionDetail:
-          'Built five linked n8n workflows that split the problem into independent, purpose-built pieces. A metadata-generation workflow watches a Google Sheets submission form, runs an AI agent to produce captions, hashtags, and titles, writes that metadata back to the sheet, and books a Google Calendar event for the scheduled post. A webhook-triggered publishing workflow normalizes the incoming post data, pulls the current access tokens, and — per platform — checks whether posting is enabled and whether the content is short-form before uploading through each platform’s API, then merges every platform’s result into a single summary emailed via Gmail. A scheduled token-refresh workflow checks each platform’s access and refresh tokens, silently renews what it can, and emails a re-authorization link when a refresh token itself has expired. An auth-callback workflow handles the one-time OAuth handshake for each platform — including Threads’ required deauthorization and data-deletion callbacks — and writes the resulting tokens to the sheet the other workflows read from. A centralized error-logging workflow is wired to all four, logging every failure to a sheet and emailing the team so nothing fails silently.',
+          'Built the system in four layers. Google Forms and Drive form the client-facing intake — the client uploads their video/thumbnail to Drive and submits a form with the title, description, schedule, post type, and target platforms. Google Sheets is the system of record: every submission lands as a row that n8n enriches with AI-generated, platform-specific copy and a "Pending" status the client or manager reviews and approves directly in the same sheet — nothing publishes until a human signs off. Five linked n8n workflows handle orchestration: Generate Metadata of Post turns the brief into ready-to-publish captions and hashtags via an OpenAI-powered agent; a Google Apps Script trigger scans the sheet every minute for approved rows whose scheduled time has arrived and fires Post Automation over webhook, which checks per-platform permissions and content type (long-form vs. Shorts/Reels) before publishing, then merges every platform’s response into one summary emailed via Gmail; Refresh Access Token Workflow keeps all six platforms’ OAuth tokens alive on a schedule, silently renewing what it can and emailing a re-authorization link when a refresh token itself has expired; Auth Code Callbacks handles the OAuth handshake for every platform, including Threads’ required deauthorization/data-deletion endpoints and its two-step short-lived-to-long-lived token exchange; and a centralized Error Logging workflow catches any unhandled failure across the other four, logging it to a sheet and emailing an incident report. The execution layer — Google Cloud Functions — carries each platform’s actual upload logic (auth headers, payload shapes, chunked uploads, error handling) as its own independently deployable function that n8n calls over HTTP, so a single platform’s API change only means redeploying that one function, not touching the orchestration workflow.',
         impactDetail:
-          'Replaced manual caption-writing, scheduling, and per-platform token babysitting with a pipeline that posts to six platforms on its own, keeps its own credentials valid ahead of time, and emails a status report after every run — so the team finds out about a failure from an alert, not from a missing post.',
+          'Content now moves from a client’s Drive upload to a live, scheduled post across six platforms with only one manual step left — approving the AI-drafted copy in a spreadsheet the client was already using. Token expiry is handled proactively instead of breaking a scheduled post, Threads stays compliant with Meta’s platform requirements without a separate service, and every publish run ends with a single per-platform pass/fail report in the team’s inbox instead of six dashboards to check by hand.',
         overview:
-          'A client needed a steady posting cadence across six social platforms — YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok — without a person writing platform-specific captions by hand, tracking six sets of OAuth tokens, or finding out about a failed upload after the fact. Five linked n8n workflows now handle it end to end: one turns a Google Sheets form submission into AI-generated captions and hashtags and books it on a content calendar, one publishes to each platform’s API based on per-platform permissions and content type, one keeps every platform’s OAuth tokens refreshed on a schedule, one handles the OAuth handshake (and Threads’ required deauthorization/data-deletion callbacks) for each platform, and one centrally logs and alerts on any failure across the other four.\n\nTogether they replace manual caption-writing, scheduling, and token babysitting with a pipeline that posts to six platforms and emails a status report after every run, so the client hears about problems from an alert instead of a missing post.',
-        stack: ['n8n', 'OpenAI', 'Google Sheets', 'Google Calendar', 'Gmail'],
+          'A client needed a steady posting cadence across six social platforms — YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok — that could take a raw video and brief all the way to a live, scheduled post without a person hand-writing captions, babysitting OAuth tokens, or finding out about a failed upload after the fact.\n\nThe system runs on four layers: Google Forms and Drive for client intake, Google Sheets as the system of record and human-approval queue, five linked n8n workflows for orchestration (metadata generation, scheduling handoff, publishing, token refresh, and OAuth callbacks), and Google Cloud Functions carrying each platform’s own upload logic so n8n never has to speak YouTube’s, TikTok’s, or Meta’s APIs directly. A Google Apps Script trigger scans the sheet every minute for approved, due posts and fires the publish workflow by webhook — giving minute-precision scheduling without standing up a dedicated job queue.\n\nEvery publish is gated per platform and per content type, Threads’ extra deauthorization/data-deletion and token-exchange requirements are handled inside the same stack, and a centralized error logger plus a per-run summary email mean the team hears about a problem from an alert — not a missing post.',
+        stack: [
+          'n8n',
+          'Google Cloud Functions',
+          'Google Apps Script',
+          'Google Forms',
+          'Google Drive',
+          'Google Sheets',
+          'Google Calendar',
+          'Gmail',
+          'OpenAI',
+          'TikTok API',
+          'LinkedIn API',
+          'Meta Graph API',
+          'YouTube Data API',
+        ],
+        faqs: [
+          {
+            q: 'What is a multi-platform social media publishing automation?',
+            a: 'A system that takes a single piece of content and, without manual re-uploading, publishes it across multiple social platforms — here YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok — by orchestrating each platform’s API through n8n, with platform-specific upload logic executed via serverless functions.',
+          },
+          {
+            q: 'Why use Google Cloud Functions alongside n8n instead of building everything in n8n directly?',
+            a: 'Google Cloud Functions isolate each platform’s upload logic — authentication, payload formatting, chunked uploads, error handling — into its own independently deployable unit, while n8n only handles orchestration. A platform API change means redeploying that one Cloud Function, not touching the orchestration workflow.',
+          },
+          {
+            q: 'How does the automated OAuth token refresh work?',
+            a: 'A scheduled workflow checks every platform’s stored token expiry. If the access token has expired but the refresh token is still valid, it’s renewed automatically via the platform’s refresh endpoint; if the refresh token itself has expired, the system emails the user a re-authorization link instead, since that step needs manual consent.',
+          },
+          {
+            q: 'Why does Threads require a different OAuth flow than the other platforms?',
+            a: 'Threads issues a short-lived access token first, which has to be exchanged for a long-lived token in a second call — unlike the single-step exchange the other platforms use. Meta also requires dedicated deauthorization and data-deletion callback endpoints as a condition of API access.',
+          },
+          {
+            q: 'How can you tell if a scheduled post failed on a specific platform?',
+            a: 'Each platform’s API response is parsed and formatted individually, then merged into one summary emailed after every publish run, showing a per-platform pass/fail. A separate centralized error-logging workflow additionally catches and alerts on any unhandled failure anywhere in the stack.',
+          },
+          {
+            q: 'What determines whether a video publishes as a Short or a standard video?',
+            a: 'The publishing workflow checks the content’s type — short-form vs. standard — before the platform-specific upload step and branches accordingly, routing short-form content through each platform’s short-video format (YouTube Shorts, Instagram Reels, TikTok, Threads short video) and standard content through the regular upload path.',
+          },
+          {
+            q: 'Why store OAuth tokens in Google Sheets instead of a database?',
+            a: 'It keeps token data transparent and easy to audit without needing database access, and integrates natively with n8n’s Google Sheets nodes for both reading current tokens before a publish run and writing updated tokens after a refresh — a practical fit for this scale of automation.',
+          },
+          {
+            q: 'How does the system prevent a post from publishing to a platform it wasn’t intended for?',
+            a: 'Before each platform’s upload branch, the Post Automation workflow runs an explicit "is this platform allowed for this post" check against the row’s own configuration, so only the platforms a piece of content was actually flagged for get called — preventing accidental cross-posting.',
+          },
+          {
+            q: 'How does a Google Form work as a client content-submission intake?',
+            a: 'The client uploads their video/thumbnail to Drive separately, then submits a Form with the links, title, description, schedule, post type, and target platforms. Each submission creates a new Google Sheets row automatically, which becomes the trigger for AI content generation and, later, the publish workflow.',
+          },
+          {
+            q: 'Why include a human approval step between AI content generation and publishing?',
+            a: 'It ensures AI-generated captions and descriptions are reviewed — and edited if needed — for brand tone, accuracy, and client intent before they go live on any platform, since publishing unreviewed AI content risks off-brand or incorrect posts on channels where corrections after the fact are difficult.',
+          },
+          {
+            q: 'How does Google Apps Script trigger time-scheduled posts?',
+            a: 'A time-driven trigger runs every minute, scanning the Google Sheet for rows marked approved whose scheduled date and time has arrived, then calls the Post Automation n8n workflow by webhook with that row’s data — turning the spreadsheet into a lightweight, minute-precision job scheduler.',
+          },
+          {
+            q: 'Why use Google Apps Script instead of n8n’s own scheduling nodes for this?',
+            a: 'n8n’s built-in schedule triggers run on fixed, predefined intervals rather than reacting to an ever-changing list of client-submitted publish times stored in a spreadsheet. An Apps Script trigger bound to that sheet checks every row’s scheduled time each minute and fires the publish workflow only when a specific row is due, without pre-registering each schedule inside n8n.',
+          },
+        ],
       },
       {
         slug: 'outreach-email-classification-automation',
