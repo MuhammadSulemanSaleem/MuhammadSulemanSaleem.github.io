@@ -455,22 +455,48 @@ export const categories = [
         mark: 'HB',
         name: 'HouziBuilder',
         screenshot: '/assets/screenshots/houzibuilder/feature-mockup.png',
-        metric: 'Drag-and-drop theme configurator',
+        metric: 'Licensed desktop configurator · live preview',
         challenge:
-          'Non-technical Houzi theme owners had no way to preview and configure typography, colours, and layout before publishing changes.',
+          "Houzez theme owners had to hand-edit a structured JSON file to configure the companion Houzi app's branding, layout, and content — with no visual preview and no way to verify licensed access.",
         solution:
-          'Built a desktop drag-and-drop theme configurator as a companion tool to the Houzi ecosystem.',
+          'Built HouziBuilder, a licensed Flutter desktop app that replaces manual file editing with a guided, form-driven builder and live device preview, exporting a configurations.json the Houzi app reads at runtime.',
         impact:
-          'Let theme owners self-serve visual changes with zero code, reducing back-and-forth support requests.',
+          'Turned a code-level JSON editing workflow into a guided desktop tool with live previews, cutting configuration errors and setup time while keeping license verification and WordPress integration built in.',
         challengeDetail:
-          'Non-technical Houzi theme owners had no way to preview and configure typography, colours, and layout before publishing changes to their live site — any visual tweak meant either learning to edit code directly or filing a support request and waiting. That gap turned simple visual preferences into either a technical barrier or an ongoing support burden for the Houzi team.',
+          "Houzez WordPress theme owners who wanted to offer a companion mobile app (Houzi) previously had to hand-edit a configuration file to control the app's colors, layouts, navigation, and content sections. That manual, code-level process was error-prone and inaccessible to non-technical site owners, since any change to branding or screen layout meant directly editing structured JSON rather than using a visual interface. There was also no straightforward way to preview how configuration changes would look inside the actual mobile app before shipping them, and no built-in mechanism to verify that only legitimately licensed users — via a Code Canyon-style purchase — could access the configuration tool.",
         solutionDetail:
-          'Built HouziBuilder, a desktop drag-and-drop theme configurator delivered as a companion tool to the Houzi ecosystem, letting theme owners adjust typography, colours, and layout visually and preview the result before publishing. No code editing or WordPress admin knowledge is required — the configurator handles translating visual choices into the underlying theme configuration.',
+          "HouziBuilder replaces manual file editing with a Flutter desktop application for Windows and macOS, built around three stages: purchase-code license verification (cached locally for 24 hours via Hive, so re-verification isn't required every session), a connection wizard that links to the owner's live WordPress site through the Houzez theme's REST API and JWT-auth plugins to pull in real taxonomies and site data, and a large drawer-driven builder UI covering every visual and functional section of the mobile app — branding, home screen, navigation, search, property profiles, blog design, and the add-property form. A live device-frame preview shows changes as they're made, and the final result is serialized into a configurations.json file that can be version-bumped and copied to the clipboard for direct use by the Houzi mobile app.",
         impactDetail:
-          "Let theme owners self-serve visual changes with zero code, reducing back-and-forth support requests that previously required the Houzi team's direct involvement for even simple visual tweaks. It turned a recurring support cost into a one-time tool investment.",
+          "Turning a manual, code-editing workflow into a guided, form-driven desktop tool with live previews lowers the technical barrier for Houzez site owners to customize and ship their branded mobile app. Configuration that once required understanding a JSON schema can now be done visually, reducing configuration errors, speeding up setup time, and making the companion mobile app accessible to a non-developer audience — while keeping license enforcement and WordPress site integration built into the same tool.",
         overview:
-          'Non-technical Houzi theme owners had no way to preview and configure typography, colours, and layout before publishing changes to their live site — any visual tweak meant either editing code directly or filing a support request. HouziBuilder is a desktop drag-and-drop theme configurator built as a companion tool to the Houzi ecosystem, letting theme owners adjust those settings visually and preview the result before publishing.\n\nNo code editing or WordPress admin knowledge is required to use it, letting theme owners self-serve visual changes with zero code and cutting down on the back-and-forth support requests that simple visual tweaks used to require.',
-        stack: ['Flutter', 'Dart'],
+          "HouziBuilder is a Flutter desktop app for Windows and macOS, purpose-built for owners of WordPress sites running the Houzez real estate theme. Rather than hand-editing configuration files, they use HouziBuilder to visually configure every screen of the companion Houzi mobile app before publishing changes to their live site.\n\nThe workflow runs in three stages. Activation verifies a Code Canyon-style purchase code against a licensing endpoint, re-checked every 24 hours and cached locally with Hive; a connection wizard then links the app to the owner's WordPress site, talking to the Houzez theme's REST API plugin and a JWT-auth plugin to pull in taxonomies, site info, and partner data. From there, a drawer-driven builder screen covers branding and colours, home screen layout, bottom navigation, the side drawer, search, results and maps, property detail pages, blog design, and the add-property form — each change reflected instantly in a live device-frame preview.\n\nEvery choice is serialized into a configurations.json file, versioned and copied to the clipboard, which the Houzi mobile app reads at runtime to render its UI. Under the hood, HouziBuilder runs on Dart/Flutter with manual, callback-based state management rather than a state package, uses Hive for local persistence, and ships with five localizations — English, Urdu, Chinese, French, and Arabic — letting Houzez's international theme owner base configure the app in their own language.",
+        stack: ['Flutter', 'Dart', 'Hive', 'REST APIs', 'JWT', 'WordPress', 'Windows', 'macOS'],
+        faqs: [
+          {
+            q: 'What is HouziBuilder?',
+            a: 'HouziBuilder is a Flutter desktop application for Windows and macOS that lets Houzez WordPress theme owners visually configure the companion Houzi mobile app without hand-editing config files.',
+          },
+          {
+            q: 'What does HouziBuilder do?',
+            a: 'It provides a form-driven UI with a live device preview so theme owners can customize colours, layouts, and screens, then export the results as a configurations.json file that the Houzi mobile app reads at runtime.',
+          },
+          {
+            q: 'What platforms does HouziBuilder support?',
+            a: "It runs as a desktop app on Windows and macOS only — it isn't a mobile or web application.",
+          },
+          {
+            q: 'How does HouziBuilder connect to a WordPress site?',
+            a: "Through a site connection wizard that talks to the Houzez theme's REST plugin and a JWT-auth plugin to verify the integration and pull data such as taxonomies and site info.",
+          },
+          {
+            q: 'Does HouziBuilder require a license or purchase code?',
+            a: 'Yes — it includes a license activation step that verifies a Code Canyon-style purchase code against a licensing endpoint, re-checked every 24 hours and cached locally with Hive.',
+          },
+          {
+            q: 'What is the configurations.json file used for?',
+            a: "It's the exported output of HouziBuilder containing all of a theme owner's configuration choices; the Houzi mobile app reads this file at runtime to render its UI accordingly.",
+          },
+        ],
       },
       {
         slug: 'techtiz-corporate-website',

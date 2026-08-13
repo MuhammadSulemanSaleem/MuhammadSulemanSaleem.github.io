@@ -107,6 +107,8 @@ export const techIcons = {
   'Visual Studio Code': '/assets/svgs/vscode.svg',
   Postman: '/assets/svgs/postman.svg',
   'Unity 3D': '/assets/svgs/unity.svg',
+  Windows: '/assets/svgs/windows.svg',
+  macOS: '/assets/svgs/macos.svg',
   MVC: '/assets/svgs/mvc.svg',
   Singleton: '/assets/svgs/singleton.svg',
   Observer: '/assets/svgs/observer.svg',

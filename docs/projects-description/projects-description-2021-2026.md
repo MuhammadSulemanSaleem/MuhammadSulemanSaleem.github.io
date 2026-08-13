@@ -14,13 +14,13 @@
 
 ### 2. Houzi Builder - Desktop Application
 
-**Problem:** Customizing Houzi's UI, theme, and color scheme for each client previously required manual configuration and direct code changes for every deployment, which didn't scale as the number of Houzi client sites grew.
+**Problem:** Houzez WordPress theme owners who wanted to offer a companion mobile app (Houzi) previously had to hand-edit a configuration file to control the app's colors, layouts, navigation, and content sections. This manual, code-level process was error-prone and inaccessible to non-technical site owners, since any change to branding or screen layout required directly editing structured JSON rather than using a visual interface. There was also no straightforward way to preview how configuration changes would look inside the actual mobile app before shipping them, and no built-in mechanism to verify that only legitimately licensed users (via a Code Canyon-style purchase) could access the configuration tool.
 
-**Stack:** Desktop application with a drag-and-drop UI/theme builder (specific framework not captured in the source material — worth confirming before reuse).
+**Stack:** Flutter · Dart · Hive (local persistence) · REST API · JWT Authentication · WordPress (Houzez theme integration) · Windows · macOS
 
-**Solution:** I fully developed Houzi Builder, a desktop application purpose-built for customizing the Houzi mobile app without touching code. Users can restructure the whole UI of each screen with simple drag-and-drop operations, and the theme and color scheme can be adjusted through built-in controls rather than a code change and rebuild.
+**Solution:** I fully developed Houzi Builder, a Flutter desktop application for Windows and macOS that replaces manual file editing with a guided, form-driven builder. The app walks the user through three stages: purchase-code license verification (cached locally for 24 hours via Hive so re-verification isn't required every session), a connection wizard that links to the user's live WordPress site through the Houzez theme's REST API and JWT-auth plugins to pull in real taxonomies and site data, and a large drawer-driven builder UI covering every visual and functional section of the mobile app — branding, home screen, navigation, search, property profiles, blog design, and the add-property form. A live device-frame preview shows changes as they're made, and the final result is serialized into a configurations.json file that can be version-bumped and copied to the clipboard for direct use by the Houzi mobile app. State management is manual and callback-based rather than a package like Bloc/Provider/Riverpod, and the app ships with five localizations (English, Urdu, Chinese, French, and Arabic).
 
-**Impact:** Gave non-technical users complete control to configure an entire Houzi deployment from one platform, removing the need for a developer to hand-customize each client's app.
+**Impact:** Turned a manual, code-editing workflow into a guided, form-driven desktop tool with live previews, lowering the technical barrier for Houzez site owners to customize and ship their branded mobile app. Configuration that once required understanding a JSON schema can now be done visually, reducing configuration errors, speeding up setup time, and keeping license enforcement and WordPress site integration built into the same tool.
 
 ### 3. Houzi Rest Api Plugin - Wordpress PHP Plugin
 
@@ -43,6 +43,8 @@
 - App/Deep Linking
 - RTL
 - Bloc (state management)
+- Hive (local persistence)
+- JWT Authentication
 - Git
 - Trello
 
