@@ -405,7 +405,7 @@ export const categories = [
         screenshot: '/assets/screenshots/exodus-app/feature-mockup.png',
         metric: 'Full rebrand + optimized vitals sync (EPIC PC)',
         challenge:
-          'Doctors, patients, and labs had no shared system for appointments, medications, and test results, and syncing health vitals from a wearable device into the app was slow and often failed.',
+          'Blue Sky needed a full rebrand to its new Exodus identity, and syncing health vitals from a wearable device into the app was slow and often failed.',
         solution:
           "Delivered a full rebrand from Blue Sky to Exodus, and packaged the wearable's vitals SDK directly into the app build in place of a failure-prone per-scan API call.",
         impact:
