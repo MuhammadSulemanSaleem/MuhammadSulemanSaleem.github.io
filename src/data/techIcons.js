@@ -28,6 +28,7 @@ export const techIcons = {
   SQLite: '/assets/svgs/sqlite.svg',
   Firebase: '/assets/svgs/firebase.svg',
   FCM: '/assets/svgs/firebase.svg',
+  'Firebase Cloud Messaging': '/assets/svgs/firebase.svg',
   'Firebase Admin': '/assets/svgs/firebase.svg',
   SendGrid: '/assets/svgs/sendgrid.svg',
   'Google APIs': '/assets/svgs/google.svg',

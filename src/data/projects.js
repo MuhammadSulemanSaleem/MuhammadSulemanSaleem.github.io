@@ -137,22 +137,69 @@ export const categories = [
         mark: 'OC',
         name: 'Orient Champions',
         screenshot: '/assets/screenshots/orient-champions/feature-mockup.png',
-        metric: 'Thousands of daily batch scans · SAP ERP',
+        metric: 'Thousands of daily batch scans · ~90% fewer bug reports post-refactor',
         challenge:
-          'Orient Electronic needed a nationwide field-sales incentive program spanning a four-level hierarchy (National → Zone → Branch → FSM), with real-time sync into their existing SAP ERP — without disrupting agents working offline in the field.',
+          "Orient Electronic needed a nationwide field-sales incentive program spanning a four-level hierarchy (National → Zone → Branch → FSM), with real-time sync into their existing SAP ERP — while staying resilient to SAP's own downtime and response-time swings.",
         solution:
-          'Architected a Nest.js backend supporting thousands of daily batch scans with real-time SAP ERP sync via custom BAPIs/RFC, resilient offline queuing and reconciliation, JWT + Twilio OTP auth, and bulk Excel/CSV processing on AWS S3.',
+          'Inherited an already-live but poorly-built implementation — tightly coupled, dead-code-heavy, no real state management — and refactored it: decoupled the React Native frontend and Nest.js backend into clean modules, introduced Redux, rebuilt and retimed the cron-job pipeline for accurate pre-business-hours results, replaced hardcoded screens with real APIs, fixed push notifications and the App Updater, and redesigned the UI.',
         impact:
-          'Delivered a nationwide platform on both the App Store and Google Play that keeps field agents productive offline and reconciles cleanly with SAP the moment they reconnect.',
+          'Eliminated roughly 90% of the bugs the client used to report daily — the client now calls to discuss new features rather than fix issues — and gave field agents a faster, redesigned app they use without friction.',
         challengeDetail:
-          "Orient Electronic needed a nationwide field-sales incentive program spanning a four-level organisational hierarchy — National, Zone, Branch, and FSM — with real-time sync into their existing SAP ERP system. Field sales agents work across the country, often without reliable connectivity, so the program couldn't assume a constant connection back to headquarters. Any platform also had to fit around SAP rather than replace it, syncing cleanly with an ERP system the business already depended on rather than disrupting it.",
+          "Orient Champions was already live and in production when this engagement began, having been built out by several prior developers over time. The resulting codebase was in poor shape: heavy dead code, frontend and backend modules that weren't clearly separated, and tight coupling throughout that made changes risky and slow. The React Native app had no real state management — screens leaned on trivial local useState rather than anything app-wide — and several pages ran on hardcoded data instead of real APIs. Push notifications didn't work at all, the App Updater and several filters were broken, and the backend's cron jobs were poorly managed, on schedules that didn't reliably finish with accurate results before business hours started. The operational cost was real: the client called in daily about bugs, and field agents regularly struggled to scan batches and receive their incentives correctly.",
         solutionDetail:
-          "Architected a Nest.js backend that supports thousands of daily batch scans from field agents, syncing in real time with SAP ERP through custom BAPIs and RFC calls rather than a generic integration layer. Resilient offline queuing and reconciliation let agents keep scanning and working while disconnected, with everything settling cleanly against SAP the moment connectivity returns. JWT-based sessions paired with Twilio OTP secure the login flow for a nationwide field force, and bulk Excel/CSV processing on AWS S3 handles the program's data at scale.",
+          "Refactored both the React Native frontend and the Nest.js backend to break apart the tight coupling and separate concerns into clear modules, removing dead code along the way. Replaced the frontend's ad hoc useState-only approach with Redux, giving the app predictable, centralized state management and a real performance improvement across screens. Audited and rebuilt the backend's cron-job pipeline — fixing broken scheduling logic and retiming jobs so they complete with accurate, fully-reconciled results before business hours start each day, rather than agents and admins working off stale or partially-synced numbers. Found and replaced several screens that were rendering hardcoded static data by moving that data into the database and building real APIs for those modules, then wiring the mobile app to consume them. Diagnosed and fixed push notifications end-to-end (they had never worked), repaired the App Updater so users reliably get prompted onto new releases, fixed broken filters agents relied on daily, and redesigned the UI across the mobile app for a cleaner, more usable experience. The underlying platform — a React Native app and Nest.js backend syncing in real time with Orient Electronic's SAP ERP across a four-level hierarchy (National, Zone, Branch, FSM) via custom BAPIs/RFC, JWT + Twilio OTP auth, and bulk Excel/CSV processing on AWS S3 — stayed in place throughout; the engagement was about stabilizing and modernizing it, not rebuilding it from scratch.",
         impactDetail:
-          'Delivered a nationwide platform on both the App Store and Google Play that keeps field agents productive even while working offline, reconciling cleanly with SAP the moment they reconnect. The four-level hierarchy — National down to individual FSM — gets real-time visibility into thousands of daily batch scans without the manual reconciliation overhead a less resilient offline strategy would have required.',
+          "The refactor eliminated roughly 90% of the bugs and issues that previously generated daily client phone calls, most of them centered on agents' scanning and incentive-tracking difficulties. Post-refactor, the client's calls shifted almost entirely from bug fixes to discussing new features, a clear signal the underlying platform had stabilized. Field agents, who previously struggled with a slow, buggy app, now use a redesigned interface with working filters and notifications without the friction that used to generate support tickets, and the retimed cron-job pipeline gives every level of the hierarchy accurate data before the business day even starts.",
         overview:
-          "Orient Champions is a nationwide field-sales incentive platform built for Orient Electronic, spanning a four-level hierarchy — National, Zone, Branch, and FSM — and syncing in real time with the client's existing SAP ERP. A Nest.js backend handles thousands of daily batch scans, custom BAPIs/RFC keep SAP in sync, and resilient offline queuing lets field agents keep working without connectivity, reconciling cleanly the moment they reconnect.\n\nJWT and Twilio OTP secure the login flow for a nationwide field force, and bulk Excel/CSV processing on AWS S3 handles the program's data at scale. The platform shipped to both the App Store and Google Play, giving Orient Electronic a single incentive program that works the same way whether an agent is online in a branch office or offline in the field.",
-        stack: ['Nest.js', 'SAP ERP / RFC', 'JWT', 'Twilio', 'AWS S3'],
+          "Orient Champions is a nationwide field-sales incentive platform for Orient Electronic, built on a React Native app and Nest.js backend syncing in real time with the client's SAP ERP across a four-level hierarchy — National, Zone, Branch, and FSM. The app and backend were already live and built by several prior developers by the time this engagement began, but the codebase had accumulated heavy dead code, tightly coupled frontend/backend modules, no real state management beyond trivial useState, hardcoded data standing in on several screens, non-functional push notifications, and a poorly managed cron-job pipeline — and the client was calling in daily about agent-reported bugs.\n\nThe engagement centered on stabilizing and modernizing that existing platform: decoupling and cleanly separating modules on both sides, introducing Redux for app-wide state management, rebuilding and retiming the cron jobs to finish with accurate results before business hours, replacing hardcoded screens with real database-backed APIs, fixing push notifications and the App Updater end-to-end, repairing broken filters, and redesigning the mobile UI.\n\nThe results were immediate and measurable: roughly 90% of the bugs that used to trigger daily client calls disappeared, the client's calls shifted from firefighting to feature discussions, and field agents — who'd struggled daily with scanning and incentive issues — now use a faster, redesigned app without the friction that used to generate support tickets.",
+        stack: [
+          'React Native',
+          'Expo',
+          'TypeScript',
+          'Redux',
+          'Axios',
+          'AsyncStorage',
+          'Node.js',
+          'Nest.js',
+          'MongoDB',
+          'JWT',
+          'bcrypt',
+          'SAP ERP / RFC',
+          'AWS S3',
+          'Firebase',
+          'Firebase Cloud Messaging',
+          'Twilio',
+        ],
+        faqs: [
+          {
+            q: 'How does Orient Champions handle SAP being unavailable?',
+            a: 'Resilient fallback queues and scheduled reconciliation catch batch scans and account activity whenever SAP is slow or down, with automated overnight pipelines settling everything cleanly against SAP without manual intervention.',
+          },
+          {
+            q: 'What happens to batch scans if SAP is slow to respond?',
+            a: 'They queue through the resilient fallback path and settle automatically once SAP is responsive again or at the next overnight reconciliation run — agents aren’t left waiting on SAP mid-scan.',
+          },
+          {
+            q: 'How is the four-level hierarchy enforced?',
+            a: 'Role-based access control and organisation-aware data scoping mean National, Zone, Branch, and FSM users each see only the activity relevant to their level, with no manual filtering required.',
+          },
+          {
+            q: 'How does Orient Champions integrate with SAP?',
+            a: 'Through custom SAP BAPIs called via SAP RFC services, covering registration, account activation, batch scanning, and batch status synchronisation — not a generic, off-the-shelf integration layer.',
+          },
+          {
+            q: 'Where is Orient Champions available?',
+            a: "It's a React Native app shipped to both the App Store and Google Play, backed by a Nest.js/MongoDB server and an admin web portal for monitoring and reporting.",
+          },
+          {
+            q: 'Why was Orient Champions refactored?',
+            a: 'It was already live and built by several prior developers, but the codebase had heavy dead code, tightly coupled modules, no real state management, hardcoded data on several screens, and a poorly managed cron-job pipeline — issues serious enough that the client was calling in daily about agent-reported bugs.',
+          },
+          {
+            q: 'What changed for the client after the refactor?',
+            a: "Roughly 90% of the bugs that used to generate daily support calls were eliminated. The client's calls now center on new feature requests rather than firefighting, and field agents use a redesigned, Redux-powered app with working push notifications and filters.",
+          },
+        ],
       },
       {
         slug: 'unity-desktop-admin-portal',

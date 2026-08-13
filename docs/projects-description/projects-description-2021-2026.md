@@ -229,23 +229,23 @@
 
 ### 16. Orient Champions Mobile Application
 
-**Problem:** Field sales agents across Pakistan needed a reliable way to scan product batches and track incentives with real-time SAP ERP synchronization, in an environment where SAP connectivity and availability couldn't always be guaranteed.
+**Problem:** Orient Champions — the field-sales incentive platform for Orient Electronic (Pvt.) Ltd.'s Field Sales Manager (FSM) Incentive Program — was already live and had been built out by several prior developers by the time I joined. Both the React Native frontend and Nest.js backend were in poor shape: heavy dead code, tightly coupled modules with no clear separation of concerns, no real state management on the frontend beyond trivial local useState, several screens running on hardcoded data instead of real APIs, non-operational push notifications, a broken App Updater and filters, and poorly managed cron jobs that didn't reliably produce accurate results before business hours. The client called in daily about bugs, and field agents regularly struggled to scan batches and receive their incentives correctly.
 
-**Stack:** Nest.js · React Native · MongoDB · SAP RFC · AWS S3 · Firebase · Twilio · JWT
+**Stack:** React Native · Expo · TypeScript · Redux · Axios · AsyncStorage · Node.js · Nest.js · MongoDB · JWT · bcrypt · SAP RFC · AWS S3 · Firebase · Firebase Cloud Messaging (FCM) · Twilio
 
-**Solution:** A production-grade platform for Orient Electronic (Pvt.) Ltd. that powers its Field Sales Manager (FSM) Incentive Program. The solution consists of a FastAPI backend, an administrative web portal, and a React Native mobile application used by field agents across Pakistan to scan product batches, track incentives, receive notifications, and synchronize activity with SAP ERP in real time:
+**Solution:** A production-grade platform for Orient Electronic (Pvt.) Ltd. consisting of a Nest.js backend, an administrative web portal, and a React Native mobile application used by field agents nationwide to scan product batches, track incentives, receive notifications, and synchronize activity with SAP ERP in real time. The application already had this core architecture in place — a four-level organizational hierarchy (National → Zone → Branch → FSM), custom SAP BAPIs via SAP RFC, JWT + Twilio SMS OTP auth, and bulk Excel/CSV processing on AWS S3 — but the codebase itself needed to be stabilized and modernized:
 
-- Developed a cross-platform React Native mobile application used by field sales agents nationwide for product batch scanning, incentive tracking, notifications, and account management.
-- Architected and built a scalable Nest.js backend supporting thousands of daily batch scans and real-time ERP synchronization workflows.
-- Integrated with custom SAP BAPIs through SAP RFC services for user registration, account activation, batch scanning, and batch status synchronization.
-- Implemented resilient synchronization mechanisms with automatic fallback queues and scheduled reconciliation processes when SAP services are unavailable.
-- Built automated overnight synchronization pipelines to handle registrations, account status updates, batch verification, reconciliation, and operational reporting.
-- Implemented a four-level organizational hierarchy (National → Zone → Branch → FSM) with role-based access control and organization-aware data visibility.
-- Integrated JWT authentication, Twilio SMS OTP verification, Firebase Cloud Messaging (FCM), and AWS S3 storage services.
-- Developed bulk processing workflows supporting Excel and CSV uploads for large-scale SAP operations with asynchronous background execution.
-- Built monitoring, logging, and administrative reporting systems to provide visibility into synchronization status, operational metrics, and system health.
+- Refactored and decoupled both the React Native frontend and the Nest.js backend into clearly separated modules, removing dead code and breaking apart the tight coupling that made changes risky and slow.
+- Replaced the frontend's ad hoc useState-only approach with Redux, giving the app predictable, centralized state management and a measurable performance improvement.
+- Audited and rebuilt the backend's cron-job pipeline, fixing broken scheduling logic and retiming jobs so they complete with accurate, fully-reconciled results before business hours start each day.
+- Found several screens rendering hardcoded static data, moved that data into the database, built real APIs for those modules, and wired the mobile app to consume them.
+- Diagnosed and fixed push notifications end to end via Firebase Cloud Messaging — they had never worked before this engagement.
+- Repaired the App Updater so users reliably get prompted onto new releases, and fixed broken filters agents relied on daily.
+- Redesigned the UI across the mobile app for a cleaner, more usable experience.
+- Preserved and continued operating the existing resilient synchronization mechanisms — automatic fallback queues and scheduled reconciliation whenever SAP itself is slow or unavailable — and the automated overnight synchronization pipelines for registrations, account status updates, batch verification, reconciliation, and operational reporting.
+- Preserved the existing role-based access control and organization-aware data visibility across the four-level hierarchy, plus the monitoring, logging, and administrative reporting systems that give visibility into synchronization status, operational metrics, and system health.
 
-**Impact:** Supports thousands of daily batch scans nationwide with reliable ERP synchronization, automatic fallback and reconciliation whenever SAP is unavailable, and full operational visibility for the teams monitoring the incentive program.
+**Impact:** Eliminated roughly 90% of the bugs and issues that previously generated daily client phone calls, most of them centered on agents' scanning and incentive-tracking difficulties. Post-refactor, the client's calls shifted almost entirely from bug fixes to discussing new features — a clear signal the underlying platform had stabilized — and field agents now use a redesigned, Redux-powered app with working push notifications and filters, without the friction that used to generate support tickets.
 
 ### 17. Techtiz Website
 
