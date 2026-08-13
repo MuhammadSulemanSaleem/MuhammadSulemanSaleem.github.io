@@ -206,21 +206,21 @@ export const categories = [
         mark: 'UN',
         name: 'UNITY Desktop App & Admin Portal',
         screenshot: '/assets/screenshots/unity-desktop-admin-portal/feature-mockup.png',
-        metric: 'Healthcare organisation · dual desktop + admin platform',
+        metric: 'Healthcare organisation · role-built nav, live admin config',
         challenge:
-          'A healthcare organisation needed a desktop tool with role-based access and credential-managed auto-fill, paired with an admin portal giving staff live visibility into activity.',
+          "A healthcare organisation needed one desktop workspace that unified browsing, credentials, notifications, and patient call handling — capabilities otherwise spread across several disconnected tools — with an admin layer that could reconfigure each role's navigation without a new build.",
         solution:
-          'Built an Electron + Node.js desktop app with dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, paired with a Next.js + Nest.js admin web portal featuring real-time notifications via WebSockets.',
+          "Built an Electron + Nest.js desktop app whose role-based sidebar, embedded browser with credential auto-fill, socket-driven notifications, and incoming-call handling are all fetched per user at login, paired with a Next.js + Nest.js admin portal where staff drag-and-drop each role's navigation and watch live usage stats.",
         impact:
-          'Gave the client a secure, centrally-configurable desktop tool and a live admin view spanning dozens of staff logins and organizations.',
+          'Delivered one unified, role-aware desktop tool whose navigation and permissions are configured centrally, replacing what would otherwise be several separate applications for organisations and staff spanning dozens of logins.',
         challengeDetail:
-          'A healthcare organisation needed a desktop tool that staff could use with tightly scoped, role-based access rather than a single shared login. Credentials for various downstream systems needed to be managed centrally and auto-filled into forms rather than handled manually by each staff member, reducing both friction and the risk of exposed credentials. The organisation also needed an admin layer giving oversight staff live visibility into desktop activity, without that visibility requiring a rebuild of the desktop app itself whenever requirements changed.',
+          "A healthcare organisation needed a single, role-based desktop workspace that combined web browsing, credential management, notifications, and call/meeting handling — capabilities that were otherwise spread across several disconnected tools, each with its own login and workflow. Staff needed tightly scoped, role-based access rather than a single shared login, and each user needed a personal, secure place to store their own credentials for downstream systems and have them auto-filled into forms rather than typed or copy-pasted by hand, reducing both friction and the risk of exposed credentials. What each role could see, and how their navigation was laid out, needed to be reconfigurable without a new build every time requirements changed, and the organisation needed an admin layer giving oversight staff live visibility into desktop activity across every organisation and user.",
         solutionDetail:
-          'Built an Electron + Node.js desktop app with dynamic, server-driven layouts, so screens and workflows can be reconfigured from the server without shipping a new build. Role-based access control and a centralized credential manager govern who can see and do what, with script-injected auto-fill handling credential entry into downstream forms securely. A companion Next.js + Nest.js admin web portal gives oversight staff a live view into desktop activity, pushed in real time via WebSocket notifications rather than requiring a manual refresh.',
+          "Built an Electron desktop app backed by a Nest.js API, structured around a collapsible left-hand menu whose labeled, icon-based items — including expandable dropdown groups like Instant Visit, Tasks and Projects, Ticket Systems, Bookmarks Manager, Credentials Manager, IT HelpDesk, and Patient Virtual Connect — are dynamically fetched and rebuilt per user role at login. Clicking a menu item loads the corresponding page in the main view, which doubles as an embedded browser with a bookmarks manager and script-injected credential auto-fill that replicates the behavior of Chrome's own password manager. Socket-based real-time notifications keep staff current, background timers and alarms alert users when a task completes, and a Patient Virtual Connect call flow rings an incoming contact request that the user can accept or reject. A companion Next.js + Nest.js admin portal is the administrative counterpart: a dashboard shows live stats — total organisations, users, role assignments, and admins, alongside usage charts — and dedicated sections let admins manage organisations, roles, and users, plus drag-and-drop the exact navigation items and dropdown groups assigned to each role. Once a role's layout is saved, it's fetched from the portal the next time an assigned user logs into the desktop app, and the sidebar is rebuilt dynamically from it.",
         impactDetail:
-          'Gave the client a secure, centrally-configurable desktop tool paired with a live admin view, letting oversight staff adjust workflows and monitor activity across dozens of organizations and staff logins. The combination of role-based access and centralized credential management reduced the manual overhead and security risk of staff handling downstream credentials individually.',
+          "Delivered one unified, role-aware desktop tool whose navigation, permissions, and available features are all built dynamically per user — replacing what would otherwise be several separate applications for browsing, credentials, tasks, tickets, IT requests, and patient calls. Giving each user their own credential vault — store, view, update, and delete, scoped to that user — with script-injected auto-fill removed both the manual overhead and the security risk of staff typing or copy-pasting downstream credentials by hand, and a single admin change to a role's layout propagates automatically into every affected user's desktop app the next time they log in, giving oversight staff a live, centrally-configurable view across dozens of organisations and staff logins without any manual per-user setup.",
         overview:
-          'Built for a healthcare organisation, this project pairs an Electron + Node.js desktop app with a Next.js + Nest.js admin web portal. The desktop app uses dynamic server-driven layouts, role-based access control, a credential manager, and script-injected auto-fill, giving staff a secure, centrally-configurable tool rather than a rigid one-size-fits-all interface — bundling tools like Instant Visit, Tasks and Projects, Remote Desktop, a ticketing system, and internal chat behind a single sidebar.\n\nThe admin portal gives oversight staff live visibility into activity through real-time WebSocket notifications, so changes on the desktop side are reflected immediately rather than on a delay. Admins manage organizations, role-based permissions, users, and the desktop app\'s own navigation structure — reconfiguring what staff see without shipping a new build. The result is a secure, centrally-configurable desktop tool and a live admin view spanning dozens of organizations and staff logins.',
+          "Built for a healthcare organisation, UNITY pairs an Electron + Nest.js desktop app with a Next.js + Nest.js admin portal, replacing what would otherwise be several disconnected tools — browsing, credentials, notifications, tasks and tickets, IT requests, and patient calls — with one unified, role-aware workspace. A collapsible left-hand sidebar, including expandable dropdown groups like Instant Visit, Tasks and Projects, Ticket Systems, Bookmarks Manager, Credentials Manager, IT HelpDesk, and Patient Virtual Connect, is dynamically fetched and rebuilt per user role at login; the main view doubles as an embedded browser with script-injected credential auto-fill that replicates Chrome's own password manager, plus socket-based real-time notifications, background timers/alarms, and a ringing Patient Virtual Connect call flow the user can accept or reject.\n\nThe admin portal is the administrative counterpart: a live dashboard tracks total organisations, users, role assignments, and admins alongside usage charts, and dedicated sections let admins manage organisations, roles, and users, plus drag-and-drop the exact navigation items assigned to each role. Once a role's layout changes, it's fetched from the portal the next time an assigned user logs into the desktop app, and the sidebar is rebuilt dynamically from it — giving oversight staff a secure, centrally-configurable tool and a live admin view spanning dozens of organisations and staff logins.",
         stack: [
           'Electron',
           'Next.js',
@@ -237,6 +237,28 @@ export const categories = [
           'Socket.IO',
           'JWT',
           'Sentry',
+        ],
+        faqs: [
+          {
+            q: "How is each user's navigation built in UNITY?",
+            a: "A role's navigation — including expandable dropdown groups like Instant Visit, Tasks and Projects, or Patient Virtual Connect — is configured once by an admin in the portal, then fetched and rebuilt dynamically in the desktop app's sidebar the next time an assigned user logs in.",
+          },
+          {
+            q: 'What is Patient Virtual Connect?',
+            a: 'A call-handling flow built into the desktop app: an incoming contact request rings the user, who can accept or reject it directly from UNITY rather than switching to a separate calling tool.',
+          },
+          {
+            q: 'How does credential auto-fill work in UNITY?',
+            a: "Each user stores, views, updates, and deletes their own credentials for downstream systems in their personal Credentials Manager; UNITY then auto-fills them into forms via script injection in the app's embedded browser, replicating the behavior of Chrome's own password manager without staff typing them by hand.",
+          },
+          {
+            q: "What does UNITY's admin portal show?",
+            a: 'A live dashboard with total organisations, users, role assignments, and admins alongside usage charts, plus dedicated sections for managing organisations, roles, users, and each role\'s drag-and-drop navigation configuration.',
+          },
+          {
+            q: 'Does UNITY notify users in real time?',
+            a: 'Yes — socket-based notifications, background timers and alarms that alert on task completion, and the ringing Patient Virtual Connect call flow all update live without a manual refresh.',
+          },
         ],
       },
     ],
