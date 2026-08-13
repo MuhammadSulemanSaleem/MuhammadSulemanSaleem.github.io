@@ -335,24 +335,27 @@ export const categories = [
         mark: 'LG',
         name: 'Linked Golf',
         screenshot: '/assets/screenshots/linked-golf/feature-mockup.png',
-        metric: 'Deployed to App Store & Google Play',
+        metric: 'Full-stack refactor · event subscriptions via Stripe',
         challenge:
-          'A golf social and booking product needed real-time chat, payments, and push notifications working together without building each integration from scratch.',
+          'Golfers had no streamlined way to match availability with friends, connect with new playing partners, and subscribe to golf-course events — and golf-course owners had no way to create or monetize those events themselves.',
         solution:
-          'Built a Flutter app with real-time in-app chat via PubNub, Stripe payment integration, FCM push notifications, and an Express backend.',
+          'Inherited an already-live but poorly-integrated implementation — tightly coupled Bloc state across every core screen, dead backend code, non-functional chat — and refactored it: decoupled the state layer and backend, fixed chat/applink bugs, and added event creation, Stripe-billed subscriptions, team management, and OTP-verified team joins.',
         impact:
-          'Shipped to both the App Store and Google Play as a complete golf social and booking experience.',
+          'Delivered a stable, noticeably faster app plus a new paid-event capability for golf-course owners, on both the App Store and Google Play.',
         challengeDetail:
-          'A golf social and booking product needed real-time chat, payments, and push notifications all working together as one coherent experience, rather than as three separate integrations bolted on independently. Building each of those systems from scratch — a chat backend, a payments flow, a notification pipeline — would have meant months of infrastructure work before the actual golf social and booking features could ship. The product also needed to launch on both major mobile platforms rather than picking just one.',
+          "Linked Golf was already live and had been built out by several prior developers by the time this engagement began. Bloc was in place for state management, but poorly integrated and tightly coupled to the UI, so state bugs surfaced across nearly every core screen — Home, Availability, Add Golf Buddy, the QR page (for showing a profile QR and scanning another golfer's), user search, the golfer profile page, and Golf Courses & Events all had their own state issues. Chat, built on PubNub, wasn't working reliably either: message reactions were wired up but did nothing, and messages weren't grouped by date. The Express backend had accumulated a lot of dead code and tight coupling of its own, and several screens fired redundant, duplicate API calls that slowed the app down. On top of stabilizing all of that, golf-course owners had no way to create events, golfers had no way to subscribe to one or manage a team once subscribed, joining a team had no verification step, and a course's profile page didn't surface which golfers were available to play.",
         solutionDetail:
-          'Built a Flutter app that pairs PubNub for real-time in-app chat, so golfers can message each other without a custom-built messaging backend, with Stripe handling payment integration for bookings. FCM push notifications keep users informed of chat messages and booking updates, and an Express backend ties the business logic together behind these third-party services rather than reinventing them.',
+          "Refactored the Bloc integration and decoupled the UI from it screen by screen — Home, Availability, Add Golf Buddy, the QR profile/scan page, user search, the golfer profile page, and Golf Courses & Events — fixing the state bugs each had been carrying. On the backend, removed dead code, broke apart tightly coupled modules, and consolidated the redundant API calls that had been slowing the app down. Fixed chat end to end: reactions now actually apply instead of no-op, and messages are grouped date-wise; comments were fixed too. The applink/dynamic-link flow that had never worked correctly was repaired so shared content routes into the right in-app screen. On top of the refactor, added new functionality: golf-course owners can now create events, golfers can subscribe to an event after paying through Stripe and manage their team once subscribed, joining a team requires OTP verification, and a course's profile page now shows which golfers are available to play.",
         impactDetail:
-          'Shipped to both the App Store and Google Play as a complete golf social and booking experience, with chat, payments, and notifications working together from day one rather than being added incrementally after launch. Leaning on established providers (PubNub, Stripe, FCM) instead of custom infrastructure meant engineering effort could go toward the golf-specific social and booking features instead of messaging or payments plumbing.',
+          "The refactor turned an already-live but fragile app into a stable one — the state, chat, and redundant-API-call issues affecting nearly every core screen were resolved, and backend cleanup plus fewer duplicate API calls gave the app a real, noticeable performance improvement. On top of stabilizing the existing product, the new event-creation, Stripe-billed subscription, team-management, and OTP-verified team-join features gave golf-course owners a way to run paid events directly through the app — a capability that didn't exist before this engagement — while the fixed applink/dynamic linking and chat brought the existing social features up to a standard the app hadn't previously met.",
         overview:
-          'Linked Golf needed real-time chat, payments, and push notifications working together as one golf social and booking experience, rather than as separate bolted-on integrations built from scratch. The Flutter app pairs PubNub for real-time in-app chat with Stripe for payments and FCM for push notifications, running on an Express backend that ties the business logic together behind these established providers.\n\nLeaning on PubNub, Stripe, and FCM instead of custom-built infrastructure meant engineering effort could go toward the golf-specific social and booking features rather than messaging or payments plumbing. It shipped to both the App Store and Google Play as a complete social and booking product from day one.',
+          "Linked Golf is a Flutter golf social and booking app — availability matching against friends, QR-code buddy adds, PubNub chat, and Stripe-billed event subscriptions, behind an Express backend. It was already live and built out by several prior developers by the time this engagement began, but Bloc state management was poorly integrated and tightly coupled to the UI, so state issues surfaced across nearly every core screen — Home, Availability, Add Golf Buddy, the QR profile/scan page, user search, the golfer profile page, and Golf Courses & Events.\n\nChat had reactions that were wired up but did nothing, and messages weren't grouped by date; the backend itself carried a lot of dead code, tight coupling, and redundant API calls that slowed the app down.\n\nThe engagement refactored the Bloc integration and backend screen by screen and module by module, fixed chat reactions/date grouping and comments, repaired the applink/dynamic-link flow, and consolidated the duplicate API calls dragging down performance. On top of stabilizing the existing app, it added new functionality: golf-course owners can now create events, golfers can subscribe to one via Stripe and manage their team, joining a team requires OTP verification, and a course's profile page now surfaces which golfers are available to play. The result is a noticeably faster, more stable app on both the App Store and Google Play, plus a new paid-event capability for golf-course owners that didn't exist before this engagement.",
+        heroDescription:
+          "A Flutter golf social and booking app — availability matching, QR buddy adds, PubNub chat, and Stripe-billed event subscriptions — refactored from an inherited, tightly-coupled Bloc/Express codebase into a stable, faster product with new paid-event and team-management features.",
         stack: [
           'Flutter',
           'Dart',
+          'Bloc',
           'PubNub',
           'Stripe',
           'Node.js',
@@ -365,6 +368,33 @@ export const categories = [
           'Nodemailer',
           'Google APIs',
           'QRCode',
+          'Deep Linking',
+        ],
+        faqs: [
+          {
+            q: 'Why was Linked Golf refactored?',
+            a: 'It was already live and built by several prior developers, but Bloc state management was poorly integrated and tightly coupled across nearly every core screen, chat reactions were non-functional, and the backend carried dead code and redundant API calls.',
+          },
+          {
+            q: 'What changed for the app after the refactor?',
+            a: "State bugs across Home, Availability, Add Golf Buddy, the QR profile/scan page, user search, the golfer profile page, and Golf Courses & Events were fixed, backend dead code and duplicate API calls were cleaned up, and chat reactions and date-wise grouping now work correctly.",
+          },
+          {
+            q: 'How do golf-course owners create and monetize events?',
+            a: 'Course owners can create events directly in the app, and golfers can subscribe to one after paying through Stripe and then manage their team once subscribed.',
+          },
+          {
+            q: 'How does joining a golf team work?',
+            a: 'Joining a team requires OTP verification, added during this engagement alongside team management for event subscribers.',
+          },
+          {
+            q: 'How do golfers connect with a new playing partner?',
+            a: 'A QR-code scan lets two golfers add each other as buddies right after a round, instead of trading contact details by hand.',
+          },
+          {
+            q: 'Is Linked Golf available on both iOS and Android?',
+            a: "Yes — it's deployed on both the Apple App Store and Google Play.",
+          },
         ],
       },
       {

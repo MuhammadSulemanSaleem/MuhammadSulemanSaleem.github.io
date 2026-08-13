@@ -80,13 +80,22 @@
 
 ### 4. Linked Golf Mobile Application
 
-**Problem:** Golfers had no streamlined way to coordinate availability, find and connect with playing partners, and stay in touch after a round — organizing a game usually meant juggling separate messaging apps and manual scheduling.
+**Problem:** Linked Golf — a Flutter app with an Express backend for golf-focused social and booking — was already live and had been built out by several other developers by the time I joined. Bloc was in place for state management but poorly integrated and tightly coupled to the UI, so state issues surfaced across nearly every core screen: Home, Availability, Add Golf Buddy, the QR page (profile QR + scan), user search, the golfer profile page, and Golf Courses & Events. Chat, built on PubNub, wasn't working reliably either — reactions were wired up but did nothing, and messages weren't grouped by date. The backend had accumulated a lot of dead code and tight coupling, and several screens fired redundant, duplicate API calls that hurt performance. On top of that, golf-course owners had no way to create events, golfers had no way to subscribe to one or manage a team, joining a team had no verification step, applink/dynamic linking didn't route correctly, and a course's profile page didn't surface golfer availability.
 
-**Stack:** Flutter · Express · PubNub · Firebase Cloud Messaging (FCM) · Stripe · App/Deep Linking
+**Stack:** Flutter · Dart · Bloc · Express · Node.js · MongoDB · PubNub · Stripe · Firebase Cloud Messaging (FCM) · JWT · App/Deep Linking · QR Code
 
-**Solution:** I fully developed Linked Golf end to end — a Flutter app with an Express backend — designed around social connectivity for golfers on both Android and iOS. Users can match their availability against friends to find a time to play, scan a QR code to instantly add a fellow golfer right after a round, and chat within community groups powered by PubNub. Push notifications run through Firebase Cloud Messaging, event subscriptions are billed through Stripe, and app/deep linking routes shared content straight into the relevant in-app screen. The app is deployed on both the Google Play Store and Apple App Store.
+**Solution:** Refactored both the Flutter frontend and the Express backend of this already-live golf social and booking app:
 
-**Impact:** Removed the traditional hassle of organizing golf rounds, giving golfers a single, user-friendly app for scheduling, connecting, and building community around the game.
+- Refactored the Bloc integration and decoupled the UI from it screen by screen — Home, Availability, Add Golf Buddy, the QR profile/scan page, user search, the golfer profile page, and Golf Courses & Events — fixing the state issues each had been carrying.
+- Removed dead code and broke apart tightly coupled modules on the Express backend, and consolidated the redundant, duplicate API calls that had been slowing the app down.
+- Fixed chat end to end — reactions now apply instead of no-op, and messages are grouped date-wise — and fixed the comments feature.
+- Repaired the applink/dynamic-link flow so shared content routes correctly into the right in-app screen.
+- Added event creation for golf-course owners, letting them publish new events directly in the app.
+- Added the ability for golfers to subscribe to an event after paying through Stripe, and to manage their team once subscribed.
+- Added OTP verification for joining a golf team.
+- Added golfer availability directly on the Golf Course profile page.
+
+**Impact:** Turned an already-live but fragile app into a stable, noticeably faster one — the state, chat, and redundant-API-call issues affecting nearly every core screen were resolved — while giving golf-course owners a new paid-event capability (event creation, Stripe-billed subscriptions, team management, OTP-verified team joins) that didn't exist before this engagement.
 
 ### 5. Kumquat - Talent Match - Flutter Flow
 
