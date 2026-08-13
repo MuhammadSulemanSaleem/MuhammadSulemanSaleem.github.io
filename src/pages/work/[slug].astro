@@ -45,7 +45,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const faqs = [
   {
     q: `What problem does ${project.name} solve?`,
-    a: project.challenge,
+    a: project.problemSolved ?? project.challenge,
   },
   {
     q: `What technologies were used to build ${project.name}?`,
