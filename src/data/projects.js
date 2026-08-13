@@ -402,22 +402,42 @@ export const categories = [
         mark: 'EX',
         name: 'Exodus App',
         screenshot: '/assets/screenshots/exodus-app/feature-mockup.png',
-        metric: 'Full rebrand from Blue Sky (EPIC PC)',
+        metric: 'Full rebrand + optimized vitals sync (EPIC PC)',
         challenge:
-          "EPIC PC needed the 'Blue Sky' app fully rebranded — new visual identity, theming, and store presence — without disrupting the underlying app.",
+          'Doctors, patients, and labs had no shared system for appointments, medications, and test results, and syncing health vitals from a wearable device into the app was slow and often failed.',
         solution:
-          'Delivered a full visual and branding rebrand: theming, assets, navigation, and app-store metadata updated end-to-end in Flutter.',
+          "Delivered a full rebrand from Blue Sky to Exodus, and packaged the wearable's vitals SDK directly into the app build in place of a failure-prone per-scan API call.",
         impact:
-          'Relaunched the app under its new identity with a consistent look across every screen and store listing.',
+          'Relaunched under its new identity with faster, more reliable wearable vitals syncing for the doctors and patients who depend on it.',
         challengeDetail:
-          "EPIC PC needed its 'Blue Sky' app fully rebranded to a new identity — new visual design, theming, and store presence — without disrupting the underlying app that users already relied on. The challenge was scope, not just visuals: a rebrand touches theming across every screen, updated assets, navigation that needs to feel consistent with the new identity, and app-store metadata, all of which had to land together rather than as a patchwork of partial updates.",
+          "Exodus — originally launched as Blue Sky for EPIC PC — is a healthcare app built for doctors and patients: it centralizes appointments (patients can schedule their own), medications, lab test results, and health vitals in one place. Labs upload test results through their own portal, and both patients and doctors can view or download them through the app via API, without a lab visit or a printed report. The app also pairs with the JSTYLE 2208A customized medical health smart wristband, so vitals captured by the device can be monitored by both patients and their doctors. Two things needed solving for this engagement: the app needed a full rebrand to its new Exodus identity without disrupting any of that existing functionality, and the wristband's vitals sync was unreliable — every scan sent its data through an API call to the wristband's SDK/plugin, and that call failed often, slowing down and sometimes breaking the vitals flow.",
         solutionDetail:
-          'Delivered a full visual and branding rebrand end-to-end in Flutter — new theming applied consistently across every screen, updated assets, navigation adjusted to match the new identity, and app-store metadata updated to reflect the relaunch. The underlying app logic and functionality stayed untouched, keeping the rebrand a presentation-layer change rather than a rewrite.',
+          "Delivered a full visual and branding rebrand end-to-end in Flutter — new theming applied consistently across every screen, updated assets, navigation adjusted to match the new identity, and app-store metadata updated to reflect the relaunch. Alongside the rebrand, downloaded the wristband's vitals SDK and packaged it directly into the app build instead of calling it over the network per scan, removing the failure-prone API round trip and generating vitals results faster and more reliably.",
         impactDetail:
-          "Relaunched the app under its new identity with a consistent look across every screen and store listing, giving EPIC PC a clean rebrand without the risk or cost of rebuilding the app's underlying functionality from scratch.",
+          "Relaunched the app under its new Exodus identity with a consistent look across every screen and store listing, while the bundled vitals SDK made wearable health-vitals syncing meaningfully faster and more reliable for doctors and patients — without touching the appointments, medications, or lab-results functionality already in place.",
         overview:
-          "EPIC PC needed its 'Blue Sky' app fully rebranded — new visual identity, theming, and store presence — without disrupting the app underneath it. A rebrand touches more than a color palette: theming across every screen, updated assets, navigation adjusted to match the new identity, and app-store metadata all needed to land together rather than as a patchwork of partial updates.\n\nThe rebrand was delivered end-to-end in Flutter as a presentation-layer change, leaving the app's underlying logic and functionality untouched. It relaunched under its new identity with a consistent look across every screen and store listing.",
-        stack: ['Flutter', 'Dart'],
+          "Exodus — originally launched as Blue Sky for EPIC PC — is a healthcare app that gives doctors and patients a single place to manage appointments, medications, lab test results, and health vitals. Labs upload test results through their own portal, and both patients and doctors can view or download them via the app's API instead of a lab visit or a printed report; patients can also manage their own appointments. The app pairs with the JSTYLE 2208A customized medical health smart wristband, so health vitals collected by the device can be monitored by both patients and their doctors.\n\nThis engagement covered two pieces of work: a full rebrand from Blue Sky to Exodus — new visual identity, theming, assets, navigation, and app-store metadata, delivered end-to-end in Flutter without disrupting the app's existing functionality — and a fix to the wristband's vitals sync, which sent every scan's data through an API call to the SDK/plugin that failed often. Downloading the SDK and packaging it directly into the app build removed that failure-prone network call, generating vitals results faster and more reliably.",
+        heroDescription:
+          "A healthcare app for doctors and patients — appointments, medications, lab results, and wearable-synced health vitals — rebranded from Blue Sky to Exodus, with the wristband's vitals SDK bundled into the app for faster, more reliable syncing.",
+        stack: ['Flutter', 'Dart', 'Bloc', 'FCM'],
+        faqs: [
+          {
+            q: 'What did this engagement involve beyond the visual rebrand?',
+            a: "Alongside the Blue Sky-to-Exodus rebrand, the wearable device's vitals SDK was downloaded and packaged directly into the app build, replacing a failure-prone per-scan API call with a bundled integration that generates health-vitals results faster and more reliably.",
+          },
+          {
+            q: 'How does Exodus sync health vitals from a wearable device?',
+            a: "Exodus pairs with the JSTYLE 2208A customized medical health smart wristband. Vitals it captures are processed through the wristband's own SDK, packaged directly into the app build rather than sent over a per-scan API call, so both patients and doctors see results generated quickly and reliably.",
+          },
+          {
+            q: 'How do patients see lab test results without visiting the lab in person?',
+            a: "Labs upload results through their own portal, and Exodus surfaces them via API so both patients and doctors can view or download the results directly in the app.",
+          },
+          {
+            q: 'Why rebrand the existing app instead of building a new one from scratch?',
+            a: "Blue Sky was already a proven, working Flutter codebase. Rebranding it onto that foundation gave EPIC PC a fully distinct product identity as Exodus without the cost and risk of a ground-up rebuild.",
+          },
+        ],
       },
     ],
   },

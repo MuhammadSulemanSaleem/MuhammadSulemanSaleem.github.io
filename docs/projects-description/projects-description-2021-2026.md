@@ -119,13 +119,13 @@
 
 ### 7. Exodus
 
-**Problem:** The existing Blue Sky mobile application, originally built for EPIC PC, needed to be relaunched as a distinct product with its own brand identity.
+**Problem:** The existing Blue Sky mobile application, originally built for EPIC PC, needed to be relaunched as a distinct product with its own brand identity. Blue Sky/Exodus is a healthcare app for doctors and patients — appointments (patients can self-schedule), medications, lab test results, and health vitals in one place; labs upload results through their own portal and both patients and doctors view/download them via the app's API instead of a lab visit or printout. The app also pairs with the JSTYLE 2208A customized medical health smart wristband so patients' health vitals can be monitored by both patients and doctors, but syncing vitals from the wristband was slow and often failed — every scan sent its data through an API call to the wristband's SDK/plugin, and that call failed often.
 
 **Stack:** Flutter
 
-**Solution:** I fully rebranded and refactored the Flutter application, replacing the branding, visual identity, and relevant naming throughout the app to turn Blue Sky into the Exodus app.
+**Solution:** I fully rebranded the Flutter application, replacing the branding, visual identity, and relevant naming throughout the app to turn Blue Sky into the Exodus app. Alongside the rebrand, I downloaded the wristband's vitals SDK and packaged it directly into the app build instead of calling it over the network per scan, removing the failure-prone API round trip and generating vitals results faster and in a more optimized way.
 
-**Impact:** Relaunched the product under its new brand and identity on the existing, proven Flutter codebase, avoiding the cost and risk of a ground-up rebuild.
+**Impact:** Relaunched the product under its new brand and identity on the existing, proven Flutter codebase, avoiding the cost and risk of a ground-up rebuild, while also making wearable health-vitals syncing faster and more reliable for the doctors and patients who depend on it.
 
 ### 8. Capital Shack
 
