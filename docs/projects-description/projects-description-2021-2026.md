@@ -261,13 +261,23 @@
 
 ### 17. Techtiz Website
 
-**Problem:** The company needed a public website that loaded fast and performed well in search rankings, without the overhead of a heavier framework.
+**Problem:** Techtiz needed a large multi-vertical marketing site — services, industries, a separate government-subcontracting (SLED) audience, and a blog — while migrating off a legacy static HTML/CSS/JS site. The build had to support SEO-heavy, JSON-LD-rich pages at scale, avoid duplicating markup across dozens of near-identical service/industry pages, keep a completely separate tone and trust-signal set for the SLED (government) audience without cross-contaminating commercial pages, and integrate a headless WordPress blog without triggering full-site rebuilds on every post edit.
 
-**Stack:** Astro
+**Stack:** Astro · TypeScript · JavaScript · HTML · CSS · Tailwind CSS v4 · Vite · Node.js · Vercel · Nodemailer · PDFKit · AOS · Lucide · Microsoft Clarity · WordPress REST API (headless blog)
 
-**Solution:** I fully developed the entire Techtiz website in Astro, chosen specifically for its performance and SEO characteristics as a mostly-static site generator.
+**Solution:** I fully developed the Techtiz marketing site as a static-first Astro build deployed on Vercel, with most pages statically generated and a handful of dynamic pieces (contact/careers API routes, blog post pages) served as server-rendered routes:
 
-**Impact:** Delivered a fast, SEO-optimized public site for the company that reflects well on its technical brand.
+- Built a "constants-first" architecture where page copy, SEO metadata, and JSON-LD live in typed TypeScript files separate from components.
+- Implemented a two-tier system for the repetitive Services and Industries verticals: a generic catch-all dynamic route renders most pages from shared data files, while high-traffic pages (healthcare, real estate, e-commerce, logistics, AI agents, custom software, etc.) get their own dedicated directories with custom components, copy, and stylesheets.
+- Built a separate US-SLED section targeting government subcontracting audiences (state/local/education primes), with its own layout, navigation, and compliance-conscious trust signals (SAM/UEI, NIST 800-171, ISO targets), fully isolated from the commercial pages.
+- Wired a headless WordPress blog to the WordPress REST API (content authored externally on blog.techtiz.co) with client-side filtering, sorting, and pagination, plus a server-side comment proxy so WordPress credentials are never exposed to the client and new posts appear without a redeploy.
+- Styled the site with Tailwind CSS v4 against a custom design-token system (navy/cyan brand palette, custom fonts), with AOS driving scroll animations and Lucide for iconography.
+- Set up SEO infrastructure through shared layout components injecting Schema.org JSON-LD and page-level metadata, plus an IndexNow integration for fast search-engine reindexing.
+- Wired contact and careers forms to send mail through Nodemailer with reCAPTCHA, and used PDFKit to generate capability-statement PDFs for the SLED flow.
+- Added Microsoft Clarity for session-recording/heatmap analytics.
+- Documented and fixed a set of cross-browser reliability issues (iOS Safari clipping bugs, Tailwind v4 range-query fallbacks, mobile header behavior) as part of ongoing hardening.
+
+**Impact:** Delivered a maintainable, SEO-optimized site where new service or industry pages can be added by following a documented, repeatable pattern rather than one-off custom work, content editors can publish blog posts without needing a code deploy, and the government-focused SLED funnel stays compliant and message-safe as a fully separate path from the commercial site.
 
 ### 18. Creative OS
 

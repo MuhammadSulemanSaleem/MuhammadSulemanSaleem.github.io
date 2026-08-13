@@ -520,20 +520,59 @@ export const categories = [
         screenshot: '/assets/screenshots/techtiz-corporate-website/feature-mockup.png',
         metric: 'Astro rebuild · performance & SEO',
         challenge:
-          "Techtiz's corporate site needed better performance and SEO fundamentals than its previous stack could deliver.",
+          'Techtiz needed a large multi-vertical marketing site — services, industries, a separate government-subcontracting audience, and a blog — while migrating off a legacy static HTML/CSS/JS site without duplicating markup or losing SEO ground.',
+        problemSolved:
+          "Prospective clients across very different audiences — commercial buyers evaluating services by industry, and government procurement teams vetting SLED subcontractors — had no single site that could serve each its own relevant, trustworthy information without diluting the other, and without being slow or invisible to search engines.",
         solution:
-          'Rebuilt the site fully in Astro, improving Core Web Vitals and structured metadata.',
+          'Built the site in Astro with a constants-first architecture, a two-tier system for repetitive service/industry pages, a fully isolated SLED experience for the government audience, and a WordPress-backed blog that publishes without a redeploy.',
         impact:
-          'Faster first-load and stronger SEO fundamentals across the corporate site.',
+          'A maintainable, SEO-optimized site where new pages follow a documented pattern instead of one-off work, content editors publish without a code deploy, and the SLED funnel stays fully separated from the commercial site.',
         challengeDetail:
-          "Techtiz's corporate site needed better performance and SEO fundamentals than its previous stack could deliver — slow first-load times and weak structured metadata were holding back both user experience and search visibility, and incremental fixes on the existing stack weren't closing the gap.",
+          "Techtiz needed a marketing site spanning many verticals — services, industries, a separate government-subcontracting audience, and a blog — while migrating away from a legacy static HTML/CSS/JS site. The build had to support SEO-heavy, JSON-LD-rich pages at scale, avoid duplicating markup across dozens of near-identical service/industry pages, keep a completely separate tone and trust-signal set for the SLED (government) audience without cross-contaminating commercial pages, and integrate a headless WordPress blog without triggering full-site rebuilds on every post edit.",
         solutionDetail:
-          "Rebuilt the site fully in Astro, taking advantage of its static-first output to cut down the JavaScript shipped to the browser and improve Core Web Vitals directly. Structured metadata was rebuilt alongside the migration so search engines could parse the site's content correctly rather than as an afterthought bolted onto the old stack.",
+          "Built the site in Astro for static-first rendering with selective server rendering only where needed — contact/API routes, blog post pages — paired with a \"constants-first\" architecture where page copy, SEO metadata, and JSON-LD live in typed TypeScript files separate from components. For the repetitive verticals (services, industries), used a two-tier system: a generic catch-all route for most slugs, and hand-built dedicated directories for priority pages that needed custom design. SLED pages got their own layout and navigation, entirely isolated from the commercial site. Wired the blog to WordPress's REST API with client-side fetching and filtering so new posts appear without a redeploy, and added a server-side comment proxy so WordPress credentials are never exposed. Styling runs on Tailwind v4, with a documented set of Safari-specific CSS fixes for animation and overflow issues.",
         impactDetail:
-          'Delivered a faster first-load and stronger SEO fundamentals across the corporate site, giving Techtiz a foundation that scales with content rather than working against it.',
+          "The result is a maintainable, SEO-optimized site where new service or industry pages can be added by following a documented, repeatable pattern rather than one-off custom work, content editors can publish blog posts without needing a code deploy, and the government-focused SLED funnel stays compliant and message-safe as a fully separate path. Also documented a set of cross-browser \"gotchas\" — iOS Safari clipping bugs, Tailwind v4 range-query fallbacks, mobile header behavior — as part of ongoing work to harden cross-browser and cross-device reliability.",
         overview:
-          "Techtiz's corporate site needed stronger performance and SEO fundamentals than its previous stack could deliver — slow first-load times and weak structured metadata were holding back both user experience and search visibility. Rebuilding it fully in Astro took advantage of its static-first output to cut down the JavaScript shipped to the browser and improve Core Web Vitals directly.\n\nStructured metadata was rebuilt alongside the migration so search engines could parse the site's content correctly, resulting in a faster first-load and stronger SEO fundamentals across the site.",
-        stack: ['Astro', 'TypeScript', 'Tailwind CSS', 'Vercel', 'WordPress'],
+          "Techtiz's marketing site is a static Astro build deployed on Vercel, with most pages statically generated and a handful of dynamic pieces — the contact API, blog post pages — served as server-rendered routes. Its Services and Industries sections follow a two-tier pattern: a catch-all dynamic route renders generic pages from shared data files, while high-traffic pages like healthcare, real estate, e-commerce, logistics, AI agents, and custom software get their own dedicated directories with custom components, copy, and stylesheets.\n\nA separate US-SLED section targets government subcontracting audiences — state, local, and education primes — with its own trust signals (SAM/UEI, NIST 800-171, ISO targets) and compliance-conscious messaging, kept distinct from the commercial pages. The blog is a headless WordPress frontend: content is authored externally on blog.techtiz.co and pulled in via the WordPress REST API, with client-side filtering, sorting, and pagination, plus a server-side proxy for guest comments.\n\nThe site is built with Astro and TypeScript, styled with Tailwind CSS v4 against a custom design-token system (navy/cyan brand palette, custom fonts), with AOS driving scroll animations. Interactive widgets — nav menus, forms, carousels — are plain JavaScript loaded per page rather than framework islands. SEO runs through shared layout components that inject Schema.org JSON-LD and page-level metadata, alongside an IndexNow integration for fast search-engine reindexing; contact and careers forms send mail through Nodemailer with reCAPTCHA, and PDFKit generates capability-statement PDFs for the SLED flow.",
+        stack: [
+          'Astro',
+          'TypeScript',
+          'JavaScript',
+          'HTML',
+          'CSS',
+          'Tailwind CSS',
+          'Vite',
+          'Node.js',
+          'Vercel',
+          'Nodemailer',
+          'PDFKit',
+          'AOS',
+          'Lucide',
+          'Microsoft Clarity',
+        ],
+        faqs: [
+          {
+            q: 'Does automating SEO risk search penalties?',
+            a: 'No — the automation is scoped to technical structure and data formatting (schema, canonicalization, crawl rules), not to mass-producing thin or spammy text.',
+          },
+          {
+            q: 'How do you get cited by AI answer engines (GEO)?',
+            a: 'By making content highly structured and fact-backed, supported by solid technical entity management and schema markup so AI systems can parse and trust it.',
+          },
+          {
+            q: "Why aren't product pages getting indexed?",
+            a: 'Typically a combination of crawl-budget waste from faceted/filter navigation plus pages silently returning server errors.',
+          },
+          {
+            q: 'Which technical metric matters most to fix first?',
+            a: 'Core Web Vitals — specifically getting Largest Contentful Paint under 2.5 seconds.',
+          },
+          {
+            q: 'Is AI-generated content a penalty risk?',
+            a: "Yes, that's the real danger — so the automation stays limited to structure/schema/canonicals while human review governs actual content quality to satisfy Google's E-E-A-T standards.",
+          },
+        ],
       },
       {
         slug: 'attn-agency-homepage',
