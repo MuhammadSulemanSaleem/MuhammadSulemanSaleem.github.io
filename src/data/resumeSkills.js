@@ -5,7 +5,7 @@ export const skillGroups = [
   { label: 'AI / LLM', icon: 'ri-sparkling-2-line', items: ['Claude API / Anthropic', 'OpenAI GPT-4o', 'ElevenLabs', 'RAG', 'MCP', 'ChromaDB'] },
   { label: 'Databases', icon: 'ri-database-2-line', items: ['PostgreSQL', 'Firebase Firestore', 'MongoDB', 'MySQL', 'Hive', 'SQLite', 'Redis'] },
   { label: 'Cloud & Serverless', icon: 'ri-cloud-line', items: ['Firebase Auth', 'Firebase Analytics', 'Firebase Crashlytics', 'Supabase', 'Google Cloud Functions', 'AWS S3'] },
-  { label: 'Automation', icon: 'ri-flow-chart', items: ['n8n', 'Zapier', 'Google Apps Script', 'AppSheet', 'Go High Level', 'Retell AI', 'Aloware', 'CloseBot', 'Apify'] },
+  { label: 'Automation', icon: 'ri-flow-chart', items: ['n8n', 'Zapier', 'Google Apps Script', 'AppSheet', 'Go High Level', 'Aloware', 'CloseBot', 'Apify'] },
   { label: 'Integrations', icon: 'ri-plug-line', items: ['Stripe', 'Twilio', 'SAP RFC', 'PubNub', 'JWT', 'Hunter.io', 'ZeroBounce', 'Nocodb'] },
   { label: 'Architecture & Patterns', icon: 'ri-shape-line', items: ['Clean Architecture', 'MVC', 'Singleton', 'Observer'] },
   { label: 'Version Control & PM', icon: 'ri-git-branch-line', items: ['Git', 'GitHub', 'SourceTree', 'Jira', 'Trello', 'Slack', 'Worktivity', 'ClickUp', 'Emergent Labs'] },
