@@ -4,13 +4,13 @@
 
 ### 1. Houzi - Real Estate Mobile Application
 
-**Problem:** Real estate businesses running a Houzez WordPress site (a theme used by 56,000+ sites globally) had no easy way to offer their users a dynamic native mobile app without commissioning a fully custom build for each individual site — a slow, expensive process that put a mobile presence out of reach for smaller agencies.
+**Problem:** Real estate businesses running a Houzez WordPress site (a theme used by 53,000+ site owners globally) had a fully functional website but no native mobile presence. Building a separate mobile app from scratch for each client would mean duplicating business logic, API integrations, and UI work, while still needing to let individual agencies customize branding, behavior, and features without maintaining separate forks of the whole codebase.
 
-**Stack:** Flutter · Bloc (state management) · WordPress (Houzez theme integration) · Google Maps · OneSignal Push Notifications · App/Deep Linking · RTL
+**Stack:** Flutter · Dart · Houzez WordPress REST API · Dio (HTTP client) · Hive (local storage) · Provider (state management/ChangeNotifier) · Google Maps · OneSignal Push Notifications · App/Deep Linking · RTL · Android · iOS
 
-**Solution:** Houzi is a white-label template mobile application I developed in collaboration with the team. Rather than a bespoke build per client, the app connects to any Houzez-powered WordPress site through simple configuration and dynamically pulls in that site's listings and content, so a single codebase powers every deployment. It supports property browsing via Google Maps, push notifications through OneSignal, and RTL layouts for Arabic-language markets, and ships to both the Google Play Store and Apple App Store.
+**Solution:** Houzi is a white-label real estate mobile application I developed in collaboration with the team. Rather than a bespoke build per client, the app connects to any Houzez-powered WordPress site over its REST API and dynamically pulls in that site's listings, agents, and content, so a single Flutter codebase powers every deployment. To solve the customization problem, the codebase is split into a thin app shell (lib/) that exposes white-label "hooks" and a shared local package (packages/houzi_package/) containing nearly all app logic — API layer, models, state providers, pages, and widgets. Client-specific behavior (custom widgets, login flows) is layered on top via the hooks system rather than modifying the shared package, and a remote JSON configuration file lets branding and feature toggles be updated without shipping new app builds or app-store review. Feature-wise, it covers property browsing and search with a clustered Google Maps view, detailed property pages with similar listings/reviews/PDF export, agent and agency directories, email/Google/Apple/Facebook/OTP login, listing management with image uploads for agents and owners, favorites and saved-search alerts, in-app messaging, push and in-app notifications through OneSignal, a blog/articles section with commenting, membership packages with in-app purchases for featured listings, deep linking, light/dark themes, RTL layouts, and 11 bundled languages. A later addition, Houzi AI (v1.4.8), layers in natural-language property search with voice input and an "Ask About This Listing" chat grounded in a specific property's data, on a bring-your-own-key model across Google Gemini, Claude, and OpenAI, with the API key held on the client's own WordPress server rather than in the app.
 
-**Impact:** Any Houzez-based real estate site can launch a fully branded, dynamic native mobile app in a fraction of the time and cost of a custom build, turning what used to be an enterprise-only feature into something accessible to smaller agencies too.
+**Impact:** Any Houzez-based real estate site can launch a fully branded, dynamic native mobile app in a fraction of the time and cost of a custom build. Houzi is sold on CodeCanyon as a source-code product and has reached 53,000+ Houzez theme owners, earning a 4.84★ rating, 500+ CodeCanyon sales, and 5,000+ Play Store downloads.
 
 ### 2. Houzi Builder - Desktop Application
 
@@ -35,16 +35,17 @@
 **Technologies & Skills:**
 
 - Flutter
+- Dart
 - PHP
 - WordPress
+- Dio (HTTP client)
+- Hive (local storage)
+- Provider (state management/ChangeNotifier)
 - Google Maps
 - One Signal Push Notifications
 - Deployment (Google Play Store and Apple App Store)
 - App/Deep Linking
 - RTL
-- Bloc (state management)
-- Hive (local persistence)
-- JWT Authentication
 - Git
 - Trello
 

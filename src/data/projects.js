@@ -277,57 +277,72 @@ export const categories = [
         screenshot: '/assets/screenshots/houzi/feature-mockup.png',
         metric: '53K+ reach · 4.84★ · 500+ sales',
         challenge:
-          'Houzez, a WordPress real estate theme used by 53,000+ site owners, had no companion mobile app — non-technical theme owners had no way to offer a native app experience without custom development.',
+          'Real estate businesses running the Houzez WordPress theme had a fully functional website but no native mobile presence — building a separate app from scratch for each client meant duplicating business logic, API integrations, and UI work, with no easy way to customize branding and features per agency without forking the codebase.',
         solution:
-          'Built Houzi, a Flutter real estate template app with Bloc state management and Clean Architecture, REST API integration, Google Maps-based search with marker clustering, RTL and multi-language localization, push notifications, in-app chat, comments, and an admin-only Houzez CRM insights view — plus the HouziBuilder desktop customisation platform and the Houzi-REST-API WordPress plugin.',
+          'Built Houzi, a Flutter app that talks to any Houzez-powered WordPress site over its REST API using Dio, Hive, and Provider — with a thin white-label app shell layered over a shared package (via customization hooks and a remote JSON config) so branding and features can be tailored per client without forking the codebase — plus the HouziBuilder desktop configurator and the Houzi-REST-API WordPress plugin.',
         impact:
-          "Reached 53,000+ Houzez theme owners with a ready-made mobile solution, earning a 4.84★ rating, 500+ Code Canyon sales, and 5,000+ Play Store downloads.",
+          "A single Flutter codebase now powers native iOS and Android apps for real estate clients across the Houzez ecosystem, reaching 53,000+ theme owners with a 4.84★ rating, 500+ CodeCanyon sales, and 5,000+ Play Store downloads.",
         challengeDetail:
-          "Houzez, a WordPress real estate theme used by more than 53,000 site owners, had no companion mobile app — anyone wanting a native app experience alongside their Houzez site had no option but custom development from scratch. Most of those theme owners are non-technical, running real estate businesses rather than software teams, so a solution had to be something they could adopt off the shelf rather than commission and maintain themselves. It also needed to stay in sync with an existing WordPress site's listings and data rather than becoming a second, disconnected system, and to serve Houzez's international, non-English-speaking theme owner base — including right-to-left languages — while giving site admins visibility into CRM activity without exposing that data to regular app users.",
+          "Real estate businesses using the Houzez WordPress theme had a fully functional website but no native mobile presence. Building a separate mobile app from scratch for each client would mean duplicating business logic, API integrations, and UI work, while still needing to let individual agencies customize branding, behavior, and features without maintaining separate forks of the whole codebase.",
         solutionDetail:
-          "Built Houzi, a Flutter real estate template app built on Bloc state management and Clean Architecture for a maintainable, testable codebase, with REST API integration connecting it directly to a Houzez WordPress site's listings. Property search runs on Google Maps, with marker clustering that keeps listings legible at any zoom level and lets users filter results straight from the map. The app ships with RTL layout support and full localization, so Houzez's international theme owner base can run Houzi in their own language and script rather than English-only. Push notifications, in-app chat, and comments round out the mobile experience, giving buyers and agents the interactions they'd expect from a native app, while an admin-only view surfaces Houzez CRM insights — leads and site activity — directly inside the app without exposing that data to regular users. The ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing WordPress data.",
+          "The team built Houzi, a Flutter-based mobile app that talks directly to any Houzez-powered WordPress site over its REST API, giving end users a native experience for browsing properties, managing listings, messaging agents, and more. To solve the customization problem, they split the codebase into a thin app shell (lib/) that exposes white-label \"hooks\" and a shared local package (packages/houzi_package/) containing nearly all app logic. Client-specific behavior (like custom widgets or login flows) is layered on top via the hooks system rather than modifying the shared package, and a remote JSON configuration file lets branding and feature toggles be updated without shipping new app builds or app-store review.",
         impactDetail:
-          "Reached over 53,000 Houzez theme owners with a ready-made mobile solution they could adopt without custom development, earning a 4.84★ rating, 500+ Code Canyon sales, and over 5,000 Play Store downloads. The combination of the Flutter app, HouziBuilder, and the REST API plugin turned what would have been a one-off custom build into a reusable product serving an entire theme's customer base.",
+          "This architecture lets a single Flutter codebase power native iOS and Android apps for many different real estate clients simultaneously, each connected to its own Houzez WordPress backend. Agencies get a full-featured native app (listings, agent profiles, in-app messaging, push notifications, payments/memberships, deep linking, multi-language and RTL support) without needing custom app development, while the maintaining team avoids code duplication and can push shared improvements to every client app at once through the common package.",
         overview:
-          "Houzi fills a gap for Houzez, a WordPress real estate theme used by over 53,000 site owners who had no way to offer a native mobile app without custom development. Built in Flutter with Bloc state management and Clean Architecture, it layers in REST API integration, push notifications, in-app chat, and comments, giving buyers and agents a full native experience tied directly to each owner's existing WordPress listings.\n\nProperty discovery runs on Google Maps, with marker clustering that keeps listings legible at any zoom level and lets users filter search results straight from the map. The app also ships with RTL layout support and full localization, so Houzez's international theme owner base can run Houzi in their own language rather than English-only, and an admin-only view surfaces Houzez CRM insights — leads and site activity — directly inside the app, hidden from regular users.\n\nThe ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets non-technical theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing site data. Together they turned a one-off custom-app problem into a reusable product, reaching over 53,000 theme owners with a 4.84★ rating, 500+ Code Canyon sales, and 5,000+ Play Store downloads.",
+          "Houzi is a real estate mobile application built with Flutter (deployable to both Android and iOS from a single codebase) that connects to websites running the Houzez WordPress theme via its REST API. It's designed as a companion mobile app for real estate agents, agencies, and companies that already use Houzez on their website.\n\nCore features include browsing and searching property listings (with filters and a clustered map view), detailed property pages with similar listings, reviews, and PDF export, agent and agency directories, and user account management supporting email as well as Google, Apple, and Facebook/OTP login. Agents and owners can add, edit, and manage their own listings including image uploads. The app also supports favorites and saved-search alerts, in-app messaging between users and agents, push and in-app notifications, a blog/articles section with commenting, and membership packages with in-app purchases for featured listing promotions. It supports deep linking, light/dark themes, right-to-left layouts, and 11 bundled languages.\n\nArchitecturally, the codebase is split into two layers: a thin app shell in lib/ that defines \"hooks\" for white-label customization, and a local Flutter package (packages/houzi_package/) that contains the bulk of the app's logic, including the API layer, models, state providers, pages, and widgets. This separation lets client-specific builds override behavior without modifying the shared package code directly.\n\nThe ecosystem extends beyond the app itself: the HouziBuilder desktop customisation platform lets non-technical theme owners configure the app without touching code, and the Houzi-REST-API WordPress plugin bridges the Flutter app to each owner's existing site data. Together they turned a one-off custom-app problem into a reusable product, reaching over 53,000 theme owners with a 4.84★ rating, 500+ Code Canyon sales, and 5,000+ Play Store downloads.",
         stack: [
           'Flutter',
           'Dart',
-          'Bloc',
-          'Clean Architecture',
-          'REST APIs',
-          'Google Maps',
-          'PHP',
-          'WordPress Plugin',
+          'Houzez WordPress REST API',
+          'Dio',
+          'Hive',
+          'Provider',
+          'OneSignal',
+          'Android',
+          'iOS',
         ],
+        sourceAvailable:
+          "Yes — Houzi is sold on CodeCanyon as a source-code product. Developers set it up with their own Firebase and Google Cloud projects before publishing to the App Store and Google Play.",
         faqs: [
           {
-            q: 'Do I need coding knowledge to customize Houzi for my site?',
-            a: "No — the HouziBuilder desktop customisation platform lets non-technical Houzez theme owners configure the app without touching code.",
+            q: 'What is HouziApp?',
+            a: "HouziApp (Houzi) is a real estate mobile app for agents and agencies that connects to a Houzez-powered WordPress website and gives users a native browsing, search, and messaging experience on iOS and Android.",
           },
           {
-            q: 'How does Houzi stay in sync with my Houzez WordPress site?',
-            a: "Through the Houzi-REST-API WordPress plugin, which bridges the Flutter app directly to each owner's existing WordPress listings and data.",
+            q: 'What technology is HouziApp built with?',
+            a: "Houzi is built with Flutter and Dart, using a single codebase to deploy to both Android and iOS. It communicates with a WordPress site running the Houzez theme through a REST API, and uses Dio for networking, Hive for local storage, and Provider for state management.",
           },
           {
-            q: 'What features does the Houzi app include?',
-            a: 'Push notifications, in-app chat, and comments, giving buyers and agents a full native experience tied to the underlying Houzez listings.',
+            q: 'Does HouziApp require a Houzez WordPress website?',
+            a: "Yes. Houzi is designed as a mobile companion to a website already running the Houzez WordPress real estate theme; it pulls listings, agents, and content from that site via its REST API.",
           },
           {
-            q: 'Where can I get Houzi?',
-            a: "It's available on Code Canyon (500+ sales) and the Play Store (5,000+ downloads), with a 4.84★ average rating.",
+            q: 'What is Houzi AI?',
+            a: 'Houzi AI is a set of AI-powered features introduced in version 1.4.8 that let home seekers search and ask questions in natural language, including AI property search with voice input and an "Ask About This Listing" chat feature grounded in a specific property\'s data.',
           },
           {
-            q: 'Does Houzi support other languages and right-to-left layouts?',
-            a: 'Yes — Houzi ships with full localization and RTL layout support, so theme owners can run it in their own language and script rather than English-only.',
+            q: 'Which AI providers does Houzi AI support?',
+            a: "Houzi AI works on a bring-your-own-key (BYOK) model and supports Google Gemini, Claude (Anthropic), and OpenAI, letting the site owner choose the provider, model, and cost.",
           },
           {
-            q: 'How does property search work in Houzi?',
-            a: "Search runs on Google Maps with marker clustering, so listings stay readable at any zoom level and users can filter results directly from the map.",
+            q: 'Is the AI API key exposed to the mobile app?',
+            a: "No. The API key is stored on the site owner's WordPress server rather than in the app itself, and built-in per-user and per-site rate limits help control AI usage costs.",
           },
           {
-            q: 'Can site admins see CRM data inside the app?',
-            a: "Yes — an admin-only view surfaces Houzez CRM insights, like leads and site activity, directly inside the app. That view is hidden from regular users.",
+            q: 'Can HouziApp be white-labeled for different clients?',
+            a: "Yes. The codebase separates a thin app shell (with customization \"hooks\") from a shared package containing the core app logic, so client-specific branding and behavior can be layered on without forking the shared code. A visual tool called Houzi Builder also generates configuration without writing code.",
+          },
+          {
+            q: 'What login and notification options does HouziApp support?',
+            a: 'Houzi supports email login as well as Google, Facebook, Apple, and phone/OTP login, and it supports push notifications alongside in-app notifications.',
+          },
+          {
+            q: 'How is HouziApp distributed?',
+            a: "Houzi is sold on CodeCanyon as a source-code product, and developers set it up using their own Firebase and Google Cloud projects before publishing to the iOS App Store and Google Play.",
+          },
+          {
+            q: "Where can I find HouziApp's documentation?",
+            a: 'Official documentation is available at houzi-docs.booleanbites.com, covering setup, hooks and widgets, the Houzi Config Builder, and AI agent integration.',
           },
         ],
       },
