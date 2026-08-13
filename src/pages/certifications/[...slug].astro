@@ -5,6 +5,7 @@ import './_certifications.css';
 interface Cert {
   slug: string;
   title: string;
+  shortTitle?: string;
   issuer: string;
   issuerIcon: string;
   pdf: string;
@@ -43,6 +44,7 @@ export function getStaticPaths() {
     {
       slug: 'anthropic/introduction-to-model-context-protocol',
       title: 'Introduction to Model Context Protocol',
+      shortTitle: 'Model Context Protocol Intro',
       issuer: 'Anthropic',
       issuerIcon: '/assets/svgs/claude-api.svg',
       pdf: '/certifications/anthropic/introduction-to-model-context-protocol.pdf',
@@ -71,6 +73,7 @@ export function getStaticPaths() {
     {
       slug: 'n8n/n8n101-essentials',
       title: 'n8n101 - Essentials: Your First Workflows',
+      shortTitle: 'n8n101 - Essentials',
       issuer: 'n8n',
       issuerIcon: '/assets/svgs/n8n.svg',
       pdf: '/certifications/n8n/n8n101-essentials.pdf',
@@ -78,6 +81,7 @@ export function getStaticPaths() {
     {
       slug: 'n8n/n8n102-integrations',
       title: 'n8n102 - Integrations: APIs and Connected Workflows',
+      shortTitle: 'n8n102 - Integrations',
       issuer: 'n8n',
       issuerIcon: '/assets/svgs/n8n.svg',
       pdf: '/certifications/n8n/n8n102-integrations.pdf',
@@ -85,6 +89,7 @@ export function getStaticPaths() {
     {
       slug: 'n8n/n8n103-in-practice',
       title: 'n8n103 - In Practice: AI, Testing, and Best Practices',
+      shortTitle: 'n8n103 - In Practice',
       issuer: 'n8n',
       issuerIcon: '/assets/svgs/n8n.svg',
       pdf: '/certifications/n8n/n8n103-in-practice.pdf',
@@ -101,7 +106,7 @@ const { cert } = Astro.props as { cert: Cert };
 ---
 
 <BaseLayout
-  title={`${cert.title} Certificate | Muhammad Suleman Saleem`}
+  title={`${cert.shortTitle ?? cert.title} Certificate | Muhammad Suleman Saleem`}
   description={`${cert.title} certificate issued by ${cert.issuer}.`}
 >
   <main class="cert-viewer">
@@ -110,8 +115,8 @@ const { cert } = Astro.props as { cert: Cert };
         <i class="ri-arrow-left-line" aria-hidden="true"></i> Back to Resume
       </a>
       <div class="cert-viewer__info">
-        <img src={cert.issuerIcon} alt="" width="16" height="16" />
-        <span>{cert.title}</span>
+        <img src={cert.issuerIcon} alt={`${cert.issuer} logo`} width="16" height="16" />
+        <h1 class="cert-viewer__title">{cert.title}</h1>
       </div>
       <a href={cert.pdf} download class="cert-viewer__download">
         <i class="ri-download-2-line" aria-hidden="true"></i> Download

@@ -46,6 +46,12 @@
   text-align: center;
 }
 
+.cert-viewer__title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 .cert-viewer__frame {
   flex: 1;
   width: 100%;

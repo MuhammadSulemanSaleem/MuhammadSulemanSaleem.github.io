@@ -205,6 +205,7 @@ export const categories = [
         slug: 'unity-desktop-admin-portal',
         mark: 'UN',
         name: 'UNITY Desktop App & Admin Portal',
+        shortName: 'UNITY Desktop & Admin Portal',
         screenshot: '/assets/screenshots/unity-desktop-admin-portal/feature-mockup.png',
         metric: 'Healthcare organisation · role-built nav, live admin config',
         challenge:
@@ -525,6 +526,7 @@ export const categories = [
         slug: 'lead-response-automation',
         mark: 'LR',
         name: 'Lead Response Automation — United Global Vanline',
+        shortName: 'Lead Response Automation',
         screenshot: '/assets/screenshots/lead-response-automation/feature-mockup.png',
         metric: 'Contact < 1 min · AI voice call < 2 min',
         challenge:
@@ -547,6 +549,7 @@ export const categories = [
         slug: 'agentc-job-discovery',
         mark: 'AG',
         name: 'AGENTC — Agentic Job Discovery Automation',
+        shortName: 'AGENTC — Agentic Job Discovery',
         screenshot: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
         metric: 'Daily verified leads before business hours',
         challenge:
@@ -569,6 +572,7 @@ export const categories = [
         slug: 'capital-shack-ocr',
         mark: 'CS',
         name: 'Capital Shack — Document OCR Processing',
+        shortName: 'Capital Shack — Document OCR',
         screenshot: '/assets/screenshots/capital-shack-ocr/feature-mockup.png',
         metric: 'OCR bank statement extraction',
         note: 'Client confidentiality prevents sharing screenshots or product media for this project.',
@@ -592,6 +596,7 @@ export const categories = [
         slug: 'ramirez-legal-clickup-sync',
         mark: 'RL',
         name: 'Ramirez Legal Group — ClickUp Dashboard Sync',
+        shortName: 'Ramirez Legal — ClickUp Sync',
         screenshot: '/assets/screenshots/ramirez-legal-clickup-sync/feature-mockup.png',
         metric: 'Real-time case data sync',
         challenge:
@@ -636,6 +641,7 @@ export const categories = [
         slug: 'outreach-email-classification-automation',
         mark: 'EC',
         name: 'Outreach Email Classification Automation',
+        shortName: 'Outreach Email Classification',
         screenshot: '/assets/screenshots/outreach-email-classification-automation/feature-mockup.png',
         metric: 'AI reply classification · instant Slack routing',
         challenge:
