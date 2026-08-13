@@ -346,9 +346,9 @@
 
 **Problem:** The agency needed a fully native, on-brand homepage built directly within Go High Level's page builder, rather than an embedded page or iframe bolted onto the platform.
 
-**Stack:** Go High Level
+**Stack:** Go High Level · Google Gemini (AI asset generation)
 
-**Solution:** I fully developed the native, element-based homepage inside Go High Level, building the layout directly with the platform's own components rather than embedding external code.
+**Solution:** I fully developed the native, element-based homepage inside Go High Level, building the layout directly with the platform's own components (Row, Column, Container, Text, etc.) rather than embedding external code, and used Google Gemini to generate the custom visual assets — like the hero's themed video panel — that the native component library doesn't provide on its own.
 
 **Impact:** Delivered a native, fully GHL-integrated homepage for the agency that's easy for their team to maintain going forward using Go High Level's own tools.
 
@@ -373,6 +373,7 @@
 - ZeroBounce
 - Google Forms
 - Open AI
+- Google Gemini
 - Supabase
 - Google Data Studio
 - Click Up

@@ -581,19 +581,21 @@ export const categories = [
         screenshot: '/assets/screenshots/attn-agency-homepage/feature-mockup.png',
         metric: 'Go High Level native-element build',
         challenge:
-          "ATTN wanted an agency homepage inside Go High Level without the constraints of its built-in page builder.",
+          "ATTN wanted a fully native, on-brand agency homepage inside Go High Level — not an embedded page or iframe bolted onto the platform — built entirely from the builder's own Row/Column/Container/Text elements, with no custom HTML or CSS to fall back on.",
+        problemSolved:
+          "Visitors landing on ATTN's site needed enough signal — results, brand proof, testimonials, direct founder credibility — to trust the agency and book a free strategy call, without the page reading like a generic template.",
         solution:
-          'Built the homepage natively with custom CSS and HTML elements inside Go High Level, bypassing the external page builder entirely.',
+          "Built the homepage entirely with Go High Level's native builder elements, then used Google Gemini to generate the custom visual assets — like the hero's themed video panel — that the native component library doesn't provide on its own.",
         impact:
-          'Full control over layout and performance within a platform that normally limits both.',
+          "A homepage that reads like a custom build while staying fully native to Go High Level, easy for ATTN's own team to keep editing with the same builder tools.",
         challengeDetail:
-          "ATTN wanted an agency homepage built inside Go High Level, but the platform's built-in page builder imposes real constraints on layout and performance — anything outside its templated components meant fighting the tool rather than building the page ATTN actually wanted.",
+          "ATTN wanted a fully native, on-brand agency homepage built directly inside Go High Level, rather than an embedded page or iframe bolted onto the platform — keeping the page inside the same system ATTN's team already manages, instead of adding an external dependency only a developer could maintain. The constraint was staying entirely within the page builder's own native elements (Row, Column, Container, Text, and the rest of its component set), with no custom HTML or CSS, while still avoiding the generic, templated look most native Go High Level builds end up with.",
         solutionDetail:
-          "Built the homepage natively with custom CSS and HTML elements inside Go High Level, bypassing the external page builder entirely rather than working within its templated constraints. That approach kept the page inside the Go High Level platform ATTN was already using, without inheriting the page builder's layout and performance limitations.",
+          "Built the homepage entirely with Go High Level's native builder elements — assembling the hero, featured-in/struggles, results/brands, services/lead-magnet, testimonials, founder-bio, and final-CTA sections plus the booking forms natively, rather than embedding outside markup. Custom visual assets the native component library doesn't provide on its own — like the hero's \"Back to the Future\"-themed video panel — were generated with Google Gemini and dropped into the builder as media elements.",
         impactDetail:
-          'Gave ATTN full control over layout and performance within a platform that normally limits both, delivering a homepage that looks and performs like a custom build while still living inside their existing Go High Level setup.',
+          "Delivered a homepage that reads like a custom build — distinct sections, on-brand visuals, a working booking flow — while staying fully native to Go High Level, so ATTN's team can keep editing and maintaining it with the platform's own tools instead of needing a developer for every change.",
         overview:
-          "ATTN wanted an agency homepage inside Go High Level without being boxed in by its built-in page builder, which imposes real constraints on layout and performance for anything outside its templated components. The homepage was built natively with custom CSS and HTML elements inside Go High Level, bypassing the external page builder entirely.\n\nThat approach kept the page living inside the Go High Level platform ATTN was already using, without inheriting the page builder's layout and performance limitations — giving full control over layout and performance within a platform that normally limits both.",
+          "ATTN wanted a fully native, on-brand agency homepage inside Go High Level — not an embedded page or iframe bolted onto the platform — built entirely from the builder's own Row/Column/Container/Text elements, with no custom HTML or CSS to fall back on, while still avoiding the generic, templated look most native Go High Level builds end up with.\n\nThe homepage was assembled entirely from those native elements — hero, featured-in/struggles, results/brands, services/lead-magnet, testimonials, founder bio, and final CTA, plus the booking forms — with Google Gemini generating the custom visual assets, like the hero's \"Back to the Future\"-themed video panel, that the native component library doesn't provide on its own. The result reads like a custom build while staying fully native to Go High Level, so ATTN's own team can keep editing it with the same builder tools.",
         stack: ['Go High Level', 'Gemini AI'],
       },
     ],
