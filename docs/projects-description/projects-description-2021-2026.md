@@ -132,13 +132,13 @@
 
 ### 8. Capital Shack
 
-**Problem:** Manually reviewing incoming client documents sent by email, categorizing them, filing them correctly, and cross-referencing the details into spreadsheets was slow, repetitive, and prone to human error at any real volume.
+**Problem:** Client documents — application forms, bank statements, and other supporting paperwork — arrived by email in a continuous, unpredictable stream, and every one had to be opened, read, categorized, filed into the right place, and cross-referenced into a spreadsheet by hand before anyone downstream could act on it. That process held up fine at low volume, but became a genuine bottleneck as volume grew: slow, repetitive, and prone to the transcription and filing mistakes that come from doing the same manual triage over and over.
 
-**Stack:** Gmail · Google Drive · Google Sheets · App Script · Google Form Parser (Document AI)
+**Stack:** Gmail · Google Drive · Google Sheets · Google Apps Script · Google Form Parser (Document AI)
 
-**Solution:** I fully developed this end-to-end automation across Gmail, Google Drive, Google Sheets, App Script, and Google Form Parser. As documents arrive by email, the first automation reviews each attachment, categorizes the message, and uploads the attachments into a specifically labeled Google Drive folder while logging a corresponding entry in Google Sheets. A second automation then picks up these newly logged, unprocessed entries and runs the attachments through Google Form Parser (Document AI), identifying whether each one is an application form, bank statement, or other document type, and updates the correct fields in the appropriate sheet.
+**Solution:** I built two linked automations in Google Apps Script that hand off to each other through a shared Google Sheet. The first watches the inbox as documents arrive: it reviews each email's attachments, categorizes the message, uploads the attachments into a specifically labeled Google Drive folder, and logs a corresponding entry in Google Sheets marked unprocessed. The second automation picks up those newly logged, unprocessed entries on its own schedule and runs each attachment through Google Form Parser (Document AI), which identifies whether it's an application form, a bank statement, or another document type and extracts the relevant structured data — writing the results into the correct fields in the appropriate sheet automatically.
 
-**Impact:** Eliminated manual document triage and data entry entirely, ensuring every incoming document is consistently categorized, filed, and logged without anyone having to open and process it by hand.
+**Impact:** Manual document triage and data entry were eliminated entirely: every incoming document is now consistently categorized, filed into Drive, and logged and populated in Sheets without anyone needing to open or process it by hand — removing both the bottleneck and the transcription errors that came with doing it manually.
 
 ### 9. Agentic Job Discovery Automation
 
@@ -182,13 +182,13 @@
 
 ### 13. The Ramirez Legal Group
 
-**Problem:** The client's ClickUp case-tracking data and their client-facing dashboard, built on Emergent Labs, had to be kept in sync by hand, risking the two falling out of step.
+**Problem:** ClickUp is used to track legal cases, while the client's client-facing dashboard is built and deployed on Emergent Labs. The two had to be kept in sync by hand — whenever a case was created or updated in ClickUp, someone had to manually re-enter or relay that change onto the dashboard, risking the two systems falling out of step.
 
-**Stack:** ClickUp · Emergent Labs · Zapier
+**Stack:** Zapier · ClickUp · Emergent Labs
 
-**Solution:** This automation was built using ClickUp, Emergent Labs, and Zapier. ClickUp is used to track legal cases, while the client-facing dashboard is built and deployed on Emergent Labs. Zapier workflows watch ClickUp continuously: whenever a case is created or updated, the change is synchronized to the dashboard automatically, and whenever a new client is added in ClickUp, a matching client record is created and kept in sync on the dashboard as well.
+**Solution:** I built a Zapier pipeline that watches ClickUp continuously: whenever a case is created or updated, the change is synchronized to the Emergent Labs client-facing dashboard automatically, and whenever a new client is added in ClickUp, a matching client record is created and kept in sync on the dashboard as well.
 
-**Impact:** Keeps the case tracker and the client-facing dashboard continuously synchronized in real time, removing duplicate manual data entry and the risk of the two systems drifting apart.
+**Impact:** Keeps the case tracker and the client-facing dashboard continuously synchronized in real time, removing duplicate manual data entry and eliminating the risk of the two systems drifting apart.
 
 ### 14. United Global Van Line (UGVL)
 
