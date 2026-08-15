@@ -6,7 +6,7 @@ export const techIcons = {
   Java: '/assets/svgs/java.svg',
   Kotlin: '/assets/svgs/kotlin.svg',
   Swift: '/assets/svgs/swift.svg',
-  PHP: '/assets/svgs/php.svg',
+  PHP: '/assets/logos/php.png',
   Python: '/assets/svgs/python.svg',
   React: '/assets/svgs/react.svg',
   'React Native': '/assets/svgs/react-native.svg',
