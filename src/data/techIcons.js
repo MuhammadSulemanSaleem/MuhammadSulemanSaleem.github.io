@@ -135,5 +135,8 @@ export const techIcons = {
   PDFKit: '/assets/logos/node-package.jpg',
   AOS: '/assets/logos/node-package.jpg',
   Lucide: '/assets/svgs/lucide.svg',
+  QRCode: '/assets/logos/qrcode.png',
+  'Deep Linking': '/assets/logos/deep-linking.png',
+  'Google Form Parser (Document AI)': '/assets/svgs/google-form-parser.svg',
   'Microsoft Clarity': '/assets/logos/microsoft-clarity.png',
 };
