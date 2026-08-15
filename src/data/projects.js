@@ -1013,22 +1013,56 @@ export const categories = [
         mark: 'KQ',
         name: 'Kumquat — Talent Match',
         screenshot: '/assets/screenshots/kumquat-talent-match/feature-mockup.png',
-        metric: 'Published FlutterFlow Marketplace',
+        metric: '577 downloads · FlutterFlow Marketplace',
         challenge:
-          'Recruitment and talent-matching apps needed a proven FlutterFlow starting point instead of being built from a blank canvas.',
+          'Skill-sharing and consultation-booking apps — coaching, tutoring, telehealth — needed a proven starting point instead of a blank canvas, with auth, search, booking, payments, chat, and live video all designed from scratch each time.',
         solution:
-          'Published Kumquat, a FlutterFlow starter template with profile listings, filtering, and match request flows.',
+          'Published Kumquat, an 81-page FlutterFlow template spanning 11 feature modules — auth, provider search, appointment booking with payments, chat, video calling, sessions, reviews, and a wallet — on a Firestore-ready data schema.',
         impact:
-          'Published to the FlutterFlow Marketplace as a reusable starting point for talent-matching apps.',
+          'Published to the FlutterFlow Marketplace as a reusable starting point for skill-sharing and booking apps, cutting weeks of UI/UX design down to configuration and backend integration — 577 downloads on the marketplace to date.',
+        problemSolved:
+          "Teams building a skill-sharing, coaching, or consultation-booking app — tutoring, telehealth, freelance marketplaces — don't have to design and wire up 81 screens of auth, search, booking, payments, chat, and video calling from a blank canvas; Kumquat gives them that full UI and page architecture pre-built and ready to connect to a backend.",
         challengeDetail:
-          'Recruitment and talent-matching apps needed a proven FlutterFlow starting point instead of being built from a blank canvas each time — the core flows (profile listings, filtering, match requests) are similar enough across talent-matching products that rebuilding them from scratch for every new project was pure repeated effort.',
+          "Skill-sharing and consultation-booking apps — coaching, tutoring, telehealth, freelance marketplaces — needed a proven, full-featured starting point instead of a blank canvas: 81 interconnected screens across 11 feature modules (auth, home/search, profile, booking, payments, chat, video, sessions, reviews, wallet, settings) that all had to share one consistent, reusable component system without duplicating UI logic; multi-step flows like booking, payment, and rescheduling that needed to stay intuitive despite their complexity; two very different in-app communication types — chat and live video — that had to feel like one cohesive experience rather than two bolted-together features; and a data schema flexible enough to later support real backend logic (payments, reviews, availability) without a costly redesign.",
         solutionDetail:
-          'Published Kumquat, a FlutterFlow starter template covering profile listings, filtering, and match request flows out of the box, so a new talent-matching app can start from a working foundation instead of an empty canvas.',
+          "Published Kumquat, an 81-page FlutterFlow starter template built on FlutterFlow's component-based architecture: shared UI elements are modularized into their own \"components\" folders under each feature domain (appointment, chat, auth, home), keeping the design system consistent while minimizing rework. Pages are grouped by feature domain rather than by screen type, so multi-step flows like the appointment-booking-and-payment sequence stay easy to navigate and extend. A dedicated data schema was pre-modeled for the app's core entities — sessions, chat messages, users, reviews, payment cards, profession categories — so the template is structurally ready to connect to Firebase Firestore and Authentication once a developer wires up real backend logic, and dummy/demo data lets the full flow be previewed end-to-end (splash → register → browse providers → book & pay → chat or video call → review) without a live backend.",
         impactDetail:
-          'Published to the FlutterFlow Marketplace as a reusable starting point for talent-matching apps, giving other builders a head start on the recruitment-specific flows that would otherwise need to be built from scratch every time.',
+          "As a template, Kumquat's impact is in accelerating development time: a team building a skill-sharing, coaching, or consultation-booking app can reuse its pre-built UI and page architecture instead of designing 81 screens from scratch, cutting weeks of UI/UX design and prototyping down to configuration and backend integration. It also hands founders and product teams a proven, coherent user flow — search, book, pay, communicate, review — they can validate with real users before investing in full backend development. It has been downloaded 577 times on the FlutterFlow Marketplace to date.",
         overview:
-          'Recruitment and talent-matching apps needed a proven FlutterFlow starting point instead of being built from a blank canvas each time, since the core flows — profile listings, filtering, match requests — repeat across nearly every talent-matching product. Kumquat is a FlutterFlow starter template covering those flows out of the box.\n\nRather than every new talent-matching project rebuilding the same profile and matching logic from scratch, Kumquat gives builders a working foundation to start from — published to the FlutterFlow Marketplace as a reusable starting point.',
-        stack: ['FlutterFlow', 'Dart'],
+          'Kumquat is a FlutterFlow-built UI template for a skill-sharing and consultation-booking marketplace app — the kind of product that connects coaches, consultants, or freelancers with clients who book paid sessions.\n\nIt spans 81 feature pages across 11 modules: authentication with role and profession selection, provider search, profile details, appointment booking with an integrated payment flow, real-time chat and inbox, live video and voice calling, session management with rescheduling, ratings and reviews, a wallet-style balance with Add Funds, and account settings. The data model is pre-shaped for Firebase Firestore and Authentication — sessions, chat messages, users, reviews, payment cards, and profession categories are all modeled — though the shipped template runs on dummy/placeholder data rather than live Firestore collections or API calls, so it\'s a front-end-complete UI kit ready to be connected to a real backend rather than a functioning production app. The storyboard traces a full user journey from splash screen through registration, search, booking, payment, chat or video call, to review, so the flow can be validated before any backend work begins.',
+        stack: ['FlutterFlow', 'Flutter', 'Dart', 'Firebase Firestore', 'Firebase Authentication', 'Material Design'],
+        sourceAvailable:
+          'Yes — Kumquat is published on the FlutterFlow Marketplace as a source-available UI template. Buyers get the full FlutterFlow project — every page, component, and the modeled Firestore-ready data schema — to customize and connect to their own Firebase backend.',
+        faqs: [
+          {
+            q: 'What is Kumquat?',
+            a: 'Kumquat is a FlutterFlow UI template for building a skill-sharing or service-booking marketplace app, where users can find providers, book paid appointments, chat, video call, and leave reviews.',
+          },
+          {
+            q: 'Does Kumquat include a working backend?',
+            a: 'No. It ships with a pre-designed Flutter UI and a modeled Firestore data schema, but no live Firestore collections or API calls are configured — a developer needs to connect their own backend, commonly Firebase, to make it fully functional.',
+          },
+          {
+            q: 'Can Kumquat support video calls and chat?',
+            a: "Yes, dedicated pages exist for chat (inbox, new chat) and live video calling, though the actual video/chat provider integration — a WebRTC or messaging service — needs to be added separately.",
+          },
+          {
+            q: 'Is Kumquat suitable for a telehealth, coaching, or tutoring app?',
+            a: 'Yes. Its structure — provider profiles, appointment booking, payments, video/phone consultation, reviews — generalizes well to any service-based booking marketplace, not just skill-sharing.',
+          },
+          {
+            q: 'How is payment handled in Kumquat?',
+            a: 'The UI includes screens for adding a payment card, selecting a payment method, and confirming payment, along with a wallet-style balance and an Add Funds feature — actual payment processing requires integrating a real payment gateway.',
+          },
+          {
+            q: 'Can I customize Kumquat for my own branding?',
+            a: "Yes — since it's a standard FlutterFlow project, all colors, components, and page flows can be edited directly in the FlutterFlow builder.",
+          },
+          {
+            q: 'How popular is Kumquat on the FlutterFlow Marketplace?',
+            a: 'Kumquat has been downloaded 577 times on the FlutterFlow Marketplace.',
+          },
+        ],
       },
       {
         slug: 'foodii-recipe-book',

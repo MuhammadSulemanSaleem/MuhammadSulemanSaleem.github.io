@@ -102,13 +102,13 @@
 
 ### 5. Kumquat - Talent Match - Flutter Flow
 
-**Problem:** Needed a polished, working demonstration of a consultation platform where clients could discover and book real-time sessions with vetted professionals across tech, design, business, and other fields.
+**Problem:** Skill-sharing and consultation-booking apps — coaching, tutoring, telehealth — needed a proven, full-featured starting point instead of a blank canvas: dozens of interconnected screens (authentication, provider search, appointment booking, payments, chat, video calling, session management, reviews, wallet) that all had to share one consistent, reusable component system without duplicating UI logic; multi-step flows like booking, payment, and rescheduling that needed to stay intuitive despite their complexity; two very different in-app communication types — chat and live video — that had to feel like one cohesive experience; and a data schema flexible enough to later support real backend logic (payments, reviews, availability) without a costly redesign.
 
-**Stack:** FlutterFlow
+**Stack:** FlutterFlow · Flutter · Dart · Firebase Firestore · Firebase Authentication · Material Design
 
-**Solution:** I fully developed this FlutterFlow template application, building out the screens and flows needed to showcase how a client would browse vetted professionals, review their profiles, and book a real-time consultation session.
+**Solution:** I fully developed this FlutterFlow template, an 81-page UI kit spanning 11 feature modules — authentication with role/profession selection, home and search, profile details, appointment booking with an integrated payment flow, real-time chat and inbox, live video/voice calling, session management with rescheduling, reviews, a wallet-style balance with an Add Funds feature, and account settings. Shared UI elements are modularized into their own "components" folders under each feature domain (appointment, chat, auth, home), keeping the design system consistent while minimizing rework, and pages are grouped by feature domain rather than by screen type so multi-step flows like the booking-and-payment sequence stay easy to navigate and extend. A dedicated data schema was pre-modeled for the app's core entities — sessions, chat messages, users, reviews, payment cards, profession categories — so the template is structurally ready to connect to Firebase Firestore and Authentication once a developer wires up real backend logic; the shipped template itself runs on dummy/placeholder data rather than live Firestore collections or API calls.
 
-**Impact:** Delivered a ready-to-use UI-kit/template that demonstrates a complete talent-matching consultation experience, giving teams a working starting point instead of designing the flow from a blank canvas.
+**Impact:** Delivered a ready-to-use UI-kit/template that demonstrates a complete skill-sharing/consultation-booking experience — search, book, pay, chat or video call, review — giving teams a working starting point instead of designing 81 screens from a blank canvas. Published to the FlutterFlow Marketplace, it has been downloaded 577 times.
 
 ### 6. Foodii - Recipe Book - Flutter Flow
 
@@ -380,6 +380,9 @@
 - PubNub
 - Firebase Notification (Firebase Cloud Messaging - FCM)
 - Flutter Flow
+- Firebase Firestore
+- Firebase Authentication
+- Material Design
 - n8n
 - App Script
 - Google Sheets

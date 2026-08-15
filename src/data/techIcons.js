@@ -101,6 +101,8 @@ export const techIcons = {
   'Claude API / Anthropic': '/assets/svgs/claude-api.svg',
   'Firebase Firestore': '/assets/svgs/firebase.svg',
   'Firebase Auth': '/assets/svgs/firebase.svg',
+  'Firebase Authentication': '/assets/svgs/firebase.svg',
+  'Material Design': '/assets/svgs/material-design.svg',
   'Firebase Analytics': '/assets/svgs/firebase.svg',
   'Firebase Crashlytics': '/assets/svgs/firebase.svg',
   MySQL: '/assets/svgs/mysql.svg',
