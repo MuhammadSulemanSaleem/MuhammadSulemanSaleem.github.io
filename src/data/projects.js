@@ -766,20 +766,38 @@ export const categories = [
         screenshot: '/assets/screenshots/ramirez-legal-clickup-sync/feature-mockup.png',
         metric: 'Real-time case data sync',
         challenge:
-          'The legal team and their clients had no single live view of case status — updates lived only inside ClickUp.',
+          'ClickUp case-tracking data and the client-facing dashboard on Emergent Labs had to be kept in sync by hand, risking the two drifting apart.',
         solution:
-          'Built a Zapier + Emergent Labs pipeline that syncs ClickUp case data in real time to a client-facing dashboard.',
+          'Built a Zapier pipeline that watches ClickUp continuously and syncs case updates and new client records to the Emergent Labs dashboard automatically.',
         impact:
-          'Gave the legal team and clients one live view of case status with zero manual updates.',
+          'Keeps the case tracker and dashboard continuously synchronized in real time, with zero duplicate manual entry.',
         challengeDetail:
-          "The legal team and their clients had no single live view of case status — updates lived only inside ClickUp, which clients didn't have access to, so staff had to manually relay status through calls or emails whenever a client asked. That manual relay step meant status updates were only as current as the last time someone remembered to send one.",
+          "The client's ClickUp case-tracking data and their client-facing dashboard, built on Emergent Labs, had to be kept in sync by hand — whenever a case was created or updated in ClickUp, someone had to manually re-enter or relay that change onto the dashboard, risking the two systems falling out of step.",
         solutionDetail:
-          "Built a Zapier and Emergent Labs pipeline that syncs ClickUp case data in real time to a client-facing dashboard, so status changes made inside ClickUp by the legal team appear on the client's dashboard automatically, without anyone manually re-entering or relaying the update.",
+          "Built a Zapier pipeline that watches ClickUp continuously: whenever a case is created or updated, the change is synchronized to the Emergent Labs client-facing dashboard automatically, and whenever a new client is added in ClickUp, a matching client record is created and kept in sync on the dashboard as well.",
         impactDetail:
-          'Gave the legal team and clients one live view of case status with zero manual updates, eliminating the status-update phone calls and emails that used to be the only way clients could check on their case.',
+          'Keeps the case tracker and the client-facing dashboard continuously synchronized in real time, removing duplicate manual data entry and eliminating the risk of the two systems drifting apart.',
         overview:
-          "The legal team and their clients had no single live view of case status — updates lived only inside ClickUp, which clients didn't have access to, so staff had to manually relay status through calls or emails. A Zapier and Emergent Labs pipeline syncs ClickUp case data in real time to a client-facing dashboard.\n\nStatus changes made inside ClickUp by the legal team appear on the client's dashboard automatically, giving both the legal team and clients one live view of case status with zero manual updates required.",
+          "ClickUp is used to track legal cases, while the client-facing dashboard is built and deployed on Emergent Labs. The two had to be kept in sync by hand, risking the two systems falling out of step whenever a case was created or updated.\n\nA Zapier pipeline now watches ClickUp continuously: case creates and updates sync to the dashboard automatically, and new clients added in ClickUp get a matching client record created and kept in sync on the dashboard as well — keeping the case tracker and client-facing dashboard continuously synchronized in real time, with zero duplicate manual entry.",
         stack: ['Zapier', 'Emergent Labs', 'ClickUp'],
+        faqs: [
+          {
+            q: 'How does a Zapier automation keep ClickUp and a client-facing dashboard synchronized in real time?',
+            a: "A Zap watches ClickUp for trigger events — a case task being created or updated, or a new client being added — and fires the moment one occurs. It then calls the client-facing dashboard's API to create or update the matching record there, so the dashboard reflects the change within moments of it happening in ClickUp instead of waiting for someone to notice and re-enter it.",
+          },
+          {
+            q: 'What is Emergent Labs and how does it differ from ClickUp in this pipeline?',
+            a: "Emergent Labs is the platform the client-facing dashboard is built and deployed on — the interface clients actually log into to check their case status. ClickUp plays a different role: it's the internal tool the legal team uses to track and manage cases day to day. The Zapier automation is what bridges the two, so case data entered once in ClickUp reaches the client-facing dashboard automatically rather than needing separate entry in each system.",
+          },
+          {
+            q: 'Why does a ClickUp-to-dashboard sync need to handle new clients separately from case updates?',
+            a: "A case record can only sync meaningfully to the dashboard once a matching client record exists there to attach it to. So the automation treats a new client being added in ClickUp as its own trigger — creating the client record on the dashboard first — separately from the case-update trigger that keeps existing cases synchronized, ensuring both clients and their cases stay mirrored rather than just the case data alone.",
+          },
+          {
+            q: 'What problem does automated two-system sync solve compared to manually keeping data in sync?',
+            a: 'Manually keeping two systems in sync means re-entering or relaying every update by hand, which is slow and creates a real risk of the two falling out of step whenever an update is missed or delayed. An automated sync removes that manual step entirely — the case tracker and the client-facing dashboard update together in real time, so there is no duplicate data entry and no window where the two disagree.',
+          },
+        ],
       },
       {
         slug: 'social-media-posting-automation',
