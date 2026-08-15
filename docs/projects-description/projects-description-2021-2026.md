@@ -112,13 +112,13 @@
 
 ### 6. Foodii - Recipe Book - Flutter Flow
 
-**Problem:** Developers building recipe-sharing apps need a credible, ready-made starting point rather than designing and building every screen and flow of a food-content app from scratch.
+**Problem:** Developers building recipe-sharing apps needed a credible, ready-made starting point rather than designing and building every screen and flow of a food-content app from scratch: a nested, relational recipe/chef data model (recipes with ingredient/step lists, chefs with recipe/category lists) that's harder to represent cleanly in a low-code schema than in hand-written code, 57 feature pages across authentication, home, explore, and profile modules that needed to share one consistent, reusable component system without duplicating UI logic, and no live backend wired up yet to build and test realistic-looking screens against.
 
-**Stack:** FlutterFlow
+**Stack:** FlutterFlow · Flutter · Dart · Firebase Firestore · Firebase Authentication · Material Design
 
-**Solution:** I fully developed this FlutterFlow template app, building out pre-made screens and flows that showcase the layout and UI of a modern recipe-sharing platform, from browsing and viewing recipes to the surrounding app structure.
+**Solution:** I fully developed this FlutterFlow template, a 65-page recipe discovery and cooking-companion app spanning authentication (login, signup, OTP verification, forgot password), a home feed with recommended and trending recipes, an explore section for browsing chefs and their recipe collections, a recipe detail experience with ingredients and step-by-step instructions, favourites, a notifications center, and profile settings. I defined custom Data Types (recipe, recipeIngredient, recipeStep, chef, user, category, notification) that mirror what a production Firestore schema would look like, so UI components already bind to properly structured data, and centralized shared widgets — buttons, category chips, search bars, headers — in a dedicated app_components folder so every feature module draws from the same design system. App State variables (LoggedInUser, trendingRecipesList, recommendationRecipesList) simulate backend-driven data locally, letting the full interface be built and demoed before any Firestore collections go live, and a couple of custom Dart functions/widgets handle logic — like formatting follower counts and the notification icon badge — that FlutterFlow's visual tools don't natively cover. Firebase is connected as the backend provider, but no Firestore collections have been created yet, so the shipped template runs on local App State and custom data schemas rather than live cloud data.
 
-**Impact:** Gives developers a jumpstart template they can adapt directly into their own food-related apps, cutting significant time off the initial build.
+**Impact:** Gives developers a jumpstart, backend-ready recipe-app template they can adapt directly into their own food-related apps — connecting real Firestore collections later needs minimal rework, since the schema and UI bindings already exist — cutting significant time off the initial build. Published to the FlutterFlow Marketplace, it has been downloaded 537 times.
 
 ### 7. Exodus
 
