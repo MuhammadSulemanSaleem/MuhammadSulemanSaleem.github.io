@@ -359,6 +359,16 @@
 
 **Impact:** Delivered a native, fully GHL-integrated homepage for the agency that's easy for their team to maintain going forward using Go High Level's own tools.
 
+### 20. Zendesk AI Support Automation
+
+**Problem:** A support team's agents were spending time piecing together context by hand before every reply — reading through screenshots and PDF attachments on a new ticket, listening back through an Aircall call recording, or re-reading a long conversation thread to draft the next response. None of that AI-assisted work was logged anywhere central, so there was no shared record of what had already been summarized or proposed for a given ticket, and nothing stopped the same trigger — a retried webhook, a re-added tag — from generating the same AI response twice.
+
+**Stack:** n8n · Zendesk · Google Vision AI (OCR) · OpenAI (GPT-4o) · ElevenLabs · Aircall · Microsoft SQL Server · Google Cloud Storage
+
+**Solution:** I built three linked n8n workflows, each triggered directly from Zendesk. New Ticket Response Automation fires when a ticket is created: it normalizes the incoming webhook payload, checks for attachments, and — if any exist — uploads them to Google Cloud Storage and routes them through Google Vision AI OCR on separate paths for images vs. PDFs, polling the asynchronous job until it completes. The OCR text plus the ticket body feed a GPT-4o agent that drafts a summary, sentiment read, and proposed first reply, posted back as an internal note with a completion tag to block reprocessing. Pending Call Analysis Automation fires when a ticket is tagged #summarize-call: it locates the Aircall recording link in the ticket's comments, filters out missed calls with no actual recording, downloads the audio, transcribes it with ElevenLabs Speech-to-Text, and has GPT-4o summarize the call and its sentiment before posting both as an internal note. Ticket Summary Response Automation fires when a ticket is tagged #propose-answer: it pulls the full comment history, formats it chronologically, checks the database for an existing record, and has GPT-4o draft a context-aware proposed response — gated by a comment-duplication check before posting. All three write through the same SourceData → AiOutputs → Interactions tables in a Microsoft SQL Server–backed Central Intelligence Hub, and every AI output is posted to Zendesk as an internal note rather than sent directly to the customer, keeping a human agent as the final review gate.
+
+**Impact:** Every new ticket, pending call, and ongoing conversation now gets an instant AI-drafted summary and reply logged straight into Zendesk before an agent even opens it, replacing the manual read-transcribe-and-draft work that used to precede every reply. Duplicate-prevention checks and completion tagging keep each ticket's AI notes clean and non-redundant, and because all three workflows log through the same Central Intelligence Hub tables, the team gets one queryable, cross-workflow audit trail of every AI touchpoint instead of three disconnected automations with no shared record.
+
 **Technologies & Skills:**
 
 - Flutter
@@ -395,3 +405,9 @@
 - Stripe
 - Express
 - Astro
+- Zendesk
+- Google Vision AI (OCR)
+- ElevenLabs
+- Aircall
+- Microsoft SQL Server
+- Google Cloud Storage

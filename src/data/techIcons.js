@@ -139,4 +139,8 @@ export const techIcons = {
   'Deep Linking': '/assets/logos/deep-linking.png',
   'Google Form Parser (Document AI)': '/assets/svgs/google-form-parser.svg',
   'Microsoft Clarity': '/assets/logos/microsoft-clarity.png',
+  Aircall: '/assets/logos/aircall.png',
+  Zendesk: '/assets/svgs/zendesk.svg',
+  'Microsoft SQL Server': '/assets/svgs/microsoft-sql-server.svg',
+  'Google Cloud Storage': '/assets/svgs/google-cloud-storage.svg',
 };
