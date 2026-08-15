@@ -65,9 +65,9 @@
 
 **Problem:** The client needed a single, role-based desktop workspace that combined web browsing, credential management, notifications, and call/meeting handling — capabilities that were otherwise spread across several disconnected tools.
 
-**Stack:** Electron · Nest.js · WebSockets
+**Stack:** Electron · Nest.js · Node.js · TypeScript · JavaScript · WebSockets · Socket.IO · JWT · Sentry
 
-**Solution:** I fully developed this Electron desktop application, backed by a Nest.js API, around a collapsible left-hand menu whose labeled, icon-based items — including expandable dropdown groups — are dynamically fetched and rebuilt per user role at login. Clicking a menu item loads the corresponding page in the main view, which doubles as an embedded browser with bookmarks and script-injected credential auto-fill that replicates the behavior of Chrome's password manager. The app also includes socket-based real-time notifications, background timers/alarms that alert the user on completion, and a "patient meeting" call flow where an incoming contact request rings and the user can accept or reject it.
+**Solution:** I fully developed this Electron desktop application, backed by a Nest.js API, around a collapsible left-hand menu whose labeled, icon-based items — including expandable dropdown groups like Instant Visit, Tasks and Projects, Ticket Systems, Bookmarks Manager, Credentials Manager, IT HelpDesk, and Patient Virtual Connect — are dynamically fetched and rebuilt per user role at login. Clicking a menu item loads the corresponding page in the main view, which doubles as an embedded browser with a bookmarks manager and script-injected credential auto-fill that replicates the behavior of Chrome's password manager. The app also includes socket-based real-time notifications, background timers/alarms that alert the user on completion, and a "Patient Virtual Connect" call flow where an incoming contact request rings and the user can accept or reject it.
 
 **Impact:** Delivered one unified, role-aware desktop tool whose navigation, permissions, and available features are all built dynamically per user, replacing what would otherwise be several separate applications.
 
@@ -75,9 +75,9 @@
 
 **Problem:** Admins needed a central place to manage users, roles, and each role's custom navigation/layout for the Unity desktop application, rather than configuring each user's experience by hand.
 
-**Stack:** Next.js · Nest.js
+**Stack:** Next.js · Nest.js · React · TypeScript · JavaScript · MUI (Material UI) · ApexCharts · Axios · Prisma · PostgreSQL
 
-**Solution:** I fully developed this Next.js portal, backed by a Nest.js API, as the administrative counterpart to the Unity desktop app. It gives admins a dashboard with live stats (total users, currently active users), dedicated sections for managing roles and users, and the ability to customize the navigation/layout assigned to each role. Once a user is assigned a role, their custom layout is fetched from the portal the next time they log into the Unity desktop application, and the UI is built dynamically from it.
+**Solution:** I fully developed this Next.js portal, backed by a Nest.js API, as the administrative counterpart to the Unity desktop app. It gives admins a dashboard with live stats — total organisations, users, role assignments, and admins, alongside usage charts — dedicated sections for managing organisations, roles, and users, and the ability to customize the navigation/layout assigned to each role. Once a user is assigned a role, their custom layout is fetched from the portal the next time they log into the Unity desktop application, and the UI is built dynamically from it.
 
 **Impact:** Centralized all role and layout administration in one portal, so a single change made by an admin propagates automatically into every affected user's desktop app experience without any manual per-user setup.
 
@@ -85,7 +85,7 @@
 
 **Problem:** Linked Golf — a Flutter app with an Express backend for golf-focused social and booking — was already live and had been built out by several other developers by the time I joined. Bloc was in place for state management but poorly integrated and tightly coupled to the UI, so state issues surfaced across nearly every core screen: Home, Availability, Add Golf Buddy, the QR page (profile QR + scan), user search, the golfer profile page, and Golf Courses & Events. Chat, built on PubNub, wasn't working reliably either — reactions were wired up but did nothing, and messages weren't grouped by date. The backend had accumulated a lot of dead code and tight coupling, and several screens fired redundant, duplicate API calls that hurt performance. On top of that, golf-course owners had no way to create events, golfers had no way to subscribe to one or manage a team, joining a team had no verification step, applink/dynamic linking didn't route correctly, and a course's profile page didn't surface golfer availability.
 
-**Stack:** Flutter · Dart · Bloc · Express · Node.js · MongoDB · PubNub · Stripe · Firebase Cloud Messaging (FCM) · JWT · App/Deep Linking · QR Code
+**Stack:** Flutter · Dart · Bloc · Express · Node.js · MongoDB · PubNub · Stripe · Firebase Cloud Messaging (FCM) · Firebase Admin · SendGrid · Nodemailer · Google APIs · JWT · App/Deep Linking · QR Code
 
 **Solution:** Refactored both the Flutter frontend and the Express backend of this already-live golf social and booking app:
 
@@ -124,7 +124,7 @@
 
 **Problem:** The existing Blue Sky mobile application, originally built for EPIC PC, needed to be relaunched as a distinct product with its own brand identity. Blue Sky/Exodus is a healthcare app for doctors and patients — appointments (patients can self-schedule), medications, lab test results, and health vitals in one place; labs upload results through their own portal and both patients and doctors view/download them via the app's API instead of a lab visit or printout. The app also pairs with the JSTYLE 2208A customized medical health smart wristband so patients' health vitals can be monitored by both patients and doctors, but syncing vitals from the wristband was slow and often failed — every scan sent its data through an API call to the wristband's SDK/plugin, and that call failed often.
 
-**Stack:** Flutter
+**Stack:** Flutter · Dart · Bloc · Firebase Cloud Messaging (FCM)
 
 **Solution:** I fully rebranded the Flutter application, replacing the branding, visual identity, and relevant naming throughout the app to turn Blue Sky into the Exodus app. Alongside the rebrand, I downloaded the wristband's vitals SDK and packaged it directly into the app build instead of calling it over the network per scan, removing the failure-prone API round trip and generating vitals results faster and in a more optimized way.
 
@@ -142,13 +142,13 @@
 
 ### 9. Agentic Job Discovery Automation
 
-**Problem:** Manually researching and verifying contact details — email and phone — for decision-makers (CEOs, CTOs, COOs, etc.) at companies posting jobs in specific niches was slow, inconsistent, and hard to keep current.
+**Problem:** The client had been running decision-maker discovery — finding and verifying the email/phone of CEOs, CTOs, COOs, etc. at companies actively hiring — across four industry niches (AI/ML, GIS, HealthTech, and Manufacturing) on a Selenium-based scraper paired with a patchwork of other tools. Maintaining scraper infrastructure, handling anti-bot measures, and paying for the compute/proxy overhead of full browser instances drove the monthly tool bill to $600–800, well above the client's $200–300 target, and the system had no built-in error handling or visibility into API credit balances — a failure or a depleted quota broke a stage silently, with nobody finding out until a report was missing or thin.
 
-**Stack:** n8n · Nocodb · Apify · ZeroBounce · Clearout Phone
+**Stack:** n8n · Apify · Hunter.io · ZeroBounce · Clearout Phone · Nocodb · OpenAI · Google Sheets · Gmail
 
-**Solution:** I fully developed this four-stage automation using n8n, Nocodb, Apify actors, ZeroBounce, and Clearout Phone. Apify actors scrape job postings from LinkedIn and other career sites, with results stored in Nocodb and duplicates filtered out. A second automation verifies every discovered email address through ZeroBounce, and a third does the same for phone numbers through Clearout Phone, updating the database as results come back. A fourth automation compiles everything into a summary and a Google Sheet of successfully scraped and verified results, delivered before the start of the working day.
+**Solution:** Replaced Selenium with Apify actors and rebuilt the pipeline as four parallel n8n workflows — one per niche — that all call the same shared sub-workflows in the same sequence overnight. Job Scraping runs two Apify actors (LinkedIn postings and company career-site postings, filtered to full-time U.S. roles at companies under 500 employees, posted in the last 7 days, excluding recruitment agencies) and saves deduplicated results to Nocodb. Decision-Maker Enrichment groups the new jobs by company domain and queries Hunter.io — requesting phone-inclusive results first and falling back to email-only — while detecting and routing around any 429 rate-limit responses instead of letting them stall the run. Email Verification and Phone Number Verification batch the results through ZeroBounce and Clearout Phone respectively, each sized to that API's rate limit. A final Summarize & CSV Report step uses an OpenAI-powered agent to write a plain-language recap of the night's run, builds a CSV of the verified contacts, and emails both to the client via Gmail before business hours. Two supporting workflows run alongside the pipeline: a shared Error Handling Workflow wired to every workflow's error trigger, logging failures to Google Sheets and emailing an incident report, and a Tech Inventory Automation that checks remaining credits across Apify, Hunter.io, ZeroBounce, and Clearout Phone plus Nocodb's record counts and emails a consolidated status report.
 
-**Impact:** Replaces what would be hours of manual research and verification with a daily, pre-verified list of decision-maker contacts waiting in the team's inbox each morning.
+**Impact:** Brought monthly cost into the client's $200–300 target while still running four full niche pipelines every night, replacing hours of manual research and verification with a daily, pre-verified list of decision-maker contacts and a plain-language run summary waiting in the client's inbox each morning — with rate-limit handling, an error-alerting workflow, and credit monitoring catching problems before a report goes missing or thin.
 
 ### 10. Social Media Post Management Automation
 
@@ -211,9 +211,9 @@
 
 **Problem:** Users need accessible, deeply personalized fitness and nutrition coaching, health and bloodwork insight, and consistent progress tracking, spanning the full journey from onboarding through an ongoing subscription — without needing a human trainer.
 
-**Stack:** Flutter · FastAPI · PostgreSQL (Supabase) · Redis · RAG · Claude AI · OpenAI GPT-4o · Anthropic · ElevenLabs · Stripe · JWT · Sharp
+**Stack:** Flutter · Nest.js · Node.js · PostgreSQL (Supabase) · Redis · RAG · Claude AI · OpenAI GPT-4o · Anthropic · ElevenLabs · Stripe · JWT · Sharp
 
-**Solution:** NebuFit is an AI-powered fitness and health platform I helped build, consisting of a scalable backend infrastructure and a React Native mobile application. It provides personalized coaching through computer vision, AI-generated workout and nutrition plans, bloodwork analysis, health insights, voice-based recommendations, and a Retrieval-Augmented Generation (RAG) fitness assistant, and manages the complete user journey — authentication, onboarding, subscriptions, health assessments, progress tracking, AI coaching, and administrative operations — while supporting real-time AI interactions and scalable processing pipelines:
+**Solution:** NebuFit is an AI-powered fitness and health platform I helped build, consisting of a scalable Nest.js backend infrastructure and a Flutter mobile application. It provides personalized coaching through computer vision, AI-generated workout and nutrition plans, bloodwork analysis, health insights, voice-based recommendations, and a Retrieval-Augmented Generation (RAG) fitness assistant, and manages the complete user journey — authentication, onboarding, subscriptions, health assessments, progress tracking, AI coaching, and administrative operations — while supporting real-time AI interactions and scalable processing pipelines:
 
 - Developed a cross-platform mobile application for iOS and Android focused on fitness coaching, nutrition planning, progress tracking, and health monitoring.
 - Built onboarding flows, profile management, subscription management, AI chat experiences, workout tracking, and health analytics dashboards.
@@ -355,7 +355,7 @@
 
 **Stack:** Go High Level · Google Gemini (AI asset generation)
 
-**Solution:** I fully developed the native, element-based homepage inside Go High Level, building the layout directly with the platform's own components (Row, Column, Container, Text, etc.) rather than embedding external code, and used Google Gemini to generate the custom visual assets — like the hero's themed video panel — that the native component library doesn't provide on its own.
+**Solution:** I fully developed the native, element-based homepage inside Go High Level, building the layout directly with the platform's own components (Row, Column, Container, Text, etc.) rather than embedding external code — assembling the hero, featured-in/struggles, results/brands, services/lead-magnet, testimonials, founder-bio, and final-CTA sections plus the booking forms natively — and used Google Gemini to generate the custom visual assets, like the hero's "Back to the Future"-themed video panel, that the native component library doesn't provide on its own.
 
 **Impact:** Delivered a native, fully GHL-integrated homepage for the agency that's easy for their team to maintain going forward using Go High Level's own tools.
 
