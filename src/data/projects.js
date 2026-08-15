@@ -726,23 +726,37 @@ export const categories = [
         name: 'Capital Shack — Document OCR Processing',
         shortName: 'Capital Shack — Document OCR',
         screenshot: '/assets/screenshots/capital-shack-ocr/feature-mockup.png',
-        metric: 'OCR bank statement extraction',
+        metric: '2 linked automations · 3 document types classified',
         note: 'Client confidentiality prevents sharing screenshots or product media for this project.',
         challenge:
-          'Extracting structured financial data from PDF bank statements by hand was slow and error-prone.',
+          'Manually reviewing, categorizing, filing, and cross-referencing every incoming client document into spreadsheets was slow, repetitive, and error-prone at any real volume.',
         solution:
-          'Built an OCR-based document processing pipeline in Google Apps Script that extracts structured data from bank statement PDFs and routes it downstream.',
+          'Built two linked Google Apps Script automations — one files and logs every emailed document into Drive and Sheets, the other runs each attachment through Document AI to classify and extract its data automatically.',
         impact:
-          'Automated bank statement data extraction, removing manual entry from the workflow.',
+          'Eliminated manual document triage and data entry entirely, so every incoming document is consistently categorized, filed, and logged without anyone opening it by hand.',
         challengeDetail:
-          'Extracting structured financial data from PDF bank statements by hand was slow and error-prone, since every statement had to be opened, read, and manually transcribed into a usable format before it could be used downstream. That manual step was both a bottleneck and a source of transcription errors that propagated into whatever relied on the extracted data.',
+          "Client documents arrived by email in a continuous, unpredictable stream — application forms, bank statements, and other supporting paperwork — and every one had to be opened, read, categorized, filed into the right place, and cross-referenced into a spreadsheet by hand before anyone downstream could act on it. That process held up fine at low volume, but became a genuine bottleneck as volume grew: slow, repetitive, and prone to the transcription and filing mistakes that come from doing the same manual triage over and over.",
         solutionDetail:
-          'Built an OCR-based document processing pipeline in Google Apps Script that reads bank statement PDFs directly, extracts the structured financial data automatically, and routes it downstream without a human retyping any of it.',
+          "Built two linked automations in Google Apps Script that hand off to each other through a shared Google Sheet. The first watches the inbox as documents arrive: it reviews each email's attachments, categorizes the message, uploads the attachments into a specifically labeled Google Drive folder, and logs a corresponding entry in Google Sheets marked unprocessed. The second automation picks up those newly logged, unprocessed entries on its own schedule and runs each attachment through Google Form Parser (Document AI), which identifies whether it's an application form, a bank statement, or another document type and extracts the relevant structured data — writing the results into the correct fields in the appropriate sheet automatically.",
         impactDetail:
-          'Automated bank statement data extraction end-to-end, removing manual entry from the workflow entirely and eliminating the transcription errors that came with it.',
+          'Manual document triage and data entry were eliminated entirely: every incoming document is now consistently categorized, filed into Drive, and logged and populated in Sheets without anyone needing to open or process it by hand — removing both the bottleneck and the transcription errors that came with doing it manually.',
         overview:
-          'Extracting structured financial data from PDF bank statements by hand was slow and error-prone — every statement had to be opened, read, and manually transcribed before it could be used downstream. An OCR-based document processing pipeline built in Google Apps Script reads those PDFs directly and extracts the structured data automatically.\n\nThat data routes downstream without a human retyping any of it, automating the extraction end-to-end and removing both the manual entry and the transcription errors that came with it.',
-        stack: ['Google Apps Script', 'OCR'],
+          "Capital Shack's client documents — application forms, bank statements, and other supporting paperwork — arrived by email in a continuous stream, and each one had to be opened, categorized, filed, and cross-referenced into a spreadsheet by hand before it could be used downstream. That manual triage held up at low volume but became a slow, repetitive bottleneck — and a source of transcription errors — as volume grew.\n\nTwo linked Google Apps Script automations now handle the pipeline end to end. The first reviews each email as it arrives, categorizes it, uploads its attachments into a specifically labeled Google Drive folder, and logs an unprocessed entry in Google Sheets; the second picks up those entries and runs the attachments through Google Form Parser (Document AI), identifying whether each is an application form, bank statement, or other document type and writing the extracted data into the correct sheet fields automatically — removing manual triage and data entry from the workflow entirely.",
+        stack: ['Gmail', 'Google Drive', 'Google Sheets', 'Google Apps Script', 'Google Form Parser (Document AI)'],
+        faqs: [
+          {
+            q: 'How does Google Apps Script automatically process email attachments in Gmail?',
+            a: "An Apps Script trigger runs on a schedule, scanning the inbox via Gmail's Apps Script service for new messages, reading each one's attachments, categorizing the message, and taking an action — like saving the attachment to a specific Drive folder and logging an entry in Sheets — without a human opening a single email.",
+          },
+          {
+            q: 'What is Google Form Parser (Document AI) used for in this pipeline?',
+            a: "Google Form Parser (Document AI) is Google's OCR/document-understanding service — pointed at a scanned or PDF document, it reads and structures the text into labeled fields, which is what lets the second automation tell an application form apart from a bank statement and extract the right data from each without a hardcoded template per document type.",
+          },
+          {
+            q: 'Why split document intake and OCR classification into two separate automations instead of one?',
+            a: "Splitting the pipeline lets each automation run on its own trigger: intake reacts to new email as it arrives, while OCR processing works through everything currently marked unprocessed in the shared sheet on its own schedule — so a slower Document AI call never blocks or delays new documents from being filed and logged.",
+          },
+        ],
       },
       {
         slug: 'ramirez-legal-clickup-sync',
