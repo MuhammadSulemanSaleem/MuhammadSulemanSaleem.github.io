@@ -29,6 +29,20 @@
   margin: 0 0 0.9rem;
 }
 
+.cs-hero__dates {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--hc-muted);
+  margin: 0 0 0.9rem;
+}
+
+.cs-hero__dates i {
+  font-size: 0.95rem;
+}
+
 .cs-hero__desc {
   font-size: 1rem;
   line-height: 1.7;
@@ -189,6 +203,17 @@
 
 .cs-proof__link i {
   font-size: 1rem;
+}
+
+.cs-proof__link img {
+  display: block;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.cs-proof__link-icon--rounded {
+  border-radius: 4px;
 }
 
 .cs-proof__link:hover {

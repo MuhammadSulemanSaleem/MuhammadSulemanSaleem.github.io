@@ -95,6 +95,9 @@ const projectSchema = {
         <div class={`hc-card cs-hero ${shots ? `cs-hero--${tint}` : ''}`} data-aos="fade-up">
           <div class="cs-hero__content" data-aos="fade-right" data-aos-duration="900">
             <h1 class="cs-hero__title">{project.name}</h1>
+            {project.shipped && (
+              <p class="cs-hero__dates"><i class="ri-calendar-line" aria-hidden="true"></i> Shipped {project.shipped}</p>
+            )}
             <p class="cs-hero__desc">{heroDescription}</p>
             {project.note && (
               <p class="cs-callout"><i class="ri-lock-line" aria-hidden="true"></i> {project.note}</p>
@@ -108,12 +111,17 @@ const projectSchema = {
                 )}
                 {project.links.googlePlay && (
                   <a href={project.links.googlePlay} target="_blank" rel="noopener noreferrer" class="cs-proof__link">
-                    <i class="ri-google-play-fill" aria-hidden="true"></i> Google Play
+                    <img src="/assets/logos/google-play.png" alt="" width="16" height="16" /> Google Play
                   </a>
                 )}
                 {project.links.codeCanyon && (
                   <a href={project.links.codeCanyon} target="_blank" rel="noopener noreferrer" class="cs-proof__link">
-                    <i class="ri-shopping-bag-3-line" aria-hidden="true"></i> CodeCanyon
+                    <img src="/assets/logos/codecanyon.jpeg" alt="" width="16" height="16" class="cs-proof__link-icon--rounded" /> CodeCanyon
+                  </a>
+                )}
+                {project.links.flutterflowMarketplace && (
+                  <a href={project.links.flutterflowMarketplace} target="_blank" rel="noopener noreferrer" class="cs-proof__link">
+                    <i class="ri-store-2-line" aria-hidden="true"></i> FlutterFlow Marketplace
                   </a>
                 )}
               </div>

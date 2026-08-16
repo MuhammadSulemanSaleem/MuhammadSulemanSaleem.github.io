@@ -33,7 +33,12 @@
   color: var(--hc-ink);
 }
 
-.hc-page a:not(.hc-btn):not(.hc-icon-btn) {
+/* Any new self-colored/button-styled <a> class (own background + hover color,
+   like .hc-btn/.hc-icon-btn/.cs-proof__link) must be added to this :not()
+   list — its specificity (0,3,1) otherwise beats a plain class's :hover rule
+   (0,2,0) and silently wins on `color` even though the element's own
+   background/transform hover styles apply fine, making hover text invisible. */
+.hc-page a:not(.hc-btn):not(.hc-icon-btn):not(.cs-proof__link) {
   color: inherit;
 }
 

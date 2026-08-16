@@ -28,6 +28,7 @@ export const categories = [
         slug: 'nebufit',
         mark: 'NF',
         name: 'NebuFit',
+        shipped: 'Apr 2026',
         logo: '/assets/logos/nebufit.jpg',
         screenshot: '/assets/screenshots/nebufit/feature-mockup.png',
         metric: 'RAG · multi-LLM · SSE streaming',
@@ -86,6 +87,7 @@ export const categories = [
         slug: 'creative-os',
         mark: 'CO',
         name: 'Creative OS',
+        shipped: 'Jun – Jul 2026',
         screenshot: '/assets/screenshots/creative-os/feature-mockup.png',
         metric: 'Local-first · MCP server architecture',
         challenge:
@@ -140,6 +142,7 @@ export const categories = [
         slug: 'orient-champions',
         mark: 'OC',
         name: 'Orient Champions',
+        shipped: 'May – Jun 2026',
         screenshot: '/assets/screenshots/orient-champions/feature-mockup.png',
         metric: 'Thousands of daily batch scans · ~90% fewer bug reports post-refactor',
         challenge:
@@ -215,6 +218,7 @@ export const categories = [
         slug: 'unity-desktop-admin-portal',
         mark: 'UN',
         name: 'UNITY Desktop App & Admin Portal',
+        shipped: 'Oct 2024 – Jan 2025',
         shortName: 'UNITY Desktop & Admin Portal',
         screenshot: '/assets/screenshots/unity-desktop-admin-portal/feature-mockup.png',
         metric: 'Healthcare organisation · role-built nav, live admin config',
@@ -286,6 +290,7 @@ export const categories = [
         slug: 'houzi',
         mark: 'HZ',
         name: 'Houzi',
+        shipped: 'Apr 2021 – Sep 2024',
         screenshot: '/assets/screenshots/houzi/feature-mockup.png',
         metric: '53K+ reach · 4.84★ · 500+ sales',
         challenge:
@@ -369,6 +374,7 @@ export const categories = [
         slug: 'linked-golf',
         mark: 'LG',
         name: 'Linked Golf',
+        shipped: 'Feb – Mar 2025',
         screenshot: '/assets/screenshots/linked-golf/feature-mockup.png',
         metric: 'Full-stack refactor · event subscriptions via Stripe',
         challenge:
@@ -440,6 +446,7 @@ export const categories = [
         slug: 'exodus-app',
         mark: 'EX',
         name: 'Exodus App',
+        shipped: 'Mar 2025',
         screenshot: '/assets/screenshots/exodus-app/feature-mockup.png',
         metric: 'Full rebrand + optimized vitals sync (EPIC PC)',
         challenge:
@@ -495,6 +502,7 @@ export const categories = [
         slug: 'houzibuilder',
         mark: 'HB',
         name: 'HouziBuilder',
+        shipped: 'Mar 2022 – Aug 2024',
         screenshot: '/assets/screenshots/houzibuilder/feature-mockup.png',
         metric: 'Licensed desktop configurator · live preview',
         challenge:
@@ -545,6 +553,7 @@ export const categories = [
         slug: 'techtiz-corporate-website',
         mark: 'TC',
         name: 'Techtiz Corporate Website',
+        shipped: 'Jun 2026',
         screenshot: '/assets/screenshots/techtiz-corporate-website/feature-mockup.png',
         metric: 'Astro rebuild · performance & SEO',
         challenge:
@@ -608,6 +617,7 @@ export const categories = [
         slug: 'attn-agency-homepage',
         mark: 'AA',
         name: 'ATTN Agency Homepage',
+        shipped: 'Jul 2026',
         screenshot: '/assets/screenshots/attn-agency-homepage/feature-mockup.png',
         metric: 'Go High Level native-element build',
         challenge:
@@ -642,6 +652,7 @@ export const categories = [
         slug: 'lead-response-automation',
         mark: 'LR',
         name: 'Lead Response Automation — United Global Vanline',
+        shipped: 'Feb – Apr 2026',
         shortName: 'Lead Response Automation',
         screenshot: '/assets/screenshots/lead-response-automation/feature-mockup.png',
         metric: 'Contact < 1 min · AI voice call < 2 min',
@@ -699,6 +710,7 @@ export const categories = [
         slug: 'agentc-job-discovery',
         mark: 'AG',
         name: 'AGENTC — Agentic Job Discovery Automation',
+        shipped: 'Aug – Sep 2025',
         shortName: 'AGENTC — Agentic Job Discovery',
         screenshot: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
         metric: 'Nightly across 4 niches · $600–800/mo → $200–300/mo',
@@ -760,6 +772,7 @@ export const categories = [
         slug: 'capital-shack-ocr',
         mark: 'CS',
         name: 'Capital Shack — Document OCR Processing',
+        shipped: 'Jun – Jul 2025',
         shortName: 'Capital Shack — Document OCR',
         screenshot: '/assets/screenshots/capital-shack-ocr/feature-mockup.png',
         metric: '2 linked automations · 3 document types classified',
@@ -800,6 +813,7 @@ export const categories = [
         slug: 'ramirez-legal-clickup-sync',
         mark: 'RL',
         name: 'Ramirez Legal Group — ClickUp Dashboard Sync',
+        shipped: 'Oct 2025',
         shortName: 'Ramirez Legal — ClickUp Sync',
         screenshot: '/assets/screenshots/ramirez-legal-clickup-sync/feature-mockup.png',
         metric: 'Real-time case data sync',
@@ -841,6 +855,7 @@ export const categories = [
         slug: 'social-media-posting-automation',
         mark: 'SM',
         name: 'Social Media Posting Automation',
+        shipped: 'Nov – Dec 2025',
         screenshot: '/assets/screenshots/social-media-posting-automation/feature-mockup.png',
         metric: 'Auto-posts to 6 platforms · zero silent failures',
         challenge:
@@ -929,6 +944,7 @@ export const categories = [
         slug: 'outreach-email-classification-automation',
         mark: 'EC',
         name: 'Outreach Email Classification Automation',
+        shipped: 'Jan 2026',
         shortName: 'Outreach Email Classification',
         screenshot: '/assets/screenshots/outreach-email-classification-automation/feature-mockup.png',
         metric: 'AI reply classification · instant Slack routing',
@@ -988,6 +1004,7 @@ export const categories = [
         slug: 'zendesk-ai-support-automation',
         mark: 'ZD',
         name: 'Zendesk AI Support Automation',
+        shipped: 'Sep – Oct 2025',
         screenshot: '/assets/screenshots/zendesk-ai-support-automation/feature-mockup.png',
         metric: '3 linked workflows · tickets, calls & replies',
         challenge:
@@ -1056,6 +1073,7 @@ export const categories = [
         slug: 'kumquat-talent-match',
         mark: 'KQ',
         name: 'Kumquat — Talent Match',
+        shipped: 'Apr 2025',
         screenshot: '/assets/screenshots/kumquat-talent-match/feature-mockup.png',
         metric: '577 downloads · FlutterFlow Marketplace',
         challenge:
@@ -1077,6 +1095,9 @@ export const categories = [
         overview:
           'Kumquat is a FlutterFlow-built UI template for a skill-sharing and consultation-booking marketplace app — the kind of product that connects coaches, consultants, or freelancers with clients who book paid sessions.\n\nIt spans 81 feature pages across 11 modules: authentication with role and profession selection, provider search, profile details, appointment booking with an integrated payment flow, real-time chat and inbox, live video and voice calling, session management with rescheduling, ratings and reviews, a wallet-style balance with Add Funds, and account settings. The data model is pre-shaped for Firebase Firestore and Authentication — sessions, chat messages, users, reviews, payment cards, and profession categories are all modeled — though the shipped template runs on dummy/placeholder data rather than live Firestore collections or API calls, so it\'s a front-end-complete UI kit ready to be connected to a real backend rather than a functioning production app. The storyboard traces a full user journey from splash screen through registration, search, booking, payment, chat or video call, to review, so the flow can be validated before any backend work begins.',
         stack: ['FlutterFlow', 'Flutter', 'Dart', 'Firebase Firestore', 'Firebase Authentication', 'Material Design'],
+        links: {
+          flutterflowMarketplace: 'https://marketplace.flutterflow.io/item/lSQ2L1l9E8ow3EuOdIxX',
+        },
         sourceAvailable:
           'Yes — Kumquat is published on the FlutterFlow Marketplace as a source-available UI template. Buyers get the full FlutterFlow project — every page, component, and the modeled Firestore-ready data schema — to customize and connect to their own Firebase backend.',
         faqs: [
@@ -1114,6 +1135,7 @@ export const categories = [
         slug: 'foodii-recipe-book',
         mark: 'FB',
         name: 'Foodii — Recipe Book',
+        shipped: 'May 2025',
         screenshot: '/assets/screenshots/foodii-recipe-book/feature-mockup.png',
         metric: '537 downloads · FlutterFlow Marketplace',
         challenge:
@@ -1135,6 +1157,9 @@ export const categories = [
         overview:
           'Foodii is a recipe discovery and cooking companion mobile app built visually in FlutterFlow. The app is organized into clear feature modules: an authentication flow (login, signup, OTP verification, forgot password), a home feed with recommended and trending recipes, an explore section for browsing chefs and their recipe collections, a recipe detail experience with ingredients and step-by-step instructions, favourites for saving recipes, a notifications center, and a profile section with editing, help, and language settings.\n\nThe data model reflects a real cooking app: recipes carry title, image, category, cook time, servings, and difficulty, alongside structured ingredient and step lists, while chefs have followers, recipe counts, and their own recipe collections. A shared library of reusable components — buttons, category chips, search bars, headers — keeps the visual design consistent across all 65 pages.\n\nFirebase is connected as the backend provider, but no Firestore collections have been created yet — the template currently runs on FlutterFlow\'s local App State variables and custom data schemas rather than live cloud data, with no third-party REST APIs configured.',
         stack: ['FlutterFlow', 'Flutter', 'Dart', 'Firebase Firestore', 'Firebase Authentication', 'Material Design'],
+        links: {
+          flutterflowMarketplace: 'https://marketplace.flutterflow.io/item/7YbPf6R4gKKpxem1xiHY',
+        },
         sourceAvailable:
           'Yes — Foodii is published on the FlutterFlow Marketplace as a source-available UI template. Buyers get the full FlutterFlow project — every page, custom Data Type, and shared component — to customize and connect to their own Firebase backend.',
         faqs: [
