@@ -165,6 +165,39 @@
   flex-shrink: 0;
 }
 
+/* ── Proof-point links (App Store / Google Play / CodeCanyon) ──────── */
+.cs-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.cs-proof__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--hc-ink);
+  background: var(--hc-bg);
+  border: 1px solid var(--hc-line);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+
+.cs-proof__link i {
+  font-size: 1rem;
+}
+
+.cs-proof__link:hover {
+  transform: translateY(-2px);
+  background: var(--hc-ink);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(20, 22, 27, 0.12);
+}
+
 /* ── Detailed project overview (narrative paragraph, ahead of the
    Challenge/Solution/Impact breakdown) ─────────────────────────── */
 .cs-detail {

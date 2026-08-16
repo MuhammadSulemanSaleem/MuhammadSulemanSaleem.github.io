@@ -80,7 +80,7 @@ const projectSchema = {
 
 <BaseLayout
   title={`${project.shortName ?? project.name} — Case Study — Muhammad Suleman Saleem`}
-  description={project.impact}
+  description={project.metaDescription ?? project.impact}
   image={ogImage}
 >
   <div class="hc-page">
@@ -99,6 +99,25 @@ const projectSchema = {
             {project.note && (
               <p class="cs-callout"><i class="ri-lock-line" aria-hidden="true"></i> {project.note}</p>
             )}
+            {project.links && (
+              <div class="cs-proof">
+                {project.links.appStore && (
+                  <a href={project.links.appStore} target="_blank" rel="noopener noreferrer" class="cs-proof__link">
+                    <i class="ri-apple-fill" aria-hidden="true"></i> App Store
+                  </a>
+                )}
+                {project.links.googlePlay && (
+                  <a href={project.links.googlePlay} target="_blank" rel="noopener noreferrer" class="cs-proof__link">
+                    <i class="ri-google-play-fill" aria-hidden="true"></i> Google Play
+                  </a>
+                )}
+                {project.links.codeCanyon && (
+                  <a href={project.links.codeCanyon} target="_blank" rel="noopener noreferrer" class="cs-proof__link">
+                    <i class="ri-shopping-bag-3-line" aria-hidden="true"></i> CodeCanyon
+                  </a>
+                )}
+              </div>
+            )}
           </div>
           {shots ? (
             <div class="cs-hero__shot-wrap" data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
@@ -106,7 +125,8 @@ const projectSchema = {
                 src={shots.hero.src}
                 alt={shots.hero.alt}
                 class={`cs-hero__mockup ${project.slug === 'creative-os' ? 'cs-hero__mockup--zoom' : ''}`}
-                loading="lazy"
+                loading="eager"
+                fetchpriority="high"
               />
             </div>
           ) : (

@@ -37,6 +37,8 @@ export const categories = [
           'Built computer-vision body analysis, AI-generated workout and nutrition plans, and bloodwork processing on a RAG system for contextual guidance, orchestrating multiple LLM providers (Claude + GPT-4o + ElevenLabs) with SSE streaming and automatic failover for resilient voice coaching, backed by full Stripe subscription and entitlement management.',
         impact:
           'Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance with resilient uptime and monetization built in from day one.',
+        metaDescription:
+          'AI coaching platform delivering personalized, real-time guidance grounded in a user\'s body data, with multi-provider uptime and Stripe monetization.',
         challengeDetail:
           "Fitness apps overwhelmingly lean on generic templates instead of adapting to a user's real body composition, bloodwork results, and week-to-week progress — a one-size-fits-all plan doesn't account for someone's actual physiology or how their body responds to training. Users increasingly want conversational, coach-like guidance rather than static charts and spreadsheets: a real answer to a question about a stalled plateau, not just another dashboard. Any solution also had to hold up under the realities of AI infrastructure at scale, since a single LLM provider is a single point of failure, and a coaching product that drops mid-session erodes trust fast.",
         solutionDetail:
@@ -92,6 +94,8 @@ export const categories = [
           'Built Creative OS as a local-first Electron/React desktop app that works less like a chatbot and more like an operating system for creative work — indexing Final Draft screenplays, PDFs, lyrics, notes, and research through a RAG pipeline (ChromaDB + SQLite) for semantic search, auto-tagging, and Claude-powered rewriting with persistent context, including native .FDX editing that preserves screenplay formatting, on an extensible MCP server architecture.',
         impact:
           'Gave creators AI-powered editing, search, and organization across their entire local creative library that persists across sessions instead of resetting, with a tool ecosystem that grows without touching the core app.',
+        metaDescription:
+          'Gave creators AI-powered editing, search, and organization across their local creative library — persistent across sessions, with a growing tool ecosystem.',
         challengeDetail:
           "Writers, filmmakers, musicians, and other creators wanted AI assistance across screenplays, lyrics, and notes — for many, script drafts, lyrics, and story notes are sensitive material they don't want touching a third-party server before it's ready. Typical AI chatbots compound the problem: they can't reach into a creator's local files at all, and they lose context the moment a conversation ends, forcing every new session to start from zero instead of building on accumulated work. At the same time, creators didn't want to be locked into one fixed set of AI tools or a single vendor's ecosystem, since the AI landscape moves fast and a rigid integration risks going stale. Any solution also needed to make sense of a large, unstructured local library — screenplays in Final Draft format, scattered PDFs, lyrics, notes, outlines, shot lists, and research documents — well enough to search across all of it at once and answer questions grounded in a creator's own material, not just store it.",
         solutionDetail:
@@ -144,6 +148,8 @@ export const categories = [
           'Inherited an already-live but poorly-built implementation — tightly coupled, dead-code-heavy, no real state management — and refactored it: decoupled the React Native frontend and Nest.js backend into clean modules, introduced Redux, rebuilt and retimed the cron-job pipeline for accurate pre-business-hours results, replaced hardcoded screens with real APIs, fixed push notifications and the App Updater, and redesigned the UI.',
         impact:
           'Eliminated roughly 90% of the bugs the client used to report daily — the client now calls to discuss new features rather than fix issues — and gave field agents a faster, redesigned app they use without friction.',
+        metaDescription:
+          'Eliminated ~90% of the bugs the client used to report daily, and gave field agents a faster, redesigned app they use without friction.',
         challengeDetail:
           "Orient Champions was already live and in production when this engagement began, having been built out by several prior developers over time. The resulting codebase was in poor shape: heavy dead code, frontend and backend modules that weren't clearly separated, and tight coupling throughout that made changes risky and slow. The React Native app had no real state management — screens leaned on trivial local useState rather than anything app-wide — and several pages ran on hardcoded data instead of real APIs. Push notifications didn't work at all, the App Updater and several filters were broken, and the backend's cron jobs were poorly managed, on schedules that didn't reliably finish with accurate results before business hours started. The operational cost was real: the client called in daily about bugs, and field agents regularly struggled to scan batches and receive their incentives correctly.",
         solutionDetail:
@@ -170,6 +176,10 @@ export const categories = [
           'Firebase Cloud Messaging',
           'Twilio',
         ],
+        links: {
+          appStore: 'https://apps.apple.com/us/app/orient-champions/id1560823095',
+          googlePlay: 'https://play.google.com/store/search?q=Orient%20Champions&c=apps&hl=en',
+        },
         faqs: [
           {
             q: 'How does Orient Champions handle SAP being unavailable?',
@@ -214,6 +224,8 @@ export const categories = [
           "Built an Electron + Nest.js desktop app whose role-based sidebar, embedded browser with credential auto-fill, socket-driven notifications, and incoming-call handling are all fetched per user at login, paired with a Next.js + Nest.js admin portal where staff drag-and-drop each role's navigation and watch live usage stats.",
         impact:
           'Delivered one unified, role-aware desktop tool whose navigation and permissions are configured centrally, replacing what would otherwise be several separate applications for organisations and staff spanning dozens of logins.',
+        metaDescription:
+          'Delivered one unified, role-aware desktop tool with centrally configured navigation and permissions, replacing several separate applications.',
         challengeDetail:
           "A healthcare organisation needed a single, role-based desktop workspace that combined web browsing, credential management, notifications, and call/meeting handling — capabilities that were otherwise spread across several disconnected tools, each with its own login and workflow. Staff needed tightly scoped, role-based access rather than a single shared login, and each user needed a personal, secure place to store their own credentials for downstream systems and have them auto-filled into forms rather than typed or copy-pasted by hand, reducing both friction and the risk of exposed credentials. What each role could see, and how their navigation was laid out, needed to be reconfigurable without a new build every time requirements changed, and the organisation needed an admin layer giving oversight staff live visibility into desktop activity across every organisation and user.",
         solutionDetail:
@@ -282,6 +294,8 @@ export const categories = [
           'Built Houzi, a Flutter app that talks to any Houzez-powered WordPress site over its REST API using Dio, Hive, and Provider — with a thin white-label app shell layered over a shared package (via customization hooks and a remote JSON config) so branding and features can be tailored per client without forking the codebase — plus the HouziBuilder desktop configurator and the Houzi-REST-API WordPress plugin.',
         impact:
           "A single Flutter codebase now powers native iOS and Android apps for real estate clients across the Houzez ecosystem, reaching 53,000+ theme owners with a 4.84★ rating, 500+ CodeCanyon sales, and 5,000+ Play Store downloads.",
+        metaDescription:
+          'A single Flutter codebase powers native iOS/Android apps across the Houzez ecosystem — 53,000+ theme owners, 4.84★ rating, 500+ CodeCanyon sales.',
         challengeDetail:
           "Real estate businesses using the Houzez WordPress theme had a fully functional website but no native mobile presence. Building a separate mobile app from scratch for each client would mean duplicating business logic, API integrations, and UI work, while still needing to let individual agencies customize branding, behavior, and features without maintaining separate forks of the whole codebase.",
         solutionDetail:
@@ -301,6 +315,11 @@ export const categories = [
           'Android',
           'iOS',
         ],
+        links: {
+          appStore: 'https://apps.apple.com/us/app/houzi-app-for-houzez/id1598357211',
+          googlePlay: 'https://play.google.com/store/apps/details?id=com.booleanbites.houzez&hl=en',
+          codeCanyon: 'https://codecanyon.net/item/houzi-real-estate-app/39753350',
+        },
         sourceAvailable:
           "Yes — Houzi is sold on CodeCanyon as a source-code product. Developers set it up with their own Firebase and Google Cloud projects before publishing to the App Store and Google Play.",
         faqs: [
@@ -386,6 +405,10 @@ export const categories = [
           'QRCode',
           'Deep Linking',
         ],
+        links: {
+          appStore: 'https://apps.apple.com/us/app/linked-golf/id1619093321',
+          googlePlay: 'https://play.google.com/store/apps/details?id=com.linkedgolfapp.mobile&hl=en',
+        },
         faqs: [
           {
             q: 'Why was Linked Golf refactored?',
@@ -438,6 +461,9 @@ export const categories = [
         heroDescription:
           "A healthcare app for doctors and patients — appointments, medications, lab results, and wearable-synced health vitals — rebranded from Blue Sky to Exodus, with the wristband's vitals SDK bundled into the app for faster, more reliable syncing.",
         stack: ['Flutter', 'Dart', 'Bloc', 'FCM'],
+        links: {
+          googlePlay: 'https://play.google.com/store/apps/details?id=org.blueskypro.mobile',
+        },
         faqs: [
           {
             q: 'What did this engagement involve beyond the visual rebrand?',
@@ -477,6 +503,8 @@ export const categories = [
           'Built HouziBuilder, a licensed Flutter desktop app that replaces manual file editing with a guided, form-driven builder and live device preview, exporting a configurations.json the Houzi app reads at runtime.',
         impact:
           'Turned a code-level JSON editing workflow into a guided desktop tool with live previews, cutting configuration errors and setup time while keeping license verification and WordPress integration built in.',
+        metaDescription:
+          'Turned code-level JSON editing into a guided desktop tool with live previews, cutting configuration errors and setup time for Houzi theme owners.',
         challengeDetail:
           "Houzez WordPress theme owners who wanted to offer a companion mobile app (Houzi) previously had to hand-edit a configuration file to control the app's colors, layouts, navigation, and content sections. That manual, code-level process was error-prone and inaccessible to non-technical site owners, since any change to branding or screen layout meant directly editing structured JSON rather than using a visual interface. There was also no straightforward way to preview how configuration changes would look inside the actual mobile app before shipping them, and no built-in mechanism to verify that only legitimately licensed users — via a Code Canyon-style purchase — could access the configuration tool.",
         solutionDetail:
@@ -527,6 +555,8 @@ export const categories = [
           'Built the site in Astro with a constants-first architecture, a two-tier system for repetitive service/industry pages, a fully isolated SLED experience for the government audience, and a WordPress-backed blog that publishes without a redeploy.',
         impact:
           'A maintainable, SEO-optimized site where new pages follow a documented pattern instead of one-off work, content editors publish without a code deploy, and the SLED funnel stays fully separated from the commercial site.',
+        metaDescription:
+          'A maintainable, SEO-optimized site where new pages follow a documented pattern, content editors publish without a code deploy, and funnels stay separated.',
         challengeDetail:
           "Techtiz needed a marketing site spanning many verticals — services, industries, a separate government-subcontracting audience, and a blog — while migrating away from a legacy static HTML/CSS/JS site. The build had to support SEO-heavy, JSON-LD-rich pages at scale, avoid duplicating markup across dozens of near-identical service/industry pages, keep a completely separate tone and trust-signal set for the SLED (government) audience without cross-contaminating commercial pages, and integrate a headless WordPress blog without triggering full-site rebuilds on every post edit.",
         solutionDetail:
@@ -588,6 +618,8 @@ export const categories = [
           "Built the homepage entirely with Go High Level's native builder elements, then used Google Gemini to generate the custom visual assets — like the hero's themed video panel — that the native component library doesn't provide on its own.",
         impact:
           "A homepage that reads like a custom build while staying fully native to Go High Level, easy for ATTN's own team to keep editing with the same builder tools.",
+        metaDescription:
+          "A homepage that reads like a custom build while staying native to Go High Level, easy for ATTN's team to keep editing with the same tools.",
         challengeDetail:
           "ATTN wanted a fully native, on-brand agency homepage built directly inside Go High Level, rather than an embedded page or iframe bolted onto the platform — keeping the page inside the same system ATTN's team already manages, instead of adding an external dependency only a developer could maintain. The constraint was staying entirely within the page builder's own native elements (Row, Column, Container, Text, and the rest of its component set), with no custom HTML or CSS, while still avoiding the generic, templated look most native Go High Level builds end up with.",
         solutionDetail:
@@ -621,6 +653,8 @@ export const categories = [
           "Consolidated all voice, SMS, and voicemail automation onto Aloware's native AloAi bots and Go High Level's Voicemail Drop, added HOT/WARM/LOW lead-temperature scoring that routes each lead to a role-matched Senior/Junior/Fresh closer, and layered in OpenAI call-QA scoring, a daily funnel-leak audit, a 3-minute HOT-lead safety net, and an automated Clover deposit-to-revenue pipeline.",
         impact:
           'One unified conversation thread per lead, HOT leads guaranteed a Senior closer, stalled leads and coaching gaps surfacing automatically, and deposit collection, refunds, and agent revenue crediting all reconciling end to end without manual work.',
+        metaDescription:
+          'One unified conversation thread per lead, HOT leads guaranteed a Senior closer, and deposits, refunds, and revenue crediting reconciling automatically.',
         challengeDetail:
           "United Global Van Line, a household moving brokerage, needed its entire lead-to-deposit funnel to run on autopilot with zero tolerance for slow response or leads falling through the cracks — but the original build had real gaps of its own. Voice, SMS, and voicemail automation were split across three separate outside vendors (Retell AI, Closebot, and Slybroadcast), each with its own credentials, webhooks, and billing, and — critically — its own conversation thread that Go High Level and human agents couldn't fully see. Every warm-transferred lead, whether a small local move or a high-value interstate relocation, landed in a single ring group containing every agent, so a Senior closer's time could easily go to a low-value lead while a high-value one waited. Leads could also silently stall at any pipeline stage — never blitzed, never quoted, a deposit asked but never paid — and agent performance issues could go unnoticed for a week or more. Getting a deposit \"asked\" didn't mean it was collected, and every collected deposit still needed to be reliably tied back to the right lead, agent, and pipeline stage, with refunds handled just as cleanly. And a lead's first real value only arrived once a human agent engaged, often minutes after intake.",
         solutionDetail:
@@ -674,6 +708,8 @@ export const categories = [
           'Replaced Selenium with Apify actors and orchestrated the entire nightly pipeline in n8n — Hunter.io for decision-maker discovery, ZeroBounce and Clearout Phone for verification, NocoDB as the dedupe layer, and an OpenAI agent to summarize and email the results before business hours.',
         impact:
           'Brought monthly cost into the client\'s $200–300 target while covering four full niches a day, with dedupe, rate-limit handling, and credit monitoring that catch problems before a report goes missing.',
+        metaDescription:
+          'Brought monthly cost into the client\'s $200–300 target while covering four full niches a day, with dedupe and credit monitoring built in.',
         problemSolved:
           "Businesses running outbound sales need a steady stream of decision-maker contacts at companies that are actively hiring — hiring activity signals budget and growth — but manually scanning job postings, identifying the right decision-makers, and verifying their emails and phone numbers before the data goes stale is slow, labor-intensive work that delays the start of every outreach cycle.",
         challengeDetail:
@@ -734,6 +770,8 @@ export const categories = [
           'Built two linked Google Apps Script automations — one files and logs every emailed document into Drive and Sheets, the other runs each attachment through Document AI to classify and extract its data automatically.',
         impact:
           'Eliminated manual document triage and data entry entirely, so every incoming document is consistently categorized, filed, and logged without anyone opening it by hand.',
+        metaDescription:
+          'Eliminated manual document triage and data entry — every incoming document is consistently categorized, filed, and logged without manual handling.',
         challengeDetail:
           "Client documents arrived by email in a continuous, unpredictable stream — application forms, bank statements, and other supporting paperwork — and every one had to be opened, read, categorized, filed into the right place, and cross-referenced into a spreadsheet by hand before anyone downstream could act on it. That process held up fine at low volume, but became a genuine bottleneck as volume grew: slow, repetitive, and prone to the transcription and filing mistakes that come from doing the same manual triage over and over.",
         solutionDetail:
@@ -811,6 +849,8 @@ export const categories = [
           'Built a suite of five linked n8n workflows backed by per-platform Google Cloud Functions: an AI agent that drafts platform-specific captions from a Google Form submission and holds them for human approval in a shared sheet, a minute-precision Google Apps Script scheduler, a webhook-triggered publisher that gates and uploads to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok, a scheduled OAuth token-refresh workflow, an auth-callback workflow handling every platform’s handshake (including Threads’ extra compliance requirements), and a centralized error logger.',
         impact:
           'Replaced manual caption-writing, scheduling, and OAuth babysitting with a pipeline where the only manual step left is approving AI-drafted copy — everything else, from minute-precise publishing to token refresh to failure alerts, runs on its own.',
+        metaDescription:
+          'Replaced manual caption-writing, scheduling, and OAuth babysitting with a pipeline where the only manual step left is approving AI-drafted copy.',
         challengeDetail:
           'A client needed a steady posting cadence across six social platforms — YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok — that could take a raw video and campaign brief all the way to a live, scheduled post without a person writing six sets of platform-specific captions by hand, tracking which of six OAuth tokens was about to expire, publishing AI-drafted copy with no review checkpoint, or discovering a failed upload only when someone happened to check. Threads added its own compliance burden on top — Meta requires dedicated deauthorization and data-deletion callback endpoints plus an extra short-lived-to-long-lived token exchange that no other platform needs — and with six independent API calls firing per post, a partial failure on just one platform could easily go unnoticed.',
         solutionDetail:
@@ -898,6 +938,8 @@ export const categories = [
           "Moved inbox polling out of n8n into a Google Apps Script that filters replies against allowed recipients, blocked domains/senders, and warm-up/unsubscribe keywords before queuing them to an n8n webhook at a rate-limited pace, where Gemini 2.5 Flash Lite classifies each one's intent and posts a formatted status to Slack.",
         impact:
           'Replaced manual inbox triage with automatic, rate-safe classification and instant Slack visibility on every reply, with filtering rules and classification behavior both tunable from a spreadsheet and a prompt instead of code.',
+        metaDescription:
+          'Replaced manual inbox triage with automatic, rate-safe reply classification and instant Slack visibility, tunable from a spreadsheet and a prompt.',
         challengeDetail:
           "Every reply to an outreach campaign had to be opened and read by hand just to tell a genuinely interested prospect apart from a bounce, an out-of-office reply, or an unsubscribe request, delaying follow-up on the replies that actually mattered. An earlier version of the pipeline used n8n's built-in Gmail Trigger to poll the inbox directly, but that gave no granular control over what counted as a valid outreach reply — no recipient allow-list, blocked-domain/sender filtering, or warm-up/unsubscribe keyword detection — and no way to throttle delivery to the AI classification step at a safe, sub-rate-limit pace, risking delayed or dropped notifications whenever replies arrived in a burst. On top of that, classification rules and the AI's own behavior both needed regular tuning as new outreach patterns appeared, an unhandled AI JSON-parsing failure could silently corrupt a Slack notification with no clear cause, and a failed webhook delivery risked losing a genuine reply outright.",
         solutionDetail:
@@ -956,6 +998,8 @@ export const categories = [
           'Built three linked n8n workflows — OCR-and-GPT-4o analysis of new tickets and their attachments, ElevenLabs transcription and summarization of pending call recordings, and full-history-aware response drafting for ongoing conversations — all logging into a shared Central Intelligence Hub database.',
         impact:
           'Every new ticket, pending call, and ongoing conversation now gets an instant AI-drafted summary and reply logged straight into Zendesk and the Intelligence Hub, before an agent even opens it.',
+        metaDescription:
+          'Every new ticket, pending call, and ongoing conversation gets an instant AI-drafted summary and reply logged into Zendesk before an agent opens it.',
         challengeDetail:
           "A support team's agents were spending time piecing together context by hand before they could reply to a ticket: reading through screenshots and PDF attachments on a new ticket, listening back through an Aircall recording to find out what was actually discussed, or re-reading a long conversation thread to draft the next reply. None of that AI-assisted work was logged anywhere central, so there was no shared record of what had already been summarized or proposed for a given ticket — and nothing stopped the same trigger, like a retried webhook or a re-added tag, from generating the same AI response twice.",
         solutionDetail:
@@ -1020,6 +1064,8 @@ export const categories = [
           'Published Kumquat, an 81-page FlutterFlow template spanning 11 feature modules — auth, provider search, appointment booking with payments, chat, video calling, sessions, reviews, and a wallet — on a Firestore-ready data schema.',
         impact:
           'Published to the FlutterFlow Marketplace as a reusable starting point for skill-sharing and booking apps, cutting weeks of UI/UX design down to configuration and backend integration — 577 downloads on the marketplace to date.',
+        metaDescription:
+          'Published to the FlutterFlow Marketplace as a reusable starting point for skill-sharing and booking apps — 577 downloads on the marketplace to date.',
         problemSolved:
           "Teams building a skill-sharing, coaching, or consultation-booking app — tutoring, telehealth, freelance marketplaces — don't have to design and wire up 81 screens of auth, search, booking, payments, chat, and video calling from a blank canvas; Kumquat gives them that full UI and page architecture pre-built and ready to connect to a backend.",
         challengeDetail:
@@ -1076,6 +1122,8 @@ export const categories = [
           'Published Foodii, a FlutterFlow template with custom Data Types mirroring a future Firestore schema, a shared component library, and App State variables simulating backend data so the full app could be built and demoed before Firestore goes live.',
         impact:
           'Published to the FlutterFlow Marketplace as a backend-ready recipe-app template — connecting real Firestore collections later needs minimal rework, since the schema and UI bindings already exist — with 537 downloads to date.',
+        metaDescription:
+          'Published to the FlutterFlow Marketplace as a backend-ready recipe-app template with real Firestore schema and UI bindings — 537 downloads to date.',
         problemSolved:
           "Developers building a recipe-sharing or meal-planning app don't have to design and wire up every screen and flow of a food-content app from a blank canvas — Foodii gives them a working authentication flow, home feed, chef/recipe explore section, recipe detail and favourites, notifications, and profile settings already built, on a data model shaped for a real backend.",
         challengeDetail:
