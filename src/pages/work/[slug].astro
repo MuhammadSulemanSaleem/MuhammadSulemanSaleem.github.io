@@ -71,9 +71,7 @@ const projectSchema = {
   ...(ogImage ? { image: new URL(ogImage, Astro.site).toString() } : {}),
   keywords: project.stack.join(', '),
   author: {
-    '@type': 'Person',
-    name: 'Muhammad Suleman Saleem',
-    url: 'https://MuhammadSulemanSaleem.github.io',
+    '@id': 'https://muhammadsulemansaleem.github.io/#person',
   },
 };
 ---
