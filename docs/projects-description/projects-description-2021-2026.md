@@ -4,15 +4,21 @@
 
 ### 1. Houzi - Real Estate Mobile Application
 
+**Timeline:** Apr 2021 – Sep 2024
+
 **Problem:** Real estate businesses running a Houzez WordPress site (a theme used by 53,000+ site owners globally) had a fully functional website but no native mobile presence. Building a separate mobile app from scratch for each client would mean duplicating business logic, API integrations, and UI work, while still needing to let individual agencies customize branding, behavior, and features without maintaining separate forks of the whole codebase.
 
 **Stack:** Flutter · Dart · Houzez WordPress REST API · Dio (HTTP client) · Hive (local storage) · Provider (state management/ChangeNotifier) · Google Maps · OneSignal Push Notifications · App/Deep Linking · RTL · Android · iOS
+
+**Links:** [App Store](https://apps.apple.com/us/app/houzi-app-for-houzez/id1598357211) · [Google Play](https://play.google.com/store/apps/details?id=com.booleanbites.houzez&hl=en) · [CodeCanyon](https://codecanyon.net/item/houzi-real-estate-app/39753350)
 
 **Solution:** Houzi is a white-label real estate mobile application I developed in collaboration with the team. Rather than a bespoke build per client, the app connects to any Houzez-powered WordPress site over its REST API and dynamically pulls in that site's listings, agents, and content, so a single Flutter codebase powers every deployment. To solve the customization problem, the codebase is split into a thin app shell (lib/) that exposes white-label "hooks" and a shared local package (packages/houzi_package/) containing nearly all app logic — API layer, models, state providers, pages, and widgets. Client-specific behavior (custom widgets, login flows) is layered on top via the hooks system rather than modifying the shared package, and a remote JSON configuration file lets branding and feature toggles be updated without shipping new app builds or app-store review. Feature-wise, it covers property browsing and search with a clustered Google Maps view, detailed property pages with similar listings/reviews/PDF export, agent and agency directories, email/Google/Apple/Facebook/OTP login, listing management with image uploads for agents and owners, favorites and saved-search alerts, in-app messaging, push and in-app notifications through OneSignal, a blog/articles section with commenting, membership packages with in-app purchases for featured listings, deep linking, light/dark themes, RTL layouts, and 11 bundled languages. A later addition, Houzi AI (v1.4.8), layers in natural-language property search with voice input and an "Ask About This Listing" chat grounded in a specific property's data, on a bring-your-own-key model across Google Gemini, Claude, and OpenAI, with the API key held on the client's own WordPress server rather than in the app.
 
 **Impact:** Any Houzez-based real estate site can launch a fully branded, dynamic native mobile app in a fraction of the time and cost of a custom build. Houzi is sold on CodeCanyon as a source-code product and has reached 53,000+ Houzez theme owners, earning a 4.84★ rating, 500+ CodeCanyon sales, and 5,000+ Play Store downloads.
 
 ### 2. Houzi Builder - Desktop Application
+
+**Timeline:** Mar 2022 – Aug 2024
 
 **Problem:** Houzez WordPress theme owners who wanted to offer a companion mobile app (Houzi) previously had to hand-edit a configuration file to control the app's colors, layouts, navigation, and content sections. This manual, code-level process was error-prone and inaccessible to non-technical site owners, since any change to branding or screen layout required directly editing structured JSON rather than using a visual interface. There was also no straightforward way to preview how configuration changes would look inside the actual mobile app before shipping them, and no built-in mechanism to verify that only legitimately licensed users (via a Code Canyon-style purchase) could access the configuration tool.
 
@@ -23,6 +29,8 @@
 **Impact:** Turned a manual, code-editing workflow into a guided, form-driven desktop tool with live previews, lowering the technical barrier for Houzez site owners to customize and ship their branded mobile app. Configuration that once required understanding a JSON schema can now be done visually, reducing configuration errors, speeding up setup time, and keeping license enforcement and WordPress site integration built into the same tool.
 
 ### 3. Houzi Rest Api Plugin - Wordpress PHP Plugin
+
+**Timeline:** May 2023 – Aug 2024
 
 **Problem:** The Houzi mobile app needed a reliable, real-time channel for exchanging data with the WordPress website, and that channel had to keep expanding as new engagement features — push, chat, comments — were added over time.
 
@@ -53,6 +61,8 @@
 
 ### 1. Aniflex Mobile Application
 
+**Timeline:** Sep – Oct 2024
+
 **Problem:** Users need motivation to stay consistent with regular fitness routines, and generic tracking apps often fail to keep people engaged over the long term.
 
 **Stack:** Flutter
@@ -62,6 +72,8 @@
 **Impact:** Gamifying progress through avatars and social accountability gives users a concrete, motivating reason to keep training consistently instead of losing momentum after the first few weeks.
 
 ### 2. Unity Desktop Application
+
+**Timeline:** Oct 2024 – Jan 2025
 
 **Problem:** The client needed a single, role-based desktop workspace that combined web browsing, credential management, notifications, and call/meeting handling — capabilities that were otherwise spread across several disconnected tools.
 
@@ -73,6 +85,8 @@
 
 ### 3. Unity Web Portal
 
+**Timeline:** Jan 2025
+
 **Problem:** Admins needed a central place to manage users, roles, and each role's custom navigation/layout for the Unity desktop application, rather than configuring each user's experience by hand.
 
 **Stack:** Next.js · Nest.js · React · TypeScript · JavaScript · MUI (Material UI) · ApexCharts · Axios · Prisma · PostgreSQL
@@ -83,9 +97,13 @@
 
 ### 4. Linked Golf Mobile Application
 
+**Timeline:** Feb – Mar 2025
+
 **Problem:** Linked Golf — a Flutter app with an Express backend for golf-focused social and booking — was already live and had been built out by several other developers by the time I joined. Bloc was in place for state management but poorly integrated and tightly coupled to the UI, so state issues surfaced across nearly every core screen: Home, Availability, Add Golf Buddy, the QR page (profile QR + scan), user search, the golfer profile page, and Golf Courses & Events. Chat, built on PubNub, wasn't working reliably either — reactions were wired up but did nothing, and messages weren't grouped by date. The backend had accumulated a lot of dead code and tight coupling, and several screens fired redundant, duplicate API calls that hurt performance. On top of that, golf-course owners had no way to create events, golfers had no way to subscribe to one or manage a team, joining a team had no verification step, applink/dynamic linking didn't route correctly, and a course's profile page didn't surface golfer availability.
 
 **Stack:** Flutter · Dart · Bloc · Express · Node.js · MongoDB · PubNub · Stripe · Firebase Cloud Messaging (FCM) · Firebase Admin · SendGrid · Nodemailer · Google APIs · JWT · App/Deep Linking · QR Code
+
+**Links:** [App Store](https://apps.apple.com/us/app/linked-golf/id1619093321) · [Google Play](https://play.google.com/store/apps/details?id=com.linkedgolfapp.mobile&hl=en)
 
 **Solution:** Refactored both the Flutter frontend and the Express backend of this already-live golf social and booking app:
 
@@ -102,9 +120,13 @@
 
 ### 5. Kumquat - Talent Match - Flutter Flow
 
+**Timeline:** Apr 2025
+
 **Problem:** Skill-sharing and consultation-booking apps — coaching, tutoring, telehealth — needed a proven, full-featured starting point instead of a blank canvas: dozens of interconnected screens (authentication, provider search, appointment booking, payments, chat, video calling, session management, reviews, wallet) that all had to share one consistent, reusable component system without duplicating UI logic; multi-step flows like booking, payment, and rescheduling that needed to stay intuitive despite their complexity; two very different in-app communication types — chat and live video — that had to feel like one cohesive experience; and a data schema flexible enough to later support real backend logic (payments, reviews, availability) without a costly redesign.
 
 **Stack:** FlutterFlow · Flutter · Dart · Firebase Firestore · Firebase Authentication · Material Design
+
+**Links:** [FlutterFlow Marketplace](https://marketplace.flutterflow.io/item/lSQ2L1l9E8ow3EuOdIxX)
 
 **Solution:** I fully developed this FlutterFlow template, an 81-page UI kit spanning 11 feature modules — authentication with role/profession selection, home and search, profile details, appointment booking with an integrated payment flow, real-time chat and inbox, live video/voice calling, session management with rescheduling, reviews, a wallet-style balance with an Add Funds feature, and account settings. Shared UI elements are modularized into their own "components" folders under each feature domain (appointment, chat, auth, home), keeping the design system consistent while minimizing rework, and pages are grouped by feature domain rather than by screen type so multi-step flows like the booking-and-payment sequence stay easy to navigate and extend. A dedicated data schema was pre-modeled for the app's core entities — sessions, chat messages, users, reviews, payment cards, profession categories — so the template is structurally ready to connect to Firebase Firestore and Authentication once a developer wires up real backend logic; the shipped template itself runs on dummy/placeholder data rather than live Firestore collections or API calls.
 
@@ -112,9 +134,13 @@
 
 ### 6. Foodii - Recipe Book - Flutter Flow
 
+**Timeline:** May 2025
+
 **Problem:** Developers building recipe-sharing apps needed a credible, ready-made starting point rather than designing and building every screen and flow of a food-content app from scratch: a nested, relational recipe/chef data model (recipes with ingredient/step lists, chefs with recipe/category lists) that's harder to represent cleanly in a low-code schema than in hand-written code, 57 feature pages across authentication, home, explore, and profile modules that needed to share one consistent, reusable component system without duplicating UI logic, and no live backend wired up yet to build and test realistic-looking screens against.
 
 **Stack:** FlutterFlow · Flutter · Dart · Firebase Firestore · Firebase Authentication · Material Design
+
+**Links:** [FlutterFlow Marketplace](https://marketplace.flutterflow.io/item/7YbPf6R4gKKpxem1xiHY)
 
 **Solution:** I fully developed this FlutterFlow template, a 65-page recipe discovery and cooking-companion app spanning authentication (login, signup, OTP verification, forgot password), a home feed with recommended and trending recipes, an explore section for browsing chefs and their recipe collections, a recipe detail experience with ingredients and step-by-step instructions, favourites, a notifications center, and profile settings. I defined custom Data Types (recipe, recipeIngredient, recipeStep, chef, user, category, notification) that mirror what a production Firestore schema would look like, so UI components already bind to properly structured data, and centralized shared widgets — buttons, category chips, search bars, headers — in a dedicated app_components folder so every feature module draws from the same design system. App State variables (LoggedInUser, trendingRecipesList, recommendationRecipesList) simulate backend-driven data locally, letting the full interface be built and demoed before any Firestore collections go live, and a couple of custom Dart functions/widgets handle logic — like formatting follower counts and the notification icon badge — that FlutterFlow's visual tools don't natively cover. Firebase is connected as the backend provider, but no Firestore collections have been created yet, so the shipped template runs on local App State and custom data schemas rather than live cloud data.
 
@@ -122,15 +148,21 @@
 
 ### 7. Exodus
 
+**Timeline:** Mar 2025
+
 **Problem:** The existing Blue Sky mobile application, originally built for EPIC PC, needed to be relaunched as a distinct product with its own brand identity. Blue Sky/Exodus is a healthcare app for doctors and patients — appointments (patients can self-schedule), medications, lab test results, and health vitals in one place; labs upload results through their own portal and both patients and doctors view/download them via the app's API instead of a lab visit or printout. The app also pairs with the JSTYLE 2208A customized medical health smart wristband so patients' health vitals can be monitored by both patients and doctors, but syncing vitals from the wristband was slow and often failed — every scan sent its data through an API call to the wristband's SDK/plugin, and that call failed often.
 
 **Stack:** Flutter · Dart · Bloc · Firebase Cloud Messaging (FCM)
+
+**Links:** [Google Play](https://play.google.com/store/apps/details?id=org.blueskypro.mobile)
 
 **Solution:** I fully rebranded the Flutter application, replacing the branding, visual identity, and relevant naming throughout the app to turn Blue Sky into the Exodus app. Alongside the rebrand, I downloaded the wristband's vitals SDK and packaged it directly into the app build instead of calling it over the network per scan, removing the failure-prone API round trip and generating vitals results faster and in a more optimized way.
 
 **Impact:** Relaunched the product under its new brand and identity on the existing, proven Flutter codebase, avoiding the cost and risk of a ground-up rebuild, while also making wearable health-vitals syncing faster and more reliable for the doctors and patients who depend on it.
 
 ### 8. Capital Shack
+
+**Timeline:** Jun – Jul 2025
 
 **Problem:** Client documents — application forms, bank statements, and other supporting paperwork — arrived by email in a continuous, unpredictable stream, and every one had to be opened, read, categorized, filed into the right place, and cross-referenced into a spreadsheet by hand before anyone downstream could act on it. That process held up fine at low volume, but became a genuine bottleneck as volume grew: slow, repetitive, and prone to the transcription and filing mistakes that come from doing the same manual triage over and over.
 
@@ -142,6 +174,8 @@
 
 ### 9. Agentic Job Discovery Automation
 
+**Timeline:** Aug – Sep 2025
+
 **Problem:** The client had been running decision-maker discovery — finding and verifying the email/phone of CEOs, CTOs, COOs, etc. at companies actively hiring — across four industry niches (AI/ML, GIS, HealthTech, and Manufacturing) on a Selenium-based scraper paired with a patchwork of other tools. Maintaining scraper infrastructure, handling anti-bot measures, and paying for the compute/proxy overhead of full browser instances drove the monthly tool bill to $600–800, well above the client's $200–300 target, and the system had no built-in error handling or visibility into API credit balances — a failure or a depleted quota broke a stage silently, with nobody finding out until a report was missing or thin.
 
 **Stack:** n8n · Apify · Hunter.io · ZeroBounce · Clearout Phone · Nocodb · OpenAI · Google Sheets · Gmail
@@ -151,6 +185,8 @@
 **Impact:** Brought monthly cost into the client's $200–300 target while still running four full niche pipelines every night, replacing hours of manual research and verification with a daily, pre-verified list of decision-maker contacts and a plain-language run summary waiting in the client's inbox each morning — with rate-limit handling, an error-alerting workflow, and credit monitoring catching problems before a report goes missing or thin.
 
 ### 10. Social Media Post Management Automation
+
+**Timeline:** Nov – Dec 2025
 
 **Problem:** A realtor client had to manually write a caption for every social media platform using Open AI and then manually upload and schedule each promotional video across multiple accounts — a repetitive process that ate into time better spent on the business itself. The publishing side had its own complexity: six platforms (YouTube, Facebook, Instagram, LinkedIn, Threads, TikTok), each with a different upload API, its own OAuth token that expires on its own schedule, and — for Threads specifically — extra Meta platform-compliance requirements (deauthorization/data-deletion callbacks, a two-step short-lived-to-long-lived token exchange) that a manual process had no consistent way to handle.
 
@@ -172,6 +208,8 @@
 
 ### 12. Outreach Email Classification Automation
 
+**Timeline:** Jan 2026
+
 **Problem:** Every reply to an outreach campaign had to be opened and read by hand just to tell a genuinely interested prospect apart from a bounce, an out-of-office reply, or an unsubscribe request, delaying follow-up on the replies that actually mattered. An earlier version of the pipeline used n8n's built-in Gmail Trigger to poll the inbox directly, but that gave no granular control over what counted as a valid outreach reply — no recipient allow-list, blocked-domain/sender filtering, or warm-up/unsubscribe keyword detection — and no way to throttle delivery to the AI classification step at a safe, sub-rate-limit pace, risking delayed or dropped notifications whenever replies arrived in a burst. Classification rules and the AI's own behavior also needed regular tuning as new outreach patterns appeared, an unhandled AI JSON-parsing failure could silently corrupt a Slack notification with no clear cause, and a failed webhook delivery risked losing a genuine reply outright.
 
 **Stack:** n8n · Google Apps Script · Gmail · Google Sheets · Google Gemini (2.5 Flash Lite) · Slack
@@ -182,6 +220,8 @@
 
 ### 13. The Ramirez Legal Group
 
+**Timeline:** Oct 2025
+
 **Problem:** ClickUp is used to track legal cases, while the client's client-facing dashboard is built and deployed on Emergent Labs. The two had to be kept in sync by hand — whenever a case was created or updated in ClickUp, someone had to manually re-enter or relay that change onto the dashboard, risking the two systems falling out of step.
 
 **Stack:** Zapier · ClickUp · Emergent Labs
@@ -191,6 +231,8 @@
 **Impact:** Keeps the case tracker and the client-facing dashboard continuously synchronized in real time, removing duplicate manual data entry and eliminating the risk of the two systems drifting apart.
 
 ### 14. United Global Van Line (UGVL)
+
+**Timeline:** Feb – Apr 2026
 
 **Problem:** United Global Van Line (UGVL), a household moving brokerage, needed its entire lead-to-deposit funnel to run on autopilot with zero tolerance for slow response times or leads falling through the cracks. The original build fell short in several ways: voice, SMS, and voicemail automation were split across three separate outside vendors (Retell AI, Closebot, and Slybroadcast), each with its own credentials, webhooks, and billing, and — critically — its own conversation thread that Go High Level and human agents couldn't fully see. Every warm-transferred lead, whether a small local move or a high-value interstate relocation, landed in a single ring group containing every agent, so a Senior closer's time could easily go to a low-value lead while a high-value one waited. Leads could also silently stall at any pipeline stage — never blitzed, never quoted, a deposit asked but never paid — and agent performance issues could go unnoticed for a week or more. Getting a deposit "asked" didn't mean it was collected, and every collected deposit still needed to be reliably tied back to the right lead, agent, and pipeline stage, with refunds handled just as cleanly. And a lead's first real value only arrived once a human agent engaged, often minutes after intake.
 
@@ -208,6 +250,8 @@
 **Impact:** Three external vendor subscriptions and their separate credential/webhook surfaces were eliminated, replaced by one unified conversation thread per lead across voice, SMS, and voicemail. HOT leads are now guaranteed a Senior closer without any manual dispatching, funnel leaks and coaching-worthy calls surface automatically instead of relying on a manager to notice them, and deposit collection, refunds, and agent revenue crediting all reconcile themselves end to end with an auditable idempotency key on every request — turning a purely reactive, manually-monitored sales process into one that scores, routes, and polices itself.
 
 ### 15. NebuFit Mobile Application
+
+**Timeline:** Apr 2026
 
 **Problem:** Users need accessible, deeply personalized fitness and nutrition coaching, health and bloodwork insight, and consistent progress tracking, spanning the full journey from onboarding through an ongoing subscription — without needing a human trainer.
 
@@ -248,9 +292,13 @@
 
 ### 16. Orient Champions Mobile Application
 
+**Timeline:** May – Jun 2026
+
 **Problem:** Orient Champions — the field-sales incentive platform for Orient Electronic (Pvt.) Ltd.'s Field Sales Manager (FSM) Incentive Program — was already live and had been built out by several prior developers by the time I joined. Both the React Native frontend and Nest.js backend were in poor shape: heavy dead code, tightly coupled modules with no clear separation of concerns, no real state management on the frontend beyond trivial local useState, several screens running on hardcoded data instead of real APIs, non-operational push notifications, a broken App Updater and filters, and poorly managed cron jobs that didn't reliably produce accurate results before business hours. The client called in daily about bugs, and field agents regularly struggled to scan batches and receive their incentives correctly.
 
 **Stack:** React Native · Expo · TypeScript · Redux · Axios · AsyncStorage · Node.js · Nest.js · MongoDB · JWT · bcrypt · SAP RFC · AWS S3 · Firebase · Firebase Cloud Messaging (FCM) · Twilio
+
+**Links:** [App Store](https://apps.apple.com/us/app/orient-champions/id1560823095) · [Google Play](https://play.google.com/store/search?q=Orient%20Champions&c=apps&hl=en)
 
 **Solution:** A production-grade platform for Orient Electronic (Pvt.) Ltd. consisting of a Nest.js backend, an administrative web portal, and a React Native mobile application used by field agents nationwide to scan product batches, track incentives, receive notifications, and synchronize activity with SAP ERP in real time. The application already had this core architecture in place — a four-level organizational hierarchy (National → Zone → Branch → FSM), custom SAP BAPIs via SAP RFC, JWT + Twilio SMS OTP auth, and bulk Excel/CSV processing on AWS S3 — but the codebase itself needed to be stabilized and modernized:
 
@@ -267,6 +315,8 @@
 **Impact:** Eliminated roughly 90% of the bugs and issues that previously generated daily client phone calls, most of them centered on agents' scanning and incentive-tracking difficulties. Post-refactor, the client's calls shifted almost entirely from bug fixes to discussing new features — a clear signal the underlying platform had stabilized — and field agents now use a redesigned, Redux-powered app with working push notifications and filters, without the friction that used to generate support tickets.
 
 ### 17. Techtiz Website
+
+**Timeline:** Jun 2026
 
 **Problem:** Techtiz needed a large multi-vertical marketing site — services, industries, a separate government-subcontracting (SLED) audience, and a blog — while migrating off a legacy static HTML/CSS/JS site. The build had to support SEO-heavy, JSON-LD-rich pages at scale, avoid duplicating markup across dozens of near-identical service/industry pages, keep a completely separate tone and trust-signal set for the SLED (government) audience without cross-contaminating commercial pages, and integrate a headless WordPress blog without triggering full-site rebuilds on every post edit.
 
@@ -287,6 +337,8 @@
 **Impact:** Delivered a maintainable, SEO-optimized site where new service or industry pages can be added by following a documented, repeatable pattern rather than one-off custom work, content editors can publish blog posts without needing a code deploy, and the government-focused SLED funnel stays compliant and message-safe as a fully separate path from the commercial site.
 
 ### 18. Creative OS
+
+**Timeline:** Jun – Jul 2026
 
 **Problem:** Writers, filmmakers, musicians, and other creators juggle large local libraries of screenplays, notes, lyrics, and research material with no easy way to search, reason across, or edit them as a connected whole — and typical AI chatbots can't reach into local files or hold onto creative context over time.
 
@@ -351,6 +403,8 @@
 
 ### 19. ATTN Agency
 
+**Timeline:** Jul 2026
+
 **Problem:** The agency needed a fully native, on-brand homepage built directly within Go High Level's page builder, rather than an embedded page or iframe bolted onto the platform.
 
 **Stack:** Go High Level · Google Gemini (AI asset generation)
@@ -360,6 +414,8 @@
 **Impact:** Delivered a native, fully GHL-integrated homepage for the agency that's easy for their team to maintain going forward using Go High Level's own tools.
 
 ### 20. Zendesk AI Support Automation
+
+**Timeline:** Sep – Oct 2025
 
 **Problem:** A support team's agents were spending time piecing together context by hand before every reply — reading through screenshots and PDF attachments on a new ticket, listening back through an Aircall call recording, or re-reading a long conversation thread to draft the next response. None of that AI-assisted work was logged anywhere central, so there was no shared record of what had already been summarized or proposed for a given ticket, and nothing stopped the same trigger — a retried webhook, a re-added tag — from generating the same AI response twice.
 
