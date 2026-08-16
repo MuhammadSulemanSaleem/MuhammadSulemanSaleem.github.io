@@ -71,6 +71,8 @@ export const techIcons = {
   Axios: '/assets/svgs/axios.svg',
   Prisma: '/assets/svgs/prisma.svg',
   Sentry: '/assets/svgs/sentry.svg',
+  Redux: '/assets/logos/redux.png',
+  bcrypt: '/assets/logos/bcrypt.png',
   Aloware: '/assets/logos/aloware.png',
   Apify: '/assets/logos/apify.png',
   Bloc: '/assets/svgs/bloc.svg',
