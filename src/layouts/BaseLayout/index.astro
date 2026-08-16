@@ -21,8 +21,11 @@ const ogImageURL = new URL(image, Astro.site);
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': 'https://muhammadsulemansaleem.github.io/#person',
   name: 'Muhammad Suleman Saleem',
   jobTitle: 'Full-Stack Software Engineer & AI Product Engineer',
+  description:
+    'Full-Stack Software Engineer & AI Product Engineer based in Lahore, Pakistan, specializing in Flutter, Node.js, RAG systems, multi-provider LLM orchestration, and n8n automation.',
   url: 'https://MuhammadSulemanSaleem.github.io',
   image: ogImageURL.toString(),
   email: 'mailto:rana.suleman2297@gmail.com',
@@ -31,7 +34,18 @@ const personSchema = {
     addressLocality: 'Lahore',
     addressCountry: 'PK',
   },
-  sameAs: ['https://linkedin.com/in/muhammad-suleman-saleem'],
+  sameAs: [
+    'https://linkedin.com/in/muhammad-suleman-saleem',
+    'https://github.com/MuhammadSulemanSaleem',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Techtiz',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Information Technology University (ITU), Lahore',
+  },
   knowsAbout: [
     'Full-Stack Development',
     'AI Product Engineering',
