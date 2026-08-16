@@ -9,6 +9,7 @@ interface Cert {
   issuer: string;
   issuerIcon: string;
   pdf: string;
+  verifyUrl: string;
 }
 
 export function getStaticPaths() {
@@ -19,6 +20,7 @@ export function getStaticPaths() {
       issuer: 'Anthropic',
       issuerIcon: '/assets/svgs/claude-api.svg',
       pdf: '/certifications/anthropic/claude-101.pdf',
+      verifyUrl: 'https://verify.skilljar.com/c/sxzjidow2r78',
     },
     {
       slug: 'anthropic/claude-code-101',
@@ -26,6 +28,7 @@ export function getStaticPaths() {
       issuer: 'Anthropic',
       issuerIcon: '/assets/svgs/claude-api.svg',
       pdf: '/certifications/anthropic/claude-code-101.pdf',
+      verifyUrl: 'https://verify.skilljar.com/c/xucvjtkdxu76',
     },
     {
       slug: 'anthropic/introduction-to-agent-skills',
@@ -33,6 +36,7 @@ export function getStaticPaths() {
       issuer: 'Anthropic',
       issuerIcon: '/assets/svgs/claude-api.svg',
       pdf: '/certifications/anthropic/introduction-to-agent-skills.pdf',
+      verifyUrl: 'https://verify.skilljar.com/c/hxku9s7935in',
     },
     {
       slug: 'anthropic/claude-code-in-action',
@@ -40,6 +44,7 @@ export function getStaticPaths() {
       issuer: 'Anthropic',
       issuerIcon: '/assets/svgs/claude-api.svg',
       pdf: '/certifications/anthropic/claude-code-in-action.pdf',
+      verifyUrl: 'https://verify.skilljar.com/c/9adj7vg2p4pq',
     },
     {
       slug: 'anthropic/introduction-to-model-context-protocol',
@@ -48,6 +53,7 @@ export function getStaticPaths() {
       issuer: 'Anthropic',
       issuerIcon: '/assets/svgs/claude-api.svg',
       pdf: '/certifications/anthropic/introduction-to-model-context-protocol.pdf',
+      verifyUrl: 'https://verify.skilljar.com/c/omkq9wipru94',
     },
     {
       slug: 'anthropic/claude-platform-101',
@@ -55,6 +61,7 @@ export function getStaticPaths() {
       issuer: 'Anthropic',
       issuerIcon: '/assets/svgs/claude-api.svg',
       pdf: '/certifications/anthropic/claude-platform-101.pdf',
+      verifyUrl: 'https://verify.skilljar.com/c/c8tkshrkg2gd',
     },
     {
       slug: 'anthropic/introduction-to-claude-cowork',
@@ -62,6 +69,7 @@ export function getStaticPaths() {
       issuer: 'Anthropic',
       issuerIcon: '/assets/svgs/claude-api.svg',
       pdf: '/certifications/anthropic/introduction-to-claude-cowork.pdf',
+      verifyUrl: 'https://verify.skilljar.com/c/4jx8defhh99a',
     },
     {
       slug: 'n8n/n8n-quickstart',
@@ -69,6 +77,7 @@ export function getStaticPaths() {
       issuer: 'n8n',
       issuerIcon: '/assets/svgs/n8n.svg',
       pdf: '/certifications/n8n/n8n-quickstart.pdf',
+      verifyUrl: 'https://learn.n8n.io/certificates/3a339f7e45284d00952e3260eb5f9627',
     },
     {
       slug: 'n8n/n8n101-essentials',
@@ -77,6 +86,7 @@ export function getStaticPaths() {
       issuer: 'n8n',
       issuerIcon: '/assets/svgs/n8n.svg',
       pdf: '/certifications/n8n/n8n101-essentials.pdf',
+      verifyUrl: 'https://learn.n8n.io/certificates/42e17a9c5b134fb2aa520a0ed0cd9567',
     },
     {
       slug: 'n8n/n8n102-integrations',
@@ -85,6 +95,7 @@ export function getStaticPaths() {
       issuer: 'n8n',
       issuerIcon: '/assets/svgs/n8n.svg',
       pdf: '/certifications/n8n/n8n102-integrations.pdf',
+      verifyUrl: 'https://learn.n8n.io/certificates/294d20421083470284b0731fb2344dac',
     },
     {
       slug: 'n8n/n8n103-in-practice',
@@ -93,6 +104,7 @@ export function getStaticPaths() {
       issuer: 'n8n',
       issuerIcon: '/assets/svgs/n8n.svg',
       pdf: '/certifications/n8n/n8n103-in-practice.pdf',
+      verifyUrl: 'https://learn.n8n.io/certificates/374c0b15cacf40f18b8da1e6b94fce54',
     },
   ];
 
@@ -118,9 +130,14 @@ const { cert } = Astro.props as { cert: Cert };
         <img src={cert.issuerIcon} alt={`${cert.issuer} logo`} width="16" height="16" />
         <h1 class="cert-viewer__title">{cert.title}</h1>
       </div>
-      <a href={cert.pdf} download class="cert-viewer__download">
-        <i class="ri-download-2-line" aria-hidden="true"></i> Download
-      </a>
+      <div class="cert-viewer__actions">
+        <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer" class="cert-viewer__verify">
+          <i class="ri-shield-check-line" aria-hidden="true"></i> Verify
+        </a>
+        <a href={cert.pdf} download class="cert-viewer__download">
+          <i class="ri-download-2-line" aria-hidden="true"></i> Download
+        </a>
+      </div>
     </header>
     <iframe
       src={cert.pdf}

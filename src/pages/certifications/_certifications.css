@@ -17,7 +17,8 @@
 }
 
 .cert-viewer__back,
-.cert-viewer__download {
+.cert-viewer__download,
+.cert-viewer__verify {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -32,10 +33,17 @@
 }
 
 .cert-viewer__back:hover,
-.cert-viewer__download:hover {
+.cert-viewer__download:hover,
+.cert-viewer__verify:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
   background: rgba(45, 212, 191, 0.08);
+}
+
+.cert-viewer__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .cert-viewer__info {
