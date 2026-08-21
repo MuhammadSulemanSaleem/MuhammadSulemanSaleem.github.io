@@ -16,4 +16,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://muhammadsulemansaleem.github.io/sitemap-index.xml
+Sitemap: https://sulemansaleem.com/sitemap-index.xml

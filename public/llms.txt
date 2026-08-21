@@ -4,52 +4,52 @@
 
 ## Pages
 
-- [Home](https://muhammadsulemansaleem.github.io/): Overview, engineering expertise, and selected work.
-- [Work](https://muhammadsulemansaleem.github.io/work/): Full portfolio of 19 projects across AI & LLM products, enterprise & desktop platforms, mobile applications, web & desktop, automation systems, and templates.
-- [Services](https://muhammadsulemansaleem.github.io/services/): Service offerings mirroring the six Work categories, each with concrete deliverables.
-- [About](https://muhammadsulemansaleem.github.io/about/): Resume — professional summary, experience, education, certifications, and skills.
-- [Contact](https://muhammadsulemansaleem.github.io/contact/): Contact form and direct contact details.
+- [Home](https://sulemansaleem.com/): Overview, engineering expertise, and selected work.
+- [Work](https://sulemansaleem.com/work/): Full portfolio of 19 projects across AI & LLM products, enterprise & desktop platforms, mobile applications, web & desktop, automation systems, and templates.
+- [Services](https://sulemansaleem.com/services/): Service offerings mirroring the six Work categories, each with concrete deliverables.
+- [About](https://sulemansaleem.com/about/): Resume — professional summary, experience, education, certifications, and skills.
+- [Contact](https://sulemansaleem.com/contact/): Contact form and direct contact details.
 
 ## AI & LLM Products
 
-- [NebuFit](https://muhammadsulemansaleem.github.io/work/nebufit/): AI-powered fitness coaching platform — RAG-processed bloodwork, computer-vision body analysis, multi-LLM (Claude, GPT-4o, ElevenLabs) voice coaching with SSE streaming and automatic failover, Flutter + Nest.js, Stripe subscriptions.
-- [Creative OS](https://muhammadsulemansaleem.github.io/work/creative-os/): Local-first AI assistant for creators, built on an MCP server architecture so it can search and reason over a user's own local files (screenplays, lyrics, notes) without third-party upload.
+- [NebuFit](https://sulemansaleem.com/work/nebufit/): AI-powered fitness coaching platform — RAG-processed bloodwork, computer-vision body analysis, multi-LLM (Claude, GPT-4o, ElevenLabs) voice coaching with SSE streaming and automatic failover, Flutter + Nest.js, Stripe subscriptions.
+- [Creative OS](https://sulemansaleem.com/work/creative-os/): Local-first AI assistant for creators, built on an MCP server architecture so it can search and reason over a user's own local files (screenplays, lyrics, notes) without third-party upload.
 
 ## Enterprise & Desktop Platforms
 
-- [Orient Champions](https://muhammadsulemansaleem.github.io/work/orient-champions/): Nationwide field-sales incentive platform for Orient Electronic — React Native + Nest.js, real-time SAP ERP sync across a four-level hierarchy. Refactor eliminated ~90% of previously reported bugs.
-- [UNITY Desktop App & Admin Portal](https://muhammadsulemansaleem.github.io/work/unity-desktop-admin-portal/): Desktop app and admin portal for a healthcare organisation — role-built navigation and live admin configuration.
+- [Orient Champions](https://sulemansaleem.com/work/orient-champions/): Nationwide field-sales incentive platform for Orient Electronic — React Native + Nest.js, real-time SAP ERP sync across a four-level hierarchy. Refactor eliminated ~90% of previously reported bugs.
+- [UNITY Desktop App & Admin Portal](https://sulemansaleem.com/work/unity-desktop-admin-portal/): Desktop app and admin portal for a healthcare organisation — role-built navigation and live admin configuration.
 
 ## Mobile Applications
 
-- [Houzi](https://muhammadsulemansaleem.github.io/work/houzi/): Flutter real estate app for the Houzez WordPress ecosystem. 53,000+ theme owners, 4.84★ rating, 500+ CodeCanyon sales, 5,000+ Play Store downloads. [App Store](https://apps.apple.com/us/app/houzi-app-for-houzez/id1598357211) · [Google Play](https://play.google.com/store/apps/details?id=com.booleanbites.houzez&hl=en) · [CodeCanyon](https://codecanyon.net/item/houzi-real-estate-app/39753350)
-- [Linked Golf](https://muhammadsulemansaleem.github.io/work/linked-golf/): Flutter golf social and booking app — availability matching, QR buddy adds, PubNub chat, Stripe-billed event subscriptions. [App Store](https://apps.apple.com/us/app/linked-golf/id1619093321) · [Google Play](https://play.google.com/store/apps/details?id=com.linkedgolfapp.mobile&hl=en)
-- [Exodus App](https://muhammadsulemansaleem.github.io/work/exodus-app/): Healthcare app for doctors and patients (appointments, medications, lab results, wearable-synced vitals), rebranded from Blue Sky to Exodus. [Google Play](https://play.google.com/store/apps/details?id=org.blueskypro.mobile)
+- [Houzi](https://sulemansaleem.com/work/houzi/): Flutter real estate app for the Houzez WordPress ecosystem. 53,000+ theme owners, 4.84★ rating, 500+ CodeCanyon sales, 5,000+ Play Store downloads. [App Store](https://apps.apple.com/us/app/houzi-app-for-houzez/id1598357211) · [Google Play](https://play.google.com/store/apps/details?id=com.booleanbites.houzez&hl=en) · [CodeCanyon](https://codecanyon.net/item/houzi-real-estate-app/39753350)
+- [Linked Golf](https://sulemansaleem.com/work/linked-golf/): Flutter golf social and booking app — availability matching, QR buddy adds, PubNub chat, Stripe-billed event subscriptions. [App Store](https://apps.apple.com/us/app/linked-golf/id1619093321) · [Google Play](https://play.google.com/store/apps/details?id=com.linkedgolfapp.mobile&hl=en)
+- [Exodus App](https://sulemansaleem.com/work/exodus-app/): Healthcare app for doctors and patients (appointments, medications, lab results, wearable-synced vitals), rebranded from Blue Sky to Exodus. [Google Play](https://play.google.com/store/apps/details?id=org.blueskypro.mobile)
 
 ## Web & Desktop
 
-- [HouziBuilder](https://muhammadsulemansaleem.github.io/work/houzibuilder/): Licensed desktop configurator with live preview for non-technical Houzi theme owners.
-- [Techtiz Corporate Website](https://muhammadsulemansaleem.github.io/work/techtiz-corporate-website/): Astro rebuild focused on performance and SEO.
-- [ATTN Agency Homepage](https://muhammadsulemansaleem.github.io/work/attn-agency-homepage/): Go High Level native-element build.
+- [HouziBuilder](https://sulemansaleem.com/work/houzibuilder/): Licensed desktop configurator with live preview for non-technical Houzi theme owners.
+- [Techtiz Corporate Website](https://sulemansaleem.com/work/techtiz-corporate-website/): Astro rebuild focused on performance and SEO.
+- [ATTN Agency Homepage](https://sulemansaleem.com/work/attn-agency-homepage/): Go High Level native-element build.
 
 ## Automation Systems
 
-- [Lead Response Automation — United Global Vanline](https://muhammadsulemansaleem.github.io/work/lead-response-automation/): Contact under 1 minute, AI voice call under 2 minutes.
-- [AGENTC — Agentic Job Discovery Automation](https://muhammadsulemansaleem.github.io/work/agentc-job-discovery/): Nightly automation across 4 niches, cut monthly costs from $600–800 to $200–300.
-- [Capital Shack — Document OCR Processing](https://muhammadsulemansaleem.github.io/work/capital-shack-ocr/): Two linked automations classifying 3 document types (confidential client engagement — see the case study for details).
-- [Ramirez Legal Group — ClickUp Dashboard Sync](https://muhammadsulemansaleem.github.io/work/ramirez-legal-clickup-sync/): Real-time case data sync into ClickUp.
-- [Social Media Posting Automation](https://muhammadsulemansaleem.github.io/work/social-media-posting-automation/): Auto-posts to 6 platforms (YouTube, Facebook, Instagram, LinkedIn, Threads, TikTok) with zero silent failures.
-- [Outreach Email Classification Automation](https://muhammadsulemansaleem.github.io/work/outreach-email-classification-automation/): AI reply classification with instant Slack routing.
-- [Zendesk AI Support Automation](https://muhammadsulemansaleem.github.io/work/zendesk-ai-support-automation/): Three linked workflows spanning tickets, calls, and replies.
+- [Lead Response Automation — United Global Vanline](https://sulemansaleem.com/work/lead-response-automation/): Contact under 1 minute, AI voice call under 2 minutes.
+- [AGENTC — Agentic Job Discovery Automation](https://sulemansaleem.com/work/agentc-job-discovery/): Nightly automation across 4 niches, cut monthly costs from $600–800 to $200–300.
+- [Capital Shack — Document OCR Processing](https://sulemansaleem.com/work/capital-shack-ocr/): Two linked automations classifying 3 document types (confidential client engagement — see the case study for details).
+- [Ramirez Legal Group — ClickUp Dashboard Sync](https://sulemansaleem.com/work/ramirez-legal-clickup-sync/): Real-time case data sync into ClickUp.
+- [Social Media Posting Automation](https://sulemansaleem.com/work/social-media-posting-automation/): Auto-posts to 6 platforms (YouTube, Facebook, Instagram, LinkedIn, Threads, TikTok) with zero silent failures.
+- [Outreach Email Classification Automation](https://sulemansaleem.com/work/outreach-email-classification-automation/): AI reply classification with instant Slack routing.
+- [Zendesk AI Support Automation](https://sulemansaleem.com/work/zendesk-ai-support-automation/): Three linked workflows spanning tickets, calls, and replies.
 
 ## Templates
 
-- [Kumquat — Talent Match](https://muhammadsulemansaleem.github.io/work/kumquat-talent-match/): Own-brand FlutterFlow Marketplace template, 577+ downloads.
-- [Foodii — Recipe Book](https://muhammadsulemansaleem.github.io/work/foodii-recipe-book/): Own-brand FlutterFlow Marketplace template, 537+ downloads.
+- [Kumquat — Talent Match](https://sulemansaleem.com/work/kumquat-talent-match/): Own-brand FlutterFlow Marketplace template, 577+ downloads.
+- [Foodii — Recipe Book](https://sulemansaleem.com/work/foodii-recipe-book/): Own-brand FlutterFlow Marketplace template, 537+ downloads.
 
 ## Identity
 
 - LinkedIn: https://linkedin.com/in/muhammad-suleman-saleem
 - GitHub: https://github.com/MuhammadSulemanSaleem
 - Location: Lahore, Pakistan
-- Contact: https://muhammadsulemansaleem.github.io/contact/
+- Contact: https://sulemansaleem.com/contact/

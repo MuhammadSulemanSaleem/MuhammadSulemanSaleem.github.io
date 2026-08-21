@@ -2,7 +2,7 @@
 
 Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 
-**Live site:** https://muhammadsulemansaleem.github.io
+**Live site:** https://sulemansaleem.com
 
 ## Stack
 
