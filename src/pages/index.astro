@@ -192,7 +192,7 @@ const stats = [
               always-on processes.
             </p>
             <div class="hc-hero__actions">
-              <a href="/about" class="hc-btn hc-btn--primary hc-btn--sm">Know Myself</a>
+              <a href="/about" class="hc-btn hc-btn--primary hc-btn--sm">About Me</a>
               <a href="/about" class="hc-icon-btn hc-reverse-icon-btn" aria-label="View resume">
                 <span class="hc-icon-btn__track">
                   <i class="ri-arrow-right-line" aria-hidden="true"></i>
@@ -202,7 +202,86 @@ const stats = [
             </div>
           </div>
           <div class="hc-hero__image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="900">
-            <img src="/assets/images/profile.png" alt="Muhammad Suleman Saleem" width="420" height="420" />
+            <div class="lc-panel" role="img" aria-label="Animated circular diagram of the product development lifecycle: Idea, Requirements, AI/LLM Engineering, Testing, Review, Delivery, looping continuously.">
+
+              <div class="lc-eyebrow">Where Ideas Become Systems</div>
+
+              <div class="lc-wheel">
+                <svg class="lc-ring-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <circle cx="50" cy="50" r="38" vector-effect="non-scaling-stroke"/>
+                </svg>
+
+                <div class="lc-orbit"><div class="lc-orbit-dot"></div></div>
+
+                <div class="lc-hub">
+                  <div class="lc-hub-inner">
+                    <div class="lc-hub-item lc-h1">
+                      <img src="/assets/svgs/idea.svg" alt="Idea icon" width="24" height="24" />
+                      <span>Idea</span>
+                    </div>
+                    <div class="lc-hub-item lc-h2">
+                      <img src="/assets/svgs/requirements.svg" alt="Requirements icon" width="24" height="24" />
+                      <span>Requirements</span>
+                    </div>
+                    <div class="lc-hub-item lc-h3">
+                      <img src="/assets/svgs/ai-llm.svg" alt="AI/LLM icon" width="24" height="24" />
+                      <span>AI/LLM Engineering</span>
+                    </div>
+                    <div class="lc-hub-item lc-h4">
+                      <img src="/assets/svgs/testing.svg" alt="Testing icon" width="24" height="24" />
+                      <span>Testing</span>
+                    </div>
+                    <div class="lc-hub-item lc-h5">
+                      <img src="/assets/svgs/review.svg" alt="Review icon" width="24" height="24" />
+                      <span>Review</span>
+                    </div>
+                    <div class="lc-hub-item lc-h6">
+                      <img src="/assets/svgs/delivery.svg" alt="Delivery icon" width="24" height="24" />
+                      <span>Delivery</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lc-stage lc-s-idea">
+                  <div class="lc-stage-badge"><img src="/assets/svgs/idea.svg" alt="Idea icon" width="24" height="24" /></div>
+                  <div class="lc-stage-label">Idea</div>
+                  <div class="lc-stage-sub">Framing the problem</div>
+                </div>
+
+                <div class="lc-stage lc-s-req">
+                  <div class="lc-stage-badge"><img src="/assets/svgs/requirements.svg" alt="Requirements icon" width="24" height="24" /></div>
+                  <div class="lc-stage-label">Requirements</div>
+                  <div class="lc-stage-sub">Defining scope &amp; architecture</div>
+                </div>
+
+                <div class="lc-stage lc-s-ai">
+                  <div class="lc-stage-badge"><img src="/assets/svgs/ai-llm.svg" alt="AI/LLM icon" width="24" height="24" /></div>
+                  <div class="lc-stage-label">AI/LLM Engineering</div>
+                  <div class="lc-stage-sub">Products, automations &amp; accelerated delivery</div>
+                </div>
+
+                <div class="lc-stage lc-s-test">
+                  <div class="lc-stage-badge"><img src="/assets/svgs/testing.svg" alt="Testing icon" width="24" height="24" /></div>
+                  <div class="lc-stage-label">Testing</div>
+                  <div class="lc-stage-sub">Rigorous quality assurance</div>
+                </div>
+
+                <div class="lc-stage lc-s-review">
+                  <div class="lc-stage-badge"><img src="/assets/svgs/review.svg" alt="Review icon" width="24" height="24" /></div>
+                  <div class="lc-stage-label">Review</div>
+                  <div class="lc-stage-sub">Considered, iterative refinement</div>
+                </div>
+
+                <div class="lc-stage lc-s-delivery">
+                  <div class="lc-stage-badge"><img src="/assets/svgs/delivery.svg" alt="Delivery icon" width="24" height="24" /></div>
+                  <div class="lc-stage-label">Delivery</div>
+                  <div class="lc-stage-sub">Deployed &amp; continuously monitored</div>
+                </div>
+              </div>
+
+              <div class="lc-caption">A single, continuous discipline <b>&mdash; from first idea to production delivery</b></div>
+
+            </div>
           </div>
         </div>
       </section>
@@ -493,4 +572,5 @@ const stats = [
       hcStatNumbers.forEach((el) => hcStatsObserver.observe(el));
     }
   </script>
+
 </BaseLayout>
