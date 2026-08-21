@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 
 const ALLOWED_ORIGINS = [
+  'https://sulemansaleem.com',
   'https://muhammadsulemansaleem.github.io',
   'http://localhost:4321',
 ];
