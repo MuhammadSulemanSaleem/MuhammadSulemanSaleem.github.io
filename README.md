@@ -2,7 +2,7 @@
 
 Personal portfolio website built with **Astro**, deployed to GitHub Pages.
 
-**Live site:** https://sulemansaleem.com
+**Live site:** <https://sulemansaleem.com>
 
 ## Stack
 
@@ -74,6 +74,12 @@ Pushes to `main` automatically build and deploy via GitHub Actions.
 GitHub Pages source must be set to **GitHub Actions** in repo Settings → Pages.
 
 The `contact-api/` function deploys separately and independently as its own Vercel project (Root Directory `contact-api/`, currently linked only via the local Vercel CLI, not GitHub auto-deploy) — see `contact-api/README.md` for setup.
+
+Steps:
+
+1. Go to terminal
+2. cd contact-api/
+3. npx vercel deploy --prod --debug
 
 ## Documentation
 
