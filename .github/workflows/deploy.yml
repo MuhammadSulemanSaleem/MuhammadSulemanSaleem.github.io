@@ -54,3 +54,19 @@ jobs:
           curl -s -w "\nIndexNow status: %{http_code}\n" -X POST "https://api.indexnow.org/IndexNow" \
             -H "Content-Type: application/json; charset=utf-8" \
             --data "$PAYLOAD"
+      - name: Notify IndexNow (Bing) of current URLs - key 2
+        continue-on-error: true
+        run: |
+          SITE="https://sulemansaleem.com"
+          KEY="9821463a12be4ee4be281802b5748772"
+          URLS=$(curl -s "$SITE/sitemap-0.xml" | grep -oE '<loc>[^<]*</loc>' | sed -E 's/<\/?loc>//g')
+          JSON_URLS=$(printf '%s\n' "$URLS" | jq -R . | jq -s .)
+          PAYLOAD=$(jq -n \
+            --arg host "sulemansaleem.com" \
+            --arg key "$KEY" \
+            --arg keyLocation "$SITE/$KEY.txt" \
+            --argjson urlList "$JSON_URLS" \
+            '{host: $host, key: $key, keyLocation: $keyLocation, urlList: $urlList}')
+          curl -s -w "\nIndexNow status: %{http_code}\n" -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            --data "$PAYLOAD"
