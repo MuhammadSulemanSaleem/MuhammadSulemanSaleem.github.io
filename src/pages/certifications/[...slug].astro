@@ -15,6 +15,22 @@ interface Cert {
 export function getStaticPaths() {
   const certs: Cert[] = [
     {
+      slug: 'microsoft/career-essentials-in-generative-ai',
+      title: 'Career Essentials in Generative AI',
+      issuer: 'Microsoft',
+      issuerIcon: '/assets/svgs/microsoft.svg',
+      pdf: '/certifications/microsoft/career-essentials-in-generative-ai.pdf',
+      verifyUrl: 'https://www.linkedin.com/learning/certificates/f1d9de9129c1210f5f85ad2a95a3a78eea2454e3eb023f82444ddded6d21ca56',
+    },
+    {
+      slug: 'microsoft/microsoft-azure-essentials-professional-certificate',
+      title: 'Microsoft Azure Essentials',
+      issuer: 'Microsoft',
+      issuerIcon: '/assets/svgs/microsoft.svg',
+      pdf: '/certifications/microsoft/microsoft-azure-essentials-professional-certificate.pdf',
+      verifyUrl: 'https://www.linkedin.com/learning/certificates/cb77c24cb5dd59385a6caaafbfb3bcba838f8822b45cabd1780fed303e0936a6',
+    },
+    {
       slug: 'anthropic/claude-101',
       title: 'Claude 101',
       issuer: 'Anthropic',
@@ -113,6 +129,15 @@ export function getStaticPaths() {
       issuerIcon: '/assets/svgs/n8n.svg',
       pdf: '/certifications/n8n/n8n103-in-practice.pdf',
       verifyUrl: 'https://learn.n8n.io/certificates/374c0b15cacf40f18b8da1e6b94fce54',
+    },
+    {
+      slug: 'n8n/n8n-foundations-pathway-certificate',
+      title: 'n8n Foundations Pathway',
+      shortTitle: 'n8n Foundations Pathway',
+      issuer: 'n8n',
+      issuerIcon: '/assets/svgs/n8n.svg',
+      pdf: '/certifications/n8n/n8n-foundations-pathway-certificate.pdf',
+      verifyUrl: 'https://badges.n8n.io/f3ff6031-ec91-4c86-ac17-3a1d7a816b1d',
     },
   ];
 
