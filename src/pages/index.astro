@@ -52,11 +52,11 @@ const projects = [
     screenshot: '/assets/screenshots/houzi/feature-mockup.png',
     metric: '53K+ reach · 4.84★ · 500+ sales',
     challenge:
-      "Real estate businesses running the Houzez WordPress theme had a live website but no native mobile app — building a separate one from scratch for each client meant duplicating logic and APIs, with no easy way for individual agencies to customize branding and features.",
+      "Businesses using the Houzez WordPress theme had fully functional real estate websites but no straightforward way to offer a matching native mobile app. Building a separate app for every client meant duplicating code and API integrations, while agencies had limited flexibility to customize branding and features without maintaining separate codebases.",
     solution:
-      'Built Houzi, a Flutter app that connects to any Houzez-powered WordPress site over its REST API, with a thin white-label app shell layered over a shared codebase — via customization hooks and a remote config file — so branding and features can be tailored per client without forking anything, plus the HouziBuilder desktop configurator.',
+      'Developed Houzi, a white-label Flutter application that connects to any Houzez-powered WordPress website through its REST API. Designed a shared application architecture with client-specific customization hooks and remote configuration, allowing agencies to tailor branding and functionality without forking the core codebase. Also built HouziBuilder, a desktop configurator that simplifies app customization through a guided interface.',
     impact:
-      "Now powering native iOS and Android apps for real estate clients across the Houzez ecosystem, reaching 53,000+ theme owners with a 4.84★ rating, 500+ CodeCanyon sales, and 5,000+ Play Store downloads.",
+      'Turned a single Flutter codebase into a scalable mobile app solution for the Houzez ecosystem, supporting client-specific iOS and Android apps. Reached an ecosystem of 53,000+ theme owners, with 500+ CodeCanyon sales, a 4.84★ rating, and 5,000+ Google Play downloads.',
     slug: 'houzi',
   },
   {
@@ -66,11 +66,11 @@ const projects = [
     screenshot: '/assets/screenshots/nebufit/feature-mockup.png',
     metric: 'RAG · multi-LLM · SSE streaming',
     challenge:
-      "Fitness apps lean on generic templates instead of adapting to a user's real body data, bloodwork, and progress, and users want conversational coaching rather than static charts.",
+      "Most fitness applications rely on generic workout and nutrition plans that don't account for an individual's body composition, bloodwork, or progress over time. Users needed more than static charts and predefined recommendations: they needed personalized, conversational coaching grounded in their own data.",
     solution:
-      'Built computer-vision body analysis, AI-generated workout and nutrition plans, and bloodwork processing on a RAG system for contextual guidance, orchestrating multiple LLM providers (Claude + GPT-4o + ElevenLabs) with SSE streaming and automatic failover for resilient voice coaching, backed by full Stripe subscription and entitlement management.',
+      'Engineered an AI-powered fitness platform combining computer-vision body analysis, personalized workout and nutrition generation, and bloodwork interpretation through a Retrieval-Augmented Generation (RAG) pipeline. Integrated Claude, GPT-4o, and ElevenLabs through a multi-provider orchestration layer, with SSE streaming and automatic provider failover for responsive, resilient voice coaching. Implemented Stripe subscription billing and entitlement management to support the platform’s monetization model.',
     impact:
-      'Shipped a production-ready AI coaching platform that delivers personalized, real-time guidance with resilient uptime and monetization built in from day one.',
+      'Delivered a production-ready AI coaching platform that brings together personal health data, computer vision, and multi-provider AI into a unified experience, with real-time conversational guidance and subscription infrastructure built into the product.',
     slug: 'nebufit',
   },
   {
@@ -80,11 +80,11 @@ const projects = [
     screenshot: '/assets/screenshots/creative-os/feature-mockup.png',
     metric: 'Local-first · MCP server architecture',
     challenge:
-      "Writers, filmmakers, musicians, and other creators wanted AI assistance across screenplays, lyrics, and notes, but typical AI chatbots can't reach into local files or hold onto creative context over time — and sending unfinished creative work to the cloud, or being locked into one fixed set of AI tools, wasn't an option either.",
+      "Writers, filmmakers, musicians, and other creators needed AI assistance that could work across their screenplays, lyrics, notes, and research. Conventional chatbots lacked access to local creative libraries and persistent project context. Cloud-dependent workflows also raised concerns about sharing unfinished work, while fixed integrations limited the tools creators could use.",
     solution:
-      'Built Creative OS as a local-first Electron/React desktop app that works less like a chatbot and more like an operating system for creative work — indexing Final Draft screenplays, PDFs, lyrics, notes, and research through a RAG pipeline (ChromaDB + SQLite) for semantic search, auto-tagging, and Claude-powered rewriting with persistent context, including native .FDX editing that preserves screenplay formatting, on an extensible MCP server architecture.',
+      'Built Creative OS, a local-first Electron and React desktop application designed as a workspace for creative projects rather than another standalone chatbot. Implemented a RAG pipeline using ChromaDB and SQLite to index Final Draft screenplays, PDFs, lyrics, notes, and research for semantic search, automatic tagging, and Claude-powered rewriting with persistent context. Added native .FDX editing that preserves screenplay formatting and an extensible Model Context Protocol (MCP) server architecture for connecting additional tools and capabilities.',
     impact:
-      'Gave creators AI-powered editing, search, and organization across their entire local creative library that persists across sessions instead of resetting, with a tool ecosystem that grows without touching the core app.',
+      'Created a persistent, AI-assisted workspace where creators can search, organize, and edit their local creative libraries without repeatedly rebuilding context or moving unfinished work into cloud-based workflows. The extensible MCP architecture also allows new tools and integrations to grow independently of the core application.',
     slug: 'creative-os',
   },
   {
@@ -92,13 +92,13 @@ const projects = [
     tint: 'violet',
     name: 'AGENTC — Agentic Job Discovery Automation',
     screenshot: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
-    metric: 'Nightly across 4 niches · $600–800/mo → $200–300/mo',
+    metric: '4 niches nightly · $600–800/mo → $200–300/mo',
     challenge:
-      "The client's Selenium-based decision-maker scraper across four niches was expensive and fragile, running $600–800/month.",
+      "The client's Selenium-based decision-maker discovery system covered four business niches but was expensive to operate and vulnerable to scraping failures. Monthly infrastructure and operating costs had reached $600–800, making the existing approach difficult to sustain.",
     solution:
-      'Replaced Selenium with Apify actors, orchestrating the nightly pipeline in n8n with Hunter.io, ZeroBounce, and Clearout Phone.',
+      'Re-engineered the discovery pipeline by replacing the Selenium-based scraping approach with Apify actors and orchestrating the nightly workflows through n8n. Integrated Hunter.io for email discovery, ZeroBounce for email verification, and Clearout Phone for phone validation, creating a more streamlined prospect discovery and enrichment process.',
     impact:
-      "Brought monthly cost into the client's $200–300 target while covering four full niches every night.",
+      "Brought the monthly operating cost into the client's $200–300 target range while maintaining nightly coverage across all four niches. Replaced a fragile, expensive scraping setup with a more manageable and cost-conscious automation pipeline.",
     slug: 'agentc-job-discovery',
   },
   {
@@ -106,13 +106,13 @@ const projects = [
     tint: 'blue',
     name: 'Social Media Posting Automation',
     screenshot: '/assets/screenshots/social-media-posting-automation/feature-mockup.png',
-    metric: 'Auto-posts to 6 platforms · zero silent failures',
+    metric: '6 platforms · 5 n8n workflows · automated publishing',
     challenge:
-      'A client needed AI-drafted captions, minute-precise scheduling, and hands-off publishing across six social platforms — without a person juggling six different upload APIs, six sets of OAuth tokens, or finding out about a failed post days later.',
+      'The client needed a reliable way to generate AI-assisted captions, schedule posts down to the minute, and publish across six social platforms. Managing separate publishing APIs, OAuth credentials, token renewals, and failed-post handling manually made the process difficult to scale and monitor.',
     solution:
-      'Built a suite of five linked n8n workflows backed by per-platform Google Cloud Functions: an AI agent that drafts platform-specific captions from a Google Form submission and holds them for human approval, a minute-precision Google Apps Script scheduler, a webhook-triggered publisher that gates and uploads to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok, a scheduled OAuth token-refresh workflow, an auth-callback workflow handling every platform’s handshake, and a centralized error logger.',
+      'Designed five interconnected n8n workflows supported by platform-specific Google Cloud Functions. The system generates platform-tailored captions from Google Form submissions and routes them for human approval, uses Google Apps Script for minute-precise scheduling, and publishes approved content to YouTube, Facebook, Instagram, LinkedIn, Threads, and TikTok through webhook-triggered integrations. Added automated OAuth token refresh, platform authentication callbacks, and centralized error logging to handle credential lifecycles and surface publishing failures.',
     impact:
-      'Replaced manual caption-writing, scheduling, and OAuth babysitting with a pipeline where the only manual step left is approving AI-drafted copy — everything else runs on its own.',
+      'Automated the publishing lifecycle across six platforms, from AI-assisted caption generation and approval to scheduling, publishing, and authentication maintenance. Reduced ongoing manual involvement to reviewing and approving generated content, with centralized error logging improving visibility into publishing issues.',
     slug: 'social-media-posting-automation',
   },
 ];

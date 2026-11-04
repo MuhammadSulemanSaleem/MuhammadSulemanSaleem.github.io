@@ -97,7 +97,7 @@
 }
 
 .hc-reverse-icon-btn:hover .hc-icon-btn__track,
-.hc-btn:hover + .hc-reverse-icon-btn .hc-icon-btn__track {
+.hc-btn:hover+.hc-reverse-icon-btn .hc-icon-btn__track {
   transform: translateX(0);
 }
 
@@ -123,5 +123,25 @@
 
   .pf-hero__title {
     font-size: 2.1rem;
+  }
+}
+
+/* ── Grid wrapper (WORK_SHOW_GRID = true). Card styles live in
+   src/components/PfProjectCard/index.css ───────────────────── */
+.pf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (width < 1100px) {
+  .pf-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width < 750px) {
+  .pf-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

@@ -1,0 +1,101 @@
+/* PfProjectCard — one project card on /work.
+   Full-width (no .pf-card--grid): the shared .hc-work shell, unchanged.
+   Grid (.pf-card--grid): a vertical card matching the About page's experience cards.
+
+   Selectors use `.hc-work.pf-card--grid` (0,2,0) so they beat hc-shared.css's
+   `.hc-work` rules (0,1,0) regardless of stylesheet load order. */
+
+/* ── Card shell ──────────────────────────────────────── */
+/* No padding on the card itself: the tile runs full width and the text sits in
+   its own padded block. This avoids the negative margins that made the tile
+   wider than the card. */
+.hc-work.pf-card--grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+    position: static;
+    top: auto;
+    margin-bottom: 0;
+    background: #ffffff;
+    border: 1px solid var(--hc-line);
+    border-radius: 20px;
+}
+
+/* ── Tile: full width, fixed height ──────────────────── */
+/* Fixed height (not aspect-ratio) so every card's tile is the same size. */
+.hc-work.pf-card--grid .hc-work__tile {
+    order: -1;
+    flex-shrink: 0;
+    width: 100%;
+    height: 240px;
+    min-height: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+/* ── Text block ──────────────────────────────────────── */
+.hc-work.pf-card--grid .hc-work__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.hc-work.pf-card--grid .hc-work__name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+}
+
+.hc-work.pf-card--grid .hc-work__breakdown {
+    margin: 0 0 0.75rem;
+    gap: 0.75rem;
+}
+
+.hc-work.pf-card--grid .hc-work__point {
+    padding-left: 0.75rem;
+}
+
+.hc-work.pf-card--grid .hc-work__point dd {
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+/* Pushes the button to the bottom of the card, so cards in a row line up */
+.hc-work.pf-card--grid .hc-work__actions {
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+/* Grid tiles are shorter than full-width tiles, so the full-width vertical
+   offset in hc-shared.css's .hc-work__tile-logo--zoom pushes the image upward.
+   Keep the zoom, drop the offset. */
+.hc-work.pf-card--grid .hc-work__tile-logo--zoom {
+    transform: scale(1.1);
+}
+
+/* ── Reveal and hover ────────────────────────────────── */
+/* global.css sets the reveal transition on `body [data-aos]` (0,1,1). This
+   selector is more specific, so it replaces that transition and repeats the
+   reveal's opacity/transform timing (0.7s, same easing) alongside the hover
+   properties. */
+body .hc-work.pf-card--grid[data-aos] {
+    transition-property: opacity, transform, translate, box-shadow;
+    transition-duration: 0.7s, 0.7s, 0.15s, 0.15s;
+    transition-timing-function:
+        cubic-bezier(0.25, 0.1, 0.25, 1),
+        cubic-bezier(0.25, 0.1, 0.25, 1),
+        ease-out,
+        ease-out;
+}
+
+/* `translate` (not `transform`) so the hover lift composes with the reveal's
+   transform: translate(0, 0) set by `[data-aos].aos-animate`. */
+.hc-work.pf-card--grid:hover {
+    translate: 0 -7px;
+    box-shadow: 0 20px 40px rgba(20, 22, 27, 0.1);
+}

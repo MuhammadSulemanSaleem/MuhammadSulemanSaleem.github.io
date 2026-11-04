@@ -1,0 +1,64 @@
+---
+import './index.css';
+import { cardCopy } from '../../data/workCardCopy.js';
+
+const { project: p, index: i = 0, showGrid = false } = Astro.props;
+
+// Grid cards use the shorter About-page copy. Full-width cards keep projects.js copy.
+const copy = showGrid ? (cardCopy[p.slug] ?? p) : p;
+---
+
+<div
+  class={`hc-card hc-work ${showGrid ? 'pf-card--grid' : ''}`}
+  data-aos="fade-up"
+  data-aos-delay={showGrid ? (i % 3) * 60 : undefined}
+>
+  <div class="hc-work__content">
+    <h3 class="hc-work__name">{p.name}</h3>
+
+    <dl class={`hc-work__breakdown ${i % 2 === 1 ? 'hc-work__breakdown--violet' : ''}`}>
+      <div class="hc-work__point">
+        <dt>Challenge</dt>
+        <dd>{copy.challenge}</dd>
+      </div>
+      <div class="hc-work__point">
+        <dt>Solution</dt>
+        <dd>{copy.solution}</dd>
+      </div>
+      <div class="hc-work__point">
+        <dt>Impact</dt>
+        <dd>{copy.impact}</dd>
+      </div>
+    </dl>
+
+    {p.note && (
+      <p class="pf-note"><i class="ri-lock-line" aria-hidden="true"></i> {p.note}</p>
+    )}
+
+    <a href={`/work/${p.slug}`} class="hc-work__actions">
+      <span class="hc-btn hc-btn--primary hc-btn--sm">Case Study</span>
+      <span class="hc-icon-btn hc-reverse-icon-btn" aria-hidden="true">
+        <span class="hc-icon-btn__track">
+          <i class="ri-arrow-right-line" aria-hidden="true"></i>
+          <i class="ri-arrow-right-line" aria-hidden="true"></i>
+        </span>
+      </span>
+    </a>
+  </div>
+
+  <div class={`hc-work__tile hc-work__tile--${i % 2 === 1 ? 'violet' : 'blue'} ${p.screenshot ? 'hc-work__tile--logo' : ''}`}>
+    {p.screenshot ? (
+      <img
+        src={p.screenshot}
+        alt={`${p.name} preview`}
+        class={`hc-work__tile-logo ${p.slug === 'creative-os' ? 'hc-work__tile-logo--zoom' : ''}`}
+      />
+    ) : (
+      <>
+        <span class="hc-work__mark">{p.mark}</span>
+        <span class="hc-work__tile-name">{p.name}</span>
+        <span class="hc-work__tile-metric">{p.metric}</span>
+      </>
+    )}
+  </div>
+</div>

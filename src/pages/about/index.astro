@@ -46,37 +46,37 @@ const achievements = [
     name: 'Employee of the Month (3×)',
     icon: 'ri-medal-line',
     description:
-      'Recognized three times at Techtiz for consistent, high-impact delivery across projects, sprints, and client releases.',
+      'Recognized three times at Techtiz for delivering high-impact work across product development, project milestones, and client releases.',
   },
   {
-    name: 'Built Production AI Systems',
+    name: 'Production AI Engineering',
     icon: 'ri-brain-line',
     description:
-      'Designed and shipped RAG pipelines and multi-provider LLM orchestration across Claude, GPT-4o, and ElevenLabs.',
+      'Designed and shipped production AI capabilities, including RAG pipelines and multi-provider LLM orchestration with Claude, GPT-4o, and ElevenLabs.',
   },
   {
     name: 'Enterprise System Integration',
     icon: 'ri-links-line',
     description:
-      'Integrated a React Native app with SAP ERP, syncing thousands of daily batch scans across a nationwide field team.',
+      'Integrated a React Native field-sales application with SAP ERP, supporting thousands of daily product-batch scans across a nationwide team.',
   },
   {
-    name: 'Automation at Scale',
+    name: 'Business Process Automation',
     icon: 'ri-flashlight-line',
     description:
-      'Designed 7+ business-process automations, including a lead response system that contacts new leads within one minute.',
+      'Designed 7+ business-process automations, including a lead-response system that initiates contact with new leads in under one minute.',
   },
   {
     name: 'Technical Leadership',
     icon: 'ri-team-line',
     description:
-      'Led a development team and mentored engineers, maintaining clean architecture and consistent code quality.',
+      'Led development teams, mentored engineers, and promoted maintainable architecture, code quality, and reliable delivery.',
   },
   {
     name: 'Built a Best-Selling App',
     icon: 'ri-store-2-line',
     description:
-      'Shipped the Houzi app on Envato, reaching 53,000+ Houzez theme owners with 500+ sales and a 4.84-star rating.',
+      'Developed Houzi for the Houzez ecosystem, reaching 53,000+ theme owners and earning 500+ CodeCanyon sales with a 4.84-star rating.',
   },
 ];
 
@@ -92,9 +92,12 @@ const experienceJobs = [
         name: 'Orient Champions',
         screenshot: '/assets/screenshots/orient-champions/feature-mockup.png',
         metric: 'Thousands of daily batch scans · ~90% fewer bugs post-refactor',
-        challenge: 'Inherited a live, poorly-built field-sales platform — dead code, no state management, hardcoded data — with daily client bug calls.',
-        solution: 'Refactored the React Native + Nest.js codebase, added Redux, rebuilt the cron pipeline, and fixed push notifications and the App Updater.',
-        impact: 'Cut bug reports by ~90% — the client now calls about new features, not fixes.',
+        challenge:
+          'Inherited a live field-sales platform with tightly coupled code, dead modules, hardcoded data, and recurring client-reported issues.',
+        solution:
+          'Refactored the React Native and NestJS codebase, introduced Redux state management, rebuilt the scheduled processing pipeline, and repaired push notifications and the app updater.',
+        impact:
+          'Reduced reported bugs by approximately 90%, shifting client conversations from recurring fixes toward new features.',
         slug: 'orient-champions',
       },
       {
@@ -102,9 +105,12 @@ const experienceJobs = [
         name: 'NebuFit',
         screenshot: '/assets/screenshots/nebufit/feature-mockup.png',
         metric: 'RAG · multi-provider AI · Stripe subscriptions',
-        challenge: 'Fitness apps lean on generic templates, not real user data.',
-        solution: 'Built an AI coaching app with computer vision, RAG, and multi-provider AI orchestration.',
-        impact: 'Shipped a production-ready platform with resilient uptime and monetization.',
+        challenge:
+          'Generic fitness experiences lacked the personalized guidance and intelligent features needed to make coaching more relevant to individual users.',
+        solution:
+          'Built an AI-powered fitness platform combining computer vision, retrieval-augmented generation (RAG), and multi-provider LLM orchestration.',
+        impact:
+          'Delivered a production-ready AI fitness platform with subscription monetization and an architecture designed for reliable operation.',
         slug: 'nebufit',
       },
       {
@@ -112,9 +118,12 @@ const experienceJobs = [
         name: 'Lead Response Automation',
         screenshot: '/assets/screenshots/lead-response-automation/feature-mockup.png',
         metric: 'Contacts leads in < 1 min · AI voice call in < 2 min',
-        challenge: 'Lead response automation was split across three disconnected vendors, and stalled leads or underperforming agents went unnoticed for days.',
-        solution: 'Consolidated onto Aloware\'s native voice/SMS bots with temperature-based lead routing, OpenAI call QA, and an automated deposit-to-revenue pipeline.',
-        impact: 'One unified conversation thread per lead, with funnel leaks, coaching gaps, and deposits all reconciling automatically.',
+        challenge:
+          'Lead engagement was fragmented across three vendors, while stalled opportunities and agent performance issues could remain unnoticed for days.',
+        solution:
+          'Consolidated voice and SMS automation on Aloware, introduced temperature-based lead scoring and role-based routing, and connected OpenAI call evaluation with automated funnel monitoring and payment reconciliation.',
+        impact:
+          'Created a unified lead-management workflow that prioritizes HOT leads, surfaces funnel and coaching gaps, and reconciles deposits, refunds, and agent revenue.',
         slug: 'lead-response-automation',
       },
       {
@@ -122,9 +131,12 @@ const experienceJobs = [
         name: 'Creative OS',
         screenshot: '/assets/screenshots/creative-os/feature-mockup.png',
         metric: 'Local-first · MCP server architecture',
-        challenge: 'Writers needed an AI partner that remembers their work, not a chatbot that forgets it every session.',
-        solution: 'Built Creative OS as a local-first AI operating system — not a chatbot — with RAG search and an MCP server architecture.',
-        impact: 'Gave writers persistent AI editing and search that stays entirely on their machine.',
+        challenge:
+          'Writers needed an AI workspace that could retain knowledge of their work and provide useful context across sessions without relying on a conventional chatbot experience.',
+        solution:
+          'Built Creative OS as a local-first AI workspace, combining retrieval-augmented search with an MCP-based architecture.',
+        impact:
+          'Delivered persistent AI-assisted writing and knowledge retrieval while keeping the workspace and its data on the user’s machine.',
         slug: 'creative-os',
       },
       {
@@ -132,9 +144,12 @@ const experienceJobs = [
         name: 'AGENTC — Agentic Job Discovery Automation',
         screenshot: '/assets/screenshots/agentc-job-discovery/feature-mockup.png',
         metric: 'Nightly across 4 niches · $600–800/mo → $200–300/mo',
-        challenge: "The client's Selenium-based decision-maker scraper across four niches was expensive and fragile, running $600–800/month.",
-        solution: 'Replaced Selenium with Apify actors, orchestrating the nightly pipeline in n8n with Hunter.io, ZeroBounce, and Clearout Phone.',
-        impact: "Brought monthly cost into the client's $200–300 target while covering four full niches every night.",
+        challenge:
+          'The client’s Selenium-based decision-maker discovery system was fragile and costly to operate across four business niches, with monthly costs of $600–800.',
+        solution:
+          'Replaced the Selenium-based process with Apify actors and orchestrated nightly discovery and enrichment workflows in n8n using Hunter.io, ZeroBounce, and Clearout Phone.',
+        impact:
+          'Reduced monthly operating costs to the client’s $200–300 target range while maintaining nightly coverage across all four niches.',
         slug: 'agentc-job-discovery',
       },
       {
@@ -143,9 +158,12 @@ const experienceJobs = [
         screenshot: '/assets/screenshots/capital-shack-ocr/feature-mockup.png',
         metric: '2 linked automations · 3 document types classified',
         note: 'Client confidentiality prevents sharing screenshots or product media for this project.',
-        challenge: 'Manually reviewing, categorizing, filing, and cross-referencing every incoming client document into spreadsheets was slow, repetitive, and error-prone at volume.',
-        solution: 'Built two linked Google Apps Script automations — one files and logs every emailed document, the other runs each attachment through Document AI to classify and extract its data.',
-        impact: 'Eliminated manual document triage and data entry entirely, so every incoming document is consistently categorized, filed, and logged.',
+        challenge:
+          'Incoming client documents required repetitive manual review, categorization, filing, and spreadsheet entry, creating a time-consuming and error-prone process.',
+        solution:
+          'Built two connected Google Apps Script automations: one organizes and logs email attachments in Google Drive, while the other uses Google Document AI to classify documents and extract structured data.',
+        impact:
+          'Eliminated manual document triage and data entry, automatically categorizing, filing, and processing incoming documents into structured records.',
         slug: 'capital-shack-ocr',
       },
       {
@@ -153,9 +171,12 @@ const experienceJobs = [
         name: 'Ramirez Legal Group — ClickUp Dashboard Sync',
         screenshot: '/assets/screenshots/ramirez-legal-clickup-sync/feature-mockup.png',
         metric: 'Real-time case data sync',
-        challenge: 'ClickUp case data and the Emergent Labs client-facing dashboard had to be kept in sync by hand.',
-        solution: 'Built a Zapier pipeline that syncs ClickUp case and client updates to the Emergent Labs dashboard automatically.',
-        impact: 'Keeps the case tracker and dashboard continuously synchronized, with zero duplicate manual entry.',
+        challenge:
+          'Case and client updates in ClickUp had to be manually duplicated in the Emergent Labs client dashboard, creating the risk of inconsistent information.',
+        solution:
+          'Built a Zapier integration that automatically synchronizes case and client updates from ClickUp with the client-facing dashboard.',
+        impact:
+          'Keeps internal case records and the client dashboard synchronized without duplicate manual updates.',
         slug: 'ramirez-legal-clickup-sync',
       },
       {
@@ -163,9 +184,12 @@ const experienceJobs = [
         name: 'UNITY Desktop App & Admin Portal',
         screenshot: '/assets/screenshots/unity-desktop-admin-portal/feature-mockup.png',
         metric: 'Role-built nav · live admin config',
-        challenge: 'A healthcare organisation needed one desktop tool unifying browsing, credentials, and patient calls, plus an admin layer to reconfigure each role.',
-        solution: 'Built an Electron + Nest.js desktop app with per-role dynamic navigation, credential auto-fill, and a Next.js/Nest.js admin portal for drag-and-drop role config.',
-        impact: 'Delivered one unified, role-aware desktop tool with centrally-configurable navigation and permissions.',
+        challenge:
+          'A healthcare organization needed a unified desktop workspace for browsing, credentials, and patient calls, with centrally managed role-specific navigation.',
+        solution:
+          'Built an Electron and NestJS desktop application with dynamic role-based navigation and credential autofill, alongside a Next.js and NestJS admin portal for configuring roles and menus.',
+        impact:
+          'Delivered a unified desktop workspace with centrally managed navigation and permissions that can be configured for different user roles.',
         slug: 'unity-desktop-admin-portal',
       },
       {
@@ -173,9 +197,12 @@ const experienceJobs = [
         name: 'Linked Golf',
         screenshot: '/assets/screenshots/linked-golf/feature-mockup.png',
         metric: 'Full refactor · event subscriptions via Stripe',
-        challenge: 'Inherited a live, poorly-built app — tightly coupled Bloc state, broken chat, dead backend code — with issues across every core screen.',
-        solution: 'Refactored the Bloc/backend, fixed chat and applink bugs, and added event creation, Stripe subscriptions, and OTP team joins.',
-        impact: 'Delivered a faster, stable app plus a new paid-event flow for golf-course owners.',
+        challenge:
+          'Inherited a live application with tightly coupled Bloc state, unreliable chat, broken app links, and backend issues affecting core user journeys.',
+        solution:
+          'Refactored the Flutter and backend architecture, repaired chat and deep-link functionality, and implemented event creation, Stripe subscriptions, and OTP-based team joining.',
+        impact:
+          'Improved application stability and performance while introducing a paid event-management flow for golf-course owners.',
         slug: 'linked-golf',
       },
       {
@@ -183,19 +210,25 @@ const experienceJobs = [
         name: 'Exodus App',
         screenshot: '/assets/screenshots/exodus-app/feature-mockup.png',
         metric: 'Full rebrand + optimized vitals sync (EPIC PC)',
-        challenge: 'Blue Sky needed a full rebrand to its new Exodus identity, and syncing health vitals from a wearable device into the app was slow and often failed.',
-        solution: "Delivered a full rebrand from Blue Sky to Exodus, and packaged the wearable's vitals SDK into the app build to replace a failure-prone per-scan API call.",
-        impact: 'Relaunched under its new identity with faster, more reliable wearable vitals syncing.',
+        challenge:
+          'Blue Sky needed a complete transition to its new Exodus brand, while wearable health-vitals synchronization was slow and unreliable.',
+        solution:
+          'Delivered the Blue Sky-to-Exodus rebrand and integrated the wearable device SDK into the application build, replacing a failure-prone API request on every scan.',
+        impact:
+          'Launched the app under its new identity with faster and more reliable wearable-vitals synchronization.',
         slug: 'exodus-app',
       },
       {
         mark: 'SM',
         name: 'Social Media Posting Automation',
         screenshot: '/assets/screenshots/social-media-posting-automation/feature-mockup.png',
-        metric: 'Auto-posts to 6 platforms · zero silent failures',
-        challenge: 'Needed a steady posting cadence across six platforms without hand-written captions, token babysitting, or unreviewed AI copy going live.',
-        solution: 'Built five linked n8n workflows plus per-platform Cloud Functions for AI caption drafting, human approval, minute-precise scheduling, publishing, token refresh, and OAuth callbacks.',
-        impact: 'Replaced manual posting and token upkeep with a pipeline where the only manual step left is approving AI-drafted copy.',
+        metric: 'Auto-posts to 6 platforms · automated failure monitoring',
+        challenge:
+          'Maintaining a consistent publishing schedule across six platforms required manual caption preparation, content approval, scheduling, and ongoing token management.',
+        solution:
+          'Built five connected n8n workflows and platform-specific Google Cloud Functions to handle AI caption drafting, human approval, precise scheduling, publishing, token refresh, and OAuth callbacks.',
+        impact:
+          'Automated the publishing workflow across six platforms, reducing the remaining manual work primarily to reviewing and approving AI-generated captions.',
         slug: 'social-media-posting-automation',
       },
       {
@@ -203,9 +236,12 @@ const experienceJobs = [
         name: 'Outreach Email Classification Automation',
         screenshot: '/assets/screenshots/outreach-email-classification-automation/feature-mockup.png',
         metric: 'AI reply classification · instant Slack routing',
-        challenge: 'Every outreach reply had to be read by hand to tell an interested prospect from a bounce or unsubscribe, and n8n\'s native Gmail polling gave no way to filter or rate-limit it.',
-        solution: 'Built a Google Apps Script Gmail poller that filters and rate-limits replies into an n8n pipeline, which classifies each with Gemini and posts a status notification to Slack.',
-        impact: 'Replaced manual inbox triage with automatic, rate-safe classification and instant Slack visibility.',
+        challenge:
+          'Outreach replies had to be reviewed manually to identify interested prospects, bounces, and unsubscribes, while native Gmail polling lacked the required filtering and rate controls.',
+        solution:
+          'Built a Google Apps Script Gmail poller to filter and rate-limit incoming replies, then routed them through n8n for Gemini classification and Slack notifications.',
+        impact:
+          'Replaced manual inbox triage with automated reply classification and immediate Slack visibility, while controlling Gmail polling frequency.',
         slug: 'outreach-email-classification-automation',
       },
       {
@@ -213,9 +249,12 @@ const experienceJobs = [
         name: 'Zendesk AI Support Automation',
         screenshot: '/assets/screenshots/zendesk-ai-support-automation/feature-mockup.png',
         metric: '3 linked workflows · tickets, calls & replies',
-        challenge: 'Agents were piecing together ticket, call, and conversation context by hand before every reply.',
-        solution: 'Built three linked n8n workflows for OCR-and-AI ticket analysis, call transcription, and history-aware reply drafting.',
-        impact: 'Every ticket, call, and conversation now gets an instant AI-drafted summary and reply logged into Zendesk.',
+        challenge:
+          'Support agents had to manually piece together ticket attachments, call recordings, and previous conversation history before preparing customer responses.',
+        solution:
+          'Built three connected n8n workflows for OCR-assisted ticket analysis, AI-powered call transcription, and conversation-aware reply drafting.',
+        impact:
+          'Automates the preparation of ticket summaries, call insights, and reply drafts, recording the generated context in Zendesk for agents to use.',
         slug: 'zendesk-ai-support-automation',
       },
       {
@@ -223,9 +262,12 @@ const experienceJobs = [
         name: 'Techtiz Corporate Website',
         screenshot: '/assets/screenshots/techtiz-corporate-website/feature-mockup.png',
         metric: 'Astro rebuild · multi-vertical SEO at scale',
-        challenge: 'Needed a large multi-vertical marketing site — services, industries, a separate government audience, and a blog — migrated off a legacy static site without duplicating markup.',
-        solution: 'Built the site in Astro with a two-tier page system, an isolated SLED experience, and a WordPress-backed blog that publishes without a redeploy.',
-        impact: 'Delivered a maintainable, SEO-optimized site where new pages follow a documented pattern and content publishes without a code deploy.',
+        challenge:
+          'The business needed a scalable marketing website covering multiple service areas, industries, a dedicated government audience, and a blog, replacing a legacy static site.',
+        solution:
+          'Rebuilt the website in Astro using a reusable two-tier page architecture, an isolated SLED experience, and a WordPress-backed blog that publishes independently of code deployments.',
+        impact:
+          'Created a maintainable, SEO-focused website with repeatable page structures and a content workflow that does not require a redeployment.',
         slug: 'techtiz-corporate-website',
       },
       {
@@ -233,9 +275,12 @@ const experienceJobs = [
         name: 'ATTN Agency Homepage',
         screenshot: '/assets/screenshots/attn-agency-homepage/feature-mockup.png',
         metric: 'Go High Level native-element build',
-        challenge: "Client needed a fully native, on-brand homepage inside Go High Level — not an embedded page or iframe — built from the builder's own elements.",
-        solution: "Built the homepage entirely with Go High Level's native builder elements, using Google Gemini to generate custom visual assets the component library doesn't provide.",
-        impact: "A homepage that reads like a custom build while staying fully native to Go High Level, easy for the client's own team to keep editing.",
+        challenge:
+          'The client needed a fully branded homepage built with GoHighLevel’s native elements rather than an embedded page or external iframe.',
+        solution:
+          'Built the homepage entirely in GoHighLevel’s native page builder and used Google Gemini to create custom visual assets beyond the builder’s standard component library.',
+        impact:
+          'Delivered a custom-looking homepage that remains fully editable within GoHighLevel by the client’s own team.',
         slug: 'attn-agency-homepage',
       },
       {
@@ -243,9 +288,12 @@ const experienceJobs = [
         name: 'Kumquat — Talent Match',
         screenshot: '/assets/screenshots/kumquat-talent-match/feature-mockup.png',
         metric: '577 downloads · FlutterFlow Marketplace',
-        challenge: 'Needed a proven starting point for skill-sharing and consultation-booking apps instead of building 81 screens from a blank canvas.',
-        solution: 'Built and published Kumquat, an 81-page FlutterFlow template covering booking, payments, chat, and video calling.',
-        impact: 'Published as a reusable FlutterFlow Marketplace starting point for coaching, tutoring, and telehealth apps — 577 downloads to date.',
+        challenge:
+          'Building a skill-sharing and consultation-booking application from scratch would require substantial work across dozens of screens and core user journeys.',
+        solution:
+          'Built and published Kumquat, an 81-page FlutterFlow template covering consultation booking, payments, chat, and video calling.',
+        impact:
+          'Created a reusable FlutterFlow Marketplace foundation for coaching, tutoring, and telehealth applications, reaching 577 downloads.',
         slug: 'kumquat-talent-match',
       },
       {
@@ -253,18 +301,24 @@ const experienceJobs = [
         name: 'Foodii — Recipe Book',
         screenshot: '/assets/screenshots/foodii-recipe-book/feature-mockup.png',
         metric: '537 downloads · FlutterFlow Marketplace',
-        challenge: 'Needed a ready-made starting point for recipe apps, with a nested recipe/chef data model and no live backend to build against yet.',
-        solution: 'Built and published Foodii, a FlutterFlow template with custom Data Types, a shared component library, and App State variables simulating backend data.',
-        impact: 'Published as a backend-ready FlutterFlow Marketplace template — connecting real Firestore later needs minimal rework — 537 downloads to date.',
+        challenge:
+          'Developing a recipe application required a reusable data structure and interface before a live backend was available.',
+        solution:
+          'Built and published Foodii, a FlutterFlow template using custom Data Types, reusable components, and App State variables to simulate backend data.',
+        impact:
+          'Published a backend-ready Marketplace template with a structure designed to simplify later Firestore integration, reaching 537 downloads.',
         slug: 'foodii-recipe-book',
       },
       {
         mark: 'TL',
         name: 'Team Leadership',
         metric: 'Sprints via Jira · tracked via Worktivity',
-        challenge: 'Team needed consistent sprint cadence and visibility.',
-        solution: 'Led the team, managed sprints via Jira, tracked productivity via Worktivity.',
-        impact: 'Kept delivery predictable with clear sprint visibility.',
+        challenge:
+          'The development team needed a consistent sprint cadence, clear task ownership, and visibility into delivery progress.',
+        solution:
+          'Led the development team, coordinated sprint planning and task execution through Jira, and monitored productivity and progress using Worktivity.',
+        impact:
+          'Maintained structured sprint execution and clearer visibility into team workload and delivery progress.',
         caseStudy: false,
       },
     ],
@@ -280,9 +334,12 @@ const experienceJobs = [
         name: 'Houzi',
         screenshot: '/assets/screenshots/houzi/feature-mockup.png',
         metric: '53K+ reach · 4.84★ · 500+ sales',
-        challenge: 'Houzez theme owners had no native app, and building one per client meant duplicating logic with no easy way to customize branding.',
-        solution: 'Built Houzi, a white-label Flutter app with a shared core package and per-client customization hooks, connecting to any Houzez site via REST API.',
-        impact: 'Reached 53,000+ theme owners with a 4.84★ rating, 500+ CodeCanyon sales, and 5,000+ Play Store downloads.',
+        challenge:
+          'Houzez theme owners needed a native mobile experience for their real-estate websites, without requiring a separately developed and maintained app for every client.',
+        solution:
+          'Built Houzi, a white-label Flutter application with a shared core package, client-specific customization hooks, and REST API integration for Houzez-powered websites.',
+        impact:
+          'Reached 53,000+ Houzez theme owners, with 500+ CodeCanyon sales, a 4.84-star rating, and 5,000+ Play Store downloads.',
         slug: 'houzi',
       },
       {
@@ -290,54 +347,72 @@ const experienceJobs = [
         name: 'HouziBuilder',
         screenshot: '/assets/screenshots/houzibuilder/feature-mockup.png',
         metric: 'Form-driven desktop configurator',
-        challenge: 'Theme owners had to hand-edit JSON to configure the companion app, with no preview.',
-        solution: 'Built a licensed desktop app with a guided, form-driven builder and live device preview.',
-        impact: 'Let theme owners self-serve visual changes with zero code.',
+        challenge:
+          'Configuring the Houzi app required theme owners to edit JSON manually, making customization difficult and offering no visual preview.',
+        solution:
+          'Built a licensed desktop configurator with guided forms, visual customization controls, and a live device preview.',
+        impact:
+          'Enabled theme owners to configure and preview their app without editing code or JSON manually.',
         slug: 'houzibuilder',
       },
       {
         mark: 'AS',
         name: 'Architecture & Scalability',
-        metric: 'High maintainability · smooth performance',
-        challenge: 'Needed an architecture that could scale with the app.',
-        solution: 'Implemented Provider (ChangeNotifier) state management for a maintainable structure.',
-        impact: 'Delivered high maintainability as the app grew.',
+        metric: 'Provider · ChangeNotifier · maintainable state',
+        challenge:
+          'The growing application needed a consistent state-management approach to keep features maintainable as the codebase expanded.',
+        solution:
+          'Implemented Provider and ChangeNotifier to organize application state and separate UI updates from business logic.',
+        impact:
+          'Established a more structured foundation for maintaining and extending the application.',
         caseStudy: false,
       },
       {
         mark: 'CP',
         name: 'Cross-Platform Projects',
         metric: 'Houzi · IPT Force · Linked Home · FSF-Ticket',
-        challenge: 'Needed more apps and a way to extend the WordPress API.',
-        solution: 'Delivered four apps and a WordPress plugin extending the Houzi ecosystem.',
-        impact: 'Extended the Houzi ecosystem with a shared integration layer.',
+        challenge:
+          'The Houzi ecosystem needed additional mobile products and a reusable way to extend its WordPress integration capabilities.',
+        solution:
+          'Delivered four applications—Houzi, IPT Force, Linked Home, and FSF-Ticket—and developed a WordPress plugin to extend the ecosystem’s API capabilities.',
+        impact:
+          'Expanded the Houzi ecosystem with additional applications and a shared integration layer.',
         caseStudy: false,
       },
       {
         mark: 'PO',
         name: 'Performance Optimisation',
-        metric: 'Faster load times · lower latency',
-        challenge: 'Growing usage was slowing load times and UI.',
-        solution: 'Profiled and optimised load times, latency, and responsiveness.',
-        impact: 'Delivered smoother, faster interactions at scale.',
+        metric: 'Load times · latency · UI responsiveness',
+        challenge:
+          'Increasing application complexity made load times, response latency, and interface responsiveness important areas to address.',
+        solution:
+          'Profiled application performance and optimized loading behavior, network latency, and UI responsiveness.',
+        impact:
+          'Improved application responsiveness and delivered smoother user interactions.',
         caseStudy: false,
       },
       {
         mark: 'CL',
         name: 'Collaboration',
         metric: 'Design · QA · Product alignment',
-        challenge: 'Design, QA, and product risked drifting out of sync.',
-        solution: 'Worked closely across teams to align on features and quality.',
-        impact: 'Kept every release aligned with less rework.',
+        challenge:
+          'Feature delivery required consistent coordination between design, QA, and product teams to prevent misalignment and avoidable rework.',
+        solution:
+          'Collaborated with design, QA, and product stakeholders to clarify requirements, coordinate implementation, and validate releases.',
+        impact:
+          'Improved cross-functional alignment throughout feature development and release cycles.',
         caseStudy: false,
       },
       {
         mark: 'MQ',
         name: 'Mentorship & Quality Assurance',
         metric: 'PR reviews · coding standards',
-        challenge: 'Growing team needed consistent code quality.',
-        solution: 'Mentored developers and reviewed pull requests.',
-        impact: 'Raised the code-quality bar through consistent review.',
+        challenge:
+          'A growing development team needed consistent coding practices and reliable review standards.',
+        solution:
+          'Mentored developers, reviewed pull requests, and reinforced shared coding standards across the team.',
+        impact:
+          'Strengthened code consistency and supported more maintainable team contributions.',
         caseStudy: false,
       },
     ],
@@ -354,36 +429,48 @@ const relevantExperience = {
       mark: 'HA',
       name: 'Intelligent Home Automation',
       metric: 'Four-member team · companion Android app',
-      challenge: 'No existing student project paired IoT hardware with a mobile control app.',
-      solution: 'Built a smart home automation system with a four-member team and a companion Android app.',
-      impact: 'Delivered a working IoT + mobile prototype as the final year project.',
+      challenge:
+        'The final-year project required a practical way to connect IoT hardware with a mobile interface for controlling a smart home.',
+      solution:
+        'Worked in a four-member team to develop an intelligent home automation prototype with a companion Android application.',
+      impact:
+        'Delivered a working IoT and mobile application prototype as the team’s final-year project.',
       caseStudy: false,
     },
     {
       mark: 'MA',
       name: 'Mobile Application Development',
       metric: 'Weather App · BMI Calculator · Tic Tac Toe',
-      challenge: 'Needed hands-on practice with native Android and iOS development.',
-      solution: 'Built early Android (Java/Kotlin) and iOS (Swift) apps — Weather App, BMI Calculator, Tic Tac Toe.',
-      impact: 'Built a foundation in native app lifecycles across two platforms.',
+      challenge:
+        'Building a foundation in mobile development required practical experience with both Android and iOS application lifecycles.',
+      solution:
+        'Developed Android applications using Java and Kotlin, and iOS applications using Swift, including a Weather App, BMI Calculator, and Tic Tac Toe.',
+      impact:
+        'Gained hands-on experience with native mobile development across Android and iOS.',
       caseStudy: false,
     },
     {
       mark: 'GD',
       name: 'Game Development',
       metric: 'Road Fury · Space Battle · BattleCopter',
-      challenge: 'Needed practical experience with game physics and interaction design.',
-      solution: 'Built 2D desktop/Android games in Unity — Road Fury, Space Battle, BattleCopter.',
-      impact: 'Gained hands-on experience with core game physics and interaction concepts.',
+      challenge:
+        'Developing interactive games provided an opportunity to apply programming fundamentals to game mechanics, physics, and user interaction.',
+      solution:
+        'Developed 2D desktop and Android games in Unity, including Road Fury, Space Battle, and BattleCopter.',
+      impact:
+        'Built practical experience with Unity, game physics, and interactive application development.',
       caseStudy: false,
     },
     {
       mark: 'QA',
       name: 'Software Testing',
       metric: 'Black-box & white-box testing',
-      challenge: 'Needed real-world QA experience beyond classroom theory.',
-      solution: 'Applied black-box/white-box testing on the open-source TEAMMATES Java project.',
-      impact: 'Built practical debugging and QA skills on a live codebase.',
+      challenge:
+        'Practical software testing experience was needed to apply black-box and white-box testing beyond academic exercises.',
+      solution:
+        'Performed black-box and white-box testing on the open-source TEAMMATES Java project.',
+      impact:
+        'Developed hands-on experience in test design, debugging, and quality assurance on an existing codebase.',
       caseStudy: false,
     },
   ],
